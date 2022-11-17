@@ -179,7 +179,12 @@ class Home extends StatelessWidget {
                       isFreeDelivery: index == 0 ? true : false,
                       isLiked: index == 0 ? true : false,
                       onLikeTap: () {},
-                      onTap: () => Get.to(() => RestaurantDetails()),
+                      onTap: () => Get.to(
+                        () => RestaurantDetails(
+                          isClosed: index == 2 ? true : false,
+                          isOutOfRange: index == 2 ? true : false,
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -245,7 +250,12 @@ class Home extends StatelessWidget {
                     isFreeDelivery: index == 0 ? true : false,
                     isLiked: index == 0 ? true : false,
                     onLikeTap: () {},
-                    onTap: () => Get.to(() => RestaurantDetails()),
+                    onTap: () => Get.to(
+                      () => RestaurantDetails(
+                        isClosed: index == 2 ? true : false,
+                        isOutOfRange: index == 2 ? true : false,
+                      ),
+                    ),
                   ),
                 );
               },

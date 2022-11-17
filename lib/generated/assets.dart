@@ -25,11 +25,13 @@ class Assets {
   static const String imagesHeartFill = 'assets/images/heart_fill.png';
   static const String imagesHomeA = 'assets/images/home_a.png';
   static const String imagesHomeDetailMapView = 'assets/images/home_detail_map_view.png';
+  static const String imagesLess = 'assets/images/less.png';
   static const String imagesLock = 'assets/images/lock.png';
   static const String imagesLoginBg = 'assets/images/login_bg.png';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesLogoHoriz = 'assets/images/logo_horiz.png';
   static const String imagesLogoHorizBlk = 'assets/images/logo_horiz_blk.png';
+  static const String imagesMore = 'assets/images/more.png';
   static const String imagesNoImageFound = 'assets/images/no_image_found.png';
   static const String imagesOr = 'assets/images/or.png';
   static const String imagesPhone = 'assets/images/phone.png';
@@ -40,5 +42,6 @@ class Assets {
   static const String imagesStarFill = 'assets/images/star_fill.png';
   static const String imagesUnderOnTheWay = 'assets/images/under_on_the_way.png';
   static const String imagesUserB = 'assets/images/user_b.png';
+  static const String imagesX = 'assets/images/x.png';
 
 }
