@@ -21,7 +21,7 @@ class _VerifyCodeForEmailState extends State<VerifyCodeForEmail> {
     textStyle: TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.w700,
-      color: kBlackColor,
+      color: kBlackColor2,
       fontFamily: GoogleFonts.dmSans().fontFamily,
     ),
     decoration: BoxDecoration(
@@ -66,7 +66,7 @@ class _VerifyCodeForEmailState extends State<VerifyCodeForEmail> {
                 ),
                 TextSpan(
                   style: TextStyle(
-                    color: kBlackColor,
+                    color: kBlackColor2,
                   ),
                   text: 'rifqyauxxx@gmail.com',
                 ),

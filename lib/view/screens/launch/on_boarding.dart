@@ -99,7 +99,7 @@ class _OnBoardingState extends State<OnBoarding> {
                           paddingLeft: 30,
                           text:
                               'Your order will be delivered as soon as possible by our courier.',
-                          color: kBlackColor.withOpacity(0.48),
+                          color: kBlackColor2.withOpacity(0.48),
                           height: 1.6,
                           size: 16,
                           align: TextAlign.center,

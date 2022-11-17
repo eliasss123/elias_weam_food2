@@ -2,22 +2,40 @@
 class Assets {
   Assets._();
 
+  static const String imagesAllPlaces = 'assets/images/all_places.png';
   static const String imagesApple = 'assets/images/apple.png';
   static const String imagesArrowBack = 'assets/images/arrow_back.png';
+  static const String imagesArrowDropDown = 'assets/images/arrow_drop_down.png';
   static const String imagesArrowForward = 'assets/images/arrow_forward.png';
+  static const String imagesBell = 'assets/images/bell.png';
+  static const String imagesBrowse = 'assets/images/browse.png';
   static const String imagesCongrats = 'assets/images/congrats.png';
   static const String imagesEmail = 'assets/images/email.png';
+  static const String imagesEmailBorder = 'assets/images/email_border.png';
   static const String imagesEye = 'assets/images/eye.png';
   static const String imagesEyeDisable = 'assets/images/eye_disable.png';
   static const String imagesFacebook = 'assets/images/facebook.png';
+  static const String imagesFastFood = 'assets/images/fast_food.png';
+  static const String imagesFilters = 'assets/images/filters.png';
   static const String imagesGoogle = 'assets/images/google.png';
+  static const String imagesGrocery = 'assets/images/grocery.png';
   static const String imagesHeaderBg = 'assets/images/header_bg.png';
+  static const String imagesHeartEmpty = 'assets/images/heart_empty.png';
+  static const String imagesHeartFill = 'assets/images/heart_fill.png';
+  static const String imagesHomeA = 'assets/images/home_a.png';
+  static const String imagesLock = 'assets/images/lock.png';
+  static const String imagesLoginBg = 'assets/images/login_bg.png';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesLogoHoriz = 'assets/images/logo_horiz.png';
+  static const String imagesLogoHorizBlk = 'assets/images/logo_horiz_blk.png';
   static const String imagesNoImageFound = 'assets/images/no_image_found.png';
   static const String imagesOr = 'assets/images/or.png';
   static const String imagesPhone = 'assets/images/phone.png';
+  static const String imagesSearch = 'assets/images/search.png';
+  static const String imagesShoppingCart = 'assets/images/shopping_cart.png';
   static const String imagesSignUpBg = 'assets/images/sign_up_bg.png';
+  static const String imagesStarFill = 'assets/images/star_fill.png';
   static const String imagesUnderOnTheWay = 'assets/images/under_on_the_way.png';
+  static const String imagesUserB = 'assets/images/user_b.png';
 
 }

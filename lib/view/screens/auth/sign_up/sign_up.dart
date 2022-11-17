@@ -1,11 +1,12 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
-import 'package:elias_weam_food2/view/screens/auth/sign_up/forgot_pass/forgot_pass.dart';
+import 'package:elias_weam_food2/view/screens/auth/login.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_phone/name.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_email/signup_with_email.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_phone/verify_otp.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
+import 'package:elias_weam_food2/view/widget/prefix_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -60,50 +61,13 @@ class Signup extends StatelessWidget {
                 ),
                 MyText(
                   text: 'Order to your location in one click!',
-                  color: kBlackColor.withOpacity(0.71),
+                  color: kBlackColor2.withOpacity(0.71),
                   paddingBottom: 30,
                 ),
-                TextFormField(
-                  textAlignVertical: TextAlignVertical.center,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: kBlackColor,
-                  ),
-                  decoration: InputDecoration(
-                    counterText: '',
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 16.5,
-                    ),
-                    hintText: 'Your phone number',
-                    hintStyle: TextStyle(
-                      fontSize: 14,
-                      color: kHintTextColor,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16.0),
-                      borderSide: BorderSide(
-                        color: kBorderColor,
-                        width: 1.0,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16.0),
-                      borderSide: BorderSide(
-                        color: kSecondaryColor,
-                        width: 1.0,
-                      ),
-                    ),
-                    prefixIcon: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          Assets.imagesPhone,
-                          height: 17,
-                        ),
-                      ],
-                    ),
-                  ),
+                PrefixTextField(
+                  hintText: 'Your phone number',
+                  prefixIcon: Assets.imagesPhone,
+                  prefixIconSize: 17,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
@@ -171,11 +135,11 @@ class Signup extends StatelessWidget {
             children: [
               MyText(
                 text: 'Already have an account?',
-                color: kBlackColor.withOpacity(0.71),
+                color: kBlackColor2.withOpacity(0.71),
               ),
               MyText(
                 onTap: () => Get.to(
-                  () => ForgotPass(),
+                  () => Login(),
                 ),
                 text: ' Sign In',
                 weight: FontWeight.w500,
@@ -191,3 +155,4 @@ class Signup extends StatelessWidget {
     );
   }
 }
+

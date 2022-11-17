@@ -15,7 +15,7 @@ class VerifyOtp extends StatelessWidget {
     textStyle: TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w700,
-      color: kBlackColor,
+      color: kBlackColor2,
       fontFamily: GoogleFonts.dmSans().fontFamily,
     ),
     decoration: BoxDecoration(
@@ -57,7 +57,7 @@ class VerifyOtp extends StatelessWidget {
                 ),
                 TextSpan(
                   style: TextStyle(
-                    color: kBlackColor,
+                    color: kBlackColor2,
                   ),
                   text: '+96 97592530',
                 ),
@@ -101,7 +101,7 @@ class VerifyOtp extends StatelessWidget {
             text: 'Resend code via SMS',
             size: 14,
             weight: FontWeight.w700,
-            color: kBlackColor.withOpacity(0.50),
+            color: kBlackColor2.withOpacity(0.50),
             align: TextAlign.center,
           ),
         ],

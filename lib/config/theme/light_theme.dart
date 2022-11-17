@@ -9,8 +9,8 @@ final ThemeData lightTheme = ThemeData(
     elevation: 0,
     backgroundColor: kPrimaryColor,
   ),
-  splashColor: kBlackColor.withOpacity(0.05),
-  highlightColor: kBlackColor.withOpacity(0.05),
+  splashColor: kBlackColor2.withOpacity(0.05),
+  highlightColor: kBlackColor2.withOpacity(0.05),
   colorScheme: ColorScheme.fromSwatch().copyWith(
     secondary: kSecondaryColor.withOpacity(0.05),
   ),

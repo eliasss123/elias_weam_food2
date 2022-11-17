@@ -21,7 +21,7 @@ class _VerifyCodeForPhoneState extends State<VerifyCodeForPhone> {
     textStyle: TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.w700,
-      color: kBlackColor,
+      color: kBlackColor2,
       fontFamily: GoogleFonts.dmSans().fontFamily,
     ),
     decoration: BoxDecoration(
@@ -66,7 +66,7 @@ class _VerifyCodeForPhoneState extends State<VerifyCodeForPhone> {
                 ),
                 TextSpan(
                   style: TextStyle(
-                    color: kBlackColor,
+                    color: kBlackColor2,
                   ),
                   text: '(+62) 822 8578 XXX',
                 ),

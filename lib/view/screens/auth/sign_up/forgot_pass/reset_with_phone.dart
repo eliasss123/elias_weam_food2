@@ -1,6 +1,6 @@
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/forgot_pass/verification_code_for_phone.dart';
-import 'package:elias_weam_food2/view/widget/FilledTextField.dart';
+import 'package:elias_weam_food2/view/widget/filled_text_field.dart';
 import 'package:elias_weam_food2/view/widget/headings.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';

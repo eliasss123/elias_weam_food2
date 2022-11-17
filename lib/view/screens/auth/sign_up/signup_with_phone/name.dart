@@ -1,3 +1,4 @@
+import 'package:elias_weam_food2/view/screens/main_app/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:elias_weam_food2/view/widget/congrats.dart';
 import 'package:elias_weam_food2/view/widget/headings.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
@@ -68,7 +69,7 @@ class _NameState extends State<Name> {
                       heading: 'Congratulations!',
                       congratsMsg:
                           'Your account is complete, please enjoy the best menu from us.',
-                      onContinue: () {},
+                      onContinue: () => Get.offAll(() => BottomNavBar()),
                       buttonText: 'Done',
                     ),
                   ),

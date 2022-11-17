@@ -1,5 +1,5 @@
 import 'package:elias_weam_food2/view/screens/auth/sign_up/forgot_pass/verify_code_for_email.dart';
-import 'package:elias_weam_food2/view/widget/FilledTextField.dart';
+import 'package:elias_weam_food2/view/widget/filled_text_field.dart';
 import 'package:elias_weam_food2/view/widget/headings.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';

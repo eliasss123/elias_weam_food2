@@ -50,7 +50,7 @@ class _PasswordFieldState extends State<PasswordField> {
               textInputAction: TextInputAction.next,
               style: TextStyle(
                 fontSize: 14,
-                color: kBlackColor,
+                color: kBlackColor2,
               ),
               decoration: InputDecoration(
                 suffixIcon: Column(

@@ -17,3 +17,29 @@ MyText authSubHeading(String heading) {
     color: kGreyColor2,
   );
 }
+
+Widget headingTiles({
+  String? heading,
+  VoidCallback? onSeeAll,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 20),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        MyText(
+          text: heading,
+          size: 17,
+          weight: FontWeight.w700,
+        ),
+        MyText(
+          onTap: onSeeAll,
+          text: 'See All',
+          size: 13,
+          color: kSecondaryColor,
+          weight: FontWeight.w700,
+        ),
+      ],
+    ),
+  );
+}

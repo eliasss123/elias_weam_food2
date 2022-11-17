@@ -50,7 +50,7 @@ class MyText extends StatelessWidget {
           "$text",
           style: TextStyle(
             fontSize: size ?? 14,
-            color: color ?? kBlackColor,
+            color: color ?? kBlackColor2,
             fontWeight: weight ?? FontWeight.w400,
             decoration: decoration,
             fontFamily: fontFamily ?? GoogleFonts.dmSans().fontFamily,

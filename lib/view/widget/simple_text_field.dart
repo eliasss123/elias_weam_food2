@@ -29,7 +29,7 @@ class SimpleTextField extends StatelessWidget {
         textInputAction: TextInputAction.next,
         style: TextStyle(
           fontSize: 14,
-          color: kBlackColor,
+          color: kBlackColor2,
         ),
         decoration: InputDecoration(
           counterText: '',

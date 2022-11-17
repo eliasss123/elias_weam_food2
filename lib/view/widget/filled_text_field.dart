@@ -52,7 +52,7 @@ class _FilledTextFieldState extends State<FilledTextField> {
             textInputAction: TextInputAction.next,
             style: TextStyle(
               fontSize: 14,
-              color: kBlackColor,
+              color: kBlackColor2,
             ),
             decoration: InputDecoration(
               fillColor: kSeoulColor,
