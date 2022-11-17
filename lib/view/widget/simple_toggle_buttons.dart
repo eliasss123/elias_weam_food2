@@ -1,19 +1,19 @@
 import 'package:elias_weam_food2/constant/color.dart';
-import 'package:elias_weam_food2/view/widget/common_image_view.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
 
-class ToggleButtonsWithImage extends StatelessWidget {
-  const ToggleButtonsWithImage({
+class SimpleToggleButtons extends StatelessWidget {
+  SimpleToggleButtons({
     Key? key,
-    required this.img,
-    required this.title,
+    required this.text,
     required this.isSelected,
     required this.onTap,
+    this.paddingHorizontal,
   }) : super(key: key);
-  final String img, title;
+  final String text;
   final bool isSelected;
   final VoidCallback onTap;
+  double? paddingHorizontal;
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +26,15 @@ class ToggleButtonsWithImage extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: 7,
         ),
-        height: 60,
-        width: 125,
         decoration: BoxDecoration(
           color: isSelected ? kSecondaryColor : kPrimaryColor,
           borderRadius: BorderRadius.circular(13),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.02),
-              spreadRadius: 5,
-              blurRadius: 10,
-              offset: Offset(7, 7),
+              spreadRadius: 0,
+              blurRadius: 20,
+              offset: Offset(7, 10),
             ),
           ],
         ),
@@ -44,25 +42,15 @@ class ToggleButtonsWithImage extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(13),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                CommonImageView(
-                  height: 43,
-                  width: 43,
-                  radius: 8.0,
-                  imagePath: img,
-                ),
-                Expanded(
-                  child: MyText(
-                    paddingLeft: 10,
-                    text: title,
-                    size: 12,
-                    color: isSelected ? kPrimaryColor : kBlackColor2,
-                    weight: isSelected ? FontWeight.w500 : FontWeight.w400,
-                  ),
-                ),
-              ],
+            padding: EdgeInsets.symmetric(
+              horizontal: paddingHorizontal ?? 17,
+              vertical: 14,
+            ),
+            child: MyText(
+              text: text,
+              size: 13,
+              color: isSelected ? kPrimaryColor : kGreyColor3,
+              weight: isSelected ? FontWeight.w700 : FontWeight.w400,
             ),
           ),
         ),

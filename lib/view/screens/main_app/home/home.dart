@@ -2,10 +2,15 @@ import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/utils/instances.dart';
-import 'package:elias_weam_food2/view/widget/common_image_view.dart';
+import 'package:elias_weam_food2/view/screens/main_app/home/browse_by_location.dart';
+import 'package:elias_weam_food2/view/screens/main_app/home/nearby_restaurants.dart';
+import 'package:elias_weam_food2/view/screens/main_app/home/popular_restaurants.dart';
+import 'package:elias_weam_food2/view/screens/main_app/home/restaurant_details.dart';
 import 'package:elias_weam_food2/view/widget/headings.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
+import 'package:elias_weam_food2/view/widget/restaurants_thumbnails.dart';
 import 'package:elias_weam_food2/view/widget/search_bar.dart';
+import 'package:elias_weam_food2/view/widget/simple_toggle_buttons.dart';
 import 'package:elias_weam_food2/view/widget/toggle_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,9 +45,18 @@ class Home extends StatelessWidget {
                         weight: FontWeight.w500,
                         color: kSecondaryColor,
                       ),
-                      Image.asset(
-                        Assets.imagesArrowDropDown,
-                        height: 13.5,
+                      GestureDetector(
+                        onTap: () => showModalBottomSheet(
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (_) => BrowseByLocation(),
+                        ),
+                        child: Image.asset(
+                          Assets.imagesArrowDropDown,
+                          height: 13.5,
+                        ),
                       ),
                     ],
                   ),
@@ -138,10 +152,10 @@ class Home extends StatelessWidget {
           children: [
             headingTiles(
               heading: 'Nearby Restaurants',
-              onSeeAll: () {},
+              onSeeAll: () => Get.to(() => NearByRestaurants()),
             ),
             SizedBox(
-              height: 280,
+              height: 285,
               child: ListView.builder(
                 shrinkWrap: true,
                 padding: EdgeInsets.symmetric(
@@ -160,161 +174,85 @@ class Home extends StatelessWidget {
                       totalRating: 4.8,
                       totalReviews: '122',
                       deliveryFee: 10.0,
-                      isClosed: false,
-                      isFeatured: false,
+                      isClosed: index == 2 ? true : false,
+                      isFeatured: index == 1 ? true : false,
                       isFreeDelivery: index == 0 ? true : false,
                       isLiked: index == 0 ? true : false,
                       onLikeTap: () {},
-                      onTap: () {},
+                      onTap: () => Get.to(() => RestaurantDetails()),
                     ),
                   );
                 },
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
+            headingTiles(
+              heading: 'Popular Right Now',
+              onSeeAll: () => Get.to(() => PopularRestaurants()),
+            ),
+            SizedBox(
+              height: 85,
+              child: ListView.builder(
+                shrinkWrap: true,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 13,
+                ),
+                physics: BouncingScrollPhysics(),
+                itemCount: homeController.popularList.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  var value = homeController.popularList[index];
+                  return Obx(
+                    () {
+                      return SimpleToggleButtons(
+                        text: value,
+                        isSelected: homeController.popularIndex.value == index,
+                        onTap: () => homeController.getPopularIndex(
+                          index,
+                          value,
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              padding: EdgeInsets.symmetric(
+                horizontal: 13,
+                vertical: 10,
+              ),
+              physics: BouncingScrollPhysics(),
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                // var data = homeController.instantFilterList[index];
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 25),
+                  child: RestaurantsThumbnail(
+                    width: Get.width,
+                    horizontalMargin: 0,
+                    imgUrl: dummyImg3,
+                    name: 'Marina Coastal Food',
+                    deliveryTime: '30',
+                    totalRating: 4.8,
+                    totalReviews: '122',
+                    deliveryFee: 10.0,
+                    isClosed: index == 2 ? true : false,
+                    isFeatured: index == 1 ? true : false,
+                    isFreeDelivery: index == 0 ? true : false,
+                    isLiked: index == 0 ? true : false,
+                    onLikeTap: () {},
+                    onTap: () => Get.to(() => RestaurantDetails()),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class RestaurantsThumbnail extends StatelessWidget {
-  RestaurantsThumbnail({
-    Key? key,
-    required this.imgUrl,
-    required this.name,
-    required this.deliveryTime,
-    required this.totalReviews,
-    required this.totalRating,
-    required this.deliveryFee,
-    required this.isFreeDelivery,
-    required this.isFeatured,
-    required this.isClosed,
-    required this.isLiked,
-    this.horizontalMargin,
-    this.width,
-    this.onTap,
-    this.onLikeTap,
-  }) : super(key: key);
-
-  final String imgUrl, name, deliveryTime, totalReviews;
-  final double totalRating, deliveryFee;
-  final bool isFreeDelivery, isFeatured, isClosed, isLiked;
-  double? width, horizontalMargin;
-  VoidCallback? onTap, onLikeTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: horizontalMargin ?? 7,
-          ),
-          height: 250,
-          width: width ?? 265,
-          decoration: BoxDecoration(
-            color: kPrimaryColor,
-            borderRadius: BorderRadius.circular(15),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.02),
-                spreadRadius: 0,
-                blurRadius: 10,
-                offset: Offset(7, 7),
-              ),
-            ],
-          ),
-          child: InkWell(
-            onTap: onTap,
-            borderRadius: BorderRadius.circular(15),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 10,
-                vertical: 13,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  CommonImageView(
-                    height: 164,
-                    width: Get.width,
-                    radius: 11.0,
-                    url: imgUrl,
-                  ),
-                  SizedBox(
-                    height: 13,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      MyText(
-                        text: name,
-                        size: 13,
-                        color: kDarkGreyColor,
-                        weight: FontWeight.w500,
-                      ),
-                      MyText(
-                        text: '$deliveryTime min',
-                        size: 12,
-                        color: kBlackColor,
-                        weight: FontWeight.w500,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 13,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Wrap(
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        spacing: 5.0,
-                        children: [
-                          Image.asset(
-                            Assets.imagesStarFill,
-                            height: 13,
-                          ),
-                          MyText(
-                            text: '$totalRating',
-                            size: 12,
-                            color: kRatingColor,
-                            weight: FontWeight.w500,
-                          ),
-                          MyText(
-                            text: '($totalReviews reviews)',
-                            size: 12,
-                            color: kBlackColor.withOpacity(0.4),
-                          ),
-                        ],
-                      ),
-                      MyText(
-                        text: isFreeDelivery
-                            ? 'Free Delivery'
-                            : '\$$deliveryFee Delivery fee',
-                        size: 12,
-                        color: kBlackColor.withOpacity(0.4),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Positioned(
-          top: 20,
-          right: 20,
-          child: GestureDetector(
-            onTap: onLikeTap,
-            child: Image.asset(
-              isLiked ? Assets.imagesHeartFill : Assets.imagesHeartEmpty,
-              height: 17,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

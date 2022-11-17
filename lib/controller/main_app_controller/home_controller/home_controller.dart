@@ -6,6 +6,8 @@ class HomeController extends GetxController {
   static final HomeController instance = Get.find<HomeController>();
 
   RxInt currentInstantFilterIndex = 0.obs;
+  RxInt popularIndex = 0.obs;
+  RxInt homeDetailMenuIndex = 0.obs;
   final List<Map<String, dynamic>> instantFilterList = [
     {
       'img': Assets.imagesAllPlaces,
@@ -20,9 +22,33 @@ class HomeController extends GetxController {
       'title': 'Fast\nFood',
     },
   ];
+  final List<String> popularList = [
+    'All',
+    'Italian',
+    'Vegetarian',
+    'Healthy Food',
+  ];
 
-  void getSelectedInstantFilerIndex(int index, String instantFilter) {
+  final List<String> homeDetailMenu = [
+    'Popular Items',
+    'Pizza & Pasta',
+    'Salads',
+    'Drinks',
+    'Add and Save',
+  ];
+
+  void getSelectedInstantFilerIndex(int index, String selectedValue) {
     currentInstantFilterIndex.value = index;
-    log(instantFilter.toString());
+    log(selectedValue.toString());
+  }
+
+  void getPopularIndex(int index, String selectedValue) {
+    popularIndex.value = index;
+    log(selectedValue.toString());
+  }
+
+  void getHomeDetailMenuIndex(int index, String selectedValue) {
+    homeDetailMenuIndex.value = index;
+    log(selectedValue.toString());
   }
 }

@@ -10,6 +10,7 @@ class Assets {
   static const String imagesBell = 'assets/images/bell.png';
   static const String imagesBrowse = 'assets/images/browse.png';
   static const String imagesCongrats = 'assets/images/congrats.png';
+  static const String imagesDivider = 'assets/images/divider.png';
   static const String imagesEmail = 'assets/images/email.png';
   static const String imagesEmailBorder = 'assets/images/email_border.png';
   static const String imagesEye = 'assets/images/eye.png';
@@ -23,6 +24,7 @@ class Assets {
   static const String imagesHeartEmpty = 'assets/images/heart_empty.png';
   static const String imagesHeartFill = 'assets/images/heart_fill.png';
   static const String imagesHomeA = 'assets/images/home_a.png';
+  static const String imagesHomeDetailMapView = 'assets/images/home_detail_map_view.png';
   static const String imagesLock = 'assets/images/lock.png';
   static const String imagesLoginBg = 'assets/images/login_bg.png';
   static const String imagesLogo = 'assets/images/logo.png';
@@ -31,6 +33,7 @@ class Assets {
   static const String imagesNoImageFound = 'assets/images/no_image_found.png';
   static const String imagesOr = 'assets/images/or.png';
   static const String imagesPhone = 'assets/images/phone.png';
+  static const String imagesRoundedBack = 'assets/images/rounded_back.png';
   static const String imagesSearch = 'assets/images/search.png';
   static const String imagesShoppingCart = 'assets/images/shopping_cart.png';
   static const String imagesSignUpBg = 'assets/images/sign_up_bg.png';
