@@ -68,16 +68,19 @@ class _CreateNewPassState extends State<CreateNewPass> {
                   onChanged: (value) => onChanged(),
                   marginBottom: 40,
                 ),
-                MyButton(
-                  isActive: isActive,
-                  buttonText: 'Next',
-                  onTap: () => Get.to(
-                    () => Congrats(
-                      heading: 'Password Changed!',
-                      congratsMsg:
-                          'Password changed successfully, you can login again with a new password',
-                      onContinue: () {},
-                      buttonText: 'Done',
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: MyButton(
+                    isActive: isActive,
+                    buttonText: 'Next',
+                    onTap: () => Get.to(
+                      () => Congrats(
+                        heading: 'Password Changed!',
+                        congratsMsg:
+                            'Password changed successfully, you can login again with a new password',
+                        onContinue: () {},
+                        buttonText: 'Done',
+                      ),
                     ),
                   ),
                 ),

@@ -1,11 +1,13 @@
 import 'package:elias_weam_food2/config/routes/routes.dart';
 import 'package:elias_weam_food2/config/theme/light_theme.dart';
+import 'package:elias_weam_food2/controller/main_app_controller/browse_controller/browse_controller.dart';
 import 'package:elias_weam_food2/controller/main_app_controller/home_controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
   Get.put(HomeController());
+  Get.put(BrowseController());
   runApp(MyApp());
 }
 
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
       title: 'Elias Weam Food 2',
       theme: lightTheme,
       themeMode: ThemeMode.light,
-      initialRoute: AppLinks.bottomNavBar,
+      initialRoute: AppLinks.splashScreen,
       getPages: AppRoutes.pages,
     );
   }

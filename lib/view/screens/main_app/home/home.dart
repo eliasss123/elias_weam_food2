@@ -3,9 +3,12 @@ import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/utils/instances.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/browse_by_location.dart';
+import 'package:elias_weam_food2/view/screens/main_app/home/filter.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/nearby_restaurants.dart';
+import 'package:elias_weam_food2/view/screens/main_app/home/pin_location.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/popular_restaurants.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/restaurant_details.dart';
+import 'package:elias_weam_food2/view/screens/main_app/notifications/notifications.dart';
 import 'package:elias_weam_food2/view/widget/headings.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/restaurants_thumbnails.dart';
@@ -32,6 +35,9 @@ class Home extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   MyText(
+                    onTap: () => Get.to(
+                      () => PinLocation(),
+                    ),
                     text: 'Deliver now',
                     size: 22,
                     weight: FontWeight.w700,
@@ -43,7 +49,7 @@ class Home extends StatelessWidget {
                         text: 'City Center Hotel Jerusalem ',
                         size: 14,
                         weight: FontWeight.w500,
-                        color: kSecondaryColor,
+                        color: kGreenColor2,
                       ),
                       GestureDetector(
                         onTap: () => showModalBottomSheet(
@@ -56,6 +62,7 @@ class Home extends StatelessWidget {
                         child: Image.asset(
                           Assets.imagesArrowDropDown,
                           height: 13.5,
+                          color: kGreenColor2,
                         ),
                       ),
                     ],
@@ -66,9 +73,39 @@ class Home extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Center(
-                    child: Image.asset(
-                      Assets.imagesBell,
-                      height: 23,
+                    child: GestureDetector(
+                      onTap: () => Get.to(() => Notifications()),
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Image.asset(
+                            Assets.imagesBell,
+                            height: 23,
+                          ),
+                          Positioned(
+                            top: -5,
+                            right: -2,
+                            child: Container(
+                              height: 15.3,
+                              width: 15.3,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: kSecondaryColor,
+                              ),
+                              child: Center(
+                                child: FittedBox(
+                                  child: MyText(
+                                    text: '2',
+                                    size: 11,
+                                    color: kPrimaryColor,
+                                    weight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -91,17 +128,22 @@ class Home extends StatelessWidget {
                           SizedBox(
                             width: 13,
                           ),
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(14),
-                              color: kSecondaryColor,
+                          GestureDetector(
+                            onTap: () => Get.to(
+                              () => FilterPage(),
                             ),
-                            child: Center(
-                              child: Image.asset(
-                                Assets.imagesFilters,
-                                height: 22,
+                            child: Container(
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(14),
+                                color: kSecondaryColor,
+                              ),
+                              child: Center(
+                                child: Image.asset(
+                                  Assets.imagesFilters,
+                                  height: 22,
+                                ),
                               ),
                             ),
                           ),

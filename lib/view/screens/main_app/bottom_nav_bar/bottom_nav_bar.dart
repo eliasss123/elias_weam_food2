@@ -1,5 +1,6 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
+import 'package:elias_weam_food2/view/screens/main_app/browse/browse.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/home.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   ];
   final List<Widget> screens = [
     Home(),
-    Container(),
+    Browse(),
     Container(),
     Container(),
   ];
@@ -47,6 +48,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
         children: screens,
       ),
       bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xffD1D1D1).withOpacity(0.25),
+              spreadRadius: 0,
+              blurRadius: 30,
+              offset: Offset(0, -10),
+            ),
+          ],
+        ),
         height: 70,
         child: BottomNavigationBar(
           elevation: 0,

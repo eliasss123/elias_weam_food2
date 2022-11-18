@@ -66,16 +66,19 @@ class _CreatePassState extends State<CreatePass> {
                   onChanged: (value) => onChanged(),
                   marginBottom: 40,
                 ),
-                MyButton(
-                  isActive: isActive,
-                  buttonText: 'Next',
-                  onTap: () => Get.to(
-                        () => Congrats(
-                      heading: 'Congratulations!',
-                      congratsMsg:
-                      'Your account is complete, please enjoy the best menu from us.',
-                      onContinue: () {},
-                      buttonText: 'Done',
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: MyButton(
+                    isActive: isActive,
+                    buttonText: 'Next',
+                    onTap: () => Get.to(
+                          () => Congrats(
+                        heading: 'Congratulations!',
+                        congratsMsg:
+                        'Your account is complete, please enjoy the best menu from us.',
+                        onContinue: () {},
+                        buttonText: 'Done',
+                      ),
                     ),
                   ),
                 ),
