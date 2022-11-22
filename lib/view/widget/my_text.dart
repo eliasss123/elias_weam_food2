@@ -56,7 +56,7 @@ class MyText extends StatelessWidget {
             fontFamily: fontFamily ?? GoogleFonts.dmSans().fontFamily,
             height: height,
             fontStyle: fontStyle,
-            letterSpacing: letterSpacing,
+            letterSpacing: letterSpacing ?? 0.4,
           ),
           textAlign: align,
           maxLines: maxLines,

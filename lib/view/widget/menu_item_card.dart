@@ -48,7 +48,7 @@ class MenuItemCard extends StatelessWidget {
                   height: 137,
                   width: Get.width,
                   radius: 11.0,
-                  url: itemImgUrl,
+                  imagePath: itemImgUrl,
                 ),
                 Container(
                   height: 137,

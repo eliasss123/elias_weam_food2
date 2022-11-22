@@ -66,7 +66,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
               headerSliverBuilder: (context, innerBoxIsScrolled) {
                 return [
                   HomeDetailAppBar(
-                    imgUrl: dummyImg3,
+                    imgUrl: Assets.imagesPicture5,
                     name: 'Pansi\nRestaurant',
                     tagLine: 'Sandwiches · Salad',
                     openingTime: '12',
@@ -136,7 +136,9 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                       itemBuilder: (context, index) {
                         return Align(
                           child: MenuItemCard(
-                            itemImgUrl: dummyImg3,
+                            itemImgUrl: index == 0
+                                ? Assets.imagesBurger
+                                : Assets.imagesPepperBeef,
                             itemName: 'German hamburger',
                             price: '14.99',
                             onTap: () {
@@ -175,11 +177,10 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                     info:
                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor orci sem at facilisis duis cras elit. At nibh ultricies diam orci volutpat, non facilisis. Habitasse diam eget lectus venenatis cras enim tellus.\n\nAmet posuere nulla sit laoreet et congue iaculis viverra. Non ultrices faucibus mauris leo.',
                     relatedImages: [
-                      dummyImg3,
-                      dummyImg3,
-                      dummyImg3,
-                      dummyImg3,
-                      dummyImg3,
+                      Assets.imagesSteak,
+                      Assets.imagesBbq,
+                      Assets.imagesFish,
+                      Assets.imagesPizza,
                     ],
                   ),
                   SizedBox(

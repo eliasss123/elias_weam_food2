@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/restaurants_thumbnails.dart';
@@ -37,7 +38,11 @@ class PopularRestaurants extends StatelessWidget {
                 child: RestaurantsThumbnail(
                   width: Get.width,
                   horizontalMargin: 0,
-                  imgUrl: dummyImg3,
+                  imgUrl: index == 0
+                      ? Assets.imagesPicture
+                      : index == 1
+                          ? Assets.imagesPicture2
+                          : Assets.imagesPicture4,
                   name: 'Marina Coastal Food',
                   deliveryTime: '30',
                   totalRating: 4.8,

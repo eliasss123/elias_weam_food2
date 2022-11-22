@@ -71,34 +71,53 @@ class Signup extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Image.asset(
-                    Assets.imagesOr,
-                    width: Get.width,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 1,
+                          color: kDisableColor,
+                        ),
+                      ),
+                      MyText(
+                        paddingLeft: 10,
+                        paddingRight: 10,
+                        text: 'or',
+                        size: 14,
+                        color: kDarkGreyColor2,
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: 1,
+                          color: kDisableColor,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    GestureDetector(
-                      onTap: () => Get.to(() => Name()),
-                      child: Image.asset(
-                        Assets.imagesApple,
-                        height: 51,
-                      ),
+                    SocialLogin(
+                      icon: Assets.imagesApple,
+                      iconSize: 25,
+                      onTap: () {},
                     ),
-                    GestureDetector(
-                      onTap: () => Get.to(() => Name()),
-                      child: Image.asset(
-                        Assets.imagesGoogle,
-                        height: 51,
-                      ),
+                    SizedBox(
+                      width: 13,
                     ),
-                    GestureDetector(
-                      onTap: () => Get.to(() => Name()),
-                      child: Image.asset(
-                        Assets.imagesFacebook,
-                        height: 51,
-                      ),
+                    SocialLogin(
+                      icon: Assets.imagesGoogle,
+                      iconSize: 22,
+                      onTap: () {},
+                    ),
+                    SizedBox(
+                      width: 13,
+                    ),
+                    SocialLogin(
+                      icon: Assets.imagesFacebook,
+                      iconSize: 25,
+                      onTap: () {},
                     ),
                   ],
                 ),
@@ -156,3 +175,37 @@ class Signup extends StatelessWidget {
   }
 }
 
+class SocialLogin extends StatelessWidget {
+  const SocialLogin({
+    Key? key,
+    required this.onTap,
+    required this.icon,
+    required this.iconSize,
+  }) : super(key: key);
+
+  final VoidCallback onTap;
+  final String icon;
+  final double iconSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        height: 51,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          border: Border.all(
+            width: 1.0,
+            color: kBlackColor.withOpacity(0.10),
+          ),
+        ),
+        child: Center(
+          child: Image.asset(
+            icon,
+            height: iconSize,
+          ),
+        ),
+      ),
+    );
+  }
+}

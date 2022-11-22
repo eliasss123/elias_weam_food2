@@ -30,12 +30,14 @@ Widget headingTiles({
         MyText(
           text: heading,
           size: 17,
+          letterSpacing: 0.4,
           weight: FontWeight.w700,
         ),
         MyText(
           onTap: onSeeAll,
           text: 'See All',
           size: 13,
+          letterSpacing: 0.4,
           color: kSecondaryColor,
           weight: FontWeight.w700,
         ),

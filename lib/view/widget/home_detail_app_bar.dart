@@ -50,7 +50,7 @@ class HomeDetailAppBar extends StatelessWidget {
                 height: Get.height,
                 width: Get.width,
                 radius: 24.0,
-                url: imgUrl,
+                imagePath: imgUrl,
               ),
               Container(
                 height: Get.height,

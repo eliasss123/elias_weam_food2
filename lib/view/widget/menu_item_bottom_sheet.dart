@@ -11,12 +11,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MenuItemBottomSheet extends StatefulWidget {
-  const MenuItemBottomSheet({
+   MenuItemBottomSheet({
     Key? key,
     required this.onAddToCartTap,
+    this.buttonText,
   }) : super(key: key);
 
   final VoidCallback? onAddToCartTap;
+  String? buttonText;
 
   @override
   State<MenuItemBottomSheet> createState() => _MenuItemBottomSheetState();
@@ -45,7 +47,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
               CommonImageView(
                 height: 204,
                 radius: 16.0,
-                url: dummyImg3,
+                imagePath: Assets.imagesBurgerLarge,
               ),
               SizedBox(
                 height: 30,
@@ -187,7 +189,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
               ),
               child: MyButton(
                 height: 54,
-                buttonText: 'Add to Cart (\$41.99)',
+                buttonText: widget.buttonText ??  'Add to Cart (\$41.99)',
                 onTap: widget.onAddToCartTap!,
               ),
             ),

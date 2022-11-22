@@ -1,6 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
-import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/utils/instances.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/browse_by_location.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/filter.dart';
@@ -28,95 +27,103 @@ class Home extends StatelessWidget {
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              toolbarHeight: 70,
+              elevation: 2,
+              toolbarHeight: 80,
               backgroundColor: kSeoulColor3,
               titleSpacing: 20.0,
-              title: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  MyText(
-                    onTap: () => Get.to(
-                      () => PinLocation(),
+              title: Container(
+                // color: Colors.red,
+                height: 80,
+                width: Get.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    MyText(
+                      onTap: () => Get.to(
+                        () => PinLocation(),
+                      ),
+                      text: 'Deliver now',
+                      size: 21.5,
+                      letterSpacing: 0.4,
+                      weight: FontWeight.w800,
+                      // paddingTop: 8,
+                      paddingBottom: 6,
                     ),
-                    text: 'Deliver now',
-                    size: 22,
-                    weight: FontWeight.w700,
-                    paddingBottom: 8,
-                  ),
-                  Wrap(
-                    children: [
-                      MyText(
-                        text: 'City Center Hotel Jerusalem ',
-                        size: 14,
-                        weight: FontWeight.w500,
-                        color: kGreenColor2,
-                      ),
-                      GestureDetector(
-                        onTap: () => showModalBottomSheet(
-                          backgroundColor: Colors.transparent,
-                          elevation: 0,
-                          isScrollControlled: true,
-                          context: context,
-                          builder: (_) => BrowseByLocation(),
-                        ),
-                        child: Image.asset(
-                          Assets.imagesArrowDropDown,
-                          height: 13.5,
+                    Wrap(
+                      children: [
+                        MyText(
+                          text: 'City Center Hotel Jerusalem ',
+                          size: 14,
+                          weight: FontWeight.w500,
                           color: kGreenColor2,
+                          paddingBottom: 10,
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        GestureDetector(
+                          onTap: () => showModalBottomSheet(
+                            backgroundColor: Colors.transparent,
+                            elevation: 0,
+                            isScrollControlled: true,
+                            context: context,
+                            builder: (_) => BrowseByLocation(),
+                          ),
+                          child: Image.asset(
+                            Assets.imagesArrowDropDown,
+                            height: 13.5,
+                            color: kGreenColor2,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
               actions: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: () => Get.to(() => Notifications()),
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Image.asset(
-                            Assets.imagesBell,
-                            height: 23,
-                          ),
-                          Positioned(
-                            top: -5,
-                            right: -2,
-                            child: Container(
-                              height: 15.3,
-                              width: 15.3,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: kSecondaryColor,
-                              ),
-                              child: Center(
-                                child: FittedBox(
-                                  child: MyText(
-                                    text: '2',
-                                    size: 11,
-                                    color: kPrimaryColor,
-                                    weight: FontWeight.w500,
-                                  ),
+                  padding: const EdgeInsets.only(right: 20, top: 21),
+                  child: GestureDetector(
+                    onTap: () => Get.to(() => Notifications()),
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Image.asset(
+                          Assets.imagesBell,
+                          height: 23,
+                        ),
+                        Positioned(
+                          top: -5,
+                          right: -2,
+                          child: Container(
+                            height: 15.3,
+                            width: 15.3,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: kSecondaryColor,
+                            ),
+                            child: Center(
+                              child: FittedBox(
+                                child: MyText(
+                                  text: '2',
+                                  size: 11,
+                                  color: kPrimaryColor,
+                                  weight: FontWeight.w500,
                                 ),
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ],
               pinned: true,
-              expandedHeight: 245,
+              expandedHeight: 265,
               flexibleSpace: FlexibleSpaceBar(
                 background: ListView(
                   shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-                  padding: EdgeInsets.fromLTRB(0, 120, 0, 10),
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.fromLTRB(0, 135, 0, 10),
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -149,6 +156,9 @@ class Home extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                    SizedBox(
+                      height: 2,
                     ),
                     SizedBox(
                       height: 120,
@@ -210,7 +220,9 @@ class Home extends StatelessWidget {
                   // var data = homeController.instantFilterList[index];
                   return Align(
                     child: RestaurantsThumbnail(
-                      imgUrl: dummyImg3,
+                      imgUrl: index == 0
+                          ? Assets.imagesPicture2
+                          : Assets.imagesAwacado,
                       name: 'Marina Coastal Food',
                       deliveryTime: '30',
                       totalRating: 4.8,
@@ -281,7 +293,9 @@ class Home extends StatelessWidget {
                   child: RestaurantsThumbnail(
                     width: Get.width,
                     horizontalMargin: 0,
-                    imgUrl: dummyImg3,
+                    imgUrl: index == 0
+                        ? Assets.imagesPicture
+                        : Assets.imagesPicture4,
                     name: 'Marina Coastal Food',
                     deliveryTime: '30',
                     totalRating: 4.8,

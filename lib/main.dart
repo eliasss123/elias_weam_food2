@@ -3,6 +3,7 @@ import 'package:elias_weam_food2/config/theme/light_theme.dart';
 import 'package:elias_weam_food2/controller/main_app_controller/browse_controller/browse_controller.dart';
 import 'package:elias_weam_food2/controller/main_app_controller/home_controller/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -26,13 +27,17 @@ String dummyImg4 =
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       title: 'Elias Weam Food 2',
       theme: lightTheme,
       themeMode: ThemeMode.light,
-      initialRoute: AppLinks.splashScreen,
+      initialRoute: AppLinks.bottomNavBar,
       getPages: AppRoutes.pages,
     );
   }

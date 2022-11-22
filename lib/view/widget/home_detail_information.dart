@@ -52,7 +52,7 @@ class Information extends StatelessWidget {
                 child: CommonImageView(
                   height: 92,
                   width: 92,
-                  url: relatedImages[index],
+                  imagePath: relatedImages[index],
                   radius: 12.0,
                 ),
               );

@@ -13,6 +13,7 @@ const kBlackColor = Color(0xff000000);
 const kBlackColor2 = Color(0xff040415);
 const kBlackColor3 = Color(0xff12131D);
 const kDarkGreyColor = Color(0xff323232);
+const kDarkGreyColor2 = Color(0xff717171);
 const kMaroonColor = Color(0xff941E1E);
 const kBorderColor = Color(0xffE9E9E9);
 const kBorderColor2 = Color(0xffEAEAEA);

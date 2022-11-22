@@ -1,7 +1,9 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/main_app/browse/browse.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/my_cart.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/home.dart';
+import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -32,7 +34,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final List<Widget> screens = [
     Home(),
     Browse(),
-    Container(),
+    MyCart(),
     Container(),
   ];
 
@@ -81,12 +83,41 @@ class _BottomNavBarState extends State<BottomNavBar> {
             (index) {
               var data = items[index];
               return BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.only(bottom: 6),
-                  child: ImageIcon(
-                    AssetImage(data['icon']),
-                    size: 19.0,
-                  ),
+                icon: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 6),
+                      child: ImageIcon(
+                        AssetImage(data['icon']),
+                        size: 19.0,
+                      ),
+                    ),
+                    index == 2
+                        ? Positioned(
+                            top: -5,
+                            right: -5,
+                            child: Container(
+                              height: 15,
+                              width: 15,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: kSecondaryColor,
+                              ),
+                              child: Center(
+                                child: FittedBox(
+                                  child: MyText(
+                                    text: '2',
+                                    size: 11,
+                                    color: kPrimaryColor,
+                                    weight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        : SizedBox(),
+                  ],
                 ),
                 label: data['label'],
               );

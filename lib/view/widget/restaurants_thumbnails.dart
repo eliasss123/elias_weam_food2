@@ -68,7 +68,7 @@ class RestaurantsThumbnail extends StatelessWidget {
                     height: 164,
                     width: Get.width,
                     radius: 11.0,
-                    url: imgUrl,
+                    imagePath: imgUrl,
                   ),
                   SizedBox(
                     height: 13,
@@ -80,7 +80,7 @@ class RestaurantsThumbnail extends StatelessWidget {
                         text: name,
                         size: 13,
                         color: kDarkGreyColor,
-                        weight: FontWeight.w500,
+                        weight: FontWeight.w600,
                       ),
                       MyText(
                         text: '$deliveryTime min',

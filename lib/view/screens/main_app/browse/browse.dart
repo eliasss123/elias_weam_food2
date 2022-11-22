@@ -1,6 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
-import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/utils/instances.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/filter.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/restaurant_details.dart';
@@ -72,26 +71,28 @@ class _BrowseState extends State<Browse> {
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
+              toolbarHeight: 65,
+              elevation: 3,
               backgroundColor: kSeoulColor3,
               titleSpacing: 20.0,
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   MyText(
-                    text: 'Browse',
                     size: 22,
-                    weight: FontWeight.w700,
-                    paddingBottom: 9,
+                    text: 'Browse',
+                    letterSpacing: 0.4,
+                    weight: FontWeight.w800,
                   ),
                 ],
               ),
               pinned: true,
-              expandedHeight: showResults ? 150 : 190,
+              expandedHeight: showResults ? 160 : 200,
               flexibleSpace: FlexibleSpaceBar(
                 background: ListView(
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
-                  padding: EdgeInsets.fromLTRB(0, 85, 0, 10),
+                  padding: EdgeInsets.fromLTRB(0, 93, 0, 10),
                   children: [
                     SizedBox(
                       height: 8,
@@ -138,8 +139,8 @@ class _BrowseState extends State<Browse> {
                     ),
                     showResults
                         ? Padding(
-                          padding: const EdgeInsets.fromLTRB(20,20,20,10),
-                          child: Wrap(
+                            padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                            child: Wrap(
                               runSpacing: 10,
                               crossAxisAlignment: WrapCrossAlignment.center,
                               children: [
@@ -158,46 +159,49 @@ class _BrowseState extends State<Browse> {
                                 ),
                               ],
                             ),
-                        )
-                        : Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              SizedBox(
-                                height: 85,
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 13,
-                                  ),
-                                  physics: BouncingScrollPhysics(),
-                                  itemCount: browseController.categories.length,
-                                  scrollDirection: Axis.horizontal,
-                                  itemBuilder: (context, index) {
-                                    var value =
-                                        browseController.categories[index];
-                                    return Obx(
-                                      () {
-                                        return SimpleToggleButtons(
-                                          text: value,
-                                          isSelected: browseController
-                                                  .currentCategoryIndex.value ==
+                          )
+                        : Padding(
+                          padding: const EdgeInsets.only(top: 4),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                SizedBox(
+                                  height: 85,
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 13,
+                                    ),
+                                    physics: BouncingScrollPhysics(),
+                                    itemCount: browseController.categories.length,
+                                    scrollDirection: Axis.horizontal,
+                                    itemBuilder: (context, index) {
+                                      var value =
+                                          browseController.categories[index];
+                                      return Obx(
+                                        () {
+                                          return SimpleToggleButtons(
+                                            text: value,
+                                            isSelected: browseController
+                                                    .currentCategoryIndex.value ==
+                                                index,
+                                            onTap: () => browseController
+                                                .getSelectedCategoryIndex(
                                               index,
-                                          onTap: () => browseController
-                                              .getSelectedCategoryIndex(
-                                            index,
-                                            value,
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
+                                              value,
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                            ],
-                          ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              ],
+                            ),
+                        ),
                   ],
                 ),
               ),
@@ -252,7 +256,11 @@ class SearchResults extends StatelessWidget {
           child: RestaurantsThumbnail(
             width: Get.width,
             horizontalMargin: 0,
-            imgUrl: dummyImg3,
+            imgUrl: index == 0
+                ? Assets.imagesPizzaLarge
+                : index == 1
+                    ? Assets.imagesPansi
+                    : Assets.imagesItalianPizza,
             name: 'Marina Coastal Food',
             deliveryTime: '30',
             totalRating: 4.8,
