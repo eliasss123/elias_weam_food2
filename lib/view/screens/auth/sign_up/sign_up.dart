@@ -1,7 +1,6 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/auth/login.dart';
-import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_phone/name.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_email/signup_with_email.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_phone/verify_otp.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';

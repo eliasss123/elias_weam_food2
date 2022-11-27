@@ -3,6 +3,7 @@ import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class SearchBar extends StatelessWidget {
   SearchBar({
     Key? key,

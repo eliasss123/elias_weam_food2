@@ -1,6 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
-import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
 import 'package:elias_weam_food2/view/widget/custom_check_box_tile.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
@@ -10,6 +9,7 @@ import 'package:elias_weam_food2/view/widget/simple_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class MenuItemBottomSheet extends StatefulWidget {
    MenuItemBottomSheet({
     Key? key,
@@ -117,7 +117,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
               ),
               customHeading('Sauce'),
               Container(
-                decoration: ContainerDec.menuItemDec,
+                decoration: ContainerDec.border3R16,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -145,7 +145,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
               ),
               customHeading('Add a Topping?'),
               Container(
-                decoration: ContainerDec.menuItemDec,
+                decoration: ContainerDec.border3R16,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [

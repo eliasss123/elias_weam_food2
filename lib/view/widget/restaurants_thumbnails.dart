@@ -7,6 +7,7 @@ import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class RestaurantsThumbnail extends StatelessWidget {
   RestaurantsThumbnail({
     Key? key,

@@ -14,6 +14,11 @@ import 'package:elias_weam_food2/view/screens/auth/sign_up/sign_up.dart';
 import 'package:elias_weam_food2/view/screens/launch/on_boarding.dart';
 import 'package:elias_weam_food2/view/screens/launch/splash_screen.dart';
 import 'package:elias_weam_food2/view/screens/main_app/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:elias_weam_food2/view/screens/main_app/browse/browse.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/confirm_order.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/my_cart.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/tips_and_notes/custom_amount.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/tips_and_notes/tips_and_notes.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/home.dart';
 import 'package:get/get.dart';
 
@@ -90,6 +95,26 @@ class AppRoutes {
       name: AppLinks.home,
       page: () => Home(),
     ),
+    GetPage(
+      name: AppLinks.browse,
+      page: () => Browse(),
+    ),
+    GetPage(
+      name: AppLinks.myCart,
+      page: () => MyCart(),
+    ),
+    GetPage(
+      name: AppLinks.confirmOrder,
+      page: () => ConfirmOrder(),
+    ),
+    GetPage(
+      name: AppLinks.customAmount,
+      page: () => CustomAmount(),
+    ),
+    GetPage(
+      name: AppLinks.tipsAndNotes,
+      page: () => TipsAndNotes(),
+    ),
     //  MAIN APP
   ];
 }
@@ -115,6 +140,11 @@ class AppLinks {
 //  MAIN APP
   static const bottomNavBar = '/bottom_nav_bar';
   static const home = '/home';
+  static const browse = '/browse';
+  static const myCart = '/my_cart';
+  static const confirmOrder = '/confirm_order';
+  static const customAmount = '/custom_amount';
+  static const tipsAndNotes = '/tips_and_notes';
 //  MAIN APP
 
 }

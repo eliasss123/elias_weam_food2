@@ -3,6 +3,7 @@ import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class FilledTextField extends StatefulWidget {
   FilledTextField({
     this.labelText,

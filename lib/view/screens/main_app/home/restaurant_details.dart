@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
-import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/utils/instances.dart';
 import 'package:elias_weam_food2/view/widget/delivery_fee_and_time.dart';
 import 'package:elias_weam_food2/view/widget/home_detail_app_bar.dart';
