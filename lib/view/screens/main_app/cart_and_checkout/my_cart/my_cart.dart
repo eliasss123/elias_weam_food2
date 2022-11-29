@@ -1,6 +1,7 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/utils/instances.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/delivery_options/delivery_options.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/confirm_order.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/recent_orders/recent_orders.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
@@ -74,12 +75,16 @@ class MyCart extends StatelessWidget {
                       ),
                       physics: BouncingScrollPhysics(),
                       children: [
-                        DeliveryCard(
-                          deliveryTo: 'Home',
-                          address: '27H8+RC Mi’ilya , bornad street, Israel',
-                          distance: '2.5',
-                          onTap: () {},
-                        ),
+                        Obx(() {
+                          return DeliveryCard(
+                            isPickUp: cartCheckOutController.isPickUp.value,
+                            address: '27H8+RC Mi’ilya , bornad street, Israel',
+                            distance: '2.5',
+                            onTap: () => Get.to(
+                              () => DeliveryOptions(),
+                            ),
+                          );
+                        }),
                         MyText(
                           paddingTop: 30,
                           paddingBottom: 20,
@@ -181,10 +186,19 @@ class MyCart extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 40, vertical: 15),
+                            horizontal: 40,
+                            vertical: 15,
+                          ),
                           child: MyButton(
                             buttonText: 'Place Order',
-                            onTap: () => Get.to(() => ConfirmOrder()),
+                            onTap: () => Get.to(
+                              () => Obx(() {
+                                return ConfirmOrder(
+                                  isPickUp:
+                                      cartCheckOutController.isPickUp.value,
+                                );
+                              }),
+                            ),
                           ),
                         ),
                       ],

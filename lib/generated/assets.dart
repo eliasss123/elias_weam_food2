@@ -22,6 +22,7 @@ class Assets {
   static const String imagesCashOnDelivery = 'assets/images/cash_on_delivery.png';
   static const String imagesChat = 'assets/images/chat.png';
   static const String imagesCheckGreen = 'assets/images/check_green.png';
+  static const String imagesCheckRounded = 'assets/images/check_rounded.png';
   static const String imagesChecked = 'assets/images/checked.png';
   static const String imagesChinese = 'assets/images/chinese.png';
   static const String imagesCongrats = 'assets/images/congrats.png';
@@ -79,7 +80,9 @@ class Assets {
   static const String imagesPayPal = 'assets/images/pay_pal.png';
   static const String imagesPayPaypal = 'assets/images/pay_paypal.png';
   static const String imagesPepperBeef = 'assets/images/pepper_beef.png';
+  static const String imagesPhMapPinFill = 'assets/images/ph_map-pin-fill.png';
   static const String imagesPhone = 'assets/images/phone.png';
+  static const String imagesPickUpMap = 'assets/images/pick_up_map.png';
   static const String imagesPicture = 'assets/images/picture.png';
   static const String imagesPicture2 = 'assets/images/picture2.png';
   static const String imagesPicture4 = 'assets/images/picture4.png';

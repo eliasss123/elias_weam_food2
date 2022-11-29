@@ -34,8 +34,8 @@ class SimpleToggleButtons extends StatelessWidget {
             BoxShadow(
               color: Colors.black.withOpacity(0.02),
               spreadRadius: 0,
-              blurRadius: 20,
-              offset: Offset(7, 10),
+              blurRadius: 6,
+              offset: Offset(0, 0),
             ),
           ],
         ),

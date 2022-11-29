@@ -60,7 +60,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
           ],
         ),
-        height: 70,
+        height: 75,
         child: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,
@@ -73,6 +73,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
             fontSize: 11,
             color: kUnselectedColor,
           ),
+          selectedFontSize: 11,
+          unselectedFontSize: 11,
           backgroundColor: kPrimaryColor,
           selectedItemColor: kSecondaryColor,
           unselectedItemColor: kUnselectedColor,

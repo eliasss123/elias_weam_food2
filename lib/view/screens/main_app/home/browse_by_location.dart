@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/view/screens/main_app/location/pin_location.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/simple_bottom_sheet.dart';
 import 'package:expandable/expandable.dart';
@@ -11,6 +12,7 @@ class BrowseByLocation extends StatelessWidget {
     'Nahariya',
     'Mi’ilya',
   ];
+
   @override
   Widget build(BuildContext context) {
     return SimpleBottomSheet(
@@ -26,7 +28,9 @@ class BrowseByLocation extends StatelessWidget {
           children: [
             customTiles(
               title: 'Use your current location',
-              onTap: () {},
+              onTap: () => Get.to(
+                () => PinLocation(),
+              ),
             ),
             customTiles(
               title: 'Add another address',
@@ -46,7 +50,8 @@ class BrowseByLocation extends StatelessWidget {
                 scrollOnCollapse: false,
                 child: ExpandablePanel(
                   theme: const ExpandableThemeData(
-                    iconPadding: EdgeInsets.only(right: 20,top: 17,bottom: 17),
+                    iconPadding:
+                        EdgeInsets.only(right: 20, top: 17, bottom: 17),
                     iconColor: kBlackColor2,
                     headerAlignment: ExpandablePanelHeaderAlignment.center,
                     tapBodyToCollapse: true,

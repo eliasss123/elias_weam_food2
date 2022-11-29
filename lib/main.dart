@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       initialRoute: AppLinks.splashScreen,
       getPages: AppRoutes.pages,
+      defaultTransition: Transition.fade,
     );
   }
 }

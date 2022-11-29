@@ -5,8 +5,13 @@ class CartCheckOutController extends GetxController {
       Get.find<CartCheckOutController>();
 
   RxBool isEmptyCart = true.obs;
+  RxBool isPickUp = false.obs;
 
   void showCartItems() {
     isEmptyCart.value = false;
+  }
+
+  void changeDeliveryOption(bool value) {
+    isPickUp.value = value;
   }
 }

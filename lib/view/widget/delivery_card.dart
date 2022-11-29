@@ -6,14 +6,15 @@ import 'package:flutter/material.dart';
 class DeliveryCard extends StatelessWidget {
   const DeliveryCard({
     Key? key,
-    required this.deliveryTo,
     required this.address,
     required this.distance,
     required this.onTap,
+    required this.isPickUp,
   }) : super(key: key);
 
-  final String deliveryTo, address, distance;
+  final String address, distance;
   final VoidCallback onTap;
+  final bool isPickUp;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class DeliveryCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText(
-                      text: 'Delivery to $deliveryTo',
+                      text: isPickUp ? 'Pick up' : 'Delivery to Home',
                       size: 16,
                       weight: FontWeight.w700,
                       color: kPrimaryColor,

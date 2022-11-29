@@ -90,10 +90,10 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                     time: '36',
                   ),
                   SizedBox(
-                    height: 8,
+                    height: 15,
                   ),
                   SizedBox(
-                    height: 85,
+                    height: 65,
                     child: ListView.builder(
                       shrinkWrap: true,
                       padding: EdgeInsets.symmetric(

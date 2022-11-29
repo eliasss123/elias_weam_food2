@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/generated/assets.dart';
+import 'package:elias_weam_food2/view/screens/main_app/location/address_details.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +31,12 @@ class PinLocation extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Image.asset(
-                        Assets.imagesArrowBack,
-                        height: 24,
+                      GestureDetector(
+                        onTap: () => Get.back(),
+                        child: Image.asset(
+                          Assets.imagesArrowBack,
+                          height: 24,
+                        ),
                       ),
                       MyText(
                         text: 'Pin Location',
@@ -88,9 +92,26 @@ class PinLocation extends StatelessWidget {
             right: 80,
             child: Align(
               alignment: Alignment.topRight,
-              child: Image.asset(
-                Assets.imagesMyLocation,
-                height: 59,
+              child: GestureDetector(
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(35),
+                        topRight: Radius.circular(35),
+                      ),
+                    ),
+                    builder: (_) {
+                      return AddressDetails();
+                    },
+                  );
+                },
+                child: Image.asset(
+                  Assets.imagesMyLocation,
+                  height: 59,
+                ),
               ),
             ),
           ),
@@ -99,3 +120,5 @@ class PinLocation extends StatelessWidget {
     );
   }
 }
+
+

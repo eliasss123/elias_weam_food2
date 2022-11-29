@@ -105,7 +105,9 @@ class AppRoutes {
     ),
     GetPage(
       name: AppLinks.confirmOrder,
-      page: () => ConfirmOrder(),
+      page: () => ConfirmOrder(
+        isPickUp: false,
+      ),
     ),
     GetPage(
       name: AppLinks.customAmount,

@@ -1,6 +1,7 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/model/recent_order_model/recent_order_model.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/delivery_options/delivery_options.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/order_receipt.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/payment_methods/payment_methods.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/tips_and_notes/tips_and_notes.dart';
@@ -15,6 +16,12 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ConfirmOrder extends StatelessWidget {
+  ConfirmOrder({
+    required this.isPickUp,
+  });
+
+  final bool isPickUp;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +42,12 @@ class ConfirmOrder extends StatelessWidget {
               physics: BouncingScrollPhysics(),
               children: [
                 DeliveryCard(
-                  deliveryTo: 'Home',
                   address: '27H8+RC Mi’ilya , bornad street, Israel',
                   distance: '2.5',
-                  onTap: () {},
+                  isPickUp: isPickUp,
+                  onTap: () => Get.to(
+                    () => DeliveryOptions(),
+                  ),
                 ),
                 SizedBox(
                   height: 30,
@@ -88,7 +97,7 @@ class ConfirmOrder extends StatelessWidget {
                                   weight: FontWeight.w500,
                                 ),
                                 MyText(
-                                  text: '10\$',
+                                  text: isPickUp ? '-' : '10\$',
                                   size: 14,
                                   weight: FontWeight.w500,
                                 ),
@@ -170,17 +179,19 @@ class ConfirmOrder extends StatelessWidget {
                 Container(
                   decoration: ContainerDec.border3R14,
                   child: InkWell(
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        builder: (_) {
-                          return PaymentMethods();
-                        },
-                      );
-                    },
+                    onTap: isPickUp
+                        ? () {}
+                        : () {
+                            showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              elevation: 0,
+                              builder: (_) {
+                                return PaymentMethods();
+                              },
+                            );
+                          },
                     borderRadius: BorderRadius.circular(12),
                     child: Padding(
                       padding: EdgeInsets.all(15),
@@ -218,7 +229,9 @@ class ConfirmOrder extends StatelessWidget {
                                       CrossAxisAlignment.stretch,
                                   children: [
                                     MyText(
-                                      text: 'Cash on Delivery',
+                                      text: isPickUp
+                                          ? 'Cash on pick up'
+                                          : 'Cash on Delivery',
                                       size: 14,
                                       weight: FontWeight.w500,
                                     ),
@@ -247,54 +260,56 @@ class ConfirmOrder extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
-                Container(
-                  decoration: ContainerDec.border3R14,
-                  child: InkWell(
-                    onTap: () => Get.to(
-                      () => TipsAndNotes(),
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 15,
-                        vertical: 13,
+                isPickUp
+                    ? SizedBox()
+                    : Container(
+                        decoration: ContainerDec.border3R14,
+                        child: InkWell(
+                          onTap: () => Get.to(
+                            () => TipsAndNotes(),
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 15,
+                              vertical: 13,
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: 44,
+                                  width: 44,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: kGreyColor6,
+                                  ),
+                                  child: Center(
+                                    child: Image.asset(
+                                      Assets.imagesRider,
+                                      height: 30,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Expanded(
+                                  child: MyText(
+                                    text: 'Tips and notes to the courier',
+                                    size: 14,
+                                    weight: FontWeight.w500,
+                                  ),
+                                ),
+                                Image.asset(
+                                  Assets.imagesArrowRight,
+                                  color: kBlackColor,
+                                  height: 24,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 44,
-                            width: 44,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: kGreyColor6,
-                            ),
-                            child: Center(
-                              child: Image.asset(
-                                Assets.imagesRider,
-                                height: 30,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Expanded(
-                            child: MyText(
-                              text: 'Tips and notes to the courier',
-                              size: 14,
-                              weight: FontWeight.w500,
-                            ),
-                          ),
-                          Image.asset(
-                            Assets.imagesArrowRight,
-                            color: kBlackColor,
-                            height: 24,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
