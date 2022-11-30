@@ -2,7 +2,6 @@ import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/main_app/support/support.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
-import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/profile_tiles.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
 import 'package:flutter/material.dart';

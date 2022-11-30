@@ -1,6 +1,6 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
-import 'package:elias_weam_food2/view/screens/main_app/location/pin_location.dart';
+import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/my_location/set_location_by_pin.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
@@ -44,7 +44,7 @@ class MyLocation extends StatelessWidget {
                 child: MyButton(
                   buttonText: 'Set Your Address',
                   onTap: () => Get.to(
-                    () => PinLocation(),
+                    () => SetLocationByPin(),
                   ),
                 ),
               ),

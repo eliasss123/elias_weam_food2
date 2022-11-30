@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:elias_weam_food2/generated/assets.dart';
-import 'package:elias_weam_food2/view/screens/main_app/location/set_location_for_first_time.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {

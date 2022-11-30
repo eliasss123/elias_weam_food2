@@ -1,6 +1,5 @@
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/confirm_order.dart';
 import 'package:elias_weam_food2/view/screens/main_app/order_status/pick_up_order_status.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

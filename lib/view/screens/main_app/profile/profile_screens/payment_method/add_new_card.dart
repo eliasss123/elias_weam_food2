@@ -1,7 +1,7 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/payment_methods/edit_payment_method_details.dart';
-import 'package:elias_weam_food2/view/screens/main_app/profile/payment_method/my_cards.dart';
+import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/payment_method/my_cards.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/simple_bottom_sheet.dart';

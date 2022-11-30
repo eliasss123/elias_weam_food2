@@ -2,7 +2,6 @@ import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
-import 'package:elias_weam_food2/view/widget/filled_text_field.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/profile_filled_text_field.dart';

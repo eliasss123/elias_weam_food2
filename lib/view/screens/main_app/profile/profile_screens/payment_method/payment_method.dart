@@ -1,7 +1,6 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
-import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/payment_methods/selected_payment_method_details.dart';
-import 'package:elias_weam_food2/view/screens/main_app/profile/payment_method/add_new_card.dart';
+import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/payment_method/add_new_card.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -56,15 +55,30 @@ class PaymentMethod extends StatelessWidget {
                             },
                           );
                         },
-                        child: Image.asset(
-                          fit: BoxFit.cover,
-                          paymentMethods[index],
-                          width: index == 3 ? 100 : 120,
-                          height: index == 3
-                              ? 100
-                              : index == 2
-                                  ? 80
-                                  : 88,
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Image.asset(
+                              fit: BoxFit.cover,
+                              paymentMethods[index],
+                              width: index == 3 ? 100 : 120,
+                              height: index == 3
+                                  ? 100
+                                  : index == 2
+                                      ? 80
+                                      : 88,
+                            ),
+                            index == 0
+                                ? Positioned(
+                                    right: 5,
+                                    top: -5,
+                                    child: Image.asset(
+                                      Assets.imagesRoundedCheckBorder,
+                                      height: 36,
+                                    ),
+                                  )
+                                : SizedBox(),
+                          ],
                         ),
                       ),
                     ),

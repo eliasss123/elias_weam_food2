@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       title: 'Elias Weam Food 2',
       theme: lightTheme,
       themeMode: ThemeMode.light,
-      initialRoute: AppLinks.bottomNavBar,
+      initialRoute: AppLinks.splashScreen,
       getPages: AppRoutes.pages,
       defaultTransition: Transition.fade,
     );

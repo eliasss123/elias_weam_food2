@@ -1,14 +1,13 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/main.dart';
-import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/payment_methods/payment_methods.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/recent_orders/recent_orders.dart';
-import 'package:elias_weam_food2/view/screens/main_app/profile/payment_method/payment_method.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/help_center.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/languages.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/my_account.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/my_favorites.dart';
-import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/my_location.dart';
+import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/my_location/my_location.dart';
+import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/payment_method/payment_method.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/profile_tiles.dart';

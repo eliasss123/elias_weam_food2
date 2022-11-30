@@ -1,14 +1,16 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/main.dart';
-import 'package:elias_weam_food2/view/screens/main_app/location/save_address.dart';
+import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/my_location/address_list.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/save_address_as.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class AddressDetails extends StatelessWidget {
-  AddressDetails({
+class LocationDetails extends StatelessWidget {
+  LocationDetails({
     Key? key,
   }) : super(key: key);
 
@@ -91,22 +93,10 @@ class AddressDetails extends StatelessWidget {
               horizontal: 30,
             ),
             child: MyButton(
-              buttonText: 'Continue',
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(35),
-                      topRight: Radius.circular(35),
-                    ),
-                  ),
-                  builder: (_) {
-                    return SaveAddress();
-                  },
-                );
-              },
+              buttonText: 'Save Address',
+              onTap: () => Get.to(
+                () => AddressList(),
+              ),
             ),
           ),
         ],
@@ -114,5 +104,3 @@ class AddressDetails extends StatelessWidget {
     );
   }
 }
-
-

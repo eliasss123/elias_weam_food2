@@ -17,7 +17,6 @@ import 'package:elias_weam_food2/view/widget/search_bar.dart';
 import 'package:elias_weam_food2/view/widget/simple_toggle_buttons.dart';
 import 'package:elias_weam_food2/view/widget/toggle_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 class Home extends StatefulWidget {

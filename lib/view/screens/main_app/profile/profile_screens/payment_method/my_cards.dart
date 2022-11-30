@@ -1,9 +1,8 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
-import 'package:elias_weam_food2/main.dart';
-import 'package:elias_weam_food2/model/recent_order_model/recent_order_model.dart';
-import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/recent_orders/order_details.dart';
+import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/payment_method/add_new_card.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
+import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
 import 'package:elias_weam_food2/view/widget/simple_bottom_sheet.dart';
@@ -17,36 +16,60 @@ class MyCards extends StatelessWidget {
         title: 'Payment Methods',
         titleWeight: FontWeight.w700,
       ),
-      body: ListView(
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
+      body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: 20,
           vertical: 20,
         ),
-        children: [
-          MyText(
-            text: 'Your payment methods:',
-            size: 14,
-            color: kGreyColor7,
-            weight: FontWeight.w500,
-            paddingBottom: 15,
-          ),
-          ListView.builder(
-            shrinkWrap: true,
-            padding: EdgeInsets.zero,
-            physics: BouncingScrollPhysics(),
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return CardsTiles(
-                imgUrl: dummyImg3,
-                holderName: 'Papa Pizza',
-                cardType: '1',
-                IsDefault: index == 0 ? true : false,
-              );
-            },
-          )
-        ],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            MyText(
+              text: 'Your payment methods:',
+              size: 14,
+              color: kGreyColor7,
+              weight: FontWeight.w500,
+              paddingBottom: 15,
+            ),
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                physics: BouncingScrollPhysics(),
+                itemCount: 2,
+                itemBuilder: (context, index) {
+                  return CardsTiles(
+                    img: index == 1
+                        ? Assets.imagesPayApple
+                        : Assets.imagesVisaPay,
+                    holderName: 'Alex Smith',
+                    cardType: 'Credit card',
+                    isDefault: index == 0 ? true : false,
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 25,
+              ),
+              child: MyButton(
+                buttonText: '+ Add new card',
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    elevation: 0,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (_) {
+                      return AddNewCard();
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -56,14 +79,14 @@ class MyCards extends StatelessWidget {
 class CardsTiles extends StatelessWidget {
   CardsTiles({
     Key? key,
-    required this.imgUrl,
+    required this.img,
     required this.holderName,
     required this.cardType,
-    this.IsDefault = false,
+    required this.isDefault,
   }) : super(key: key);
 
-  final String imgUrl, holderName, cardType;
-  bool? IsDefault;
+  final String img, holderName, cardType;
+  final bool isDefault;
 
   @override
   Widget build(BuildContext context) {
@@ -82,11 +105,26 @@ class CardsTiles extends StatelessWidget {
       ),
       child: Row(
         children: [
-          CommonImageView(
-            height: 48,
-            width: 65.45,
-            radius: 0.0,
-            url: imgUrl,
+          Stack(
+            clipBehavior: Clip.none,
+            children: [
+              CommonImageView(
+                height: 48,
+                width: 65.45,
+                radius: 0.0,
+                imagePath: img,
+              ),
+              isDefault
+                  ? Positioned(
+                      right: 0,
+                      top: -2,
+                      child: Image.asset(
+                        Assets.imagesRoundedCheckBorder,
+                        height: 22,
+                      ),
+                    )
+                  : SizedBox(),
+            ],
           ),
           SizedBox(
             width: 15,
@@ -131,64 +169,23 @@ class CardsTiles extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (_) {
-                                  return OrderDetails(
-                                    orderNo: '701',
-                                    restaurantName: 'Pie pizza restaurant',
-                                    subTotal: '87.10',
-                                    items: [
-                                      OrderDetailsModel(
-                                        itemQuantity: '1',
-                                        itemName: 'Squid Sweet and Sour Salad',
-                                        itemPrice: '19.99',
-                                        subItems: [],
-                                      ),
-                                      OrderDetailsModel(
-                                        itemQuantity: '1',
-                                        itemName: 'Japan Hainanese Sashimi',
-                                        itemPrice: '37.99',
-                                        subItems: [
-                                          OrderDetailsSubItemsModel(
-                                            itemName: 'Teriyaki Sause',
-                                            itemPrice: '0',
-                                          ),
-                                          OrderDetailsSubItemsModel(
-                                            itemName: 'Omelet',
-                                            itemPrice: '2',
-                                          ),
-                                        ],
-                                      ),
-                                      OrderDetailsModel(
-                                        itemQuantity: '1',
-                                        itemName: 'Black Pepper Beef Lumpia',
-                                        itemPrice: '27.12',
-                                        subItems: [],
-                                      ),
-                                    ],
-                                    deliveryFee: '1.5',
-                                    total: '88.6',
-                                    orderDate: '28/10/2021',
-                                    orderDeliveryTime: '16:55',
-                                  );
-                                },
-                              );
-                            },
+                            onTap: () {},
                             child: Container(
                               alignment: Alignment.centerLeft,
-                              height: 54,
+                              height: 53,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(14),
-                                color: kSeoulColor4,
+                                border: Border.all(
+                                  width: 1.0,
+                                  color: kBlackColor2,
+                                ),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 15,
                                 ),
                                 child: MyText(
-                                  text: 'Order details',
+                                  text: 'Update card Details',
                                   size: 16,
                                   weight: FontWeight.w500,
                                 ),
@@ -200,17 +197,20 @@ class CardsTiles extends StatelessWidget {
                           ),
                           Container(
                             alignment: Alignment.centerLeft,
-                            height: 54,
+                            height: 53,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(14),
-                              color: kSeoulColor4,
+                              border: Border.all(
+                                width: 1.0,
+                                color: kBlackColor2,
+                              ),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 15,
                               ),
                               child: MyText(
-                                text: 'Make same order',
+                                text: 'Remove card',
                                 size: 16,
                                 weight: FontWeight.w500,
                               ),
