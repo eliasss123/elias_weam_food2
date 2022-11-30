@@ -15,11 +15,23 @@ import 'package:elias_weam_food2/view/screens/launch/on_boarding.dart';
 import 'package:elias_weam_food2/view/screens/launch/splash_screen.dart';
 import 'package:elias_weam_food2/view/screens/main_app/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:elias_weam_food2/view/screens/main_app/browse/browse.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/delivery_options/delivery_options.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/confirm_order.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/my_cart.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/payment_methods/add_payment_method.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/payment_methods/edit_payment_method_details.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/payment_methods/payment_methods.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/payment_methods/selected_payment_method_details.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/recent_orders/recent_orders.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/tips_and_notes/custom_amount.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/tips_and_notes/tips_and_notes.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/home.dart';
+import 'package:elias_weam_food2/view/screens/main_app/notifications/notifications.dart';
+import 'package:elias_weam_food2/view/screens/main_app/notifications/promotions.dart';
+import 'package:elias_weam_food2/view/screens/main_app/order_status/delivery_order_status.dart';
+import 'package:elias_weam_food2/view/screens/main_app/order_status/pick_up_order_status.dart';
+import 'package:elias_weam_food2/view/screens/main_app/profile/profile.dart';
+import 'package:elias_weam_food2/view/screens/main_app/support/support.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
@@ -117,6 +129,46 @@ class AppRoutes {
       name: AppLinks.tipsAndNotes,
       page: () => TipsAndNotes(),
     ),
+    GetPage(
+      name: AppLinks.deliveryOptions,
+      page: () => DeliveryOptions(),
+    ),
+    GetPage(
+      name: AppLinks.paymentMethods,
+      page: () => PaymentMethods(),
+    ),
+    GetPage(
+      name: AppLinks.editPaymentMethodDetails,
+      page: () => EditPaymentMethodDetails(),
+    ),
+    GetPage(
+      name: AppLinks.selectedPaymentMethodDetails,
+      page: () => SelectedPaymentMethodDetails(),
+    ),
+    GetPage(
+      name: AppLinks.recentOrders,
+      page: () => RecentOrders(),
+    ),
+    GetPage(
+      name: AppLinks.notifications,
+      page: () => Notifications(),
+    ),
+    GetPage(
+      name: AppLinks.promotions,
+      page: () => Promotions(),
+    ),
+    GetPage(
+      name: AppLinks.deliveryOrderStatus,
+      page: () => TrackOrder(),
+    ),
+    GetPage(
+      name: AppLinks.pickUpOrderStatus,
+      page: () => Profile(),
+    ),
+    GetPage(
+      name: AppLinks.support,
+      page: () => Support(),
+    ),
     //  MAIN APP
   ];
 }
@@ -147,6 +199,20 @@ class AppLinks {
   static const confirmOrder = '/confirm_order';
   static const customAmount = '/custom_amount';
   static const tipsAndNotes = '/tips_and_notes';
+  static const deliveryOptions = '/delivery_options';
+  static const paymentMethods = '/payment_methods';
+  static const addPaymentMethod = '/add_payment_method';
+  static const editPaymentMethodDetails = '/edit_payment_method_details';
+  static const selectedPaymentMethodDetails =
+      '/selected_payment_method_details';
+  static const recentOrders = '/recent_orders';
+  static const orderDetails = '/order_details';
+  static const notifications = '/notifications';
+  static const promotions = '/promotions';
+  static const deliveryOrderStatus = '/delivery_order_status';
+  static const pickUpOrderStatus = '/pick_up_order_status';
+  static const profile = '/profile';
+  static const support = '/support';
 //  MAIN APP
 
 }
