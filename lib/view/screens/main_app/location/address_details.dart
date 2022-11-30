@@ -5,6 +5,8 @@ import 'package:elias_weam_food2/view/widget/address_toggle_buttons.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
+import 'package:elias_weam_food2/view/widget/save_address_as.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddressDetails extends StatelessWidget {
@@ -82,24 +84,7 @@ class AddressDetails extends StatelessWidget {
               ),
             ],
           ),
-          MyText(
-            text: 'Save Address As',
-            size: 15,
-            weight: FontWeight.w700,
-          ),
-          Wrap(
-            spacing: 10.0,
-            children: List.generate(
-              addressOp.length,
-              (index) {
-                return AddressToggleButton(
-                  onTap: () {},
-                  text: addressOp[index],
-                  isSelected: index == 0 ? true : false,
-                );
-              },
-            ),
-          ),
+          SaveAddressAs(addressOp: addressOp),
           SizedBox(
             height: 30,
           ),
@@ -131,3 +116,5 @@ class AddressDetails extends StatelessWidget {
     );
   }
 }
+
+

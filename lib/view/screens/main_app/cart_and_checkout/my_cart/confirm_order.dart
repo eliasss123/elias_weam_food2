@@ -5,6 +5,7 @@ import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/deliver
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/order_receipt.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/payment_methods/payment_methods.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/tips_and_notes/tips_and_notes.dart';
+import 'package:elias_weam_food2/view/screens/main_app/order_status/tracker_order.dart';
 import 'package:elias_weam_food2/view/screens/main_app/support/support.dart';
 import 'package:elias_weam_food2/view/widget/delivery_card.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
@@ -399,7 +400,9 @@ class OrderCompletedDialog extends StatelessWidget {
                     children: [
                       MyButton(
                         buttonText: 'Track Order',
-                        onTap: () {},
+                        onTap: () => Get.to(
+                          () => TrackOrder(),
+                        ),
                       ),
                       SizedBox(
                         height: 15,
