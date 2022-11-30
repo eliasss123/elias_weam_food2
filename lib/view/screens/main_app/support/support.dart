@@ -4,6 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Support extends StatelessWidget {
+  Support({
+    this.title = 'Contact Support',
+  });
+
+  String? title;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +32,7 @@ class Support extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: MyText(
-                      text: 'Contact Support',
+                      text: title,
                       size: 24,
                       weight: FontWeight.w700,
                       align: TextAlign.center,

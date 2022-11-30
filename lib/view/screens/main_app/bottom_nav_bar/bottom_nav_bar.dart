@@ -3,6 +3,7 @@ import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/main_app/browse/browse.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/my_cart.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/home.dart';
+import 'package:elias_weam_food2/view/screens/main_app/profile/profile.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +36,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     Home(),
     Browse(),
     MyCart(),
-    Container(),
+    Profile(),
   ];
 
   void _getCurrentIndex(int index) => setState(() {

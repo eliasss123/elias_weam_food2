@@ -28,12 +28,15 @@ class Assets {
   static const String imagesChecked = 'assets/images/checked.png';
   static const String imagesChinese = 'assets/images/chinese.png';
   static const String imagesCongrats = 'assets/images/congrats.png';
+  static const String imagesContactUs = 'assets/images/contact_us.png';
   static const String imagesConvi = 'assets/images/convi.png';
   static const String imagesCooking = 'assets/images/cooking.png';
   static const String imagesCurrentLoc = 'assets/images/current_loc.png';
   static const String imagesDeal = 'assets/images/deal.png';
   static const String imagesDeals = 'assets/images/deals.png';
+  static const String imagesDeleteAcc = 'assets/images/delete_acc.png';
   static const String imagesDeliverWithVai = 'assets/images/deliver_with_vai.png';
+  static const String imagesDeliverWithVaiContact = 'assets/images/deliver_with_vai_contact.png';
   static const String imagesDestination = 'assets/images/destination.png';
   static const String imagesDivider = 'assets/images/divider.png';
   static const String imagesEmail = 'assets/images/email.png';
@@ -42,6 +45,7 @@ class Assets {
   static const String imagesEye = 'assets/images/eye.png';
   static const String imagesEyeDisable = 'assets/images/eye_disable.png';
   static const String imagesFacebook = 'assets/images/facebook.png';
+  static const String imagesFaq = 'assets/images/faq.png';
   static const String imagesFastFood = 'assets/images/fast_food.png';
   static const String imagesFastFood2 = 'assets/images/fast_food_2.png';
   static const String imagesFilters = 'assets/images/filters.png';
@@ -53,6 +57,7 @@ class Assets {
   static const String imagesHeaderBg = 'assets/images/header_bg.png';
   static const String imagesHeartEmpty = 'assets/images/heart_empty.png';
   static const String imagesHeartFill = 'assets/images/heart_fill.png';
+  static const String imagesHeartFilled = 'assets/images/heart_filled.png';
   static const String imagesHelpCenterLocation = 'assets/images/help_center_location.png';
   static const String imagesHomeA = 'assets/images/home_a.png';
   static const String imagesHomeDetailMapView = 'assets/images/home_detail_map_view.png';
@@ -112,6 +117,7 @@ class Assets {
   static const String imagesPicture8 = 'assets/images/picture8.png';
   static const String imagesPizza = 'assets/images/pizza.png';
   static const String imagesPizzaLarge = 'assets/images/pizza_large.png';
+  static const String imagesPrivacyPolicies = 'assets/images/privacy_policies.png';
   static const String imagesPrize = 'assets/images/prize.png';
   static const String imagesProfileBgEffect = 'assets/images/profile_bg_effect.png';
   static const String imagesRemove = 'assets/images/remove.png';
@@ -120,6 +126,7 @@ class Assets {
   static const String imagesRider = 'assets/images/rider.png';
   static const String imagesRoundedBack = 'assets/images/rounded_back.png';
   static const String imagesRoundedBackBlk = 'assets/images/rounded_back_blk.png';
+  static const String imagesRoundedCheckBorder = 'assets/images/rounded_check_border.png';
   static const String imagesScooter = 'assets/images/scooter.png';
   static const String imagesSearch = 'assets/images/search.png';
   static const String imagesShoppingCart = 'assets/images/shopping_cart.png';
@@ -136,6 +143,7 @@ class Assets {
   static const String imagesVaiSupport = 'assets/images/vai_support.png';
   static const String imagesVegetable = 'assets/images/vegetable.png';
   static const String imagesVisaPay = 'assets/images/visa_pay.png';
+  static const String imagesVisitUs = 'assets/images/visit_us.png';
   static const String imagesX = 'assets/images/x.png';
 
 }

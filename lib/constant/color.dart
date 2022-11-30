@@ -1,3 +1,4 @@
+import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color(0xffFFFFFF);
@@ -17,6 +18,7 @@ const kGreyColor8 = Color(0xff7F7F7F);
 const kGreyColor9 = Color(0xff6C6C6C);
 const kGreyColor10 = Color(0xffD1D1D1);
 const kGreyColor11 = Color(0xffC3C3C3);
+const kGreyColor12 = Color(0xffA6A6A6);
 const kBlackColor = Color(0xff000000);
 const kBlackColor2 = Color(0xff040415);
 const kBlackColor3 = Color(0xff12131D);
@@ -69,6 +71,16 @@ class ContainerDec {
     border: Border.all(
       color: kBorderColor3,
       width: 1.0,
+    ),
+  );
+  static final profileBg = BoxDecoration(
+    color: kSeoulColor6,
+    image: DecorationImage(
+      image: AssetImage(
+        Assets.imagesProfileBgEffect,
+      ),
+      alignment: Alignment.topCenter,
+      fit: BoxFit.fitWidth,
     ),
   );
 }

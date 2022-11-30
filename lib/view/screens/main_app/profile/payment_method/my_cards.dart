@@ -9,12 +9,12 @@ import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
 import 'package:elias_weam_food2/view/widget/simple_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
-class RecentOrders extends StatelessWidget {
+class MyCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: simpleAppBar(
-        title: 'Order History',
+        title: 'Payment Methods',
         titleWeight: FontWeight.w700,
       ),
       body: ListView(
@@ -26,8 +26,9 @@ class RecentOrders extends StatelessWidget {
         ),
         children: [
           MyText(
-            text: 'Last 7 days',
-            size: 18,
+            text: 'Your payment methods:',
+            size: 14,
+            color: kGreyColor7,
             weight: FontWeight.w500,
             paddingBottom: 15,
           ),
@@ -37,11 +38,11 @@ class RecentOrders extends StatelessWidget {
             physics: BouncingScrollPhysics(),
             itemCount: 5,
             itemBuilder: (context, index) {
-              return RecentOrderTiles(
+              return CardsTiles(
                 imgUrl: dummyImg3,
-                title: 'Papa Pizza',
-                totalItems: '1',
-                isDelivered: index == 0 ? true : false,
+                holderName: 'Papa Pizza',
+                cardType: '1',
+                IsDefault: index == 0 ? true : false,
               );
             },
           )
@@ -52,17 +53,17 @@ class RecentOrders extends StatelessWidget {
 }
 
 // ignore: must_be_immutable
-class RecentOrderTiles extends StatelessWidget {
-  RecentOrderTiles({
+class CardsTiles extends StatelessWidget {
+  CardsTiles({
     Key? key,
     required this.imgUrl,
-    required this.title,
-    required this.totalItems,
-    this.isDelivered = false,
+    required this.holderName,
+    required this.cardType,
+    this.IsDefault = false,
   }) : super(key: key);
 
-  final String imgUrl, title, totalItems;
-  bool? isDelivered;
+  final String imgUrl, holderName, cardType;
+  bool? IsDefault;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +75,7 @@ class RecentOrderTiles extends StatelessWidget {
       height: 79,
       decoration: BoxDecoration(
         border: Border.all(
-          color: kGreyColor10,
+          color: kBlackColor2,
           width: 1.0,
         ),
         borderRadius: BorderRadius.circular(16.0),
@@ -82,9 +83,9 @@ class RecentOrderTiles extends StatelessWidget {
       child: Row(
         children: [
           CommonImageView(
-            height: 56,
-            width: 56,
-            radius: 13.0,
+            height: 48,
+            width: 65.45,
+            radius: 0.0,
             url: imgUrl,
           ),
           SizedBox(
@@ -93,38 +94,23 @@ class RecentOrderTiles extends StatelessWidget {
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 MyText(
-                  text: title,
-                  size: 15,
+                  text: holderName,
+                  size: 20,
                   weight: FontWeight.w500,
-                  paddingBottom: 8,
                 ),
-                Row(
-                  children: [
-                    MyText(
-                      text: isDelivered! ? 'Delivered' : 'Picked up',
-                      size: 14,
-                      color: kSecondaryColor,
-                      weight: FontWeight.w500,
-                    ),
-                    MyText(
-                      text: '•',
-                      color: kGreyColor11,
-                      paddingLeft: 8,
-                      paddingRight: 8,
-                    ),
-                    MyText(
-                      text: '$totalItems items',
-                      size: 14,
-                      color: kGreyColor5,
-                      weight: FontWeight.w500,
-                    ),
-                  ],
+                MyText(
+                  text: cardType,
+                  size: 14,
+                  color: kBlackColor2.withOpacity(0.50),
                 ),
               ],
             ),
+          ),
+          SizedBox(
+            width: 50,
           ),
           GestureDetector(
             onTap: () {
@@ -240,6 +226,7 @@ class RecentOrderTiles extends StatelessWidget {
             child: Image.asset(
               Assets.imagesIconsMoreVert,
               height: 30,
+              color: kBlackColor2,
             ),
           ),
         ],
