@@ -1,11 +1,12 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/model/recent_order_model/recent_order_model.dart';
+import 'package:elias_weam_food2/utils/instances.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/delivery_options/delivery_options.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/order_receipt.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/payment_methods/payment_methods.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/tips_and_notes/tips_and_notes.dart';
-import 'package:elias_weam_food2/view/screens/main_app/order_status/tracker_order.dart';
+import 'package:elias_weam_food2/view/screens/main_app/order_status/delivery_order_status.dart';
 import 'package:elias_weam_food2/view/screens/main_app/support/support.dart';
 import 'package:elias_weam_food2/view/widget/delivery_card.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
@@ -318,14 +319,10 @@ class ConfirmOrder extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
             child: MyButton(
               buttonText: 'Checkout',
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (_) {
-                    return OrderCompletedDialog();
-                  },
-                );
-              },
+              onTap: () => cartCheckOutController.confirmOrder(
+                context,
+                isPickUp,
+              ),
             ),
           ),
         ],

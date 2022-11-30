@@ -11,11 +11,13 @@ import 'package:elias_weam_food2/view/screens/main_app/location/set_location_for
 import 'package:elias_weam_food2/view/screens/main_app/notifications/notifications.dart';
 import 'package:elias_weam_food2/view/widget/headings.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
+import 'package:elias_weam_food2/view/widget/order_delivery_information.dart';
 import 'package:elias_weam_food2/view/widget/restaurants_thumbnails.dart';
 import 'package:elias_weam_food2/view/widget/search_bar.dart';
 import 'package:elias_weam_food2/view/widget/simple_toggle_buttons.dart';
 import 'package:elias_weam_food2/view/widget/toggle_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
@@ -352,53 +354,11 @@ class _HomeState extends State<Home> {
           ),
           Positioned(
             bottom: 0,
-            child: Container(
-              height: 70,
-              width: Get.width,
-              decoration: BoxDecoration(
-                color: kPrimaryColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(22),
-                  topRight: Radius.circular(22),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: kBlackColor.withOpacity(0.25),
-                    offset: Offset(0, -5),
-                    blurRadius: 4,
-                    spreadRadius: 0,
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            Assets.imagesLocationIndicator,
-                            height: 15,
-                          ),
-                          MyText(
-                            text: 'Pie Pizza',
-                            size: 14,
-                            weight: FontWeight.w700,
-                            color: kSecondaryColor,
-                          ),
-                        ],
-                      ),
-                      MyText(
-                        text: 'Got your order Ashley, Sit back...',
-                        size: 12,
-                        color: kDarkGreyColor3,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            child: Obx(() {
+              return cartCheckOutController.isOrderConfirm.value
+                  ? OrderDeliveryInformation()
+                  : SizedBox();
+            }),
           ),
         ],
       ),

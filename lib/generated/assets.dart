@@ -92,6 +92,7 @@ class Assets {
   static const String imagesPepperBeef = 'assets/images/pepper_beef.png';
   static const String imagesPhMapPinFill = 'assets/images/ph_map-pin-fill.png';
   static const String imagesPhone = 'assets/images/phone.png';
+  static const String imagesPickUp = 'assets/images/pick_up.png';
   static const String imagesPickUpMap = 'assets/images/pick_up_map.png';
   static const String imagesPicture = 'assets/images/picture.png';
   static const String imagesPicture2 = 'assets/images/picture2.png';
