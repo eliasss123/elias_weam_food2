@@ -1,3 +1,4 @@
+import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class Support extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kSeoulColor6,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -25,9 +27,9 @@ class Support extends StatelessWidget {
                 GestureDetector(
                   onTap: () => Get.back(),
                   child: Image.asset(
-                    Assets.imagesRoundedBackBlk,
-                    height: 43,
-                    width: 43,
+                    Assets.imagesArrowBack,
+                    height: 24,
+                    width: 24,
                   ),
                 ),
                 Expanded(

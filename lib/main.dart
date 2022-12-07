@@ -3,6 +3,8 @@ import 'package:elias_weam_food2/config/theme/light_theme.dart';
 import 'package:elias_weam_food2/controller/main_app_controller/browse_controller/browse_controller.dart';
 import 'package:elias_weam_food2/controller/main_app_controller/cart_and_checkout_controller/cart_and_checkout_controller.dart';
 import 'package:elias_weam_food2/controller/main_app_controller/home_controller/home_controller.dart';
+import 'package:elias_weam_food2/controller/merchant_app_controller/edit_merchant_app_controller/edit_merchant_app_controller.dart';
+import 'package:elias_weam_food2/controller/merchant_app_controller/merchant_home_controller/merchant_home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -11,6 +13,8 @@ void main() {
   Get.put(HomeController());
   Get.put(BrowseController());
   Get.put(CartCheckOutController());
+  Get.put(MerchantHomeController());
+  Get.put(EditMerchantAppController());
   runApp(MyApp());
 }
 
@@ -39,9 +43,9 @@ class MyApp extends StatelessWidget {
       title: 'Elias Weam Food 2',
       theme: lightTheme,
       themeMode: ThemeMode.light,
-      initialRoute: AppLinks.splashScreen,
+      initialRoute: AppLinks.driver_splash_screen,
       getPages: AppRoutes.pages,
-      defaultTransition: Transition.fade,
+      defaultTransition: Transition.cupertino,
     );
   }
 }

@@ -12,6 +12,7 @@ class MyButton extends StatelessWidget {
     this.radius,
     this.fontWeight,
     this.isActive = true,
+    this.bgColor,
   });
 
   final String buttonText;
@@ -19,6 +20,7 @@ class MyButton extends StatelessWidget {
   double? height, textSize, radius;
   bool? isActive;
   FontWeight? fontWeight;
+  Color? bgColor;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class MyButton extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius ?? 16),
-        color: isActive! ? kSecondaryColor : kDisableColor,
+        color: isActive! ? bgColor ?? kSecondaryColor : kDisableColor,
       ),
       child: Material(
         color: Colors.transparent,

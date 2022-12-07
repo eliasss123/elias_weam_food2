@@ -1,14 +1,14 @@
 import 'package:elias_weam_food2/generated/assets.dart';
-import 'package:elias_weam_food2/view/screens/launch/on_boarding.dart';
+import 'package:elias_weam_food2/view/screens/launch/driver_app/driver_get_started.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SplashScreen extends StatefulWidget {
+class DriverSplashScreen extends StatefulWidget {
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<DriverSplashScreen> createState() => _DriverSplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _DriverSplashScreenState extends State<DriverSplashScreen> {
   @override
   void initState() {
     super.initState();
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       Duration(seconds: 2),
       () => Get.offAll(
-        () => OnBoarding(),
+        () => DriverGetStarted(),
       ),
     );
   }

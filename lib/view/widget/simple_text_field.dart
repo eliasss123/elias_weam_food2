@@ -10,6 +10,7 @@ class SimpleTextField extends StatelessWidget {
     this.controller,
     this.onChanged,
     this.keyBoardType,
+    this.maxLines = 1,
   }) : super(key: key);
 
   String? hintText;
@@ -17,6 +18,7 @@ class SimpleTextField extends StatelessWidget {
   TextEditingController? controller;
   ValueChanged<String>? onChanged;
   TextInputType? keyBoardType;
+  int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class SimpleTextField extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         keyboardType: keyBoardType,
+        maxLines: maxLines,
         textInputAction: TextInputAction.next,
         style: TextStyle(
           fontSize: 14,

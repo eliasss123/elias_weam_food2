@@ -11,8 +11,12 @@ import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_email/you
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_phone/name.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_phone/verify_otp.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/sign_up.dart';
-import 'package:elias_weam_food2/view/screens/launch/on_boarding.dart';
-import 'package:elias_weam_food2/view/screens/launch/splash_screen.dart';
+import 'package:elias_weam_food2/view/screens/launch/driver_app/driver_get_started.dart';
+import 'package:elias_weam_food2/view/screens/launch/driver_app/driver_splash_screen.dart';
+import 'package:elias_weam_food2/view/screens/launch/main_app/on_boarding.dart';
+import 'package:elias_weam_food2/view/screens/launch/merchant_app/merchant_get_started.dart';
+import 'package:elias_weam_food2/view/screens/launch/merchant_app/merchant_splash_screen.dart';
+import 'package:elias_weam_food2/view/screens/launch/main_app/splash_screen.dart';
 import 'package:elias_weam_food2/view/screens/main_app/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:elias_weam_food2/view/screens/main_app/browse/browse.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/delivery_options/delivery_options.dart';
@@ -29,7 +33,7 @@ import 'package:elias_weam_food2/view/screens/main_app/notifications/notificatio
 import 'package:elias_weam_food2/view/screens/main_app/notifications/promotions.dart';
 import 'package:elias_weam_food2/view/screens/main_app/order_status/delivery_order_status.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile.dart';
-import 'package:elias_weam_food2/view/screens/main_app/support/support.dart';
+import 'package:elias_weam_food2/view/screens/support/support.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
@@ -168,6 +172,28 @@ class AppRoutes {
       page: () => Support(),
     ),
     //  MAIN APP
+
+    //  Merchant APP
+    GetPage(
+      name: AppLinks.merchant_splash_screen,
+      page: () => MerchantSplashScreen(),
+    ),
+    GetPage(
+      name: AppLinks.merchant_get_started,
+      page: () => MerchantGetStarted(),
+    ),
+    //  Merchant APP
+
+    //  Driver APP
+    GetPage(
+      name: AppLinks.driver_splash_screen,
+      page: () => DriverSplashScreen(),
+    ),
+    GetPage(
+      name: AppLinks.driver_get_started,
+      page: () => DriverGetStarted(),
+    ),
+    //  Driver APP
   ];
 }
 
@@ -211,6 +237,27 @@ class AppLinks {
   static const pickUpOrderStatus = '/pick_up_order_status';
   static const profile = '/profile';
   static const support = '/support';
+
 //  MAIN APP
 
+//Merchant APP
+  static const merchant_splash_screen = '/merchant_splash_screen';
+  static const merchant_get_started = '/merchant_get_started';
+  static const merchant_login = '/merchant_login';
+  static const merchant_bottom_nav = '/merchant_bottom_nav';
+  static const merchant_home = '/merchant_home';
+  static const edit_merchant_app = '/edit_merchant_app';
+  static const merchant_app_settings = '/merchant_app_settings';
+  static const add_schedule = '/add_schedule';
+  static const m_languages = '/m_languages';
+  static const merchant_app_stats = '/merchant_app_stats';
+  static const resutaurants_status = '/resutaurants_status';
+  static const schedule_detail = '/schedule_detail';
+
+//Merchant APP
+
+//DRIVER APP
+  static const driver_splash_screen = '/driver_splash_screen';
+  static const driver_get_started = '/driver_get_started';
+//DRIVER APP
 }

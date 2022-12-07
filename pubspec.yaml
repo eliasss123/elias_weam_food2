@@ -25,7 +25,9 @@ dependencies:
   flutter_switch: ^0.3.2
   numeric_keyboard: ^1.1.0
   enhance_stepper:
-
+  syncfusion_flutter_gauges:
+  syncfusion_flutter_charts:
+  flutter_rating_bar: ^4.0.1
 
 
 dev_dependencies:

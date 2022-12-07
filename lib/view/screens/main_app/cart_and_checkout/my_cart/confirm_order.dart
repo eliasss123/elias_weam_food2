@@ -7,7 +7,7 @@ import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/payment_methods/payment_methods.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/tips_and_notes/tips_and_notes.dart';
 import 'package:elias_weam_food2/view/screens/main_app/order_status/delivery_order_status.dart';
-import 'package:elias_weam_food2/view/screens/main_app/support/support.dart';
+import 'package:elias_weam_food2/view/screens/support/support.dart';
 import 'package:elias_weam_food2/view/widget/delivery_card.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
