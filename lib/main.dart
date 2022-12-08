@@ -30,6 +30,8 @@ String dummyImg3 =
 String dummyImg4 =
     'https://images.unsplash.com/photo-1558507652-2d9626c4e67a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80';
 
+
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
       title: 'Elias Weam Food 2',
       theme: lightTheme,
       themeMode: ThemeMode.light,
-      initialRoute: AppLinks.splashScreen,
+      initialRoute: AppLinks.bottomNavBar,
       getPages: AppRoutes.pages,
       defaultTransition: Transition.cupertino,
     );

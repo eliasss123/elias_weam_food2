@@ -45,6 +45,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    var platform = Theme.of(context).platform;
+
     return Scaffold(
       body: IndexedStack(
         index: currentIndex,
