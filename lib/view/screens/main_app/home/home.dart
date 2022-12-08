@@ -165,7 +165,7 @@ class _HomeState extends State<Home> {
                   SliverToBoxAdapter(
                     child: ListView(
                       shrinkWrap: true,
-                      padding: EdgeInsets.symmetric(vertical: 10),
+                      padding: EdgeInsets.symmetric(vertical: 15),
                       physics: BouncingScrollPhysics(),
                       children: [
                         Padding(
