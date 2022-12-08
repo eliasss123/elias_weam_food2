@@ -58,6 +58,7 @@ class _FilterPageState extends State<FilterPage> {
 
   @override
   Widget build(BuildContext context) {
+    var platform = Theme.of(context).platform;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
@@ -296,7 +297,7 @@ class _FilterPageState extends State<FilterPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(platform == TargetPlatform.iOS ? 23 : 20.0),
             child: MyButton(
               height: 52,
               buttonText: 'Apply',

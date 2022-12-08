@@ -66,174 +66,184 @@ class _BrowseState extends State<Browse> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kSeoulColor3,
-      body: CustomScrollView(
-        physics: BouncingScrollPhysics(),
-        slivers: [
-          SliverAppBar(
-            toolbarHeight: 65,
-            elevation: 3,
-            backgroundColor: kSeoulColor3,
-            titleSpacing: 20.0,
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                MyText(
-                  size: 22,
-                  text: 'Browse',
-                  letterSpacing: 0.4,
-                  weight: FontWeight.w800,
-                ),
-              ],
-            ),
-            pinned: true,
-            expandedHeight: showResults ? 160 : 200,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Column(
-                // shrinkWrap: true,
-                // physics: BouncingScrollPhysics(),
-                // padding: EdgeInsets.fromLTRB(0, 93, 0, 10),
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  // SizedBox(
-                  //   height: 102,
-                  // ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: SearchBar(
-                            onChanged: (value) {
-                              setState(() {
-                                value.isNotEmpty
-                                    ? showResults = true
-                                    : showResults = false;
-                              });
-                            },
-                          ),
-                        ),
-                        SizedBox(
-                          width: 13,
-                        ),
-                        GestureDetector(
-                          onTap: () => Get.to(
-                            () => FilterPage(),
-                          ),
-                          child: Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(14),
-                              color: kSecondaryColor,
-                            ),
-                            child: Center(
-                              child: Image.asset(
-                                Assets.imagesFilters,
-                                height: 22,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+      body: ScrollConfiguration(
+        behavior: ScrollBehavior(),
+        child: GlowingOverscrollIndicator(
+          axisDirection: AxisDirection.down,
+          color: kSeoulColor3.withOpacity(0.05),
+          child: CustomScrollView(
+            physics: ClampingScrollPhysics(),
+            slivers: [
+              SliverAppBar(
+                toolbarHeight: 65,
+                elevation: 3,
+                backgroundColor: kSeoulColor3,
+                titleSpacing: 20.0,
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    MyText(
+                      size: 22,
+                      text: 'Browse',
+                      letterSpacing: 0.4,
+                      weight: FontWeight.w800,
                     ),
-                  ),
-                  showResults
-                      ? Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
-                          child: Wrap(
-                            runSpacing: 10,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              MyText(
-                                text: '980 ',
-                                size: 16,
-                                weight: FontWeight.w700,
+                  ],
+                ),
+                pinned: true,
+                expandedHeight: showResults ? 160 : 200,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Column(
+                    // shrinkWrap: true,
+                    // physics: BouncingScrollPhysics(),
+                    // padding: EdgeInsets.fromLTRB(0, 93, 0, 10),
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      // SizedBox(
+                      //   height: 102,
+                      // ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: SearchBar(
+                                onChanged: (value) {
+                                  setState(() {
+                                    value.isNotEmpty
+                                        ? showResults = true
+                                        : showResults = false;
+                                  });
+                                },
                               ),
-                              MyText(
-                                text: 'results for ',
+                            ),
+                            SizedBox(
+                              width: 13,
+                            ),
+                            GestureDetector(
+                              onTap: () => Get.to(
+                                () => FilterPage(),
                               ),
-                              MyText(
-                                text: '“Chesse pizza”',
-                                size: 16,
-                                weight: FontWeight.w700,
-                              ),
-                            ],
-                          ),
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.only(top: 15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              SizedBox(
-                                height: 60,
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 13,
+                              child: Container(
+                                height: 50,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(14),
+                                  color: kSecondaryColor,
+                                ),
+                                child: Center(
+                                  child: Image.asset(
+                                    Assets.imagesFilters,
+                                    height: 22,
                                   ),
-                                  physics: BouncingScrollPhysics(),
-                                  itemCount: browseController.categories.length,
-                                  scrollDirection: Axis.horizontal,
-                                  itemBuilder: (context, index) {
-                                    var value =
-                                        browseController.categories[index];
-                                    return Obx(
-                                      () {
-                                        return SimpleToggleButtons(
-                                          text: value,
-                                          isSelected: browseController
-                                                  .currentCategoryIndex.value ==
-                                              index,
-                                          onTap: () => browseController
-                                              .getSelectedCategoryIndex(
-                                            index,
-                                            value,
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
                                 ),
                               ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                ],
-              ),
-            ),
-          ),
-          showResults
-              ? SearchResults()
-              : SliverToBoxAdapter(
-                child: GridView.builder(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 10,
-                    ),
-                    physics: BouncingScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 15,
-                      crossAxisSpacing: 15,
-                      mainAxisExtent: 119,
-                    ),
-                    itemCount: categories.length,
-                    itemBuilder: (context, index) {
-                      var data = categories[index];
-                      return BrowseThumbnails(
-                        bgImg: data['img'],
-                        title: data['title'],
-                        onTap: () {},
-                      );
-                    },
+                      ),
+                      showResults
+                          ? Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                              child: Wrap(
+                                runSpacing: 10,
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                children: [
+                                  MyText(
+                                    text: '980 ',
+                                    size: 16,
+                                    weight: FontWeight.w700,
+                                  ),
+                                  MyText(
+                                    text: 'results for ',
+                                  ),
+                                  MyText(
+                                    text: '“Chesse pizza”',
+                                    size: 16,
+                                    weight: FontWeight.w700,
+                                  ),
+                                ],
+                              ),
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.only(top: 15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  SizedBox(
+                                    height: 60,
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 13,
+                                      ),
+                                      physics: BouncingScrollPhysics(),
+                                      itemCount:
+                                          browseController.categories.length,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index) {
+                                        var value =
+                                            browseController.categories[index];
+                                        return Obx(
+                                          () {
+                                            return SimpleToggleButtons(
+                                              text: value,
+                                              isSelected: browseController
+                                                      .currentCategoryIndex
+                                                      .value ==
+                                                  index,
+                                              onTap: () => browseController
+                                                  .getSelectedCategoryIndex(
+                                                index,
+                                                value,
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                ],
+                              ),
+                            ),
+                    ],
                   ),
+                ),
               ),
-        ],
+              showResults
+                  ? SearchResults()
+                  : SliverToBoxAdapter(
+                      child: GridView.builder(
+                        shrinkWrap: true,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 10,
+                        ),
+                        physics: BouncingScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 15,
+                          crossAxisSpacing: 15,
+                          mainAxisExtent: 119,
+                        ),
+                        itemCount: categories.length,
+                        itemBuilder: (context, index) {
+                          var data = categories[index];
+                          return BrowseThumbnails(
+                            bgImg: data['img'],
+                            title: data['title'],
+                            onTap: () {},
+                          );
+                        },
+                      ),
+                    ),
+            ],
+          ),
+        ),
       ),
     );
   }
