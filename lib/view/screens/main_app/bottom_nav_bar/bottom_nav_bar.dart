@@ -105,7 +105,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     ),
                     index == 2
                         ? Positioned(
-                            top: -5,
+                            top: isIos ? 0 : -5,
                             right: -5,
                             child: Container(
                               height: 15,
