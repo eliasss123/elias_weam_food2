@@ -47,6 +47,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     var platform = Theme.of(context).platform;
+    bool isIos = platform == TargetPlatform.iOS;
 
     return Scaffold(
       body: IndexedStack(
@@ -54,6 +55,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
         children: screens,
       ),
       bottomNavigationBar: Container(
+        padding: EdgeInsets.only(
+          top: isIos ? 10:0,
+        ),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -64,7 +68,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
           ],
         ),
-        height: platform == TargetPlatform.iOS ? 95 : 75,
+        height: isIos ? 95 : 75,
         child: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,
