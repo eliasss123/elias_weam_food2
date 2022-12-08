@@ -55,9 +55,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
         children: screens,
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.only(
-          top: isIos ? 10:0,
-        ),
+        // padding: EdgeInsets.only(
+        //   top: isIos ? 10:0,
+        // ),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
