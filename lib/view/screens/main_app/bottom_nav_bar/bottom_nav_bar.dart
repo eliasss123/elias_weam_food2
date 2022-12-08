@@ -63,7 +63,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
           ],
         ),
-        height: 75,
+        height: platform == TargetPlatform.iOS ? 85 : 75,
         child: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,
