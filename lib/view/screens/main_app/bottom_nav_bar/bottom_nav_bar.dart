@@ -55,9 +55,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
         children: screens,
       ),
       bottomNavigationBar: Container(
-        // padding: EdgeInsets.only(
-        //   top: isIos ? 10:0,
-        // ),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -97,7 +94,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   clipBehavior: Clip.none,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 6),
+                      padding: EdgeInsets.only(
+                        bottom: 6,
+                        top: isIos ? 10 : 0,
+                      ),
                       child: ImageIcon(
                         AssetImage(data['icon']),
                         size: 19.0,

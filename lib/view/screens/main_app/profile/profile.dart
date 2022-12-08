@@ -17,6 +17,8 @@ import 'package:get/get.dart';
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       body: Container(
         height: Get.height,
@@ -27,8 +29,9 @@ class Profile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Wrap(
-              spacing: 10,
+              spacing: 7,
               alignment: WrapAlignment.end,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Image.asset(
                   Assets.imagesLogout,
