@@ -43,11 +43,11 @@ class PickupOrderStatus extends StatelessWidget {
       'isActive': true,
     },
     {
-      'title': 'Waiting for you to pick up the order',
+      'title': 'Your order preparation done',
       'isActive': true,
     },
     {
-      'title': 'Order arriving soon!',
+      'title': 'Waiting for you to pick up the order',
       'isActive': false,
     },
   ];
@@ -80,7 +80,7 @@ class PickupOrderStatus extends StatelessWidget {
                               alignment: WrapAlignment.center,
                               children: [
                                 MyText(
-                                  text: 'Estimated delivery time is ',
+                                  text: 'Estimated pick up time is ',
                                   size: 17,
                                   weight: FontWeight.w500,
                                   letterSpacing: 0.0,
