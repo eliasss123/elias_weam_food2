@@ -2,7 +2,7 @@ import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color(0xffFFFFFF);
-const kSecondaryColor = Color(0xff3ED48D);
+const kSecondaryColor = Color(0xff34D186);
 const kTertiaryColor = Color(0xffA6A6A6);
 const kGreenColor2 = Color(0xff34D186);
 const kOnlineColor = Color(0xff64C862);
