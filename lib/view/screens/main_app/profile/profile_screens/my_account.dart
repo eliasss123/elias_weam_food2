@@ -87,8 +87,8 @@ class MyAccount extends StatelessWidget {
               padding: EdgeInsets.only(
                 left: 45,
                 right: 45,
-                bottom: 15,
-                top: isIos ? 25 : 15,
+                bottom: isIos ? 25 : 15,
+                top: 15,
               ),
               child: MyButton(
                 buttonText: 'Save Changes',
