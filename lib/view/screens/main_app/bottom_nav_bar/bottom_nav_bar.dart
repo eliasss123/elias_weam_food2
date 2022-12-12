@@ -55,7 +55,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
         children: screens,
       ),
       bottomNavigationBar: Container(
-        height: isIos ? 90 : 75,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -106,7 +105,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     ),
                     index == 2
                         ? Positioned(
-                            top: isIos ? 5 : -5,
+                            top: isIos ? 2 : -5,
                             right: -2,
                             child: Container(
                               height: 15,
