@@ -20,6 +20,8 @@ class _LanguagesState extends State<Languages> {
 
   @override
   Widget build(BuildContext context) {
+    var platform = Theme.of(context).platform;
+    bool isIos = platform == TargetPlatform.iOS;
     return Scaffold(
       appBar: simpleAppBar(
         title: 'Language',
@@ -100,9 +102,11 @@ class _LanguagesState extends State<Languages> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 45,
-              vertical: 20,
+            padding: EdgeInsets.only(
+              left: 45,
+              right: 45,
+              top: 20,
+              bottom: isIos ? 25:20,
             ),
             child: MyButton(
               buttonText: 'Next',
