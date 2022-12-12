@@ -66,73 +66,75 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ],
         ),
         height: isIos ? 95 : 75,
-        child: BottomNavigationBar(
-          elevation: 0,
-          type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: TextStyle(
-            fontSize: 11,
-            color: kSecondaryColor,
-            fontWeight: FontWeight.w500,
-          ),
-          unselectedLabelStyle: TextStyle(
-            fontSize: 11,
-            color: kUnselectedColor,
-          ),
-          selectedFontSize: 11,
-          unselectedFontSize: 11,
-          backgroundColor: kPrimaryColor,
-          selectedItemColor: kSecondaryColor,
-          unselectedItemColor: kUnselectedColor,
-          currentIndex: currentIndex,
-          onTap: (index) => _getCurrentIndex(index),
-          items: List.generate(
-            items.length,
-            (index) {
-              var data = items[index];
-              return BottomNavigationBarItem(
-                icon: Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: 6,
-                        top: isIos ? 10 : 0,
-                        right: index == 2 ? 6 : 0,
+        child: Center(
+          child: BottomNavigationBar(
+            elevation: 0,
+            type: BottomNavigationBarType.fixed,
+            selectedLabelStyle: TextStyle(
+              fontSize: 11,
+              color: kSecondaryColor,
+              fontWeight: FontWeight.w500,
+            ),
+            unselectedLabelStyle: TextStyle(
+              fontSize: 11,
+              color: kUnselectedColor,
+            ),
+            selectedFontSize: 11,
+            unselectedFontSize: 11,
+            backgroundColor: kPrimaryColor,
+            selectedItemColor: kSecondaryColor,
+            unselectedItemColor: kUnselectedColor,
+            currentIndex: currentIndex,
+            onTap: (index) => _getCurrentIndex(index),
+            items: List.generate(
+              items.length,
+              (index) {
+                var data = items[index];
+                return BottomNavigationBarItem(
+                  icon: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                          bottom: 6,
+                          top: isIos ? 11 : 0,
+                          right: index == 2 ? 6 : 0,
+                        ),
+                        child: ImageIcon(
+                          AssetImage(data['icon']),
+                          size: 19.0,
+                        ),
                       ),
-                      child: ImageIcon(
-                        AssetImage(data['icon']),
-                        size: 19.0,
-                      ),
-                    ),
-                    index == 2
-                        ? Positioned(
-                            top: isIos ? 2 : -5,
-                            right: -2,
-                            child: Container(
-                              height: 15,
-                              width: 15,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: kSecondaryColor,
-                              ),
-                              child: Center(
-                                child: FittedBox(
-                                  child: MyText(
-                                    text: '2',
-                                    size: 11,
-                                    color: kPrimaryColor,
-                                    weight: FontWeight.w500,
+                      index == 2
+                          ? Positioned(
+                              top: isIos ? 2 : -5,
+                              right: -2,
+                              child: Container(
+                                height: 15,
+                                width: 15,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: kSecondaryColor,
+                                ),
+                                child: Center(
+                                  child: FittedBox(
+                                    child: MyText(
+                                      text: '2',
+                                      size: 11,
+                                      color: kPrimaryColor,
+                                      weight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          )
-                        : SizedBox(),
-                  ],
-                ),
-                label: data['label'],
-              );
-            },
+                            )
+                          : SizedBox(),
+                    ],
+                  ),
+                  label: data['label'],
+                );
+              },
+            ),
           ),
         ),
       ),
