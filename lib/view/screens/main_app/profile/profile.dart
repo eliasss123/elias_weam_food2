@@ -17,8 +17,8 @@ import 'package:get/get.dart';
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
-
+    var platform = Theme.of(context).platform;
+    bool isIos = platform == TargetPlatform.iOS;
     return Scaffold(
       body: Container(
         height: Get.height,
@@ -61,7 +61,7 @@ class Profile extends StatelessWidget {
               size: 21,
               weight: FontWeight.w700,
               align: TextAlign.center,
-              paddingBottom: 50,
+              paddingBottom: isIos ? 80 : 50,
             ),
             Expanded(
               child: ListView(
