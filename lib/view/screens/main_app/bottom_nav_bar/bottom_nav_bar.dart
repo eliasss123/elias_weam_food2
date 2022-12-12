@@ -94,7 +94,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     Padding(
                       padding: EdgeInsets.only(
                         bottom: 6,
-                        top: isIos ? 10 : 0,
+                        top: isIos ? 4.5 : 0,
                         right: index == 2 ? 6 : 0,
                       ),
                       child: ImageIcon(
@@ -104,7 +104,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     ),
                     index == 2
                         ? Positioned(
-                            top: isIos ? 2 : -5,
+                            top: isIos ? -1.5 : -5,
                             right: -2,
                             child: Container(
                               height: 15,
