@@ -12,6 +12,8 @@ import 'package:get/get.dart';
 class MyAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var platform = Theme.of(context).platform;
+    bool isIos = platform == TargetPlatform.iOS;
     return Scaffold(
       body: Container(
         height: Get.height,
@@ -49,7 +51,7 @@ class MyAccount extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 children: [
                   SizedBox(
-                    height: 15,
+                    height: isIos ? 35 : 15,
                   ),
                   ProfileFilledTextField(
                     labelText: 'Name',
@@ -80,6 +82,9 @@ class MyAccount extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: isIos ? 10 : 0,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
