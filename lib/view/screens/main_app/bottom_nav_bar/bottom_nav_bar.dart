@@ -7,7 +7,6 @@ import 'package:elias_weam_food2/view/screens/main_app/profile/profile.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
 
-//HElLO
 class BottomNavBar extends StatefulWidget {
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
