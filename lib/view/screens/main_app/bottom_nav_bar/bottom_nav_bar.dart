@@ -65,7 +65,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
           ],
         ),
-        height: isIos ? 95 : 75,
         child: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,
@@ -80,7 +79,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
           selectedFontSize: 0,
           unselectedFontSize: 0,
-          backgroundColor: kPrimaryColor,
+          backgroundColor: Colors.red,
           selectedItemColor: kSecondaryColor,
           unselectedItemColor: kUnselectedColor,
           currentIndex: currentIndex,
@@ -96,7 +95,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     Padding(
                       padding: EdgeInsets.only(
                         bottom: 6,
-                        top: isIos ? 15 : 0,
+                        top: isIos ? 10 : 0,
                         right: index == 2 ? 6 : 0,
                       ),
                       child: ImageIcon(
