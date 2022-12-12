@@ -79,7 +79,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
           selectedFontSize: 0,
           unselectedFontSize: 0,
-          backgroundColor: Colors.red,
+          backgroundColor: kPrimaryColor,
           selectedItemColor: kSecondaryColor,
           unselectedItemColor: kUnselectedColor,
           currentIndex: currentIndex,
