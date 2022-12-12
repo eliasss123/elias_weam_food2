@@ -61,7 +61,7 @@ class Profile extends StatelessWidget {
               size: 21,
               weight: FontWeight.w700,
               align: TextAlign.center,
-              paddingBottom: isIos ? 80 : 50,
+              paddingBottom: isIos ? 95 : 50,
             ),
             Expanded(
               child: ListView(
