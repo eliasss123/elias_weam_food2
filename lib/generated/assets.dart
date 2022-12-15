@@ -34,6 +34,7 @@ class Assets {
   static const String imagesClockGreen = 'assets/images/clock_green.png';
   static const String imagesCoins = 'assets/images/coins.png';
   static const String imagesCongrats = 'assets/images/congrats.png';
+  static const String imagesCongratsEarning = 'assets/images/congrats_earning.png';
   static const String imagesContactUs = 'assets/images/contact_us.png';
   static const String imagesConvi = 'assets/images/convi.png';
   static const String imagesCooking = 'assets/images/cooking.png';
@@ -165,6 +166,7 @@ class Assets {
   static const String imagesSteak = 'assets/images/steak.png';
   static const String imagesSupport = 'assets/images/support.png';
   static const String imagesTime = 'assets/images/time.png';
+  static const String imagesTimer = 'assets/images/timer.png';
   static const String imagesUnCompleted = 'assets/images/un_completed.png';
   static const String imagesUnRated = 'assets/images/un_rated.png';
   static const String imagesUnderOnTheWay = 'assets/images/under_on_the_way.png';
