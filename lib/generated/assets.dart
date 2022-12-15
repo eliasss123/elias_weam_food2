@@ -45,8 +45,11 @@ class Assets {
   static const String imagesDeleteAcc = 'assets/images/delete_acc.png';
   static const String imagesDeliverWithVai = 'assets/images/deliver_with_vai.png';
   static const String imagesDeliverWithVaiContact = 'assets/images/deliver_with_vai_contact.png';
+  static const String imagesDeliveryCar = 'assets/images/delivery_car.png';
   static const String imagesDestination = 'assets/images/destination.png';
   static const String imagesDivider = 'assets/images/divider.png';
+  static const String imagesDropOffOrder = 'assets/images/drop_off_order.png';
+  static const String imagesDummyPollyLine = 'assets/images/dummy_polly_line.png';
   static const String imagesEdit = 'assets/images/edit.png';
   static const String imagesEditPencil = 'assets/images/edit_pencil.png';
   static const String imagesEmail = 'assets/images/email.png';
@@ -129,6 +132,7 @@ class Assets {
   static const String imagesPhone = 'assets/images/phone.png';
   static const String imagesPickUp = 'assets/images/pick_up.png';
   static const String imagesPickUpMap = 'assets/images/pick_up_map.png';
+  static const String imagesPickUpOrder = 'assets/images/pick_up_order.png';
   static const String imagesPicture = 'assets/images/picture.png';
   static const String imagesPicture2 = 'assets/images/picture2.png';
   static const String imagesPicture4 = 'assets/images/picture4.png';
@@ -142,6 +146,7 @@ class Assets {
   static const String imagesProfileBgEffect = 'assets/images/profile_bg_effect.png';
   static const String imagesRated = 'assets/images/rated.png';
   static const String imagesRemove = 'assets/images/remove.png';
+  static const String imagesRestaurantPin = 'assets/images/restaurant_pin.png';
   static const String imagesRewards = 'assets/images/rewards.png';
   static const String imagesRibbion = 'assets/images/ribbion.png';
   static const String imagesRider = 'assets/images/rider.png';
@@ -171,6 +176,7 @@ class Assets {
   static const String imagesVehicle = 'assets/images/vehicle.png';
   static const String imagesVisaPay = 'assets/images/visa_pay.png';
   static const String imagesVisitUs = 'assets/images/visit_us.png';
+  static const String imagesWaze = 'assets/images/waze.png';
   static const String imagesWithdraw = 'assets/images/withdraw.png';
   static const String imagesX = 'assets/images/x.png';
 
