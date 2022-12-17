@@ -3,11 +3,14 @@ import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/model/recent_order_model/recent_order_model.dart';
 import 'package:elias_weam_food2/view/screens/main_app/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/order_receipt.dart';
+import 'package:elias_weam_food2/view/screens/main_app/order_status/delivery_order_status.dart';
+import 'package:elias_weam_food2/view/screens/support/support.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/support_center.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PickupOrderStatus extends StatelessWidget {
   final List<Map<String, dynamic>> orderStatus = [
@@ -71,9 +74,12 @@ class PickupOrderStatus extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Image.asset(
-                            Assets.imagesArrowBack,
-                            height: 24,
+                          GestureDetector(
+                            onTap: () => Get.back(),
+                            child: Image.asset(
+                              Assets.imagesArrowBack,
+                              height: 24,
+                            ),
                           ),
                           Expanded(
                             child: Wrap(
@@ -399,6 +405,186 @@ class PickupOrderStatus extends StatelessWidget {
                 );
         },
       ),
+    );
+  }
+}
+
+class PickupOrderCompletedDialog extends StatelessWidget {
+  const PickupOrderCompletedDialog({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Card(
+          margin: EdgeInsets.all(20),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 15,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () => Get.back(),
+                      child: Image.asset(
+                        Assets.imagesX,
+                        height: 18,
+                      ),
+                    ),
+                  ],
+                ),
+                MyText(
+                  text: 'Thank you for your order',
+                  size: 17,
+                  color: kSecondaryColor,
+                  fontFamily: GoogleFonts.adamina().fontFamily,
+                  align: TextAlign.center,
+                  paddingBottom: 20,
+                ),
+                MyText(
+                  text: 'Keep tracking you order , to pick up on time.',
+                  size: 12,
+                  weight: FontWeight.w500,
+                  color: kBlackColor,
+                  align: TextAlign.center,
+                  paddingBottom: 40,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 40,
+                  ),
+                  child: Column(
+                    children: [
+                      MyButton(
+                        buttonText: 'Track Order',
+                        onTap: () => Get.to(
+                              () => PickupOrderStatus(),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      MyButton(
+                        buttonText: 'Order Details',
+                        onTap: () => Get.to(
+                          () => OrderReceipt(
+                            orderNo: '701',
+                            restaurantName: 'Pie pizza restaurant',
+                            subTotal: '87.10',
+                            items: [
+                              OrderDetailsModel(
+                                itemQuantity: '1',
+                                itemName: 'Squid Sweet and Sour Salad',
+                                itemPrice: '19.99',
+                                subItems: [],
+                              ),
+                              OrderDetailsModel(
+                                itemQuantity: '1',
+                                itemName: 'Japan Hainanese Sashimi',
+                                itemPrice: '37.99',
+                                subItems: [
+                                  OrderDetailsSubItemsModel(
+                                    itemName: 'Teriyaki Sause',
+                                    itemPrice: '0',
+                                  ),
+                                  OrderDetailsSubItemsModel(
+                                    itemName: 'Omelet',
+                                    itemPrice: '2',
+                                  ),
+                                ],
+                              ),
+                              OrderDetailsModel(
+                                itemQuantity: '1',
+                                itemName: 'Black Pepper Beef Lumpia',
+                                itemPrice: '27.12',
+                                subItems: [],
+                              ),
+                            ],
+                            deliveryFee: '1.5',
+                            total: '88.6',
+                            orderDate: '28/10/2021',
+                            orderDeliveryTime: '16:55',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Container(
+                  height: 1,
+                  color: kBorderColor4,
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                MyText(
+                  text: 'Please feel free to contact us for any questions',
+                  size: 12,
+                  color: kBlackColor,
+                  align: TextAlign.center,
+                  paddingBottom: 25,
+                ),
+                Center(
+                  child: GestureDetector(
+                    onTap: () => Get.to(
+                      () => Support(),
+                    ),
+                    child: Container(
+                      width: 180,
+                      height: 34,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1.0,
+                          color: kSecondaryColor,
+                        ),
+                        borderRadius: BorderRadius.circular(
+                          10.0,
+                        ),
+                      ),
+                      child: Center(
+                        child: MyText(
+                          text: 'Contact support',
+                          size: 14,
+                          weight: FontWeight.w700,
+                          color: kSecondaryColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 70,
+                ),
+                Image.asset(
+                  Assets.imagesLogoHorizBlk,
+                  height: 52.93,
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

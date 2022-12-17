@@ -15,10 +15,13 @@ class CartCheckOutController extends GetxController {
     BuildContext context,
     bool isPickup,
   ) {
-    isPickup ? isOrderConfirm.value = false : isOrderConfirm.value = true;
+    isOrderConfirm.value = true;
     isPickup
-        ? Get.to(
-            () => PickupOrderStatus(),
+        ? showDialog(
+            context: context,
+            builder: (_) {
+              return PickupOrderCompletedDialog();
+            },
           )
         : showDialog(
             context: context,

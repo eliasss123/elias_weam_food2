@@ -343,7 +343,7 @@ class OrderCompletedDialog extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Card(
-          margin: EdgeInsets.all(10),
+          margin: EdgeInsets.all(20),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
@@ -367,9 +367,6 @@ class OrderCompletedDialog extends StatelessWidget {
                         Assets.imagesX,
                         height: 18,
                       ),
-                    ),
-                    SizedBox(
-                      width: 15,
                     ),
                   ],
                 ),

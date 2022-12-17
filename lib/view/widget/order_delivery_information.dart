@@ -1,6 +1,8 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
+import 'package:elias_weam_food2/utils/instances.dart';
 import 'package:elias_weam_food2/view/screens/main_app/order_status/delivery_order_status.dart';
+import 'package:elias_weam_food2/view/screens/main_app/order_status/pick_up_order_status.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -64,28 +66,34 @@ class OrderDeliveryInformation extends StatelessWidget {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () => Get.to(
-              () => TrackOrder(),
-            ),
-            child: Container(
-              height: 36,
-              width: 85,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: kSecondaryColor,
-              ),
-              child: Center(
-                child: MyText(
-                  text: 'Track order',
-                  size: 13,
-                  weight: FontWeight.w700,
-                  color: kPrimaryColor,
-                  letterSpacing: -0.6,
+          Obx(() {
+            return GestureDetector(
+              onTap: cartCheckOutController.isPickUp.value
+                  ? () => Get.to(
+                        () => PickupOrderStatus(),
+                      )
+                  : () => Get.to(
+                        () => TrackOrder(),
+                      ),
+              child: Container(
+                height: 36,
+                width: 85,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: kSecondaryColor,
+                ),
+                child: Center(
+                  child: MyText(
+                    text: 'Track order',
+                    size: 13,
+                    weight: FontWeight.w700,
+                    color: kPrimaryColor,
+                    letterSpacing: -0.6,
+                  ),
                 ),
               ),
-            ),
-          ),
+            );
+          }),
         ],
       ),
     );
