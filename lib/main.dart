@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return GetMaterialApp(
+
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       title: 'Elias Weam Food 2',
