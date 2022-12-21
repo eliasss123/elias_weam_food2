@@ -13,6 +13,8 @@ import 'package:get/get.dart';
 class DriverAppHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var platform = Theme.of(context).platform;
+    bool isIos = platform == TargetPlatform.iOS;
     return Scaffold(
       body: Stack(
         children: [
@@ -29,9 +31,9 @@ class DriverAppHome extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 15,
-            right: 10,
-            left: 10,
+            bottom: 20,
+            right: 20,
+            left: 20,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -146,7 +148,12 @@ class DriverAppHome extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
+            padding: EdgeInsets.fromLTRB(
+              20,
+              isIos ? 65 : 50,
+              20,
+              20,
+            ),
             child: Container(
               height: 51,
               padding: EdgeInsets.symmetric(
@@ -412,7 +419,9 @@ class OrderAcceptDialog extends StatelessWidget {
                       textSize: 14,
                       buttonText: 'Accept',
                       radius: 10.0,
-                      onTap: () => Get.to(() => DeliveryDetailPage(),),
+                      onTap: () => Get.to(
+                        () => DeliveryDetailPage(),
+                      ),
                     ),
                   ),
                 ],
