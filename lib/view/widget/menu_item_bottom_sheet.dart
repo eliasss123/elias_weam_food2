@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class MenuItemBottomSheet extends StatefulWidget {
-   MenuItemBottomSheet({
+  MenuItemBottomSheet({
     Key? key,
     required this.onAddToCartTap,
     this.buttonText,
@@ -35,6 +35,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+    var platform = Theme.of(context).platform;
     return SimpleBottomSheet(
       height: Get.height * 0.9,
       content: Stack(
@@ -183,13 +184,13 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
+              padding: EdgeInsets.symmetric(
                 horizontal: 20,
-                vertical: 20,
+                vertical: platform == TargetPlatform.iOS ? 23 : 20,
               ),
               child: MyButton(
                 height: 54,
-                buttonText: widget.buttonText ??  'Add to Cart (\$41.99)',
+                buttonText: widget.buttonText ?? 'Add to Cart (\$41.99)',
                 onTap: widget.onAddToCartTap!,
               ),
             ),
