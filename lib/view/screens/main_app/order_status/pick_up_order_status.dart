@@ -57,6 +57,7 @@ class PickupOrderStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var platform = Theme.of(context).platform;
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -306,9 +307,9 @@ class PickupOrderStatus extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: 30,
-              vertical: 20,
+              vertical: platform == TargetPlatform.iOS ? 23 : 20,
             ),
             child: MyButton(
               buttonText: 'Go Home',
@@ -473,7 +474,7 @@ class PickupOrderCompletedDialog extends StatelessWidget {
                       MyButton(
                         buttonText: 'Track Order',
                         onTap: () => Get.to(
-                              () => PickupOrderStatus(),
+                          () => PickupOrderStatus(),
                         ),
                       ),
                       SizedBox(
