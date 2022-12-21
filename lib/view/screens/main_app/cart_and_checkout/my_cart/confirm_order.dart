@@ -2,6 +2,7 @@ import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/model/recent_order_model/recent_order_model.dart';
 import 'package:elias_weam_food2/utils/instances.dart';
+import 'package:elias_weam_food2/view/screens/main_app/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/delivery_options/delivery_options.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/order_receipt.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/payment_methods/payment_methods.dart';
@@ -324,10 +325,13 @@ class ConfirmOrder extends StatelessWidget {
             ),
             child: MyButton(
               buttonText: 'Checkout',
-              onTap: () => cartCheckOutController.confirmOrder(
-                context,
-                isPickUp,
-              ),
+              onTap: () {
+                Get.offAll(() => BottomNavBar());
+                cartCheckOutController.confirmOrder(
+                  context,
+                  isPickUp,
+                );
+              },
             ),
           ),
         ],
