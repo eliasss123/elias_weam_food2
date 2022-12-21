@@ -25,23 +25,23 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool isForFirstTime = true;
-
-  @override
-  void initState() {
-    super.initState();
-    isForFirstTime
-        ? Future.delayed(
-            Duration(seconds: 2),
-            () {
-              Get.to(
-                () => SetLocationForFirstTime(),
-              );
-              isForFirstTime = false;
-            },
-          )
-        : () {};
-  }
+  // bool isForFirstTime = true;
+  //
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   isForFirstTime
+  //       ? Future.delayed(
+  //           Duration(seconds: 2),
+  //           () {
+  //             Get.to(
+  //               () => SetLocationForFirstTime(),
+  //             );
+  //             isForFirstTime = false;
+  //           },
+  //         )
+  //       : () {};
+  // }
 
   @override
   Widget build(BuildContext context) {

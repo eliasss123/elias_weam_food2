@@ -1,5 +1,6 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/view/screens/main_app/location/pin_location.dart';
+import 'package:elias_weam_food2/view/screens/main_app/location/set_location_for_first_time.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/simple_bottom_sheet.dart';
 import 'package:expandable/expandable.dart';
@@ -34,7 +35,7 @@ class BrowseByLocation extends StatelessWidget {
             ),
             customTiles(
               title: 'Add another address',
-              onTap: () {},
+              onTap: () => Get.to(() => SetLocationForFirstTime()),
             ),
             customTiles(
               title: 'Home',
