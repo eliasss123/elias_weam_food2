@@ -44,7 +44,7 @@ class AddPaymentMethod extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 5),
                     child: Center(
                       child: GestureDetector(
-                        onTap: () {
+                        onTap: index == 1 || index ==3 ? () {} :() {
                           showModalBottomSheet(
                             context: context,
                             elevation: 0,

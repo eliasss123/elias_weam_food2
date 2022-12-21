@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 class SelectedPaymentMethodDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var platform = Theme.of(context).platform;
     return SimpleBottomSheet(
       height: Get.height * 0.48,
       content: Padding(
