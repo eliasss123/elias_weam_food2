@@ -7,7 +7,6 @@ import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class SetLocationByPin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -92,6 +91,13 @@ class SetLocationByPin extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   color: kPrimaryColor,
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, -4),
+                      blurRadius: 32,
+                      color: kBlackColor.withOpacity(0.06),
+                    ),
+                  ],
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(35),
                     topRight: Radius.circular(35),
