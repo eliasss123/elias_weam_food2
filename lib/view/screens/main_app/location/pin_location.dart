@@ -1,3 +1,4 @@
+import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/main_app/location/address_details.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
@@ -52,14 +53,14 @@ class PinLocation extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            bottom: 15,
-            right: 10,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Align(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: Align(
+                  alignment: Alignment.centerRight,
                   child: CommonImageView(
                     height: 45,
                     width: 45,
@@ -67,10 +68,14 @@ class PinLocation extends StatelessWidget {
                     imagePath: Assets.imagesMapSearch,
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Align(
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10),
                   child: CommonImageView(
                     height: 45,
                     width: 45,
@@ -78,8 +83,28 @@ class PinLocation extends StatelessWidget {
                     imagePath: Assets.imagesCurrentLoc,
                   ),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: kPrimaryColor,
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, -4),
+                      blurRadius: 32,
+                      color: kBlackColor.withOpacity(0.06),
+                    ),
+                  ],
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(35),
+                    topRight: Radius.circular(35),
+                  ),
+                ),
+                child: AddressDetails(),
+              ),
+            ],
           ),
           Center(
             child: Image.asset(
