@@ -78,9 +78,6 @@ class PinLocation extends StatelessWidget {
                     imagePath: Assets.imagesCurrentLoc,
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
               ],
             ),
           ),
