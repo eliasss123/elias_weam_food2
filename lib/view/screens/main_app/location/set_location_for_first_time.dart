@@ -36,6 +36,7 @@ class _SetLocationForFirstTimeState extends State<SetLocationForFirstTime> {
       backgroundColor: Colors.transparent,
       elevation: 0,
       builder: (_) {
+        var platform = Theme.of(context).platform;
         return SimpleBottomSheet(
           height: Get.height * 0.55,
           content: Padding(
@@ -151,8 +152,10 @@ class _SetLocationForFirstTimeState extends State<SetLocationForFirstTime> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30,
+                  padding: EdgeInsets.only(
+                    left: 30,
+                    right: 30,
+                    bottom: platform == TargetPlatform.iOS ? 3 : 0,
                   ),
                   child: MyButton(
                     buttonText: 'Continue',
