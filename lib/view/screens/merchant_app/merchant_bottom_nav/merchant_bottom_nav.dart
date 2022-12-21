@@ -38,12 +38,15 @@ class _MerchantBottomNavState extends State<MerchantBottomNav> {
 
   @override
   Widget build(BuildContext context) {
+    var platform = Theme.of(context).platform;
+    bool isIos = platform == TargetPlatform.iOS;
     return Scaffold(
       body: IndexedStack(
         index: currentIndex,
         children: screens,
       ),
       bottomNavigationBar: Container(
+        height: isIos ? null : 75,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -54,7 +57,6 @@ class _MerchantBottomNavState extends State<MerchantBottomNav> {
             ),
           ],
         ),
-        height: 75,
         child: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,
@@ -67,8 +69,8 @@ class _MerchantBottomNavState extends State<MerchantBottomNav> {
             fontSize: 11,
             color: kUnselectedColor,
           ),
-          selectedFontSize: 11,
-          unselectedFontSize: 11,
+          selectedFontSize: 0,
+          unselectedFontSize: 0,
           backgroundColor: kPrimaryColor,
           selectedItemColor: kSecondaryColor,
           unselectedItemColor: kUnselectedColor,
@@ -80,7 +82,10 @@ class _MerchantBottomNavState extends State<MerchantBottomNav> {
               var data = items[index];
               return BottomNavigationBarItem(
                 icon: Padding(
-                  padding: const EdgeInsets.only(bottom: 6),
+                  padding: EdgeInsets.only(
+                    bottom: 6,
+                    top: isIos ? 4.5 : 0,
+                  ),
                   child: ImageIcon(
                     AssetImage(data['icon']),
                     size: 19.0,

@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       title: 'Elias Weam Food 2',
       theme: lightTheme,
       themeMode: ThemeMode.light,
-      initialRoute: AppLinks.driver_splash_screen,
+      initialRoute: AppLinks.merchant_splash_screen,
       getPages: AppRoutes.pages,
       defaultTransition: Transition.cupertino,
     );
