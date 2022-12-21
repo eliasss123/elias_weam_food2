@@ -227,7 +227,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,
-                        vertical: 20,
+                        vertical: 10,
                       ),
                       child: MyButton(
                         height: 54,
