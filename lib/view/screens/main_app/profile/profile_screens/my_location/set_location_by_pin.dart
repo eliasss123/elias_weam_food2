@@ -1,9 +1,12 @@
+import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
+import 'package:elias_weam_food2/view/screens/main_app/location/address_details.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/my_location/location_details.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 
 class SetLocationByPin extends StatelessWidget {
   @override
@@ -52,14 +55,14 @@ class SetLocationByPin extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            bottom: 15,
-            right: 10,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Align(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: Align(
+                  alignment: Alignment.centerRight,
                   child: CommonImageView(
                     height: 45,
                     width: 45,
@@ -67,10 +70,14 @@ class SetLocationByPin extends StatelessWidget {
                     imagePath: Assets.imagesMapSearch,
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Align(
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10),
                   child: CommonImageView(
                     height: 45,
                     width: 45,
@@ -78,13 +85,29 @@ class SetLocationByPin extends StatelessWidget {
                     imagePath: Assets.imagesCurrentLoc,
                   ),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: kPrimaryColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(35),
+                    topRight: Radius.circular(35),
+                  ),
+                ),
+                child: AddressDetails(),
+              ),
+            ],
           ),
           Center(
-            child: Image.asset(
-              Assets.imagesDestination,
-              height: 92,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 100),
+              child: Image.asset(
+                Assets.imagesDestination,
+                height: 92,
+              ),
             ),
           ),
           Positioned(
@@ -92,26 +115,9 @@ class SetLocationByPin extends StatelessWidget {
             right: 80,
             child: Align(
               alignment: Alignment.topRight,
-              child: GestureDetector(
-                onTap: () {
-                  showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(35),
-                        topRight: Radius.circular(35),
-                      ),
-                    ),
-                    builder: (_) {
-                      return LocationDetails();
-                    },
-                  );
-                },
-                child: Image.asset(
-                  Assets.imagesMyLocation,
-                  height: 59,
-                ),
+              child: Image.asset(
+                Assets.imagesMyLocation,
+                height: 59,
               ),
             ),
           ),
@@ -120,5 +126,3 @@ class SetLocationByPin extends StatelessWidget {
     );
   }
 }
-
-

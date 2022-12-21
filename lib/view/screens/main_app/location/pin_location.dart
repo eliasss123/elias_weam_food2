@@ -81,13 +81,6 @@ class PinLocation extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(35),
-                    topRight: Radius.circular(35),
-                  ),
-                  child: AddressDetails(),
-                ),
               ],
             ),
           ),
@@ -104,19 +97,19 @@ class PinLocation extends StatelessWidget {
               alignment: Alignment.topRight,
               child: GestureDetector(
                 onTap: () {
-                  // showModalBottomSheet(
-                  //   context: context,
-                  //   isScrollControlled: true,
-                  //   shape: RoundedRectangleBorder(
-                  //     borderRadius: BorderRadius.only(
-                  //       topLeft: Radius.circular(35),
-                  //       topRight: Radius.circular(35),
-                  //     ),
-                  //   ),
-                  //   builder: (_) {
-                  //     return AddressDetails();
-                  //   },
-                  // );
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(35),
+                        topRight: Radius.circular(35),
+                      ),
+                    ),
+                    builder: (_) {
+                      return AddressDetails();
+                    },
+                  );
                 },
                 child: Image.asset(
                   Assets.imagesMyLocation,
