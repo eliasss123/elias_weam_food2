@@ -79,6 +79,7 @@ class _TrackOrderState extends State<TrackOrder> {
           elevation: 0,
           context: context,
           builder: (_) {
+            var platform = Theme.of(context).platform;
             return SimpleBottomSheet(
               height: Get.height * 0.9,
               content: Padding(
@@ -296,7 +297,11 @@ class _TrackOrderState extends State<TrackOrder> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: EdgeInsets.only(
+                        left: 15,
+                        right: 15,
+                        bottom: platform == TargetPlatform.iOS ? 3 : 0,
+                      ),
                       child: MyButton(
                         buttonText: 'Live tracking',
                         onTap: () => Get.to(
