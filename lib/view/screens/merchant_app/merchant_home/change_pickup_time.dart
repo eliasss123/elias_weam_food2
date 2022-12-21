@@ -94,7 +94,9 @@ class ChangePickupTime extends StatelessWidget {
                 ),
                 Expanded(
                   child: MyText(
+                    align: TextAlign.center,
                     paddingLeft: 15,
+                    paddingRight: 15,
                     text: 'Change pickup time',
                     size: 22,
                     weight: FontWeight.w700,
