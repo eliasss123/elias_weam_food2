@@ -106,7 +106,7 @@ class _LanguagesState extends State<Languages> {
               left: 45,
               right: 45,
               top: 20,
-              bottom: isIos ? 25:20,
+              bottom: isIos ? 23:20,
             ),
             child: MyButton(
               buttonText: 'Next',
