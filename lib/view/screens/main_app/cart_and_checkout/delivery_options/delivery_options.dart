@@ -38,6 +38,7 @@ class _DeliveryOptionsState extends State<DeliveryOptions>
 
   @override
   Widget build(BuildContext context) {
+    var platform = Theme.of(context).platform;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
@@ -125,9 +126,9 @@ class _DeliveryOptionsState extends State<DeliveryOptions>
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: 40,
-              vertical: 20,
+              vertical: platform == TargetPlatform.iOS ? 23 : 20,
             ),
             child: MyButton(
               buttonText: 'Save',
