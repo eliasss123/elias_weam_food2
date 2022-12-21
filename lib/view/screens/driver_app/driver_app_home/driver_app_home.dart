@@ -32,8 +32,8 @@ class DriverAppHome extends StatelessWidget {
           ),
           Positioned(
             bottom: 20,
-            right: 20,
-            left: 20,
+            right: 30,
+            left: 30,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -149,9 +149,9 @@ class DriverAppHome extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(
-              20,
+              30,
               isIos ? 65 : 50,
-              20,
+              30,
               20,
             ),
             child: Container(
