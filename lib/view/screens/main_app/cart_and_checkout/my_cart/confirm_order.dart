@@ -26,6 +26,8 @@ class ConfirmOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var platform = Theme.of(context).platform;
+
     return Scaffold(
       appBar: simpleAppBar(
         title: 'Confirm Order',
@@ -316,7 +318,10 @@ class ConfirmOrder extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+            padding: EdgeInsets.symmetric(
+              horizontal: 40,
+              vertical: platform == TargetPlatform.iOS ? 23 : 15,
+            ),
             child: MyButton(
               buttonText: 'Checkout',
               onTap: () => cartCheckOutController.confirmOrder(
