@@ -96,6 +96,7 @@ class Assets {
   static const String imagesLocationPin = 'assets/images/location_pin.png';
   static const String imagesLock = 'assets/images/lock.png';
   static const String imagesLoginBg = 'assets/images/login_bg.png';
+  static const String imagesLoginBgNew = 'assets/images/login_bg_new.png';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesLogoHoriz = 'assets/images/logo_horiz.png';
   static const String imagesLogoHorizBlk = 'assets/images/logo_horiz_blk.png';

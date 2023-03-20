@@ -77,6 +77,8 @@ const kDarkInputBgColor = Color(0xff272727);
 const kDarkHintColor = Color(0xff474847);
 const kDarkBorderColor = Color(0xffCCCCCC);
 const kDarkModeGreyColor = Color(0xffA6A6A6);
+const kDarkModeGrey1Color = Color(0xff969696);
+const kDarkBottomNavColor = Color(0xff191919);
 
 class ContainerDec {
   static final border3R16 = BoxDecoration(

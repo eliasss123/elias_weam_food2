@@ -60,6 +60,7 @@ class EditMerchantApp extends StatelessWidget {
                     return Obx(
                       () {
                         return SimpleToggleButtons(
+                          isDark: false,
                           paddingHorizontal: 20.0,
                           text: value,
                           isSelected:

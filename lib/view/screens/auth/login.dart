@@ -24,8 +24,9 @@ class Login extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(Assets.imagesLoginBg),
+              image: AssetImage(Assets.imagesLoginBgNew),
               alignment: Alignment.topRight,
+              scale: 4.2,
             ),
           ),
           child: Column(
@@ -112,7 +113,9 @@ class Login extends StatelessWidget {
                 children: [
                   MyText(
                     text: 'Don’t have an account yet?',
-                    color: kBlackColor2.withOpacity(0.71),
+                    color: isDark
+                        ? kPrimaryColor.withOpacity(0.71)
+                        : kBlackColor2.withOpacity(0.71),
                   ),
                   MyText(
                     onTap: () => Get.offAll(

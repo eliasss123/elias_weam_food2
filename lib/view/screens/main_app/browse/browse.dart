@@ -188,6 +188,7 @@ class _BrowseState extends State<Browse> {
                                         return Obx(
                                           () {
                                             return SimpleToggleButtons(
+                                              isDark: false,
                                               text: value,
                                               isSelected: browseController
                                                       .currentCategoryIndex
@@ -266,6 +267,7 @@ class SearchResults extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(bottom: 25),
             child: RestaurantsThumbnail(
+              isDark: false,
               width: Get.width,
               horizontalMargin: 0,
               imgUrl: index == 0

@@ -25,6 +25,7 @@ class RestaurantsThumbnail extends StatelessWidget {
     this.width,
     this.onTap,
     this.onLikeTap,
+    required this.isDark,
   }) : super(key: key);
 
   final String imgUrl, name, deliveryTime, totalReviews;
@@ -32,6 +33,7 @@ class RestaurantsThumbnail extends StatelessWidget {
   final bool isFreeDelivery, isFeatured, isClosed, isLiked;
   double? width, horizontalMargin;
   VoidCallback? onTap, onLikeTap;
+  final bool isDark;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class RestaurantsThumbnail extends StatelessWidget {
         height: 250,
         width: width ?? 265,
         decoration: BoxDecoration(
-          color: kPrimaryColor,
+          color: isDark ? kDarkInputBgColor : kPrimaryColor,
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
@@ -80,13 +82,15 @@ class RestaurantsThumbnail extends StatelessWidget {
                       MyText(
                         text: name,
                         size: 13,
-                        color: kDarkGreyColor,
+                        color: isDark ? kPrimaryColor : kDarkGreyColor,
                         weight: FontWeight.w600,
                       ),
                       MyText(
                         text: '$deliveryTime min',
                         size: 12,
-                        color: kBlackColor,
+                        color: isDark
+                            ? kPrimaryColor.withOpacity(0.9)
+                            : kBlackColor,
                         weight: FontWeight.w500,
                       ),
                     ],
@@ -114,7 +118,9 @@ class RestaurantsThumbnail extends StatelessWidget {
                           MyText(
                             text: '($totalReviews reviews)',
                             size: 12,
-                            color: kBlackColor.withOpacity(0.4),
+                            color: isDark
+                                ? kPrimaryColor.withOpacity(0.3)
+                                : kBlackColor.withOpacity(0.4),
                           ),
                         ],
                       ),
@@ -123,7 +129,9 @@ class RestaurantsThumbnail extends StatelessWidget {
                             ? 'Free Delivery'
                             : '\$$deliveryFee Delivery fee',
                         size: 12,
-                        color: kBlackColor.withOpacity(0.4),
+                        color: isDark
+                            ? kPrimaryColor.withOpacity(0.4)
+                            : kBlackColor.withOpacity(0.4),
                       ),
                     ],
                   ),

@@ -35,12 +35,17 @@ Widget headingTiles({
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        MyText(
-          text: heading,
-          size: 17,
-          letterSpacing: 0.4,
-          weight: FontWeight.w700,
-        ),
+        Obx(() {
+          return MyText(
+            text: heading,
+            size: 17,
+            letterSpacing: 0.4,
+            weight: FontWeight.w700,
+            color: themeController.isDarkTheme.value
+                ? kPrimaryColor
+                : kBlackColor2,
+          );
+        }),
         MyText(
           onTap: onSeeAll,
           text: 'See All',

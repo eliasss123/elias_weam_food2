@@ -10,9 +10,10 @@ class SimpleToggleButtons extends StatelessWidget {
     required this.isSelected,
     required this.onTap,
     this.paddingHorizontal,
+    required this.isDark,
   }) : super(key: key);
   final String text;
-  final bool isSelected;
+  final bool isSelected, isDark;
   final VoidCallback onTap;
   double? paddingHorizontal;
 
@@ -28,7 +29,11 @@ class SimpleToggleButtons extends StatelessWidget {
           horizontal: 7,
         ),
         decoration: BoxDecoration(
-          color: isSelected ? kSecondaryColor : kPrimaryColor,
+          color: isSelected
+              ? kSecondaryColor
+              : isDark
+                  ? kDarkInputBgColor
+                  : kPrimaryColor,
           borderRadius: BorderRadius.circular(13),
           boxShadow: [
             BoxShadow(
@@ -50,7 +55,13 @@ class SimpleToggleButtons extends StatelessWidget {
             child: MyText(
               text: text,
               size: 13,
-              color: isSelected ? kPrimaryColor : kGreyColor3,
+              color: isSelected
+                  ? isDark
+                      ? kBlackColor2
+                      : kPrimaryColor
+                  : isDark
+                      ? kDarkModeGrey1Color
+                      : kGreyColor3,
               weight: isSelected ? FontWeight.w700 : FontWeight.w400,
             ),
           ),
