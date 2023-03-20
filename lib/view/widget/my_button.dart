@@ -1,6 +1,8 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class MyButton extends StatelessWidget {
@@ -24,29 +26,40 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(radius ?? 16),
-        color: isActive! ? bgColor ?? kSecondaryColor : kDisableColor,
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: isActive! ? onTap : null,
-          splashColor: kPrimaryColor.withOpacity(0.1),
-          highlightColor: kPrimaryColor.withOpacity(0.1),
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return Container(
+        height: height,
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius ?? 16),
-          child: Center(
-            child: MyText(
-              text: buttonText,
-              size: textSize,
-              weight: fontWeight ?? FontWeight.w700,
-              color: isActive! ? kPrimaryColor : kDisableTextColor,
+          color: isActive!
+              ? bgColor ?? kSecondaryColor
+              : isDark
+                  ? kPrimaryColor.withOpacity(0.10)
+                  : kDisableColor,
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: isActive! ? onTap : null,
+            splashColor: kPrimaryColor.withOpacity(0.1),
+            highlightColor: kPrimaryColor.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(radius ?? 16),
+            child: Center(
+              child: MyText(
+                text: buttonText,
+                size: textSize,
+                weight: fontWeight ?? FontWeight.w700,
+                color: isActive!
+                    ? kPrimaryColor
+                    : isDark
+                        ? kPrimaryColor.withOpacity(0.26)
+                        : kDisableTextColor,
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

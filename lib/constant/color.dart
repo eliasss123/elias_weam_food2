@@ -1,6 +1,8 @@
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:flutter/material.dart';
 
+// LIGHT MODE
 const kPrimaryColor = Color(0xffFFFFFF);
 const kSecondaryColor = Color(0xff34D186);
 const kTertiaryColor = Color(0xffA6A6A6);
@@ -68,6 +70,13 @@ const kShadowColor = Color(0xff888888);
 var kHintTextColor = const Color(0xff474847).withOpacity(0.60);
 var kDisableColor = const Color(0xff000000).withOpacity(0.10);
 var kDisableTextColor = const Color(0xff000000).withOpacity(0.26);
+
+// DARK THEME COLOR
+const kDarkPrimaryColor = Color(0xff191919);
+const kDarkInputBgColor = Color(0xff272727);
+const kDarkHintColor = Color(0xff474847);
+const kDarkBorderColor = Color(0xffCCCCCC);
+const kDarkModeGreyColor = Color(0xffA6A6A6);
 
 class ContainerDec {
   static final border3R16 = BoxDecoration(

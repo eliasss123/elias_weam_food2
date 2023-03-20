@@ -1,3 +1,4 @@
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/forgot_pass/verify_code_for_email.dart';
 import 'package:elias_weam_food2/view/widget/filled_text_field.dart';
 import 'package:elias_weam_food2/view/widget/headings.dart';
@@ -16,50 +17,55 @@ class _ResetWithEmailState extends State<ResetWithEmail> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: simpleAppBar(),
-      body: ListView(
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return Scaffold(
+        appBar: simpleAppBar(
+          isDark: isDark,
         ),
-        children: [
-          authHeading('Reset Password'),
-          SizedBox(
-            height: 8,
+        body: ListView(
+          shrinkWrap: true,
+          physics: BouncingScrollPhysics(),
+          padding: EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
           ),
-          authSubHeading(
-              'Please enter your email, we will send verification code to your email.'),
-          SizedBox(
-            height: 40,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                FilledTextField(
-                  labelText: 'Email',
-                  hintText: 'louisiana12232@email.com',
-                  onChanged: (value) {
-                    setState(() {
-                      value.isNotEmpty ? isActive = true : isActive = false;
-                    });
-                  },
-                  marginBottom: 25.0,
-                ),
-                MyButton(
-                  isActive: isActive,
-                  buttonText: 'Continue',
-                  onTap: () => Get.to(() => VerifyCodeForEmail()),
-                ),
-              ],
+          children: [
+            authHeading('Reset Password'),
+            SizedBox(
+              height: 8,
             ),
-          ),
-        ],
-      ),
-    );
+            authSubHeading(
+                'Please enter your email, we will send verification code to your email.'),
+            SizedBox(
+              height: 40,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  FilledTextField(
+                    labelText: 'Email',
+                    hintText: 'louisiana12232@email.com',
+                    onChanged: (value) {
+                      setState(() {
+                        value.isNotEmpty ? isActive = true : isActive = false;
+                      });
+                    },
+                    marginBottom: 25.0,
+                  ),
+                  MyButton(
+                    isActive: isActive,
+                    buttonText: 'Continue',
+                    onTap: () => Get.to(() => VerifyCodeForEmail()),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    });
   }
 }

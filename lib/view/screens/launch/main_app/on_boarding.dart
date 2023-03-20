@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/sign_up.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
@@ -80,11 +81,16 @@ class _OnBoardingState extends State<OnBoarding> {
                           alignment: WrapAlignment.center,
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            MyText(
-                              text: 'Delivery at your ',
-                              size: 20,
-                              weight: FontWeight.w700,
-                            ),
+                            Obx(() {
+                              return MyText(
+                                text: 'Delivery at your ',
+                                size: 20,
+                                weight: FontWeight.w700,
+                                color: themeController.isDarkTheme.value
+                                    ? kPrimaryColor
+                                    : kBlackColor2,
+                              );
+                            }),
                             MyText(
                               text: 'doorstep',
                               size: 20,
@@ -93,17 +99,21 @@ class _OnBoardingState extends State<OnBoarding> {
                             ),
                           ],
                         ),
-                        MyText(
-                          paddingTop: 13,
-                          paddingRight: 30,
-                          paddingLeft: 30,
-                          text:
-                              'Your order will be delivered as soon as possible by our courier.',
-                          color: kBlackColor2.withOpacity(0.48),
-                          height: 1.6,
-                          size: 16,
-                          align: TextAlign.center,
-                        ),
+                        Obx(() {
+                          return MyText(
+                            paddingTop: 13,
+                            paddingRight: 30,
+                            paddingLeft: 30,
+                            text:
+                                'Your order will be delivered as soon as possible by our courier.',
+                            color: themeController.isDarkTheme.value
+                                ? kPrimaryColor.withOpacity(0.68)
+                                : kBlackColor2.withOpacity(0.48),
+                            height: 1.6,
+                            size: 16,
+                            align: TextAlign.center,
+                          );
+                        }),
                       ],
                     ),
                   );

@@ -1,7 +1,9 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/main.dart';
+import 'package:elias_weam_food2/view/screens/launch/main_app/splash_screen.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/recent_orders/recent_orders.dart';
+import 'package:elias_weam_food2/view/screens/main_app/profile/change_theme.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/help_center.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/languages.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/my_account.dart';
@@ -28,21 +30,24 @@ class Profile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Wrap(
-              spacing: 7,
-              alignment: WrapAlignment.end,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                Image.asset(
-                  Assets.imagesLogout,
-                  height: 15,
-                ),
-                MyText(
-                  text: 'Logout',
-                  size: 16,
-                  paddingRight: 20,
-                ),
-              ],
+            GestureDetector(
+              onTap: () => Get.offAll(() => SplashScreen()),
+              child: Wrap(
+                spacing: 7,
+                alignment: WrapAlignment.end,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  Image.asset(
+                    Assets.imagesLogout,
+                    height: 15,
+                  ),
+                  MyText(
+                    text: 'Logout',
+                    size: 16,
+                    paddingRight: 20,
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 10,
@@ -109,6 +114,13 @@ class Profile extends StatelessWidget {
                     title: 'Language',
                     onTap: () => Get.to(
                       () => Languages(),
+                    ),
+                  ),
+                  profileTiles(
+                    icon: Assets.imagesTheme,
+                    title: 'Change Theme',
+                    onTap: () => Get.to(
+                      () => ChangeTheme(),
                     ),
                   ),
                   profileTiles(

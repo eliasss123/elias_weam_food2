@@ -1,3 +1,4 @@
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/forgot_pass/verification_code_for_phone.dart';
 import 'package:elias_weam_food2/view/widget/filled_text_field.dart';
@@ -14,62 +15,68 @@ class ResetWithPhone extends StatefulWidget {
 
 class _ResetWithPhoneState extends State<ResetWithPhone> {
   bool isActive = false;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: simpleAppBar(),
-      body: ListView(
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return Scaffold(
+        appBar: simpleAppBar(
+          isDark: isDark,
         ),
-        children: [
-          authHeading('Reset Password'),
-          SizedBox(
-            height: 8,
+        body: ListView(
+          shrinkWrap: true,
+          physics: BouncingScrollPhysics(),
+          padding: EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
           ),
-          authSubHeading(
-              'Please enter your phone number, we will send a verification code to your phone number.'),
-          SizedBox(
-            height: 40,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                FilledTextField(
-                  havePrefix: true,
-                  prefix: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        Assets.imagesPhone,
-                        height: 17.08,
-                      ),
-                    ],
-                  ),
-                  labelText: 'Phone Number',
-                  hintText: '(+1) 234 567 890',
-                  onChanged: (value) {
-                    setState(() {
-                      value.isNotEmpty ? isActive = true : isActive = false;
-                    });
-                  },
-                  marginBottom: 25.0,
-                ),
-                MyButton(
-                  isActive: isActive,
-                  buttonText: 'Continue',
-                  onTap: () => Get.to(() => VerifyCodeForPhone()),
-                ),
-              ],
+          children: [
+            authHeading('Reset Password'),
+            SizedBox(
+              height: 8,
             ),
-          ),
-        ],
-      ),
-    );
+            authSubHeading(
+                'Please enter your phone number, we will send a verification code to your phone number.'),
+            SizedBox(
+              height: 40,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  FilledTextField(
+                    havePrefix: true,
+                    prefix: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          Assets.imagesPhone,
+                          height: 17.08,
+                        ),
+                      ],
+                    ),
+                    labelText: 'Phone Number',
+                    hintText: '(+1) 234 567 890',
+                    onChanged: (value) {
+                      setState(() {
+                        value.isNotEmpty ? isActive = true : isActive = false;
+                      });
+                    },
+                    marginBottom: 25.0,
+                  ),
+                  MyButton(
+                    isActive: isActive,
+                    buttonText: 'Continue',
+                    onTap: () => Get.to(() => VerifyCodeForPhone()),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    });
   }
 }

@@ -28,6 +28,8 @@ dependencies:
   syncfusion_flutter_gauges:
   syncfusion_flutter_charts:
   flutter_rating_bar: ^4.0.1
+  lottie:
+  shared_preferences: 
 
 
 

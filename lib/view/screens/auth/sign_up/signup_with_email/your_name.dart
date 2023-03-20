@@ -1,3 +1,4 @@
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_email/create_pass.dart';
 import 'package:elias_weam_food2/view/widget/headings.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
@@ -30,48 +31,53 @@ class _YourNameState extends State<YourName> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: simpleAppBar(),
-      body: ListView(
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return Scaffold(
+        appBar: simpleAppBar(
+          isDark: isDark,
         ),
-        children: [
-          authHeading('Enter your name'),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: 28,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SimpleTextField(
-                  controller: fNameCon,
-                  onChanged: (value) => onChanged(),
-                  hintText: 'First name',
-                ),
-                SimpleTextField(
-                  controller: lNameCon,
-                  onChanged: (value) => onChanged(),
-                  hintText: 'Last Name',
-                  marginBottom: 45,
-                ),
-                MyButton(
-                  isActive: isActive,
-                  buttonText: 'Next',
-                  onTap: () => Get.to(
-                    () => CreatePass(),
-                  ),
-                ),
-              ],
-            ),
+        body: ListView(
+          shrinkWrap: true,
+          physics: BouncingScrollPhysics(),
+          padding: EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
           ),
-        ],
-      ),
-    );
+          children: [
+            authHeading('Enter your name'),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 28,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SimpleTextField(
+                    controller: fNameCon,
+                    onChanged: (value) => onChanged(),
+                    hintText: 'First name',
+                  ),
+                  SimpleTextField(
+                    controller: lNameCon,
+                    onChanged: (value) => onChanged(),
+                    hintText: 'Last Name',
+                    marginBottom: 45,
+                  ),
+                  MyButton(
+                    isActive: isActive,
+                    buttonText: 'Next',
+                    onTap: () => Get.to(
+                      () => CreatePass(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    });
   }
 }

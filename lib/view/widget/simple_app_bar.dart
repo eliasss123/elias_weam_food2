@@ -9,9 +9,10 @@ AppBar simpleAppBar({
   String? title,
   FontWeight? titleWeight,
   double? titleSize,
+  bool? isDark = false,
 }) {
   return AppBar(
-    backgroundColor: bgColor ?? kPrimaryColor,
+    backgroundColor: isDark! ? kDarkPrimaryColor : bgColor ?? kPrimaryColor,
     centerTitle: true,
     leading: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -21,13 +22,15 @@ AppBar simpleAppBar({
           child: Image.asset(
             Assets.imagesArrowBack,
             height: 24,
+            color: isDark ? kPrimaryColor : kBlackColor2,
           ),
         ),
       ],
     ),
     title: MyText(
       text: title ?? '',
-      size:  titleSize ?? 21,
+      size: titleSize ?? 21,
+      color: isDark ? kPrimaryColor : kBlackColor2,
       weight: titleWeight ?? FontWeight.w500,
     ),
   );

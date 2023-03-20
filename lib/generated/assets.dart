@@ -40,6 +40,7 @@ class Assets {
   static const String imagesCooking = 'assets/images/cooking.png';
   static const String imagesCreditCard = 'assets/images/credit_card.png';
   static const String imagesCurrentLoc = 'assets/images/current_loc.png';
+  static const String imagesDarkModeAnimatedLogo = 'assets/images/dark_mode_animated_logo.json';
   static const String imagesDeal = 'assets/images/deal.png';
   static const String imagesDeals = 'assets/images/deals.png';
   static const String imagesDelete = 'assets/images/delete.png';
@@ -87,6 +88,7 @@ class Assets {
   static const String imagesItalianPizza = 'assets/images/italian_pizza.png';
   static const String imagesLatestDeal = 'assets/images/latest_deal.png';
   static const String imagesLess = 'assets/images/less.png';
+  static const String imagesLightModeAnimatedLogo = 'assets/images/light_mode_animated_logo.json';
   static const String imagesLine = 'assets/images/line.png';
   static const String imagesLineVertical = 'assets/images/line_vertical.png';
   static const String imagesLocationEmptyState = 'assets/images/location_empty_state.png';
@@ -122,6 +124,7 @@ class Assets {
   static const String imagesOrderGreen = 'assets/images/order_green.png';
   static const String imagesOrderLocation = 'assets/images/order_location.png';
   static const String imagesOrders = 'assets/images/orders.png';
+  static const String imagesPalette = 'assets/images/palette.png';
   static const String imagesPansi = 'assets/images/pansi.png';
   static const String imagesPasta = 'assets/images/pasta.png';
   static const String imagesPayApple = 'assets/images/pay_apple.png';
@@ -165,6 +168,7 @@ class Assets {
   static const String imagesStats = 'assets/images/stats.png';
   static const String imagesSteak = 'assets/images/steak.png';
   static const String imagesSupport = 'assets/images/support.png';
+  static const String imagesTheme = 'assets/images/theme.png';
   static const String imagesTime = 'assets/images/time.png';
   static const String imagesTimer = 'assets/images/timer.png';
   static const String imagesUnCompleted = 'assets/images/un_completed.png';

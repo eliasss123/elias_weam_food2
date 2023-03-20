@@ -1,5 +1,7 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class PrefixTextField extends StatelessWidget {
@@ -24,53 +26,59 @@ class PrefixTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      obscuringCharacter: '•',
-      obscureText: isObSecure!,
-      controller: controller,
-      onChanged: onChanged,
-      keyboardType: keyBoardType,
-      textInputAction: TextInputAction.next,
-      textAlignVertical: TextAlignVertical.center,
-      style: TextStyle(
-        fontSize: 14,
-        color: kBlackColor2,
-      ),
-      decoration: InputDecoration(
-        counterText: '',
-        contentPadding: EdgeInsets.symmetric(
-          horizontal: 8,
-          vertical: 16.5,
-        ),
-        hintText: hintText,
-        hintStyle: TextStyle(
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return TextFormField(
+        cursorColor: kSecondaryColor,
+        obscuringCharacter: '•',
+        obscureText: isObSecure!,
+        controller: controller,
+        onChanged: onChanged,
+        keyboardType: keyBoardType,
+        textInputAction: TextInputAction.next,
+        textAlignVertical: TextAlignVertical.center,
+        style: TextStyle(
           fontSize: 14,
-          color: kHintTextColor,
+          color: isDark ? kPrimaryColor : kBlackColor2,
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.0),
-          borderSide: BorderSide(
-            color: kBorderColor,
-            width: 1.0,
+        decoration: InputDecoration(
+          counterText: '',
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 8,
+            vertical: 16.5,
           ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.0),
-          borderSide: BorderSide(
-            color: kSecondaryColor,
-            width: 1.0,
+          hintText: hintText,
+          hintStyle: TextStyle(
+            fontSize: 14,
+            color: isDark ? kDarkHintColor : kHintTextColor,
           ),
-        ),
-        prefixIcon: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              prefixIcon!,
-              height: prefixIconSize,
+          filled: true,
+          fillColor: isDark ? kDarkInputBgColor : Colors.transparent,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16.0),
+            borderSide: BorderSide(
+              color: isDark ? kPrimaryColor.withOpacity(0.06) : kBorderColor,
+              width: 1.0,
             ),
-          ],
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16.0),
+            borderSide: BorderSide(
+              color: kSecondaryColor,
+              width: 1.0,
+            ),
+          ),
+          prefixIcon: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                prefixIcon!,
+                height: prefixIconSize,
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

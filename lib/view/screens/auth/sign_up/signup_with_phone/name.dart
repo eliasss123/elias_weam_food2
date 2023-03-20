@@ -1,3 +1,4 @@
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/view/screens/main_app/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:elias_weam_food2/view/widget/congrats.dart';
 import 'package:elias_weam_food2/view/widget/headings.dart';
@@ -31,54 +32,59 @@ class _NameState extends State<Name> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: simpleAppBar(),
-      body: ListView(
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return Scaffold(
+        appBar: simpleAppBar(
+          isDark: isDark,
         ),
-        children: [
-          authHeading('Enter your name'),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: 28,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SimpleTextField(
-                  controller: fNameCon,
-                  onChanged: (value) => onChanged(),
-                  hintText: 'First name',
-                ),
-                SimpleTextField(
-                  controller: lNameCon,
-                  onChanged: (value) => onChanged(),
-                  hintText: 'Last Name',
-                  marginBottom: 45,
-                ),
-                MyButton(
-                  isActive: isActive,
-                  buttonText: 'Next',
-                  onTap: () => Get.to(
-                    () => Congrats(
-                      heading: 'Congratulations!',
-                      congratsMsg:
-                          'Your account is complete, please enjoy the best menu from us.',
-                      onContinue: () => Get.offAll(() => BottomNavBar()),
-                      buttonText: 'Done',
+        body: ListView(
+          shrinkWrap: true,
+          physics: BouncingScrollPhysics(),
+          padding: EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
+          ),
+          children: [
+            authHeading('Enter your name'),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 28,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SimpleTextField(
+                    controller: fNameCon,
+                    onChanged: (value) => onChanged(),
+                    hintText: 'First name',
+                  ),
+                  SimpleTextField(
+                    controller: lNameCon,
+                    onChanged: (value) => onChanged(),
+                    hintText: 'Last Name',
+                    marginBottom: 45,
+                  ),
+                  MyButton(
+                    isActive: isActive,
+                    buttonText: 'Next',
+                    onTap: () => Get.to(
+                      () => Congrats(
+                        heading: 'Congratulations!',
+                        congratsMsg:
+                            'Your account is complete, please enjoy the best menu from us.',
+                        onContinue: () => Get.offAll(() => BottomNavBar()),
+                        buttonText: 'Done',
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    });
   }
 }
