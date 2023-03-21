@@ -18,7 +18,7 @@ class Support extends StatelessWidget {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
       return Scaffold(
-        backgroundColor: kSeoulColor6,
+        backgroundColor: isDark ? kDarkPrimaryColor : kSeoulColor6,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,6 +33,7 @@ class Support extends StatelessWidget {
                       Assets.imagesArrowBack,
                       height: 24,
                       width: 24,
+                      color: isDark ? kPrimaryColor : kBlackColor2,
                     ),
                   ),
                   Expanded(
@@ -42,6 +43,7 @@ class Support extends StatelessWidget {
                         size: 24,
                         weight: FontWeight.w700,
                         align: TextAlign.center,
+                        color: isDark ? kPrimaryColor : kBlackColor2,
                       ),
                     ),
                   ),
@@ -55,21 +57,21 @@ class Support extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset(
-                  Assets.imagesCallUs,
+                  isDark ? Assets.imagesSupportCall : Assets.imagesCallUs,
                   height: 94,
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Image.asset(
-                  Assets.imagesEmailUs,
+                  isDark ? Assets.imagesSupportEmail : Assets.imagesEmailUs,
                   height: 94,
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Image.asset(
-                  Assets.imagesChat,
+                  isDark ? Assets.imagesSupportChat : Assets.imagesChat,
                   height: 94,
                 ),
               ],

@@ -176,6 +176,9 @@ class Assets {
   static const String imagesStatusLogoDark = 'assets/images/status_logo_dark.png';
   static const String imagesSteak = 'assets/images/steak.png';
   static const String imagesSupport = 'assets/images/support.png';
+  static const String imagesSupportCall = 'assets/images/support_call.png';
+  static const String imagesSupportChat = 'assets/images/support_chat.png';
+  static const String imagesSupportEmail = 'assets/images/support_email.png';
   static const String imagesTheme = 'assets/images/theme.png';
   static const String imagesTime = 'assets/images/time.png';
   static const String imagesTimer = 'assets/images/timer.png';

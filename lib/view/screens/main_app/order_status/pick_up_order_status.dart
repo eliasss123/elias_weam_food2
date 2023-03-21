@@ -118,7 +118,9 @@ class PickupOrderStatus extends StatelessWidget {
                           text:
                               'Your order is already done and waiting for you!',
                           size: 14,
-                          color: kBlackColor.withOpacity(0.5),
+                          color: isDark
+                              ? kPrimaryColor.withOpacity(0.5)
+                              : kBlackColor.withOpacity(0.5),
                           letterSpacing: 0.0,
                           paddingBottom: 30,
                         ),
