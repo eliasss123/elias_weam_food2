@@ -8,10 +8,12 @@ class AddressToggleButton extends StatelessWidget {
     required this.text,
     required this.isSelected,
     required this.onTap,
+    required this.isDark,
   }) : super(key: key);
   final String text;
   final bool isSelected;
   final VoidCallback onTap;
+  final bool isDark;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +26,19 @@ class AddressToggleButton extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
-          color: isSelected ? kLightGreenColor : Colors.transparent,
+          color: isSelected
+              ? isDark
+                  ? kSecondaryColor.withOpacity(0.2)
+                  : kLightGreenColor
+              : Colors.transparent,
           border: Border.all(
-            color: isSelected ? kLightGreenColor : kBorderColor3,
+            color: isSelected
+                ? isDark
+                    ? kSecondaryColor.withOpacity(0.0)
+                    : kLightGreenColor
+                : isDark
+                    ? kDarkModeGreyColor
+                    : kBorderColor3,
             width: 1.0,
           ),
         ),
@@ -34,7 +46,11 @@ class AddressToggleButton extends StatelessWidget {
           text: text,
           size: 12,
           weight: FontWeight.w500,
-          color: kSecondaryColor,
+          color: isSelected
+              ? isDark
+                  ? kSecondaryColor
+                  : kDarkModeGreyColor
+              : kDarkModeGreyColor,
         ),
       ),
     );

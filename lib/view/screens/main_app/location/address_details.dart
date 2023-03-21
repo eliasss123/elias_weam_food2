@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 class AddressDetails extends StatelessWidget {
   AddressDetails({
     Key? key,
+    required this.isDark,
   }) : super(key: key);
 
   final List<String> addressOp = [
@@ -17,6 +18,8 @@ class AddressDetails extends StatelessWidget {
     'Work',
     'Other',
   ];
+
+  final bool isDark;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +38,7 @@ class AddressDetails extends StatelessWidget {
             size: 18,
             weight: FontWeight.w500,
             paddingBottom: 8,
+            color: isDark ? kPrimaryColor : kBlackColor2,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -60,12 +64,13 @@ class AddressDetails extends StatelessWidget {
                           size: 16,
                           weight: FontWeight.w700,
                           paddingBottom: 7,
+                          color: isDark ? kPrimaryColor : kBlackColor2,
                         ),
                         MyText(
                           text: '27H8+RC Mi’ilya, bornad street, Israel',
                           size: 14,
                           weight: FontWeight.w500,
-                          color: kGreyColor5,
+                          color: isDark ? kGreyColor12 : kGreyColor5,
                           paddingBottom: 15,
                         ),
                       ],
@@ -78,7 +83,7 @@ class AddressDetails extends StatelessWidget {
               ),
               Container(
                 height: 1,
-                color: kBorderColor3,
+                color: isDark ? kLightGreyColor3 : kBorderColor3,
               ),
             ],
           ),
@@ -96,6 +101,7 @@ class AddressDetails extends StatelessWidget {
                 showModalBottomSheet(
                   context: context,
                   isScrollControlled: true,
+                  backgroundColor: isDark ? kDarkInputBgColor : kPrimaryColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(35),
@@ -103,7 +109,9 @@ class AddressDetails extends StatelessWidget {
                     ),
                   ),
                   builder: (_) {
-                    return SaveAddress();
+                    return SaveAddress(
+                      isDark: isDark,
+                    );
                   },
                 );
               },
@@ -114,5 +122,3 @@ class AddressDetails extends StatelessWidget {
     );
   }
 }
-
-

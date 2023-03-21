@@ -8,6 +8,7 @@ class Assets {
   static const String imagesApple = 'assets/images/apple.png';
   static const String imagesApplePay = 'assets/images/apple_pay.png';
   static const String imagesArrowBack = 'assets/images/arrow_back.png';
+  static const String imagesArrowBackDark = 'assets/images/arrow_back_dark.png';
   static const String imagesArrowDropDown = 'assets/images/arrow_drop_down.png';
   static const String imagesArrowForward = 'assets/images/arrow_forward.png';
   static const String imagesArrowRight = 'assets/images/arrow_right.png';
@@ -41,6 +42,8 @@ class Assets {
   static const String imagesCreditCard = 'assets/images/credit_card.png';
   static const String imagesCurrentLoc = 'assets/images/current_loc.png';
   static const String imagesDarkModeAnimatedLogo = 'assets/images/dark_mode_animated_logo.json';
+  static const String imagesDarkModeLoc = 'assets/images/dark_mode_loc.png';
+  static const String imagesDarkModeSearch = 'assets/images/dark_mode_search.png';
   static const String imagesDeal = 'assets/images/deal.png';
   static const String imagesDeals = 'assets/images/deals.png';
   static const String imagesDelete = 'assets/images/delete.png';
@@ -155,6 +158,7 @@ class Assets {
   static const String imagesRewards = 'assets/images/rewards.png';
   static const String imagesRibbion = 'assets/images/ribbion.png';
   static const String imagesRider = 'assets/images/rider.png';
+  static const String imagesRoundedArrowBackDark = 'assets/images/rounded_arrow_back_dark.png';
   static const String imagesRoundedBack = 'assets/images/rounded_back.png';
   static const String imagesRoundedBackBlk = 'assets/images/rounded_back_blk.png';
   static const String imagesRoundedCheckBorder = 'assets/images/rounded_check_border.png';

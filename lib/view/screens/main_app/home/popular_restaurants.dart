@@ -13,8 +13,11 @@ class PopularRestaurants extends StatelessWidget {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
       return Scaffold(
-        backgroundColor: kSeoulColor3,
-        appBar: simpleAppBar(bgColor: kSeoulColor3),
+        backgroundColor: isDark ? kDarkPrimaryColor : kSeoulColor3,
+        appBar: simpleAppBar(
+          bgColor: kSeoulColor3,
+          isDark: isDark,
+        ),
         body: ListView(
           shrinkWrap: true,
           padding: EdgeInsets.symmetric(horizontal: 20),
@@ -24,6 +27,7 @@ class PopularRestaurants extends StatelessWidget {
               text: 'Popular right now',
               size: 22,
               weight: FontWeight.w700,
+              color: isDark ? kPrimaryColor : kBlackColor2,
             ),
             ListView.builder(
               shrinkWrap: true,
@@ -44,8 +48,8 @@ class PopularRestaurants extends StatelessWidget {
                     imgUrl: index == 0
                         ? Assets.imagesPicture
                         : index == 1
-                        ? Assets.imagesPicture2
-                        : Assets.imagesPicture4,
+                            ? Assets.imagesPicture2
+                            : Assets.imagesPicture4,
                     name: 'Marina Coastal Food',
                     deliveryTime: '30',
                     totalRating: 4.8,

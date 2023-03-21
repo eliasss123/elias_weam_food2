@@ -21,6 +21,7 @@ class HomeDetailAppBar extends StatelessWidget {
     required this.isLiked,
     required this.isOutOfRange,
     required this.isClosed,
+    required this.isDark,
   }) : super(key: key);
 
   final String imgUrl,
@@ -33,13 +34,13 @@ class HomeDetailAppBar extends StatelessWidget {
 
   final double totalRating;
   final VoidCallback onLiked;
-  final bool isLiked, isOutOfRange, isClosed;
+  final bool isLiked, isOutOfRange, isClosed, isDark;
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: kSeoulColor3,
+      backgroundColor: isDark ? kDarkPrimaryColor : kSeoulColor3,
       expandedHeight: 380,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
@@ -77,7 +78,9 @@ class HomeDetailAppBar extends StatelessWidget {
                         GestureDetector(
                           onTap: () => Get.back(),
                           child: Image.asset(
-                            Assets.imagesRoundedBack,
+                            isDark
+                                ? Assets.imagesArrowBackDark
+                                : Assets.imagesRoundedBack,
                             height: 41,
                           ),
                         ),

@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/view/screens/main_app/notifications/promotions.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
@@ -56,33 +57,38 @@ class NewsAndUpdates extends StatelessWidget {
       itemCount: dummyNotifications.length,
       itemBuilder: (context, index) {
         var data = dummyNotifications[index];
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            MyText(
-              text: data['dateTime'],
-              size: 18,
-              weight: FontWeight.w500,
-              paddingTop: 10,
-              paddingLeft: 20,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: List.generate(
-                data['content'].length,
-                (i) {
-                  var content = data['content'][i];
-                  return NewsAndUpdateTiles(
-                    avatarUrl: content['avatarUrl'],
-                    notificationText: content['notificationText'],
-                    subTitle: content['subTitle'],
-                    onTap: () => Get.to(() => Promotions()),
-                  );
-                },
+        return Obx(() {
+          bool isDark = themeController.isDarkTheme.value;
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              MyText(
+                text: data['dateTime'],
+                size: 18,
+                weight: FontWeight.w500,
+                paddingTop: 10,
+                paddingLeft: 20,
+                color: isDark ? kPrimaryColor : kBlackColor2,
               ),
-            ),
-          ],
-        );
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: List.generate(
+                  data['content'].length,
+                  (i) {
+                    var content = data['content'][i];
+                    return NewsAndUpdateTiles(
+                      avatarUrl: content['avatarUrl'],
+                      notificationText: content['notificationText'],
+                      subTitle: content['subTitle'],
+                      onTap: () => Get.to(() => Promotions()),
+                      isDark: isDark,
+                    );
+                  },
+                ),
+              ),
+            ],
+          );
+        });
       },
     );
   }
@@ -95,10 +101,12 @@ class NewsAndUpdateTiles extends StatelessWidget {
     required this.notificationText,
     required this.subTitle,
     required this.onTap,
+    required this.isDark,
   }) : super(key: key);
 
   final String avatarUrl, notificationText, subTitle;
   final VoidCallback onTap;
+  final bool isDark;
 
   @override
   Widget build(BuildContext context) {
@@ -139,6 +147,7 @@ class NewsAndUpdateTiles extends StatelessWidget {
                         size: 15,
                         weight: FontWeight.w700,
                         paddingBottom: 6,
+                        color: isDark ? kPrimaryColor : kBlackColor2,
                       ),
                       MyText(
                         text: subTitle,

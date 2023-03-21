@@ -6,6 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SaveAddress extends StatelessWidget {
+  final bool isDark;
+
+  const SaveAddress({
+    super.key,
+    required this.isDark,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,10 +35,11 @@ class SaveAddress extends StatelessWidget {
                   size: 18,
                   weight: FontWeight.w500,
                   paddingBottom: 25,
+                  color: isDark ? kPrimaryColor : kBlackColor2,
                 ),
                 MyText(
                   text: 'Please provide your exact location:',
-                  color: kBlackColor,
+                  color: isDark ? kPrimaryColor : kBlackColor,
                   paddingBottom: 12,
                 ),
                 Container(
@@ -67,7 +75,7 @@ class SaveAddress extends StatelessWidget {
                               text: 'Private house',
                               size: 14,
                               weight: FontWeight.w700,
-                              color: kBlackColor,
+                              color: isDark ? kPrimaryColor : kBlackColor,
                             ),
                           ),
                           Expanded(
@@ -114,7 +122,7 @@ class SaveAddress extends StatelessWidget {
               text: title,
               size: 14,
               weight: FontWeight.w500,
-              color: kBlackColor,
+              color: isDark ? kPrimaryColor : kBlackColor,
             ),
           ),
           Expanded(
