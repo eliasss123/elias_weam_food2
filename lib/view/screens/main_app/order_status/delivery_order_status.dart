@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/model/recent_order_model/recent_order_model.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/order_receipt.dart';
@@ -80,239 +81,257 @@ class _TrackOrderState extends State<TrackOrder> {
           context: context,
           builder: (_) {
             var platform = Theme.of(context).platform;
-            return SimpleBottomSheet(
-              height: Get.height * 0.9,
-              content: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Expanded(
-                      child: ListView(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-                        physics: BouncingScrollPhysics(),
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Wrap(
-                                  alignment: WrapAlignment.center,
-                                  children: [
-                                    MyText(
-                                      text: 'Estimated delivery time is ',
-                                      size: 17,
-                                      weight: FontWeight.w500,
-                                      letterSpacing: 0.0,
-                                    ),
-                                    MyText(
-                                      text: '6:19 PM',
-                                      size: 17,
-                                      weight: FontWeight.w700,
-                                      letterSpacing: 0.0,
-                                    ),
-                                  ],
-                                ),
-                                MyText(
-                                  paddingTop: 10,
-                                  text:
-                                      'Your order is already on its way to you!',
-                                  size: 14,
-                                  color: kBlackColor.withOpacity(0.5),
-                                  align: TextAlign.center,
-                                  letterSpacing: 0.0,
-                                  paddingBottom: 30,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: List.generate(
-                                    4,
-                                    (index) {
-                                      var data = orderStatus[index];
-                                      return index == 3
-                                          ? Image.asset(
-                                              data['icon'],
-                                              height: data['iconSize'],
-                                            )
-                                          : Expanded(
-                                              child: Row(
-                                                children: [
-                                                  Image.asset(
-                                                    data['icon'],
-                                                    height: data['iconSize'],
-                                                  ),
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding: const EdgeInsets
-                                                          .symmetric(
-                                                        horizontal: 8,
-                                                      ),
-                                                      child: Image.asset(
-                                                        Assets.imagesLine,
+            return Obx(() {
+              bool isDark = themeController.isDarkTheme.value;
+              return SimpleBottomSheet(
+                height: Get.height * 0.9,
+                content: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: ListView(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          physics: BouncingScrollPhysics(),
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Wrap(
+                                    alignment: WrapAlignment.center,
+                                    children: [
+                                      MyText(
+                                        text: 'Estimated delivery time is ',
+                                        size: 17,
+                                        weight: FontWeight.w500,
+                                        letterSpacing: 0.0,
+                                        color: isDark
+                                            ? kPrimaryColor
+                                            : kBlackColor2,
+                                      ),
+                                      MyText(
+                                        text: '6:19 PM',
+                                        size: 17,
+                                        weight: FontWeight.w700,
+                                        letterSpacing: 0.0,
+                                        color: isDark
+                                            ? kPrimaryColor
+                                            : kBlackColor2,
+                                      ),
+                                    ],
+                                  ),
+                                  MyText(
+                                    paddingTop: 10,
+                                    text:
+                                        'Your order is already on its way to you!',
+                                    size: 14,
+                                    color: isDark
+                                        ? kPrimaryColor.withOpacity(0.5)
+                                        : kBlackColor.withOpacity(0.5),
+                                    align: TextAlign.center,
+                                    letterSpacing: 0.0,
+                                    paddingBottom: 30,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: List.generate(
+                                      4,
+                                      (index) {
+                                        var data = orderStatus[index];
+                                        return index == 3
+                                            ? Image.asset(
+                                                data['icon'],
+                                                height: data['iconSize'],
+                                              )
+                                            : Expanded(
+                                                child: Row(
+                                                  children: [
+                                                    Image.asset(
+                                                      data['icon'],
+                                                      height: data['iconSize'],
+                                                    ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                          horizontal: 8,
+                                                        ),
+                                                        child: Image.asset(
+                                                          Assets.imagesLine,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                    },
+                                                  ],
+                                                ),
+                                              );
+                                      },
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.symmetric(vertical: 30),
-                                  height: 1,
-                                  color: kBlackColor5,
-                                ),
-                                SupportCenter(
-                                  orderNo: '701',
-                                ),
-                                SizedBox(
-                                  height: 30,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 20,
-                              horizontal: 15,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(14),
-                              border: Border.all(
-                                width: 1.0,
-                                color: kBorderColor2,
-                              ),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                MyText(
-                                  text: 'Order status activities',
-                                  letterSpacing: 0.0,
-                                  weight: FontWeight.w500,
-                                  paddingBottom: 25,
-                                ),
-                                orderActivitiesStepper(),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(14),
-                              border: Border.all(
-                                width: 1.0,
-                                color: kBorderColor2,
-                              ),
-                            ),
-                            child: Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                borderRadius: BorderRadius.circular(13),
-                                onTap: () => Get.to(
-                                  () => OrderReceipt(
+                                  Container(
+                                    margin: EdgeInsets.symmetric(vertical: 30),
+                                    height: 1,
+                                    color: kBlackColor5,
+                                  ),
+                                  SupportCenter(
                                     orderNo: '701',
-                                    restaurantName: 'Pie pizza restaurant',
-                                    subTotal: '87.10',
-                                    items: [
-                                      OrderDetailsModel(
-                                        itemQuantity: '1',
-                                        itemName: 'Squid Sweet and Sour Salad',
-                                        itemPrice: '19.99',
-                                        subItems: [],
-                                      ),
-                                      OrderDetailsModel(
-                                        itemQuantity: '1',
-                                        itemName: 'Japan Hainanese Sashimi',
-                                        itemPrice: '37.99',
-                                        subItems: [
-                                          OrderDetailsSubItemsModel(
-                                            itemName: 'Teriyaki Sause',
-                                            itemPrice: '0',
-                                          ),
-                                          OrderDetailsSubItemsModel(
-                                            itemName: 'Omelet',
-                                            itemPrice: '2',
-                                          ),
-                                        ],
-                                      ),
-                                      OrderDetailsModel(
-                                        itemQuantity: '1',
-                                        itemName: 'Black Pepper Beef Lumpia',
-                                        itemPrice: '27.12',
-                                        subItems: [],
-                                      ),
-                                    ],
-                                    deliveryFee: '1.5',
-                                    total: '88.6',
-                                    orderDate: '28/10/2021',
-                                    orderDeliveryTime: '16:55',
                                   ),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 20,
+                                horizontal: 15,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(14),
+                                border: Border.all(
+                                  width: 1.0,
+                                  color: kBorderColor2,
                                 ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 10,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  MyText(
+                                    text: 'Order status activities',
+                                    letterSpacing: 0.0,
+                                    weight: FontWeight.w500,
+                                    paddingBottom: 25,
+                                    color:
+                                        isDark ? kPrimaryColor : kBlackColor2,
                                   ),
-                                  child: Row(
-                                    children: [
-                                      Image.asset(
-                                        Assets.imagesOrders,
-                                        height: 26,
-                                        color: kSecondaryColor,
-                                      ),
-                                      Expanded(
-                                        child: MyText(
-                                          paddingLeft: 15,
-                                          text: 'Order Receipt',
-                                          size: 16,
-                                          weight: FontWeight.w500,
-                                          color: kGreyColor5.withOpacity(0.70),
+                                  orderActivitiesStepper(),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(14),
+                                border: Border.all(
+                                  width: 1.0,
+                                  color: kBorderColor2,
+                                ),
+                              ),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(13),
+                                  onTap: () => Get.to(
+                                    () => OrderReceipt(
+                                      orderNo: '701',
+                                      restaurantName: 'Pie pizza restaurant',
+                                      subTotal: '87.10',
+                                      items: [
+                                        OrderDetailsModel(
+                                          itemQuantity: '1',
+                                          itemName:
+                                              'Squid Sweet and Sour Salad',
+                                          itemPrice: '19.99',
+                                          subItems: [],
                                         ),
-                                      ),
-                                      Image.asset(
-                                        Assets.imagesArrowRight,
-                                        height: 22,
-                                        color: kSecondaryColor,
-                                      ),
-                                    ],
+                                        OrderDetailsModel(
+                                          itemQuantity: '1',
+                                          itemName: 'Japan Hainanese Sashimi',
+                                          itemPrice: '37.99',
+                                          subItems: [
+                                            OrderDetailsSubItemsModel(
+                                              itemName: 'Teriyaki Sause',
+                                              itemPrice: '0',
+                                            ),
+                                            OrderDetailsSubItemsModel(
+                                              itemName: 'Omelet',
+                                              itemPrice: '2',
+                                            ),
+                                          ],
+                                        ),
+                                        OrderDetailsModel(
+                                          itemQuantity: '1',
+                                          itemName: 'Black Pepper Beef Lumpia',
+                                          itemPrice: '27.12',
+                                          subItems: [],
+                                        ),
+                                      ],
+                                      deliveryFee: '1.5',
+                                      total: '88.6',
+                                      orderDate: '28/10/2021',
+                                      orderDeliveryTime: '16:55',
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Image.asset(
+                                          Assets.imagesOrders,
+                                          height: 26,
+                                          color: kSecondaryColor,
+                                        ),
+                                        Expanded(
+                                          child: MyText(
+                                            paddingLeft: 15,
+                                            text: 'Order Receipt',
+                                            size: 16,
+                                            weight: FontWeight.w500,
+                                            color:
+                                                kGreyColor5.withOpacity(0.70),
+                                          ),
+                                        ),
+                                        Image.asset(
+                                          Assets.imagesArrowRight,
+                                          height: 22,
+                                          color: kSecondaryColor,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: 15,
-                        right: 15,
-                        bottom: platform == TargetPlatform.iOS ? 3 : 0,
-                      ),
-                      child: MyButton(
-                        buttonText: 'Live tracking',
-                        onTap: () => Get.to(
-                          () => LiveTracking(),
+                            SizedBox(
+                              height: 30,
+                            ),
+                          ],
                         ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 15,
+                          right: 15,
+                          top: 20,
+                          bottom: platform == TargetPlatform.iOS ? 3 : 0,
+                        ),
+                        child: MyButton(
+                          buttonText: 'Live tracking',
+                          onTap: () => Get.to(
+                            () => LiveTracking(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
+              );
+            });
           },
         );
       },
@@ -321,142 +340,154 @@ class _TrackOrderState extends State<TrackOrder> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        alignment: Alignment.bottomRight,
-        children: [
-          Container(
-            height: Get.height,
-            width: Get.width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                  Assets.imagesSimpleMap,
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return Scaffold(
+        body: Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            Container(
+              height: Get.height,
+              width: Get.width,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    Assets.imagesSimpleMap,
+                  ),
+                  fit: BoxFit.cover,
                 ),
-                fit: BoxFit.cover,
               ),
             ),
-          ),
-          Positioned(
-            bottom: 15,
-            right: 10,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Align(
-                  child: CommonImageView(
-                    height: 45,
-                    width: 45,
-                    radius: 12.0,
-                    imagePath: Assets.imagesCurrentLoc,
+            Positioned(
+              bottom: 15,
+              right: 10,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Align(
+                    child: CommonImageView(
+                      height: 45,
+                      width: 45,
+                      radius: 12.0,
+                      imagePath: isDark
+                          ? Assets.imagesDarkModeLoc
+                          : Assets.imagesCurrentLoc,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: 50,
+              left: 20,
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: GestureDetector(
+                  onTap: () => Get.back(),
+                  child: Image.asset(
+                    isDark
+                        ? Assets.imagesArrowBackDark
+                        : Assets.imagesBackRoundedBlack,
+                    height: 43,
                   ),
                 ),
-              ],
-            ),
-          ),
-          Positioned(
-            top: 50,
-            left: 20,
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: GestureDetector(
-                onTap: () => Get.back(),
-                child: Image.asset(
-                  Assets.imagesBackRoundedBlack,
-                  height: 43,
-                ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    });
   }
 
   Widget orderActivitiesStepper() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(
-        orderActivities.length,
-        (index) {
-          var data = orderActivities[index];
-          return index == 3
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    data['isActive'] == true
-                        ? Image.asset(
-                            Assets.imagesCheckRounded,
-                            height: 17,
-                          )
-                        : Image.asset(
-                            Assets.imagesInProgress,
-                            height: 17,
-                          ),
-                    Expanded(
-                      child: MyText(
-                        paddingLeft: 15,
-                        size: 13,
-                        weight: FontWeight.w500,
-                        color: data['isActive'] == true
-                            ? kSecondaryColor
-                            : kGreyColor3,
-                        text: data['title'],
-                        letterSpacing: 0.0,
-                        maxLines: 1,
-                        overFlow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                )
-              : Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        data['isActive'] == true
-                            ? Image.asset(
-                                Assets.imagesCheckRounded,
-                                height: 17,
-                              )
-                            : Image.asset(
-                                Assets.imagesInProgress,
-                                height: 17,
-                              ),
-                        Expanded(
-                          child: MyText(
-                            paddingLeft: 15,
-                            size: 13,
-                            weight: FontWeight.w500,
-                            color: data['isActive'] == true
-                                ? kSecondaryColor
-                                : kGreyColor3,
-                            text: data['title'],
-                            letterSpacing: 0.0,
-                            maxLines: 1,
-                            overFlow: TextOverflow.ellipsis,
-                          ),
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: List.generate(
+          orderActivities.length,
+          (index) {
+            var data = orderActivities[index];
+            return index == 3
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      data['isActive'] == true
+                          ? Image.asset(
+                              Assets.imagesCheckRounded,
+                              height: 17,
+                            )
+                          : Image.asset(
+                              Assets.imagesInProgress,
+                              height: 17,
+                            ),
+                      Expanded(
+                        child: MyText(
+                          paddingLeft: 15,
+                          size: 13,
+                          weight: FontWeight.w500,
+                          color: data['isActive'] == true
+                              ? kSecondaryColor
+                              : isDark
+                                  ? kDarkModeGrey3Color
+                                  : kGreyColor3,
+                          text: data['title'],
+                          letterSpacing: 0.0,
+                          maxLines: 1,
+                          overFlow: TextOverflow.ellipsis,
                         ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 8,
                       ),
-                      child: Image.asset(
-                        Assets.imagesLineVertical,
-                        height: 35,
-                        color: data['isActive'] == true
-                            ? kSecondaryColor
-                            : kGreyColor3,
+                    ],
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          data['isActive'] == true
+                              ? Image.asset(
+                                  Assets.imagesCheckRounded,
+                                  height: 17,
+                                )
+                              : Image.asset(
+                                  Assets.imagesInProgress,
+                                  height: 17,
+                                ),
+                          Expanded(
+                            child: MyText(
+                              paddingLeft: 15,
+                              size: 13,
+                              weight: FontWeight.w500,
+                              color: data['isActive'] == true
+                                  ? kSecondaryColor
+                                  : kGreyColor3,
+                              text: data['title'],
+                              letterSpacing: 0.0,
+                              maxLines: 1,
+                              overFlow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                );
-        },
-      ),
-    );
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 8,
+                        ),
+                        child: Image.asset(
+                          Assets.imagesLineVertical,
+                          height: 35,
+                          color: data['isActive'] == true
+                              ? kSecondaryColor
+                              : kGreyColor3,
+                        ),
+                      ),
+                    ],
+                  );
+          },
+        ),
+      );
+    });
   }
 }

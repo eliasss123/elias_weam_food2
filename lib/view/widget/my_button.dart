@@ -15,6 +15,7 @@ class MyButton extends StatelessWidget {
     this.fontWeight,
     this.isActive = true,
     this.bgColor,
+    this.textColor,
   });
 
   final String buttonText;
@@ -22,7 +23,7 @@ class MyButton extends StatelessWidget {
   double? height, textSize, radius;
   bool? isActive;
   FontWeight? fontWeight;
-  Color? bgColor;
+  Color? bgColor,textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class MyButton extends StatelessWidget {
                 size: textSize,
                 weight: fontWeight ?? FontWeight.w700,
                 color: isActive!
-                    ? kPrimaryColor
+                    ? textColor ?? kPrimaryColor
                     : isDark
                         ? kPrimaryColor.withOpacity(0.26)
                         : kDisableTextColor,

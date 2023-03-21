@@ -22,6 +22,7 @@ class Assets {
   static const String imagesBrowse = 'assets/images/browse.png';
   static const String imagesBurger = 'assets/images/burger.png';
   static const String imagesBurgerLarge = 'assets/images/burger_large.png';
+  static const String imagesCallDark = 'assets/images/call_dark.png';
   static const String imagesCallSupport = 'assets/images/call_support.png';
   static const String imagesCallUs = 'assets/images/call_us.png';
   static const String imagesCar = 'assets/images/car.png';
@@ -110,6 +111,7 @@ class Assets {
   static const String imagesMas = 'assets/images/mas.png';
   static const String imagesMasterCard = 'assets/images/master_card.png';
   static const String imagesMerchantDivider = 'assets/images/merchant_divider.png';
+  static const String imagesMessageDark = 'assets/images/message_dark.png';
   static const String imagesMessageSupport = 'assets/images/message_support.png';
   static const String imagesMexican = 'assets/images/mexican.png';
   static const String imagesMore = 'assets/images/more.png';
@@ -171,6 +173,7 @@ class Assets {
   static const String imagesStarFill = 'assets/images/star_fill.png';
   static const String imagesStarGreen = 'assets/images/star_green.png';
   static const String imagesStats = 'assets/images/stats.png';
+  static const String imagesStatusLogoDark = 'assets/images/status_logo_dark.png';
   static const String imagesSteak = 'assets/images/steak.png';
   static const String imagesSupport = 'assets/images/support.png';
   static const String imagesTheme = 'assets/images/theme.png';

@@ -80,6 +80,7 @@ const kDarkBorderColor = Color(0xffCCCCCC);
 const kDarkBorderColor2 = Color(0xff4A4A4A);
 const kDarkModeGreyColor = Color(0xffA6A6A6);
 const kDarkModeGrey1Color = Color(0xff969696);
+const kDarkModeGrey3Color = Color(0xffB8B6B5);
 const kDarkBottomNavColor = Color(0xff191919);
 
 class ContainerDec {

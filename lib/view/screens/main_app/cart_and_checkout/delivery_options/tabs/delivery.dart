@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/main_app/location/pin_location.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
@@ -10,129 +11,138 @@ import 'package:get/get.dart';
 class Delivery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      padding: EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 0,
-      ),
-      physics: BouncingScrollPhysics(),
-      children: [
-        MyText(
-          paddingLeft: 20,
-          text: 'You set your order as delivery.',
-          size: 11,
-          color: kBlackColor,
-          paddingBottom: 40,
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return ListView(
+        shrinkWrap: true,
+        padding: EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 0,
         ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
-              children: [
-                Container(
-                  height: 44,
-                  width: 44,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: kLightGreenColor,
-                  ),
-                  child: Center(
-                    child: Image.asset(
-                      Assets.imagesPhMapPinFill,
-                      height: 22,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Column(
-                  children: [
-                    MyText(
-                      text: 'Saved as',
-                      size: 12,
-                      weight: FontWeight.w500,
-                      color: kGreyColor5,
-                    ),
-                    MyText(
-                      text: 'Home',
-                      size: 12,
-                      weight: FontWeight.w500,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(
-              width: 15,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+        physics: BouncingScrollPhysics(),
+        children: [
+          MyText(
+            paddingLeft: 20,
+            text: 'You set your order as delivery.',
+            size: 11,
+            color: isDark ? kPrimaryColor : kBlackColor,
+            paddingBottom: 40,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
                 children: [
-                  MyText(
-                    text: 'John’s apartment',
-                    size: 16,
-                    weight: FontWeight.w700,
-                    paddingBottom: 7,
+                  Container(
+                    height: 44,
+                    width: 44,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: isDark
+                          ? kSecondaryColor.withOpacity(0.1)
+                          : kLightGreenColor,
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        Assets.imagesPhMapPinFill,
+                        height: 22,
+                      ),
+                    ),
                   ),
-                  MyText(
-                    text: '27H8+RC Mi’ilya, bornad street, Israel',
-                    size: 14,
-                    weight: FontWeight.w500,
-                    color: kGreyColor5,
-                    paddingBottom: 15,
+                  SizedBox(
+                    height: 10,
                   ),
-                  Row(
+                  Column(
                     children: [
-                      GestureDetector(
-                        onTap: () => Get.to(
-                          () => PinLocation(),
-                        ),
-                        child: Container(
-                          height: 32,
-                          width: 80,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: kLightGreenColor,
-                          ),
-                          child: Center(
-                            child: MyText(
-                              text: 'Change',
-                              size: 12,
-                              weight: FontWeight.w700,
-                              color: kSecondaryColor,
-                            ),
-                          ),
-                        ),
+                      MyText(
+                        text: 'Saved as',
+                        size: 12,
+                        weight: FontWeight.w500,
+                        color: isDark ? kGreyColor12 : kGreyColor5,
+                      ),
+                      MyText(
+                        text: 'Home',
+                        size: 12,
+                        weight: FontWeight.w500,
+                        color: isDark ? kPrimaryColor : kBlackColor2,
                       ),
                     ],
                   ),
                 ],
               ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        Stack(
-          children: [
-            CommonImageView(
-              imagePath: Assets.imagesPickUpMap,
-              height: 180,
-              width: Get.width,
-              radius: 20.0,
-            ),
-            Positioned(
-              top: 20,
-              right: 60,
-              child: mapToolTip('27H8+RC Mi’ilya'),
-            ),
-          ],
-        ),
-      ],
-    );
+              SizedBox(
+                width: 15,
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    MyText(
+                      text: 'John’s apartment',
+                      size: 16,
+                      weight: FontWeight.w700,
+                      paddingBottom: 7,
+                      color: isDark ? kPrimaryColor : kBlackColor2,
+                    ),
+                    MyText(
+                      text: '27H8+RC Mi’ilya, bornad street, Israel',
+                      size: 14,
+                      weight: FontWeight.w500,
+                      color: isDark ? kGreyColor12 : kGreyColor5,
+                      paddingBottom: 15,
+                    ),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () => Get.to(
+                            () => PinLocation(),
+                          ),
+                          child: Container(
+                            height: 32,
+                            width: 80,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: isDark
+                                  ? kSecondaryColor.withOpacity(0.2)
+                                  : kLightGreenColor,
+                            ),
+                            child: Center(
+                              child: MyText(
+                                text: 'Change',
+                                size: 12,
+                                weight: FontWeight.w700,
+                                color: kSecondaryColor,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Stack(
+            children: [
+              CommonImageView(
+                imagePath: Assets.imagesPickUpMap,
+                height: 180,
+                width: Get.width,
+                radius: 20.0,
+              ),
+              Positioned(
+                top: 20,
+                right: 60,
+                child: mapToolTip('27H8+RC Mi’ilya'),
+              ),
+            ],
+          ),
+        ],
+      );
+    });
   }
 }
