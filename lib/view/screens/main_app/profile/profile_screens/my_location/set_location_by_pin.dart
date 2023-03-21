@@ -69,7 +69,9 @@ class SetLocationByPin extends StatelessWidget {
                       height: 45,
                       width: 45,
                       radius: 12.0,
-                      imagePath: Assets.imagesMapSearch,
+                      imagePath: isDark
+                          ? Assets.imagesDarkModeSearch
+                          : Assets.imagesMapSearch,
                     ),
                   ),
                 ),
@@ -84,7 +86,9 @@ class SetLocationByPin extends StatelessWidget {
                       height: 45,
                       width: 45,
                       radius: 12.0,
-                      imagePath: Assets.imagesCurrentLoc,
+                      imagePath: isDark
+                          ? Assets.imagesDarkModeLoc
+                          : Assets.imagesCurrentLoc,
                     ),
                   ),
                 ),
@@ -93,7 +97,7 @@ class SetLocationByPin extends StatelessWidget {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: kPrimaryColor,
+                    color: isDark ? kDarkInputBgColor : kPrimaryColor,
                     boxShadow: [
                       BoxShadow(
                         offset: Offset(0, -4),

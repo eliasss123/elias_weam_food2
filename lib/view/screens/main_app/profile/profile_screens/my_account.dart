@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
@@ -14,91 +15,105 @@ class MyAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     var platform = Theme.of(context).platform;
     bool isIos = platform == TargetPlatform.iOS;
-    return Scaffold(
-      body: Container(
-        height: Get.height,
-        width: Get.width,
-        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-        decoration: ContainerDec.profileBg,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            simpleAppBar(
-              bgColor: Colors.transparent,
-              title: 'My Account',
-              titleWeight: FontWeight.w700,
-            ),
-            Center(
-              child: CommonImageView(
-                height: 100,
-                width: 100,
-                url: dummyImg1,
-                radius: 100.0,
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return Scaffold(
+        body: Container(
+          height: Get.height,
+          width: Get.width,
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+          decoration: BoxDecoration(
+            color: isDark ? kDarkPrimaryColor : kSeoulColor6,
+            image: DecorationImage(
+              image: AssetImage(
+                Assets.imagesProfileBgEffect,
               ),
+              alignment: Alignment.topCenter,
+              fit: BoxFit.fitWidth,
             ),
-            MyText(
-              paddingTop: 3,
-              text: 'Change Picture',
-              size: 16,
-              weight: FontWeight.w700,
-              align: TextAlign.center,
-              paddingBottom: 50,
-            ),
-            Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                padding: EdgeInsets.symmetric(horizontal: 30),
-                physics: BouncingScrollPhysics(),
-                children: [
-                  SizedBox(
-                    height: isIos ? 35 : 15,
-                  ),
-                  ProfileFilledTextField(
-                    labelText: 'Name',
-                    hintText: 'Test',
-                  ),
-                  ProfileFilledTextField(
-                    labelText: 'Email',
-                    hintText: '',
-                  ),
-                  ProfileFilledTextField(
-                    labelText: 'Phone Number',
-                    havePrefix: true,
-                    prefix: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          Assets.imagesPhone,
-                          height: 17,
-                        ),
-                      ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              simpleAppBar(
+                bgColor: isDark ? Colors.transparent : Colors.transparent,
+                isDark: isDark,
+                title: 'My Account',
+                titleWeight: FontWeight.w700,
+              ),
+              Center(
+                child: CommonImageView(
+                  height: 100,
+                  width: 100,
+                  url: dummyImg1,
+                  radius: 100.0,
+                ),
+              ),
+              MyText(
+                paddingTop: 3,
+                text: 'Change Picture',
+                size: 16,
+                weight: FontWeight.w700,
+                align: TextAlign.center,
+                paddingBottom: 50,
+                color: isDark ? kPrimaryColor : kBlackColor2,
+              ),
+              Expanded(
+                child: ListView(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  physics: BouncingScrollPhysics(),
+                  children: [
+                    SizedBox(
+                      height: isIos ? 35 : 15,
                     ),
-                    hintText: '',
-                  ),
-                  ProfileFilledTextField(
-                    isObSecure: true,
-                    labelText: 'Password',
-                    hintText: '',
-                  ),
-                ],
+                    ProfileFilledTextField(
+                      labelText: 'Name',
+                      hintText: 'Test',
+                    ),
+                    ProfileFilledTextField(
+                      labelText: 'Email',
+                      hintText: '',
+                    ),
+                    ProfileFilledTextField(
+                      labelText: 'Phone Number',
+                      havePrefix: true,
+                      prefix: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            Assets.imagesPhone,
+                            height: 17,
+                          ),
+                        ],
+                      ),
+                      hintText: '',
+                    ),
+                    ProfileFilledTextField(
+                      isObSecure: true,
+                      labelText: 'Password',
+                      hintText: '',
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: 45,
-                right: 45,
-                bottom: isIos ? 25 : 15,
-                top: 15,
+              Padding(
+                padding: EdgeInsets.only(
+                  left: 45,
+                  right: 45,
+                  bottom: isIos ? 25 : 15,
+                  top: 15,
+                ),
+                child: MyButton(
+                  buttonText: 'Save Changes',
+                  onTap: () {},
+                ),
               ),
-              child: MyButton(
-                buttonText: 'Save Changes',
-                onTap: () {},
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   Material profileTiles({

@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/view/screens/launch/main_app/splash_screen.dart';
@@ -21,129 +22,161 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     var platform = Theme.of(context).platform;
     bool isIos = platform == TargetPlatform.iOS;
-    return Scaffold(
-      body: Container(
-        height: Get.height,
-        width: Get.width,
-        padding: EdgeInsets.fromLTRB(0, 45, 0, 0),
-        decoration: ContainerDec.profileBg,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            GestureDetector(
-              onTap: () => Get.offAll(() => SplashScreen()),
-              child: Wrap(
-                spacing: 7,
-                alignment: WrapAlignment.end,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  Image.asset(
-                    Assets.imagesLogout,
-                    height: 15,
-                  ),
-                  MyText(
-                    text: 'Logout',
-                    size: 16,
-                    paddingRight: 20,
-                  ),
-                ],
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return Scaffold(
+        body: Container(
+          height: Get.height,
+          width: Get.width,
+          padding: EdgeInsets.fromLTRB(0, 45, 0, 0),
+          decoration: BoxDecoration(
+            color: isDark ? kDarkPrimaryColor : kSeoulColor6,
+            image: DecorationImage(
+              image: AssetImage(
+                Assets.imagesProfileBgEffect,
               ),
+              alignment: Alignment.topCenter,
+              fit: BoxFit.fitWidth,
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: CommonImageView(
-                height: 100,
-                width: 100,
-                url: dummyImg1,
-                radius: 100.0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              GestureDetector(
+                onTap: () => Get.offAll(() => SplashScreen()),
+                child: Wrap(
+                  spacing: 7,
+                  alignment: WrapAlignment.end,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Image.asset(
+                      Assets.imagesLogout,
+                      height: 15,
+                      color: isDark ? kPrimaryColor : kBlackColor2,
+                    ),
+                    MyText(
+                      text: 'Logout',
+                      size: 16,
+                      paddingRight: 20,
+                      color: isDark ? kPrimaryColor : kBlackColor2,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            MyText(
-              paddingTop: 8,
-              text: 'Adam lenken',
-              size: 21,
-              weight: FontWeight.w700,
-              align: TextAlign.center,
-              paddingBottom: isIos ? 95 : 50,
-            ),
-            Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                padding: EdgeInsets.zero,
-                physics: BouncingScrollPhysics(),
-                children: [
-                  profileTiles(
-                    icon: Assets.imagesMyAccount,
-                    title: 'My Account',
-                    onTap: () => Get.to(
-                      () => MyAccount(),
-                    ),
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesMyLocationProfile,
-                    title: 'My Location',
-                    onTap: () => Get.to(
-                      () => MyLocation(),
-                    ),
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesMyFavorites,
-                    title: 'Your Favorites',
-                    onTap: () => Get.to(
-                      () => MyFavorites(),
-                    ),
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesMyOrderHistory,
-                    title: 'Order History',
-                    onTap: () => Get.to(
-                      () => RecentOrders(),
-                    ),
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesMyPaymentMethods,
-                    title: 'Payment Methods',
-                    onTap: () => Get.to(
-                      () => PaymentMethod(),
-                    ),
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesMyLanguages,
-                    title: 'Language',
-                    onTap: () => Get.to(
-                      () => Languages(),
-                    ),
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesTheme,
-                    title: 'Change Theme',
-                    onTap: () => Get.to(
-                      () => ChangeTheme(),
-                    ),
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesDeliverWithVai,
-                    title: 'Deliver with “vai”',
-                    onTap: () {},
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesVaiHelpCenter,
-                    title: 'Help Center',
-                    onTap: () => Get.to(
-                      () => HelpCenter(),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                ],
+              SizedBox(
+                height: 10,
               ),
-            ),
-          ],
+              Center(
+                child: CommonImageView(
+                  height: 100,
+                  width: 100,
+                  url: dummyImg1,
+                  radius: 100.0,
+                ),
+              ),
+              MyText(
+                paddingTop: 8,
+                text: 'Adam lenken',
+                size: 21,
+                weight: FontWeight.w700,
+                align: TextAlign.center,
+                color: isDark ? kPrimaryColor : kBlackColor2,
+                paddingBottom: isIos ? 95 : 50,
+              ),
+              Expanded(
+                child: ListView(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.zero,
+                  physics: BouncingScrollPhysics(),
+                  children: [
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesAccountDark
+                          : Assets.imagesMyAccount,
+                      title: 'My Account',
+                      onTap: () => Get.to(
+                        () => MyAccount(),
+                      ),
+                    ),
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesLocationDark
+                          : Assets.imagesMyLocationProfile,
+                      title: 'My Location',
+                      onTap: () => Get.to(
+                        () => MyLocation(),
+                      ),
+                    ),
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesFavoriteDark
+                          : Assets.imagesMyFavorites,
+                      title: 'Your Favorites',
+                      onTap: () => Get.to(
+                        () => MyFavorites(),
+                      ),
+                    ),
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesOrderHistoryDark
+                          : Assets.imagesMyOrderHistory,
+                      title: 'Order History',
+                      onTap: () => Get.to(
+                        () => RecentOrders(),
+                      ),
+                    ),
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesPaymentMethodDark
+                          : Assets.imagesMyPaymentMethods,
+                      title: 'Payment Methods',
+                      onTap: () => Get.to(
+                        () => PaymentMethod(),
+                      ),
+                    ),
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesLanguageDark
+                          : Assets.imagesMyLanguages,
+                      title: 'Language',
+                      onTap: () => Get.to(
+                        () => Languages(),
+                      ),
+                    ),
+                    profileTiles(
+                      icon:
+                          isDark ? Assets.imagesThemeIcon : Assets.imagesTheme,
+                      title: 'Change Theme',
+                      onTap: () => Get.to(
+                        () => ChangeTheme(),
+                      ),
+                    ),
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesDeliverWithVaiDark
+                          : Assets.imagesDeliverWithVai,
+                      title: 'Deliver with “vai”',
+                      onTap: () {},
+                    ),
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesHelpIcon
+                          : Assets.imagesVaiHelpCenter,
+                      title: 'Help Center',
+                      onTap: () => Get.to(
+                        () => HelpCenter(),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

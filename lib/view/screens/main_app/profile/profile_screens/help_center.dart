@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/support/support.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
@@ -10,95 +11,118 @@ import 'package:get/get.dart';
 class HelpCenter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: Get.height,
-        width: Get.width,
-        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-        decoration: ContainerDec.profileBg,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            simpleAppBar(
-              bgColor: Colors.transparent,
-              title: 'Help Center',
-              titleWeight: FontWeight.w700,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: CommonImageView(
-                height: 90,
-                width: 90,
-                imagePath: Assets.imagesHelpCenterLocation,
-                radius: 0,
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return Scaffold(
+        body: Container(
+          height: Get.height,
+          width: Get.width,
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+          decoration: BoxDecoration(
+            color: isDark ? kDarkPrimaryColor : kSeoulColor6,
+            image: DecorationImage(
+              image: AssetImage(
+                Assets.imagesProfileBgEffect,
               ),
+              alignment: Alignment.topCenter,
+              fit: BoxFit.fitWidth,
             ),
-            SizedBox(
-              height: 90,
-            ),
-            Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                padding: EdgeInsets.zero,
-                physics: BouncingScrollPhysics(),
-                children: [
-                  profileTiles(
-                    icon: Assets.imagesContactUs,
-                    title: 'Contact us',
-                    onTap: () => Get.to(
-                      () => Support(
-                        title: 'Contact Us',
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              simpleAppBar(
+                bgColor: Colors.transparent,
+                title: 'Help Center',
+                titleWeight: FontWeight.w700,
+                isDark: isDark,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: Image.asset(
+                  height: 90,
+                  width: 90,
+                  Assets.imagesHelpCenterLocation,
+                  color: isDark ? kPrimaryColor : null,
+                ),
+              ),
+              SizedBox(
+                height: 90,
+              ),
+              Expanded(
+                child: ListView(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.zero,
+                  physics: BouncingScrollPhysics(),
+                  children: [
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesContactUsDark
+                          : Assets.imagesContactUs,
+                      title: 'Contact us',
+                      onTap: () => Get.to(
+                        () => Support(
+                          title: 'Contact Us',
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesVisitUs,
-                    title: 'Visit us ',
-                    onTap: () {},
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesDeliverWithVaiContact,
-                    title: 'Deliver with “vai”',
-                    onTap: () {},
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesFaq,
-                    title: 'FAQs',
-                    onTap: () {},
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesPrivacyPolicies,
-                    title: 'Privacy polices ',
-                    onTap: () {},
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  profileTiles(
-                    icon: Assets.imagesDeleteAcc,
-                    title: 'Delete account',
-                    onTap: () {},
-                  ),
-                ],
+                    SizedBox(
+                      height: 10,
+                    ),
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesVisitUsDark
+                          : Assets.imagesVisitUs,
+                      title: 'Visit us ',
+                      onTap: () {},
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesDeliverWithVaiDark
+                          : Assets.imagesDeliverWithVaiContact,
+                      title: 'Deliver with “vai”',
+                      onTap: () {},
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    profileTiles(
+                      icon: isDark ? Assets.imagesFaqDark : Assets.imagesFaq,
+                      title: 'FAQs',
+                      onTap: () {},
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesPrivacyDark
+                          : Assets.imagesPrivacyPolicies,
+                      title: 'Privacy polices ',
+                      onTap: () {},
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesDeleteAccountDark
+                          : Assets.imagesDeleteAcc,
+                      title: 'Delete account',
+                      onTap: () {},
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

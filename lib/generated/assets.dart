@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String imagesAccountDark = 'assets/images/account_dark.png';
   static const String imagesAddSchedule = 'assets/images/add_schedule.png';
   static const String imagesAllPlaces = 'assets/images/all_places.png';
   static const String imagesAppCash = 'assets/images/app_cash.png';
@@ -38,6 +39,7 @@ class Assets {
   static const String imagesCongrats = 'assets/images/congrats.png';
   static const String imagesCongratsEarning = 'assets/images/congrats_earning.png';
   static const String imagesContactUs = 'assets/images/contact_us.png';
+  static const String imagesContactUsDark = 'assets/images/contact_us_dark.png';
   static const String imagesConvi = 'assets/images/convi.png';
   static const String imagesCooking = 'assets/images/cooking.png';
   static const String imagesCreditCard = 'assets/images/credit_card.png';
@@ -49,8 +51,10 @@ class Assets {
   static const String imagesDeals = 'assets/images/deals.png';
   static const String imagesDelete = 'assets/images/delete.png';
   static const String imagesDeleteAcc = 'assets/images/delete_acc.png';
+  static const String imagesDeleteAccountDark = 'assets/images/delete_account_dark.png';
   static const String imagesDeliverWithVai = 'assets/images/deliver_with_vai.png';
   static const String imagesDeliverWithVaiContact = 'assets/images/deliver_with_vai_contact.png';
+  static const String imagesDeliverWithVaiDark = 'assets/images/deliver_with_vai_dark.png';
   static const String imagesDeliveryCar = 'assets/images/delivery_car.png';
   static const String imagesDestination = 'assets/images/destination.png';
   static const String imagesDivider = 'assets/images/divider.png';
@@ -65,8 +69,10 @@ class Assets {
   static const String imagesEyeDisable = 'assets/images/eye_disable.png';
   static const String imagesFacebook = 'assets/images/facebook.png';
   static const String imagesFaq = 'assets/images/faq.png';
+  static const String imagesFaqDark = 'assets/images/faq_dark.png';
   static const String imagesFastFood = 'assets/images/fast_food.png';
   static const String imagesFastFood2 = 'assets/images/fast_food_2.png';
+  static const String imagesFavoriteDark = 'assets/images/favorite_dark.png';
   static const String imagesFeedback = 'assets/images/feedback.png';
   static const String imagesFile = 'assets/images/file.png';
   static const String imagesFilters = 'assets/images/filters.png';
@@ -83,6 +89,7 @@ class Assets {
   static const String imagesHeartFill = 'assets/images/heart_fill.png';
   static const String imagesHeartFilled = 'assets/images/heart_filled.png';
   static const String imagesHelpCenterLocation = 'assets/images/help_center_location.png';
+  static const String imagesHelpIcon = 'assets/images/help_icon.png';
   static const String imagesHistory = 'assets/images/history.png';
   static const String imagesHomeA = 'assets/images/home_a.png';
   static const String imagesHomeDetailMapView = 'assets/images/home_detail_map_view.png';
@@ -90,11 +97,13 @@ class Assets {
   static const String imagesImage = 'assets/images/Image.png';
   static const String imagesInProgress = 'assets/images/in_progress.png';
   static const String imagesItalianPizza = 'assets/images/italian_pizza.png';
+  static const String imagesLanguageDark = 'assets/images/language_dark.png';
   static const String imagesLatestDeal = 'assets/images/latest_deal.png';
   static const String imagesLess = 'assets/images/less.png';
   static const String imagesLightModeAnimatedLogo = 'assets/images/light_mode_animated_logo.json';
   static const String imagesLine = 'assets/images/line.png';
   static const String imagesLineVertical = 'assets/images/line_vertical.png';
+  static const String imagesLocationDark = 'assets/images/location_dark.png';
   static const String imagesLocationEmptyState = 'assets/images/location_empty_state.png';
   static const String imagesLocationIndicator = 'assets/images/location_indicator.png';
   static const String imagesLocationPin = 'assets/images/location_pin.png';
@@ -128,6 +137,7 @@ class Assets {
   static const String imagesOr = 'assets/images/or.png';
   static const String imagesOrderCompleted = 'assets/images/order_completed.png';
   static const String imagesOrderGreen = 'assets/images/order_green.png';
+  static const String imagesOrderHistoryDark = 'assets/images/order_history_dark.png';
   static const String imagesOrderLocation = 'assets/images/order_location.png';
   static const String imagesOrders = 'assets/images/orders.png';
   static const String imagesPalette = 'assets/images/palette.png';
@@ -137,6 +147,7 @@ class Assets {
   static const String imagesPayMaster = 'assets/images/pay_master.png';
   static const String imagesPayPal = 'assets/images/pay_pal.png';
   static const String imagesPayPaypal = 'assets/images/pay_paypal.png';
+  static const String imagesPaymentMethodDark = 'assets/images/payment_method_dark.png';
   static const String imagesPepperBeef = 'assets/images/pepper_beef.png';
   static const String imagesPhMapPinFill = 'assets/images/ph_map-pin-fill.png';
   static const String imagesPhone = 'assets/images/phone.png';
@@ -151,6 +162,7 @@ class Assets {
   static const String imagesPicture8 = 'assets/images/picture8.png';
   static const String imagesPizza = 'assets/images/pizza.png';
   static const String imagesPizzaLarge = 'assets/images/pizza_large.png';
+  static const String imagesPrivacyDark = 'assets/images/privacy_dark.png';
   static const String imagesPrivacyPolicies = 'assets/images/privacy_policies.png';
   static const String imagesPrize = 'assets/images/prize.png';
   static const String imagesProfileBgEffect = 'assets/images/profile_bg_effect.png';
@@ -180,6 +192,7 @@ class Assets {
   static const String imagesSupportChat = 'assets/images/support_chat.png';
   static const String imagesSupportEmail = 'assets/images/support_email.png';
   static const String imagesTheme = 'assets/images/theme.png';
+  static const String imagesThemeIcon = 'assets/images/theme_icon.png';
   static const String imagesTime = 'assets/images/time.png';
   static const String imagesTimer = 'assets/images/timer.png';
   static const String imagesUnCompleted = 'assets/images/un_completed.png';
@@ -193,6 +206,7 @@ class Assets {
   static const String imagesVehicle = 'assets/images/vehicle.png';
   static const String imagesVisaPay = 'assets/images/visa_pay.png';
   static const String imagesVisitUs = 'assets/images/visit_us.png';
+  static const String imagesVisitUsDark = 'assets/images/visit_us_dark.png';
   static const String imagesWaze = 'assets/images/waze.png';
   static const String imagesWithdraw = 'assets/images/withdraw.png';
   static const String imagesX = 'assets/images/x.png';

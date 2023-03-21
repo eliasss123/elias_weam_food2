@@ -12,7 +12,8 @@ AppBar simpleAppBar({
   bool? isDark = false,
 }) {
   return AppBar(
-    backgroundColor: isDark! ? kDarkPrimaryColor : bgColor ?? kPrimaryColor,
+    backgroundColor:
+        isDark! ? bgColor ?? kDarkPrimaryColor : bgColor ?? kPrimaryColor,
     centerTitle: true,
     leading: Column(
       mainAxisAlignment: MainAxisAlignment.center,
