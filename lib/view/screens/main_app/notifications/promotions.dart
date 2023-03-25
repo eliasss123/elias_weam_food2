@@ -11,9 +11,10 @@ class Promotions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         appBar: simpleAppBar(
-          title: 'Promotions',
+          title: 'promotions'.tr,
           titleWeight: FontWeight.w700,
           isDark: isDark,
         ),
@@ -27,7 +28,7 @@ class Promotions extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
-              height: 200,
+              height: isEnglish ? 200 : 220,
               width: Get.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
@@ -41,7 +42,7 @@ class Promotions extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   MyText(
-                    text: '50% Discount\nOn All Desert',
+                    text: '50%_discount_on_all_desert'.tr,
                     color: kPrimaryColor,
                     size: 24,
                     weight: FontWeight.w700,
@@ -49,7 +50,7 @@ class Promotions extends StatelessWidget {
                   MyText(
                     paddingTop: 7,
                     paddingBottom: 20,
-                    text: 'Grab itu now!',
+                    text: 'grab_itu_now'.tr,
                     color: kSeoulColor2,
                     size: 14,
                     weight: FontWeight.w500,
@@ -70,7 +71,7 @@ class Promotions extends StatelessWidget {
                           borderRadius: BorderRadius.circular(14),
                           child: Center(
                             child: MyText(
-                              text: 'Order Now',
+                              text: 'order_now'.tr,
                               size: 14,
                               weight: FontWeight.w500,
                             ),
@@ -84,16 +85,14 @@ class Promotions extends StatelessWidget {
             ),
             MyText(
               paddingTop: 30,
-              text:
-                  'Today 50% discount on all desert menus in kupa with online orders worldwide',
+              text: 'promo_heading'.tr,
               size: 18,
               weight: FontWeight.w600,
               paddingBottom: 20,
               color: isDark ? kPrimaryColor : kBlackColor2,
             ),
             MyText(
-              text:
-                  'Excuse me… Who could ever resist a discount feast? 👀\n\nHear me out. Today, October 21, 2021, Kupa has a 50% discount for desert. What are you waiting for, let\'s order now before it runs out.\n\nThere are 25 types of deserts in kupa and all of them are discounted, just order through the kupa app to enjoy this discount. From the best to the best we have prepared for you, may you always be happy when ordering at Kupa. Please choose the best menu for you to eat alone or with your best friends and family.\n\nSo, what’s your call? Let’s roll, order your comfort food now 😉',
+              text: 'promo_subHeading'.tr,
               size: 14,
               weight: FontWeight.w500,
               color: kGreyColor5,

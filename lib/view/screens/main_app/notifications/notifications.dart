@@ -25,8 +25,8 @@ class _NotificationsState extends State<Notifications>
 
   late TabController tabController;
   final List<String> _labels = [
-    'Delivery',
-    'News & Update',
+    'delivery',
+    'news_update',
   ];
   final List<Widget> tabsData = [
     Delivery(),
@@ -39,6 +39,7 @@ class _NotificationsState extends State<Notifications>
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         appBar: AppBar(
           backgroundColor: isDark ? kDarkPrimaryColor : kPrimaryColor,
@@ -48,16 +49,19 @@ class _NotificationsState extends State<Notifications>
             children: [
               GestureDetector(
                 onTap: () => Get.back(),
-                child: Image.asset(
-                  Assets.imagesArrowBack,
-                  height: 24,
-                  color: isDark ? kPrimaryColor : kBlackColor2,
+                child: RotatedBox(
+                  quarterTurns: isEnglish ? 0 : 2,
+                  child: Image.asset(
+                    Assets.imagesArrowBack,
+                    height: 24,
+                    color: isDark ? kPrimaryColor : kBlackColor2,
+                  ),
                 ),
               ),
             ],
           ),
           title: MyText(
-            text: 'Notifications',
+            text: 'notifications'.tr,
             size: 21,
             weight: FontWeight.w700,
             color: isDark ? kPrimaryColor : kBlackColor2,
@@ -100,7 +104,7 @@ class _NotificationsState extends State<Notifications>
                         ),
                         child: Center(
                           child: MyText(
-                            text: _labels[index],
+                            text: _labels[index].tr,
                             color: currentTab == index
                                 ? isDark
                                     ? kBlackColor2

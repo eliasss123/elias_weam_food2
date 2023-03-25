@@ -24,6 +24,7 @@ class CustomCheckBoxTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Padding(
         padding: EdgeInsets.symmetric(
           vertical: marginHorizontal!,
@@ -59,6 +60,7 @@ class CustomCheckBoxTile extends StatelessWidget {
             Expanded(
               child: MyText(
                 paddingLeft: 12,
+                paddingRight: isEnglish ? 0 : 12,
                 text: title,
                 size: 16,
                 color: isDark ? kPrimaryColor : Color(0xff292929),

@@ -39,6 +39,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
     var platform = Theme.of(context).platform;
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return SimpleBottomSheet(
         height: Get.height * 0.9,
         content: Stack(
@@ -64,14 +65,14 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           MyText(
-                            text: 'German hamburger',
+                            text: 'german_hamburger'.tr,
                             size: 20,
                             color: isDark ? kPrimaryColor : kBlackColor2,
                             weight: FontWeight.w700,
                           ),
                           MyText(
                             paddingTop: 8,
-                            text: 'Pansi Resturant ',
+                            text: 'pansi_restaurant'.tr,
                             size: 14,
                             weight: FontWeight.w500,
                             color: kTertiaryColor,
@@ -103,6 +104,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                     ),
                     MyText(
                       paddingLeft: 15,
+                      paddingRight: isEnglish ? 0 : 15,
                       text: '\$19.99',
                       size: 16,
                       weight: FontWeight.w500,
@@ -121,7 +123,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                 SizedBox(
                   height: 30,
                 ),
-                customHeading('Sauce'),
+                customHeading('sauce'.tr),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
@@ -135,7 +137,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       CustomCheckBoxTile(
-                        title: 'Teriyaki',
+                        title: 'teriyaki'.tr,
                         trailingText: '+\$0',
                         isChecked: true,
                         onTap: () {},
@@ -146,7 +148,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                         color: isDark ? kDarkBorderColor2 : null,
                       ),
                       CustomCheckBoxTile(
-                        title: 'Yakiniku',
+                        title: 'yakiniku'.tr,
                         trailingText: '+\$0',
                         isChecked: false,
                         onTap: () {},
@@ -157,7 +159,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                 SizedBox(
                   height: 20,
                 ),
-                customHeading('Add a Topping?'),
+                customHeading('add_a_topping'.tr),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
@@ -171,7 +173,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       CustomCheckBoxTile(
-                        title: 'Omelet',
+                        title: 'omelet'.tr,
                         trailingText: '+\$2',
                         isChecked: false,
                         onTap: () {},
@@ -182,7 +184,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                         color: isDark ? kDarkBorderColor2 : null,
                       ),
                       CustomCheckBoxTile(
-                        title: 'Sausage',
+                        title: 'sausage'.tr,
                         trailingText: '+\$3',
                         isChecked: true,
                         onTap: () {},
@@ -193,7 +195,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                         color: isDark ? kDarkBorderColor2 : null,
                       ),
                       CustomCheckBoxTile(
-                        title: 'Cheese',
+                        title: 'cheese'.tr,
                         trailingText: '+\$5',
                         isChecked: true,
                         onTap: () {},
@@ -212,7 +214,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                 ),
                 child: MyButton(
                   height: 54,
-                  buttonText: widget.buttonText ?? 'Add to Cart (\$41.99)',
+                  buttonText: widget.buttonText ?? '${'add_to_cart'.tr} (\$41.99)',
                   onTap: widget.onAddToCartTap!,
                 ),
               ),

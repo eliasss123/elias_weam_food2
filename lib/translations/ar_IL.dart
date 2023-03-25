@@ -168,7 +168,7 @@ final Map<String, String> arabic = {
   'this_week':'الاسبوع الحالي',
   'only_today_20%':'اليوم فقط 20٪ خصم',
   '50%_discount_on_all_desert':'خصم 50% على جميع الحلويات',
-  'grab_itu_now':'תפוס את זה עכשיו!',
+  'grab_itu_now':'الاستيلاء عليها الآن!',
   'order_now':'اطلب الان',
   'promotions':'تنزيلات',
   'promo_heading':'اليوم خصم 50٪ على جميع قوائم الطعام الصحراوية في كوبا مع الطلبات عبر الإنترنت في جميع أنحاء العالم',
@@ -181,4 +181,5 @@ final Map<String, String> arabic = {
   'deliver_with_“vai”':'تسليم مع “vai”',
   'help_center':'مركز المساعدة',
   'change_theme':'غير الخلفية',
+  'logout':'خروج',
 };

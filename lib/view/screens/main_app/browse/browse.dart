@@ -61,6 +61,25 @@ class _BrowseState extends State<Browse> {
     },
   ];
 
+  List<String> _catTr = [
+    'all_categories',
+    'top_categories',
+    'popular_now',
+  ];
+
+  List<String> _allCatTr = [
+    'pizza',
+    'fast_food',
+    'convenience',
+    'mexican',
+    'latest_deals',
+    'burger',
+    'restaurant_rewards',
+    'pasta',
+    'vegetable',
+    'chinese',
+  ];
+
   bool showResults = false;
 
   @override
@@ -87,7 +106,7 @@ class _BrowseState extends State<Browse> {
                     children: [
                       MyText(
                         size: 22,
-                        text: 'Browse',
+                        text: 'browse'.tr,
                         letterSpacing: 0.4,
                         weight: FontWeight.w800,
                         color: isDark ? kPrimaryColor : kBlackColor2,
@@ -162,7 +181,7 @@ class _BrowseState extends State<Browse> {
                                           isDark ? kPrimaryColor : kBlackColor2,
                                     ),
                                     MyText(
-                                      text: 'results for ',
+                                      text: '${'results_for'.tr} ',
                                       color:
                                           isDark ? kPrimaryColor : kBlackColor2,
                                     ),
@@ -200,7 +219,7 @@ class _BrowseState extends State<Browse> {
                                             () {
                                               return SimpleToggleButtons(
                                                 isDark: isDark,
-                                                text: value,
+                                                text: _catTr[index].tr,
                                                 isSelected: browseController
                                                         .currentCategoryIndex
                                                         .value ==
@@ -250,7 +269,7 @@ class _BrowseState extends State<Browse> {
                             var data = categories[index];
                             return BrowseThumbnails(
                               bgImg: data['img'],
-                              title: data['title'],
+                              title: _allCatTr[index].tr,
                               onTap: () {},
                             );
                           },
@@ -294,7 +313,7 @@ class SearchResults extends StatelessWidget {
                   : index == 1
                       ? Assets.imagesPansi
                       : Assets.imagesItalianPizza,
-              name: 'Marina Coastal Food',
+              name: 'marina_coastal_food'.tr,
               deliveryTime: '30',
               totalRating: 4.8,
               totalReviews: '122',

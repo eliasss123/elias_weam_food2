@@ -59,7 +59,7 @@ class Profile extends StatelessWidget {
                       ),
                     ),
                     MyText(
-                      text: 'Logout',
+                      text: 'logout'.tr,
                       size: 16,
                       paddingLeft: isEnglish ? 0 : 20,
                       paddingRight: isEnglish ? 20 : 0,
@@ -98,7 +98,7 @@ class Profile extends StatelessWidget {
                       icon: isDark
                           ? Assets.imagesAccountDark
                           : Assets.imagesMyAccount,
-                      title: 'My Account',
+                      title: 'my_account'.tr,
                       onTap: () => Get.to(
                         () => MyAccount(),
                       ),
@@ -107,7 +107,7 @@ class Profile extends StatelessWidget {
                       icon: isDark
                           ? Assets.imagesLocationDark
                           : Assets.imagesMyLocationProfile,
-                      title: 'My Location',
+                      title: 'my_location'.tr,
                       onTap: () => Get.to(
                         () => MyLocation(),
                       ),
@@ -116,7 +116,7 @@ class Profile extends StatelessWidget {
                       icon: isDark
                           ? Assets.imagesFavoriteDark
                           : Assets.imagesMyFavorites,
-                      title: 'Your Favorites',
+                      title: 'your_favorites'.tr,
                       onTap: () => Get.to(
                         () => MyFavorites(),
                       ),
@@ -125,7 +125,7 @@ class Profile extends StatelessWidget {
                       icon: isDark
                           ? Assets.imagesOrderHistoryDark
                           : Assets.imagesMyOrderHistory,
-                      title: 'Order History',
+                      title: 'order_history'.tr,
                       onTap: () => Get.to(
                         () => RecentOrders(),
                       ),
@@ -134,7 +134,7 @@ class Profile extends StatelessWidget {
                       icon: isDark
                           ? Assets.imagesPaymentMethodDark
                           : Assets.imagesMyPaymentMethods,
-                      title: 'Payment Methods',
+                      title: 'payment_methods'.tr,
                       onTap: () => Get.to(
                         () => PaymentMethod(),
                       ),
@@ -143,7 +143,7 @@ class Profile extends StatelessWidget {
                       icon: isDark
                           ? Assets.imagesLanguageDark
                           : Assets.imagesMyLanguages,
-                      title: 'Language',
+                      title: 'language'.tr,
                       onTap: () => Get.to(
                         () => Languages(),
                       ),
@@ -151,7 +151,7 @@ class Profile extends StatelessWidget {
                     profileTiles(
                       icon:
                           isDark ? Assets.imagesThemeIcon : Assets.imagesTheme,
-                      title: 'Change Theme',
+                      title: 'change_theme'.tr,
                       onTap: () => Get.to(
                         () => ChangeTheme(),
                       ),
@@ -160,14 +160,14 @@ class Profile extends StatelessWidget {
                       icon: isDark
                           ? Assets.imagesDeliverWithVaiDark
                           : Assets.imagesDeliverWithVai,
-                      title: 'Deliver with “vai”',
+                      title: 'deliver_with_“vai”'.tr,
                       onTap: () {},
                     ),
                     profileTiles(
                       icon: isDark
                           ? Assets.imagesHelpIcon
                           : Assets.imagesVaiHelpCenter,
-                      title: 'Help Center',
+                      title: 'help_center'.tr,
                       onTap: () => Get.to(
                         () => HelpCenter(),
                       ),

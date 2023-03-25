@@ -251,7 +251,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                         ),
                         child: MyButton(
                           height: 54,
-                          buttonText: '(1) View Cart',
+                          buttonText: '(1) ${'view_cart'.tr}',
                           onTap: () {},
                         ),
                       ),

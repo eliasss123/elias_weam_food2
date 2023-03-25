@@ -181,4 +181,5 @@ final Map<String, String> hebrew = {
   'deliver_with_“vai”':'Deliver with “vai”',
   'help_center':'מרכז תמיכה',
   'change_theme':'לשנות נושא',
+  'logout':'התנתק',
 };

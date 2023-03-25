@@ -189,7 +189,7 @@ final Map<String, String> english = {
   'deliver_with_“vai”':'Deliver with “vai”',
   'help_center':'Help Center',
   'change_theme':'Change Theme',
-  '':'',
+  'logout':'Logout',
   '':'',
   '':'',
   '':'',

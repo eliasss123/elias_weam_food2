@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 class Delivery extends StatelessWidget {
   final List<Map<String, dynamic>> dummyNotifications = [
     {
-      'dateTime': 'Current',
+      'dateTime': 'current',
       'content': [
         {
           'avatarUrl': dummyImg3,
@@ -67,51 +67,55 @@ class Delivery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: BouncingScrollPhysics(),
-      padding: EdgeInsets.symmetric(
-        vertical: 15,
-      ),
-      itemCount: dummyNotifications.length,
-      itemBuilder: (context, index) {
-        var data = dummyNotifications[index];
-        return Obx(() {
-          bool isDark = themeController.isDarkTheme.value;
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              MyText(
-                text: data['dateTime'],
-                size: 18,
-                weight: FontWeight.w500,
-                paddingTop: 10,
-                paddingLeft: 20,
-                color: isDark ? kPrimaryColor : kBlackColor2,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: List.generate(
-                  data['content'].length,
-                  (i) {
-                    var content = data['content'][i];
-                    return DeliveryTiles(
-                      avatarUrl: content['avatarUrl'],
-                      notificationText: content['notificationText'],
-                      totalItems: content['totalItems'],
-                      isOrderOTW: content['isOrderOTW'],
-                      isOTW: content['isOTW'],
-                      isReady: content['isReady'],
-                      isDark: isDark,
-                    );
-                  },
+    return Obx(() {
+      bool isEnglish = languageController.isEnglish.value;
+      return ListView.builder(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        padding: EdgeInsets.symmetric(
+          vertical: 15,
+        ),
+        itemCount: dummyNotifications.length,
+        itemBuilder: (context, index) {
+          var data = dummyNotifications[index];
+          return Obx(() {
+            bool isDark = themeController.isDarkTheme.value;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                MyText(
+                  text: data['dateTime'].toString().tr,
+                  size: 18,
+                  weight: FontWeight.w500,
+                  paddingTop: 10,
+                  paddingLeft: 20,
+                  paddingRight: isEnglish ? 0 : 20,
+                  color: isDark ? kPrimaryColor : kBlackColor2,
                 ),
-              ),
-            ],
-          );
-        });
-      },
-    );
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: List.generate(
+                    data['content'].length,
+                    (i) {
+                      var content = data['content'][i];
+                      return DeliveryTiles(
+                        avatarUrl: content['avatarUrl'],
+                        notificationText: content['notificationText'],
+                        totalItems: content['totalItems'],
+                        isOrderOTW: content['isOrderOTW'],
+                        isOTW: content['isOTW'],
+                        isReady: content['isReady'],
+                        isDark: isDark,
+                      );
+                    },
+                  ),
+                ),
+              ],
+            );
+          });
+        },
+      );
+    });
   }
 }
 
@@ -168,12 +172,12 @@ class DeliveryTiles extends StatelessWidget {
                       children: [
                         MyText(
                           text: isOrderOTW
-                              ? 'Order is on the way - delivery'
+                              ? 'order_is_on_the_way_delivery'.tr
                               : isReady
-                                  ? 'Order ready - pick up'
+                                  ? 'order_ready_pick_up'.tr
                                   : isOTW
-                                      ? 'On the way'
-                                      : 'Delivered',
+                                      ? 'on_the_way'.tr
+                                      : 'delivered'.tr,
                           color: kSecondaryColor,
                           size: 14,
                           weight: FontWeight.w500,
@@ -185,7 +189,7 @@ class DeliveryTiles extends StatelessWidget {
                           color: kBorderColor3,
                         ),
                         MyText(
-                          text: '$totalItems items',
+                          text: '$totalItems ${'items'.tr}',
                           size: 14,
                           weight: FontWeight.w500,
                           color: Color(0xff7A7A7A),

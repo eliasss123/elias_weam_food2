@@ -10,37 +10,37 @@ import 'package:get/get.dart';
 class NewsAndUpdates extends StatelessWidget {
   final List<Map<String, dynamic>> dummyNotifications = [
     {
-      'dateTime': 'New Notification',
+      'dateTime': 'new_notification',
       'content': [
         {
           'avatarUrl': dummyImg3,
-          'notificationText': 'Buy 1 get 1 free',
-          'subTitle': 'Valid till 20 May',
+          'notificationText': 'buy_1_get_1_free',
+          'subTitle': 'valid_till_20_may',
         },
         {
           'avatarUrl': dummyImg3,
-          'notificationText': 'Sale 50% today',
-          'subTitle': 'Valid till 20 May',
+          'notificationText': 'sale_50%_today',
+          'subTitle': 'valid_till_20_may',
         },
       ],
     },
     {
-      'dateTime': 'This week',
+      'dateTime': 'this_week',
       'content': [
         {
           'avatarUrl': dummyImg3,
-          'notificationText': 'ONLY TODAY 20%',
-          'subTitle': 'Valid till 20 May',
+          'notificationText': 'only_today_20%',
+          'subTitle': 'valid_till_20_may',
         },
         {
           'avatarUrl': dummyImg3,
-          'notificationText': 'Sale 50% today',
-          'subTitle': 'Valid till 20 May',
+          'notificationText': 'sale_50%_today',
+          'subTitle': 'valid_till_20_may',
         },
         {
           'avatarUrl': dummyImg3,
-          'notificationText': 'ONLY TODAY 20%',
-          'subTitle': 'Valid till 20 May',
+          'notificationText': 'only_today_20%',
+          'subTitle': 'valid_till_20_may',
         },
       ],
     },
@@ -59,15 +59,17 @@ class NewsAndUpdates extends StatelessWidget {
         var data = dummyNotifications[index];
         return Obx(() {
           bool isDark = themeController.isDarkTheme.value;
+          bool isEnglish = languageController.isEnglish.value;
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               MyText(
-                text: data['dateTime'],
+                text: data['dateTime'].toString().tr,
                 size: 18,
                 weight: FontWeight.w500,
                 paddingTop: 10,
                 paddingLeft: 20,
+                paddingRight: isEnglish ? 0 : 20,
                 color: isDark ? kPrimaryColor : kBlackColor2,
               ),
               Column(
@@ -78,8 +80,9 @@ class NewsAndUpdates extends StatelessWidget {
                     var content = data['content'][i];
                     return NewsAndUpdateTiles(
                       avatarUrl: content['avatarUrl'],
-                      notificationText: content['notificationText'],
-                      subTitle: content['subTitle'],
+                      notificationText:
+                          content['notificationText'].toString().tr,
+                      subTitle: content['subTitle'].toString().tr,
                       onTap: () => Get.to(() => Promotions()),
                       isDark: isDark,
                     );
