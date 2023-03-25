@@ -19,19 +19,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final List<Map<String, dynamic>> items = [
     {
       'icon': Assets.imagesHomeA,
-      'label': 'Home',
+      'label': 'home',
     },
     {
       'icon': Assets.imagesBrowse,
-      'label': 'Browse',
+      'label': 'browse',
     },
     {
       'icon': Assets.imagesShoppingCart,
-      'label': 'Cart',
+      'label': 'cart',
     },
     {
       'icon': Assets.imagesUserB,
-      'label': 'Profile',
+      'label': 'profile',
     },
   ];
   final List<Widget> screens = [
@@ -135,7 +135,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                           : SizedBox(),
                     ],
                   ),
-                  label: data['label'],
+                  label: data['label'].toString().tr,
                 );
               },
             ),

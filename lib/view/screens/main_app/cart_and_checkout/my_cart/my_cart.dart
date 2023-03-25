@@ -19,6 +19,7 @@ class MyCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         appBar: AppBar(
           toolbarHeight: 65,
@@ -36,7 +37,7 @@ class MyCart extends StatelessWidget {
                   () => RecentOrders(),
                 ),
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                  margin: EdgeInsets.fromLTRB(isEnglish ? 0 : 20, 0, 20, 0),
                   height: 32,
                   width: 84,
                   decoration: BoxDecoration(
@@ -229,6 +230,7 @@ class EmptyCartState extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(

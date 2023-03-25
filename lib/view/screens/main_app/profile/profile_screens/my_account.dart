@@ -17,6 +17,7 @@ class MyAccount extends StatelessWidget {
     bool isIos = platform == TargetPlatform.iOS;
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         body: Container(
           height: Get.height,
@@ -38,7 +39,7 @@ class MyAccount extends StatelessWidget {
               simpleAppBar(
                 bgColor: isDark ? Colors.transparent : Colors.transparent,
                 isDark: isDark,
-                title: 'My Account',
+                title: 'my_account'.tr,
                 titleWeight: FontWeight.w700,
               ),
               Center(
@@ -68,15 +69,15 @@ class MyAccount extends StatelessWidget {
                       height: isIos ? 35 : 15,
                     ),
                     ProfileFilledTextField(
-                      labelText: 'Name',
+                      labelText: 'name'.tr,
                       hintText: 'Test',
                     ),
                     ProfileFilledTextField(
-                      labelText: 'Email',
+                      labelText: 'email'.tr,
                       hintText: '',
                     ),
                     ProfileFilledTextField(
-                      labelText: 'Phone Number',
+                      labelText: 'phone_number'.tr,
                       havePrefix: true,
                       prefix: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -91,7 +92,7 @@ class MyAccount extends StatelessWidget {
                     ),
                     ProfileFilledTextField(
                       isObSecure: true,
-                      labelText: 'Password',
+                      labelText: 'password'.tr,
                       hintText: '',
                     ),
                   ],

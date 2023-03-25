@@ -182,4 +182,6 @@ final Map<String, String> hebrew = {
   'help_center':'מרכז תמיכה',
   'change_theme':'לשנות נושא',
   'logout':'התנתק',
+  'profile':'פרופיל',
+  'cart':'הסל שלי',
 };

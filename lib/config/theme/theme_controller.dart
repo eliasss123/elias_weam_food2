@@ -17,6 +17,5 @@ class ThemeController extends GetxController {
     UserSimplePreferences.setTheme(
       isDarkTheme.value ? 'DARK_MODE' : 'LIGHT_MODE',
     );
-    log(UserSimplePreferences.getTheme() as String);
   }
 }

@@ -182,4 +182,6 @@ final Map<String, String> arabic = {
   'help_center':'مركز المساعدة',
   'change_theme':'غير الخلفية',
   'logout':'خروج',
+  'profile':'الملف الشخصي',
+  'cart':'سلتي',
 };
