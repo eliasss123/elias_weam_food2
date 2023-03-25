@@ -24,7 +24,7 @@ class PopularRestaurants extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           children: [
             MyText(
-              text: 'Popular right now',
+              text: 'popular_right_now'.tr,
               size: 22,
               weight: FontWeight.w700,
               color: isDark ? kPrimaryColor : kBlackColor2,
@@ -50,7 +50,7 @@ class PopularRestaurants extends StatelessWidget {
                         : index == 1
                             ? Assets.imagesPicture2
                             : Assets.imagesPicture4,
-                    name: 'Marina Coastal Food',
+                    name: 'marina_coastal_food'.tr,
                     deliveryTime: '30',
                     totalRating: 4.8,
                     totalReviews: '122',

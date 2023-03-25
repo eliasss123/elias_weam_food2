@@ -54,10 +54,19 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
 
   bool showViewCartButton = false;
 
+  List<String> _cats = [
+    'popular_items',
+    'pizza_pasta',
+    'salads',
+    'drinks',
+    'add_and_save',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         backgroundColor: isDark ? kDarkPrimaryColor : kSeoulColor3,
         body: SafeArea(
@@ -68,10 +77,11 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                 headerSliverBuilder: (context, innerBoxIsScrolled) {
                   return [
                     HomeDetailAppBar(
+                      isEnglish: isEnglish,
                       isDark: isDark,
                       imgUrl: Assets.imagesPicture5,
-                      name: 'Pansi\nRestaurant',
-                      tagLine: 'Sandwiches · Salad',
+                      name: 'pansi_restaurant'.tr,
+                      tagLine: '${'sandwiches'.tr} · ${'salad'.tr}',
                       openingTime: '12',
                       closingTime: '11',
                       totalRating: 4.8,
@@ -113,7 +123,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                               return SimpleToggleButtons(
                                 isDark: isDark,
                                 paddingHorizontal: 20.0,
-                                text: value,
+                                text: _cats[index].tr,
                                 isSelected:
                                     homeController.homeDetailMenuIndex == index,
                                 onTap: () =>
@@ -143,7 +153,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                               itemImgUrl: index == 0
                                   ? Assets.imagesBurger
                                   : Assets.imagesPepperBeef,
-                              itemName: 'German hamburger',
+                              itemName: 'german_hamburger'.tr,
                               price: '14.99',
                               onTap: () {
                                 showModalBottomSheet(
@@ -202,7 +212,8 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                     MyText(
                       paddingTop: 35,
                       paddingLeft: 20,
-                      text: 'Address',
+                      paddingRight: 20,
+                      text: 'address'.tr,
                       size: 16,
                       weight: FontWeight.w700,
                       paddingBottom: 25,
@@ -221,7 +232,8 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                       paddingLeft: 20,
                       paddingTop: 25,
                       paddingBottom: 30,
-                      text: 'King George St 17, Jerusalem',
+                      paddingRight: 20,
+                      text: 'king_george_st'.tr,
                       color: isDark
                           ? kPrimaryColor.withOpacity(0.5)
                           : kBlackColor.withOpacity(0.5),

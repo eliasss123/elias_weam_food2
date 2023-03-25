@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
@@ -22,6 +23,7 @@ class HomeDetailAppBar extends StatelessWidget {
     required this.isOutOfRange,
     required this.isClosed,
     required this.isDark,
+    required this.isEnglish,
   }) : super(key: key);
 
   final String imgUrl,
@@ -34,7 +36,7 @@ class HomeDetailAppBar extends StatelessWidget {
 
   final double totalRating;
   final VoidCallback onLiked;
-  final bool isLiked, isOutOfRange, isClosed, isDark;
+  final bool isLiked, isOutOfRange, isClosed, isDark, isEnglish;
 
   @override
   Widget build(BuildContext context) {
@@ -75,13 +77,16 @@ class HomeDetailAppBar extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        GestureDetector(
-                          onTap: () => Get.back(),
-                          child: Image.asset(
-                            isDark
-                                ? Assets.imagesArrowBackDark
-                                : Assets.imagesRoundedBack,
-                            height: 41,
+                        RotatedBox(
+                          quarterTurns: isEnglish ? 0 : 2,
+                          child: GestureDetector(
+                            onTap: () => Get.back(),
+                            child: Image.asset(
+                              isDark
+                                  ? Assets.imagesArrowBackDark
+                                  : Assets.imagesRoundedBack,
+                              height: 41,
+                            ),
                           ),
                         ),
                         GestureDetector(
@@ -117,7 +122,7 @@ class HomeDetailAppBar extends StatelessWidget {
                                               .withOpacity(0.40),
                                           child: Center(
                                             child: MyText(
-                                              text: 'Closed',
+                                              text: 'closed'.tr,
                                               size: 13,
                                               weight: FontWeight.w700,
                                               color: kMaroonColor,
@@ -146,7 +151,7 @@ class HomeDetailAppBar extends StatelessWidget {
                           ),
                           MyText(
                             paddingBottom: 13,
-                            text: 'From $openingTime am to $closingTime pm',
+                            text: '${'from'.tr} $openingTime am ${'to'.tr} $closingTime pm',
                             size: 15,
                             color: kPrimaryColor.withOpacity(0.77),
                           ),
@@ -168,7 +173,7 @@ class HomeDetailAppBar extends StatelessWidget {
                                     weight: FontWeight.w500,
                                   ),
                                   MyText(
-                                    text: '($totalReviews reviews)',
+                                    text: '($totalReviews ${'reviews'.tr})',
                                     size: 14,
                                     color: kPrimaryColor.withOpacity(0.77),
                                   ),
@@ -186,14 +191,14 @@ class HomeDetailAppBar extends StatelessWidget {
                                       sigmaX: 2,
                                     ),
                                     child: Container(
-                                      width: 55,
+                                      width: 60,
                                       height: 20,
                                       color: isOutOfRange
                                           ? Color(0xffE19D9D).withOpacity(0.3)
                                           : kPrimaryColor.withOpacity(0.44),
                                       child: Center(
                                         child: MyText(
-                                          text: '$distance km',
+                                          text: '$distance ${'km'.tr}',
                                           size: 12,
                                           weight: FontWeight.w700,
                                           color: isOutOfRange
@@ -211,7 +216,7 @@ class HomeDetailAppBar extends StatelessWidget {
                               ? MyText(
                                   paddingTop: 3,
                                   align: TextAlign.end,
-                                  text: 'Out of range',
+                                  text: 'out_of_range'.tr,
                                   color: kRedColor,
                                   size: 12,
                                   weight: FontWeight.w700,

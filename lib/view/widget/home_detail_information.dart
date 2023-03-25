@@ -23,11 +23,12 @@ class Information extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           MyText(
-            text: 'Information\'s',
+            text: 'informations'.tr,
             size: 16,
             weight: FontWeight.w700,
             paddingTop: 35,
             paddingLeft: 20,
+            paddingRight: 20,
             paddingBottom: 20,
             color: isDark ? kPrimaryColor : kBlackColor2,
           ),

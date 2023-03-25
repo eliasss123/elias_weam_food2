@@ -42,15 +42,14 @@ class OutOfRangeDialog extends StatelessWidget {
                   ),
                   MyText(
                     align: TextAlign.center,
-                    text: 'Note',
+                    text: 'note'.tr,
                     size: 26,
                     weight: FontWeight.w500,
                     color: kRedColor2,
                     paddingBottom: 35,
                   ),
                   MyText(
-                    text:
-                        'Restaurant\'s whose distance is more than 9 kilometers from your location will not be able to provide you with the delivery service.',
+                    text: 'closedMessage1'.tr,
                     size: 15,
                     weight: FontWeight.w500,
                     align: TextAlign.center,
@@ -59,8 +58,7 @@ class OutOfRangeDialog extends StatelessWidget {
                     color: isDark ? kPrimaryColor : kBlackColor2,
                   ),
                   MyText(
-                    text:
-                        'But you still have an option to pick up the delivery from the restaurant.',
+                    text: 'closedMessage2'.tr,
                     size: 15,
                     weight: FontWeight.w500,
                     align: TextAlign.center,

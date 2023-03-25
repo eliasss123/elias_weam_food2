@@ -24,6 +24,7 @@ class Profile extends StatelessWidget {
     bool isIos = platform == TargetPlatform.iOS;
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         body: Container(
           height: Get.height,
@@ -49,15 +50,19 @@ class Profile extends StatelessWidget {
                   alignment: WrapAlignment.end,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
-                    Image.asset(
-                      Assets.imagesLogout,
-                      height: 15,
-                      color: isDark ? kPrimaryColor : kBlackColor2,
+                    RotatedBox(
+                      quarterTurns: isEnglish ? 0 : 2,
+                      child: Image.asset(
+                        Assets.imagesLogout,
+                        height: 15,
+                        color: isDark ? kPrimaryColor : kBlackColor2,
+                      ),
                     ),
                     MyText(
                       text: 'Logout',
                       size: 16,
-                      paddingRight: 20,
+                      paddingLeft: isEnglish ? 0 : 20,
+                      paddingRight: isEnglish ? 20 : 0,
                       color: isDark ? kPrimaryColor : kBlackColor2,
                     ),
                   ],

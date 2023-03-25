@@ -60,7 +60,7 @@ final Map<String, String> hebrew = {
   'marina_coastal_food': 'אוכל חוף מרינה',
   'min': 'דק׳',
   'reviews': 'חוות דעת',
-  'free_delivery': '',
+  'free_delivery': 'משלוח חינם',
   'delivery_fee': 'דמי משלוח',
   'popular_right_now': 'פופולרי',
   'all': 'הכל',
@@ -123,4 +123,8 @@ final Map<String, String> hebrew = {
   'closed': 'סגור',
   'note': 'שים לב!',
   'out_of_range': 'מחוץ לטווח',
+  'from': 'מ',
+  'to': 'ל',
+  'closedMessage1': 'מסעדות שמרחקן יותר מ-9 קילומטרים ממיקומך לא יוכלו לספק לך שירות משלוחים.',
+  'closedMessage2': 'אבל עדיין יש לך אפשרות לאסוף את המשלוח מהמסעדה.',
 };

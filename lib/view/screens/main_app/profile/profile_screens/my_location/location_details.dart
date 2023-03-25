@@ -15,12 +15,6 @@ class LocationDetails extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final List<String> addressOp = [
-    'Home',
-    'Work',
-    'Other',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -87,7 +81,7 @@ class LocationDetails extends StatelessWidget {
                 ),
               ],
             ),
-            SaveAddressAs(addressOp: addressOp,),
+            SaveAddressAs(),
             SizedBox(
               height: 30,
             ),

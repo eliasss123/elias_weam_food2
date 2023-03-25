@@ -12,6 +12,7 @@ Widget profileTiles({
 }) {
   return Obx(() {
     bool isDark = themeController.isDarkTheme.value;
+    bool isEnglish = languageController.isEnglish.value;
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -29,6 +30,7 @@ Widget profileTiles({
               ),
               Expanded(
                 child: MyText(
+                  paddingRight: isEnglish ? 0 : 15,
                   paddingLeft: 15,
                   text: title,
                   size: 16,
@@ -36,10 +38,13 @@ Widget profileTiles({
                   color: isDark ? kPrimaryColor : kBlackColor2,
                 ),
               ),
-              Image.asset(
-                Assets.imagesArrowRight,
-                height: 24,
-                color: kGreyColor12,
+              RotatedBox(
+                quarterTurns: isEnglish ? 0 : 2,
+                child: Image.asset(
+                  Assets.imagesArrowRight,
+                  height: 24,
+                  color: kGreyColor12,
+                ),
               ),
             ],
           ),

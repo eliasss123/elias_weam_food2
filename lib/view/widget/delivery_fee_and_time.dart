@@ -44,7 +44,7 @@ class DeliveryFeeAndTime extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   MyText(
-                    text: 'Delivery fee',
+                    text: 'delivery_fee'.tr,
                     size: 13,
                     color: isDark
                         ? kPrimaryColor.withOpacity(0.55)
@@ -73,14 +73,14 @@ class DeliveryFeeAndTime extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   MyText(
-                    text: 'Delivery time',
+                    text: 'delivery_time'.tr,
                     size: 13,
                     color: isDark
                         ? kPrimaryColor.withOpacity(0.55)
                         : kBlackColor.withOpacity(0.44),
                   ),
                   MyText(
-                    text: '$time min',
+                    text: '$time ${'min'.tr}',
                     size: 15,
                     weight: FontWeight.w500,
                     color: isDark ? kPrimaryColor : kBlackColor,

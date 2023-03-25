@@ -31,14 +31,14 @@ class SaveAddress extends StatelessWidget {
               padding: EdgeInsets.zero,
               children: [
                 MyText(
-                  text: 'Address’s Details',
+                  text: 'address_details'.tr,
                   size: 18,
                   weight: FontWeight.w500,
                   paddingBottom: 25,
                   color: isDark ? kPrimaryColor : kBlackColor2,
                 ),
                 MyText(
-                  text: 'Please provide your exact location:',
+                  text: 'please_provide_your_exact_location'.tr,
                   color: isDark ? kPrimaryColor : kBlackColor,
                   paddingBottom: 12,
                 ),
@@ -53,16 +53,16 @@ class SaveAddress extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       addressTiles(
-                        title: 'Building number :',
+                        title: 'building_number'.tr,
                       ),
                       addressTiles(
-                        title: 'Entrance :',
+                        title: 'entrance'.tr,
                       ),
                       addressTiles(
-                        title: 'Floor :',
+                        title: 'floor'.tr,
                       ),
                       addressTiles(
-                        title: 'Apartment :',
+                        title: 'apartment'.tr,
                       ),
                       SizedBox(
                         height: 10,
@@ -72,7 +72,7 @@ class SaveAddress extends StatelessWidget {
                           Expanded(
                             flex: 4,
                             child: MyText(
-                              text: 'Private house',
+                              text: 'private_house'.tr,
                               size: 14,
                               weight: FontWeight.w700,
                               color: isDark ? kPrimaryColor : kBlackColor,
@@ -98,7 +98,7 @@ class SaveAddress extends StatelessWidget {
               horizontal: 30,
             ),
             child: MyButton(
-              buttonText: 'Save Address',
+              buttonText: 'save_address'.tr,
               onTap: () {},
             ),
           ),
@@ -136,7 +136,7 @@ class SaveAddress extends StatelessWidget {
               ),
               child: Center(
                 child: MyText(
-                  text: 'optional',
+                  text: 'optional'.tr,
                   size: 11,
                   color: kGreyColor,
                 ),

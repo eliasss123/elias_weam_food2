@@ -57,7 +57,6 @@ class _FilterPageState extends State<FilterPage> {
     });
   }
 
-
   List<String> sortListTr = [
     'picked_for_you',
     'most_popular',
@@ -70,6 +69,7 @@ class _FilterPageState extends State<FilterPage> {
     var platform = Theme.of(context).platform;
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         appBar: AppBar(
           backgroundColor: isDark ? kDarkPrimaryColor : kPrimaryColor,
@@ -79,10 +79,13 @@ class _FilterPageState extends State<FilterPage> {
             children: [
               GestureDetector(
                 onTap: () => Get.back(),
-                child: Image.asset(
-                  Assets.imagesArrowBack,
-                  height: 24,
-                  color: isDark ? kPrimaryColor : kBlackColor2,
+                child: RotatedBox(
+                  quarterTurns: isEnglish ? 0 : 2,
+                  child: Image.asset(
+                    Assets.imagesArrowBack,
+                    height: 24,
+                    color: isDark ? kPrimaryColor : kBlackColor2,
+                  ),
                 ),
               ),
             ],
@@ -99,6 +102,7 @@ class _FilterPageState extends State<FilterPage> {
                     child: MyText(
                       onTap: () => reset(),
                       paddingRight: 15,
+                      paddingLeft: isEnglish ? 0 : 15,
                       text: 'clear_all'.tr,
                       size: 12,
                       weight: FontWeight.w500,
@@ -366,36 +370,40 @@ class FilterTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Row(
-        children: [
-          Image.asset(
-            icon,
-            height: iconSize ?? 24,
-            width: 24,
-          ),
-          Expanded(
-            child: Obx(() {
-              return MyText(
-                paddingLeft: 10,
-                text: title,
-                color: themeController.isDarkTheme.value
-                    ? kPrimaryColor
-                    : kBlackColor2,
-              );
-            }),
-          ),
-          haveCustomTrailing!
-              ? customTrailing!
-              : isSelected!
-                  ? Image.asset(
-                      Assets.imagesCheckGreen,
-                      height: 12.2,
-                    )
-                  : SizedBox(),
-        ],
-      ),
-    );
+    return Obx(() {
+      bool isEnglish = languageController.isEnglish.value;
+      return GestureDetector(
+        onTap: onTap,
+        child: Row(
+          children: [
+            Image.asset(
+              icon,
+              height: iconSize ?? 24,
+              width: 24,
+            ),
+            Expanded(
+              child: Obx(() {
+                return MyText(
+                  paddingLeft: 10,
+                  paddingRight: isEnglish ? 0 : 10,
+                  text: title,
+                  color: themeController.isDarkTheme.value
+                      ? kPrimaryColor
+                      : kBlackColor2,
+                );
+              }),
+            ),
+            haveCustomTrailing!
+                ? customTrailing!
+                : isSelected!
+                    ? Image.asset(
+                        Assets.imagesCheckGreen,
+                        height: 12.2,
+                      )
+                    : SizedBox(),
+          ],
+        ),
+      );
+    });
   }
 }

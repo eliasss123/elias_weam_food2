@@ -55,7 +55,7 @@ class _SetLocationForFirstTimeState extends State<SetLocationForFirstTime> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             MyText(
-                              text: 'Detail Address',
+                              text: 'detail_address'.tr,
                               size: 18,
                               weight: FontWeight.w500,
                               color: isDark ? kPrimaryColor : kBlackColor2,
@@ -130,7 +130,7 @@ class _SetLocationForFirstTimeState extends State<SetLocationForFirstTime> {
                                           ),
                                           child: Center(
                                             child: MyText(
-                                              text: 'Change',
+                                              text: 'change'.tr,
                                               size: 12,
                                               weight: FontWeight.w700,
                                               color: kSecondaryColor,
@@ -155,7 +155,7 @@ class _SetLocationForFirstTimeState extends State<SetLocationForFirstTime> {
                         SizedBox(
                           height: 20,
                         ),
-                        SaveAddressAs(addressOp: addressOp),
+                        SaveAddressAs(),
                         SizedBox(
                           height: 30,
                         ),
@@ -169,7 +169,7 @@ class _SetLocationForFirstTimeState extends State<SetLocationForFirstTime> {
                       bottom: platform == TargetPlatform.iOS ? 3 : 0,
                     ),
                     child: MyButton(
-                      buttonText: 'Continue',
+                      buttonText: 'continue'.tr,
                       onTap: () {
                         showModalBottomSheet(
                           context: context,
@@ -200,21 +200,16 @@ class _SetLocationForFirstTimeState extends State<SetLocationForFirstTime> {
     );
   }
 
-  final List<String> addressOp = [
-    'Home',
-    'Work',
-    'Other',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
 
       return Scaffold(
         appBar: simpleAppBar(
           isDark: isDark,
-          title: 'Location',
+          title: 'location'.tr,
         ),
         body: Column(
           children: [

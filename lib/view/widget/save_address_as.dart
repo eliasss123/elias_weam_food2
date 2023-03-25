@@ -6,12 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SaveAddressAs extends StatelessWidget {
-  const SaveAddressAs({
+  SaveAddressAs({
     Key? key,
-    required this.addressOp,
   }) : super(key: key);
 
-  final List<String> addressOp;
+  final List<String> addressOp = [
+    'Home',
+    'Work',
+    'Other',
+  ];
+  final List<String> addressOpTr = [
+    'home',
+    'work',
+    'other',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +29,7 @@ class SaveAddressAs extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           MyText(
-            text: 'Save Address As',
+            text: 'save_address_as'.tr,
             size: 15,
             weight: FontWeight.w700,
             paddingBottom: 15,
@@ -35,7 +43,7 @@ class SaveAddressAs extends StatelessWidget {
                 return AddressToggleButton(
                   isDark: isDark,
                   onTap: () {},
-                  text: addressOp[index],
+                  text: addressOpTr[index].tr,
                   isSelected: index == 0 ? true : false,
                 );
               },

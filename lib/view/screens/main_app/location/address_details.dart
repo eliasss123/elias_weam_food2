@@ -6,6 +6,7 @@ import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/save_address_as.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AddressDetails extends StatelessWidget {
   AddressDetails({
@@ -13,11 +14,6 @@ class AddressDetails extends StatelessWidget {
     required this.isDark,
   }) : super(key: key);
 
-  final List<String> addressOp = [
-    'Home',
-    'Work',
-    'Other',
-  ];
 
   final bool isDark;
 
@@ -34,7 +30,7 @@ class AddressDetails extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           MyText(
-            text: 'Address’s Details',
+            text: 'address_details'.tr,
             size: 18,
             weight: FontWeight.w500,
             paddingBottom: 8,
@@ -87,7 +83,7 @@ class AddressDetails extends StatelessWidget {
               ),
             ],
           ),
-          SaveAddressAs(addressOp: addressOp),
+          SaveAddressAs(),
           SizedBox(
             height: 30,
           ),
@@ -96,7 +92,7 @@ class AddressDetails extends StatelessWidget {
               horizontal: 30,
             ),
             child: MyButton(
-              buttonText: 'Continue',
+              buttonText: 'continue'.tr,
               onTap: () {
                 showModalBottomSheet(
                   context: context,

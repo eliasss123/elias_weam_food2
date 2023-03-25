@@ -21,13 +21,13 @@ class NearByRestaurants extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           children: [
             MyText(
-              text: 'For you',
+              text: 'for_you'.tr,
               size: 16,
               color: kTertiaryColor,
             ),
             MyText(
               paddingTop: 8,
-              text: 'Nearby Restaurant',
+              text: 'nearby_restaurants'.tr,
               size: 24,
               weight: FontWeight.w700,
               color: isDark ? kPrimaryColor : kBlackColor2,
@@ -53,7 +53,7 @@ class NearByRestaurants extends StatelessWidget {
                         : index == 1
                             ? Assets.imagesPicture2
                             : Assets.imagesPicture4,
-                    name: 'Marina Coastal Food',
+                    name: 'marina_coastal_food'.tr,
                     deliveryTime: '30',
                     totalRating: 4.8,
                     totalReviews: '122',

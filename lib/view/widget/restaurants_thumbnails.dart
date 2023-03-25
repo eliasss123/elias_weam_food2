@@ -171,11 +171,12 @@ class RestaurantsThumbnail extends StatelessWidget {
                   : Positioned(
                       top: 30,
                       left: 25,
-                      right: isEnglish ? 0 : 25,
+                      right: isEnglish ? 25 : 25,
                       child: Container(
                         width: width ?? 265,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
                               height: 26,
@@ -190,7 +191,7 @@ class RestaurantsThumbnail extends StatelessWidget {
                                       ? 'featured'.tr
                                       : isFreeDelivery
                                           ? 'free_delivery'.tr
-                                          : '',
+                                          : '\$ · \$\$',
                                   size: 12,
                                   weight: FontWeight.w500,
                                   color: kPrimaryColor,
