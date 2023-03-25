@@ -14,7 +14,10 @@ class NearByRestaurants extends StatelessWidget {
       bool isDark = themeController.isDarkTheme.value;
       return Scaffold(
         backgroundColor: isDark ? kDarkPrimaryColor : kSeoulColor3,
-        appBar: simpleAppBar(bgColor: kSeoulColor3, isDark: isDark),
+        appBar: simpleAppBar(
+          bgColor: isDark ? Colors.transparent: kSeoulColor3,
+          isDark: isDark,
+        ),
         body: ListView(
           shrinkWrap: true,
           padding: EdgeInsets.symmetric(horizontal: 20),

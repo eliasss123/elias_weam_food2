@@ -165,7 +165,7 @@ final Map<String, String> english = {
   'items':'items',
   'order_is_on_the_way_delivery':'Order is on the way - delivery',
   'order_ready_pick_up':'Order ready - pick up',
-  'on_the_way ':'On the way ',
+  'on_the_way':'On the way ',
   'delivered':'Delivered',
   'october':'October',
   'august':'August',

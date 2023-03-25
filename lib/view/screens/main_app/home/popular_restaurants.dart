@@ -15,7 +15,7 @@ class PopularRestaurants extends StatelessWidget {
       return Scaffold(
         backgroundColor: isDark ? kDarkPrimaryColor : kSeoulColor3,
         appBar: simpleAppBar(
-          bgColor: kSeoulColor3,
+          bgColor: isDark ? Colors.transparent: kSeoulColor3,
           isDark: isDark,
         ),
         body: ListView(

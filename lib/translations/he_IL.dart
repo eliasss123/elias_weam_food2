@@ -157,7 +157,7 @@ final Map<String, String> hebrew = {
   'items':'פריטים',
   'order_is_on_the_way_delivery':'ההזמנה בדרך - משלוח',
   'order_ready_pick_up':'ההזמנה מוכנה - איסוף עצמי',
-  'on_the_way ':'בדרך אליך',
+  'on_the_way':'בדרך אליך',
   'delivered':'נמסר',
   'october':'אוקטובר',
   'august':'אוגוסט',

@@ -157,7 +157,7 @@ final Map<String, String> arabic = {
   'items':'أغراض',
   'order_is_on_the_way_delivery':'الطلب في الطريق - التسليم',
   'order_ready_pick_up':'اطلب جاهزًا - استلم',
-  'on_the_way ':'في الطريق اليك',
+  'on_the_way':'في الطريق اليك',
   'delivered':'تم تسليمه',
   'october':'اوكتوبر',
   'august':'اغسطس',
