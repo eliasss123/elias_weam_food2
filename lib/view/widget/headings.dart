@@ -48,7 +48,7 @@ Widget headingTiles({
         }),
         MyText(
           onTap: onSeeAll,
-          text: 'See All',
+          text: 'see_all'.tr,
           size: 13,
           letterSpacing: 0.4,
           color: kSecondaryColor,

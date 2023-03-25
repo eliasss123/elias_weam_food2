@@ -31,7 +31,7 @@ class ToggleButtonsWithImage extends StatelessWidget {
             horizontal: 7,
           ),
           height: 60,
-          width: 125,
+          width: 135,
           decoration: BoxDecoration(
             color: isSelected
                 ? kSecondaryColor
@@ -64,6 +64,7 @@ class ToggleButtonsWithImage extends StatelessWidget {
                   Expanded(
                     child: MyText(
                       paddingLeft: 10,
+                      paddingRight: 10,
                       text: title,
                       size: 12,
                       color: isSelected

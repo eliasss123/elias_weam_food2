@@ -57,6 +57,14 @@ class _FilterPageState extends State<FilterPage> {
     });
   }
 
+
+  List<String> sortListTr = [
+    'picked_for_you',
+    'most_popular',
+    'rating',
+    'delivery_time',
+  ];
+
   @override
   Widget build(BuildContext context) {
     var platform = Theme.of(context).platform;
@@ -80,7 +88,7 @@ class _FilterPageState extends State<FilterPage> {
             ],
           ),
           title: MyText(
-            text: 'Sort and Filter',
+            text: 'sort_and_filter'.tr,
             size: 21,
             weight: FontWeight.w500,
             color: isDark ? kPrimaryColor : kBlackColor2,
@@ -91,7 +99,7 @@ class _FilterPageState extends State<FilterPage> {
                     child: MyText(
                       onTap: () => reset(),
                       paddingRight: 15,
-                      text: 'Clear All',
+                      text: 'clear_all'.tr,
                       size: 12,
                       weight: FontWeight.w500,
                       color: kSecondaryColor,
@@ -112,7 +120,7 @@ class _FilterPageState extends State<FilterPage> {
                 ),
                 physics: BouncingScrollPhysics(),
                 children: [
-                  filterHeading('Sort'),
+                  filterHeading('sort'.tr),
                   SizedBox(
                     height: 20,
                   ),
@@ -125,7 +133,7 @@ class _FilterPageState extends State<FilterPage> {
                           padding: const EdgeInsets.only(bottom: 20),
                           child: FilterTiles(
                             icon: data['icon'],
-                            title: data['title'],
+                            title: sortListTr[index].tr,
                             onTap: () {
                               setState(() {
                                 currentSortIndex = index;
@@ -141,13 +149,13 @@ class _FilterPageState extends State<FilterPage> {
                   SizedBox(
                     height: 10,
                   ),
-                  filterHeading('From vai '),
+                  filterHeading('from_vai'.tr),
                   SizedBox(
                     height: 20,
                   ),
                   FilterTiles(
                     icon: Assets.imagesDeal,
-                    title: 'Deals',
+                    title: 'deals'.tr,
                     iconSize: 32,
                     onTap: () {},
                     isSelected: false,
@@ -179,7 +187,7 @@ class _FilterPageState extends State<FilterPage> {
                   ),
                   FilterTiles(
                     icon: Assets.imagesPrize,
-                    title: 'The best ',
+                    title: 'the_best'.tr,
                     onTap: () {},
                     isSelected: false,
                     haveCustomTrailing: true,
@@ -208,7 +216,7 @@ class _FilterPageState extends State<FilterPage> {
                   SizedBox(
                     height: 30,
                   ),
-                  filterHeading('Max Delivery Fee'),
+                  filterHeading('max_delivery_fee'.tr),
                   SizedBox(
                     height: 20,
                   ),
@@ -256,7 +264,7 @@ class _FilterPageState extends State<FilterPage> {
                   SizedBox(
                     height: 20,
                   ),
-                  filterHeading('Price range'),
+                  filterHeading('price_range'.tr),
                   SizedBox(
                     height: 20,
                   ),
@@ -315,7 +323,7 @@ class _FilterPageState extends State<FilterPage> {
               ),
               child: MyButton(
                 height: 52,
-                buttonText: 'Apply',
+                buttonText: 'apply'.tr,
                 onTap: () {},
               ),
             ),

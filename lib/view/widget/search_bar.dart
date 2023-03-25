@@ -57,7 +57,7 @@ class SearchBar extends StatelessWidget {
               horizontal: 21,
               vertical: 16.5,
             ),
-            hintText: 'Search...',
+            hintText: 'search'.tr,
             hintStyle: TextStyle(
               fontFamily: GoogleFonts.montserrat().fontFamily,
               fontSize: 13,

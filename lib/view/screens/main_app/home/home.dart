@@ -26,6 +26,18 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final List<String> _cats = [
+    'all_places',
+    'grocery_shop',
+    'fast_food',
+  ];
+  final List<String> popularList = [
+    'all',
+    'italian',
+    'vegetarian',
+    'healthy_food',
+  ];
+
   // bool isForFirstTime = true;
   //
   // @override
@@ -82,7 +94,7 @@ class _HomeState extends State<Home> {
                               onTap: () => Get.to(
                                 () => PinLocation(),
                               ),
-                              text: 'Deliver now',
+                              text: 'deliver_now'.tr,
                               size: 21.5,
                               letterSpacing: 0.4,
                               weight: FontWeight.w800,
@@ -91,9 +103,10 @@ class _HomeState extends State<Home> {
                               color: isDark ? kPrimaryColor : kBlackColor2,
                             ),
                             Wrap(
+                              spacing: 5,
                               children: [
                                 MyText(
-                                  text: 'City Center Hotel Jerusalem ',
+                                  text: 'city_center_hotel_jerusalem'.tr,
                                   size: 14,
                                   weight: FontWeight.w500,
                                   color: kGreenColor2,
@@ -120,7 +133,11 @@ class _HomeState extends State<Home> {
                       ),
                       actions: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 20, top: 21),
+                          padding: EdgeInsets.only(
+                            right: 20,
+                            top: 21,
+                            left: 20,
+                          ),
                           child: GestureDetector(
                             onTap: () => Get.to(() => Notifications()),
                             child: Stack(
@@ -230,7 +247,7 @@ class _HomeState extends State<Home> {
                                   () {
                                     return ToggleButtonsWithImage(
                                       img: data['img'],
-                                      title: data['title'],
+                                      title: _cats[index].tr,
                                       isSelected: homeController
                                               .currentInstantFilterIndex
                                               .value ==
@@ -247,7 +264,7 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           headingTiles(
-                            heading: 'Nearby Restaurants',
+                            heading: 'nearby_restaurants'.tr,
                             onSeeAll: () => Get.to(() => NearByRestaurants()),
                           ),
                           SizedBox(
@@ -268,7 +285,7 @@ class _HomeState extends State<Home> {
                                     imgUrl: index == 0
                                         ? Assets.imagesPicture2
                                         : Assets.imagesAwacado,
-                                    name: 'Marina Coastal Food',
+                                    name: 'marina_coastal_food'.tr,
                                     deliveryTime: '30',
                                     totalRating: 4.8,
                                     totalReviews: '122',
@@ -293,7 +310,7 @@ class _HomeState extends State<Home> {
                             height: 20,
                           ),
                           headingTiles(
-                            heading: 'Popular Right Now',
+                            heading: 'popular_right_now'.tr,
                             onSeeAll: () => Get.to(() => PopularRestaurants()),
                           ),
                           SizedBox(
@@ -315,7 +332,7 @@ class _HomeState extends State<Home> {
                                   () {
                                     return SimpleToggleButtons(
                                       isDark: isDark,
-                                      text: value,
+                                      text: popularList[index].tr,
                                       isSelected:
                                           homeController.popularIndex.value ==
                                               index,
@@ -349,7 +366,7 @@ class _HomeState extends State<Home> {
                                   imgUrl: index == 0
                                       ? Assets.imagesPicture
                                       : Assets.imagesPicture4,
-                                  name: 'Marina Coastal Food',
+                                  name: 'marina_coastal_food'.tr,
                                   deliveryTime: '30',
                                   totalRating: 4.8,
                                   totalReviews: '122',

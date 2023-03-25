@@ -15,6 +15,12 @@ class BrowseByLocation extends StatelessWidget {
     'Mi’ilya',
   ];
 
+  final List<String> _citiesTranslation = [
+    'maalot_tarshiha',
+    'nahariya',
+    'miilya',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SimpleBottomSheet(
@@ -29,21 +35,21 @@ class BrowseByLocation extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           children: [
             customTiles(
-              title: 'Use your current location',
+              title: 'use_your_current_location'.tr,
               onTap: () => Get.to(
                 () => PinLocation(),
               ),
             ),
             customTiles(
-              title: 'Add another address',
+              title: 'add_another_address'.tr,
               onTap: () => Get.to(() => SetLocationForFirstTime()),
             ),
             customTiles(
-              title: 'Home',
+              title: 'home'.tr,
               onTap: () {},
             ),
             customTiles(
-              title: 'Office',
+              title: 'office'.tr,
               onTap: () {},
             ),
             Obx(() {
@@ -54,15 +60,20 @@ class BrowseByLocation extends StatelessWidget {
                   scrollOnCollapse: false,
                   child: ExpandablePanel(
                     theme: ExpandableThemeData(
-                      iconPadding:
-                          EdgeInsets.only(right: 20, top: 17, bottom: 17),
+                      iconPadding: EdgeInsets.only(
+                        right: 20,
+                        top: 17,
+                        bottom: 17,
+                        left: 20,
+                      ),
                       iconColor: isDark ? kPrimaryColor : kBlackColor2,
                       headerAlignment: ExpandablePanelHeaderAlignment.center,
                       tapBodyToCollapse: true,
                     ),
                     header: MyText(
                       paddingLeft: 20,
-                      text: 'Browse our cities',
+                      paddingRight: 20,
+                      text: 'browse_our_cities'.tr,
                       size: 18,
                       color: isDark ? kPrimaryColor : kBlackColor2,
                       weight: FontWeight.w700,
@@ -82,7 +93,7 @@ class BrowseByLocation extends StatelessWidget {
                               paddingRight: 20,
                               paddingBottom: 12,
                               paddingTop: 12,
-                              text: cities[index],
+                              text: _citiesTranslation[index].tr,
                               size: 18,
                               weight: FontWeight.w500,
                               color: isDark
