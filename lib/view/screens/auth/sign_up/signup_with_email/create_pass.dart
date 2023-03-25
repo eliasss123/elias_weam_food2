@@ -45,12 +45,12 @@ class _CreatePassState extends State<CreatePass> {
             vertical: 10,
           ),
           children: [
-            authHeading('Create password'),
+            authHeading('create_password'.tr),
             SizedBox(
               height: 8,
             ),
             authSubHeading(
-              'Your password must be at least 8 characters , and contains at least one letter and one digit.',
+              'your_password_must_be_at_least_8_characters'.tr,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -60,15 +60,15 @@ class _CreatePassState extends State<CreatePass> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   PasswordField(
-                    labelText: 'Enter password',
-                    hintText: 'Password',
+                    labelText: 'enter_password'.tr,
+                    hintText: 'password'.tr,
                     controller: passCon,
                     onChanged: (value) => onChanged(),
                     marginBottom: 18,
                   ),
                   PasswordField(
-                    labelText: 'Confirm password',
-                    hintText: 'Password',
+                    labelText: 'confirm_password'.tr,
+                    hintText: 'password'.tr,
                     controller: cPassCon,
                     onChanged: (value) => onChanged(),
                     marginBottom: 40,
@@ -77,14 +77,13 @@ class _CreatePassState extends State<CreatePass> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: MyButton(
                       isActive: isActive,
-                      buttonText: 'Next',
+                      buttonText: 'next'.tr,
                       onTap: () => Get.to(
                         () => Congrats(
-                          heading: 'Congratulations!',
-                          congratsMsg:
-                              'Your account is complete, please enjoy the best menu from us.',
+                          heading: 'congratulations'.tr,
+                          congratsMsg: 'your_account_is_complete'.tr,
                           onContinue: () {},
-                          buttonText: 'Done',
+                          buttonText: 'done'.tr,
                         ),
                       ),
                     ),

@@ -31,12 +31,13 @@ class _ResetWithEmailState extends State<ResetWithEmail> {
             vertical: 10,
           ),
           children: [
-            authHeading('Reset Password'),
+            authHeading('reset_password'.tr),
             SizedBox(
               height: 8,
             ),
             authSubHeading(
-                'Please enter your email, we will send verification code to your email.'),
+              'we_will_send_verification_code_to_email'.tr,
+            ),
             SizedBox(
               height: 40,
             ),
@@ -46,7 +47,7 @@ class _ResetWithEmailState extends State<ResetWithEmail> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   FilledTextField(
-                    labelText: 'Email',
+                    labelText: 'email'.tr,
                     hintText: 'louisiana12232@email.com',
                     onChanged: (value) {
                       setState(() {
@@ -57,7 +58,7 @@ class _ResetWithEmailState extends State<ResetWithEmail> {
                   ),
                   MyButton(
                     isActive: isActive,
-                    buttonText: 'Continue',
+                    buttonText: 'send'.tr,
                     onTap: () => Get.to(() => VerifyCodeForEmail()),
                   ),
                 ],

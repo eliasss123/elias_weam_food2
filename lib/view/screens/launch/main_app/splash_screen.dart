@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:elias_weam_food2/config/theme/dark_theme.dart';
 import 'package:elias_weam_food2/config/theme/light_theme.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
+import 'package:elias_weam_food2/controller/language_controller/language_controller.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/shared_preferences/user_simple_preferences.dart';
 import 'package:elias_weam_food2/view/screens/launch/main_app/on_boarding.dart';
@@ -21,6 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     splashScreenHandler();
     getTheme();
+    getLanguage();
   }
 
   void splashScreenHandler() {
@@ -30,6 +32,21 @@ class _SplashScreenState extends State<SplashScreen> {
         () => OnBoarding(),
       ),
     );
+  }
+
+  void getLanguage() async {
+    languageController.currentIndex.value =
+        await UserSimplePreferences.getLanguageIndex() ?? 0;
+    languageController.currentIndex.value != 0
+        ? languageController.isEnglish.value = false
+        : languageController.isEnglish.value = true;
+    if (languageController.currentIndex.value == 0) {
+      Localization().selectedLocale('English');
+    } else if (languageController.currentIndex.value == 1) {
+      Localization().selectedLocale('Hebrew');
+    } else if (languageController.currentIndex.value == 2) {
+      Localization().selectedLocale('Arabic');
+    }
   }
 
   void getTheme() async {

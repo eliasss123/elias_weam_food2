@@ -32,12 +32,13 @@ class _ResetWithPhoneState extends State<ResetWithPhone> {
             vertical: 10,
           ),
           children: [
-            authHeading('Reset Password'),
+            authHeading('reset_password'.tr),
             SizedBox(
               height: 8,
             ),
             authSubHeading(
-                'Please enter your phone number, we will send a verification code to your phone number.'),
+              'we_will_send_verification_code_to_phone'.tr,
+            ),
             SizedBox(
               height: 40,
             ),
@@ -57,7 +58,7 @@ class _ResetWithPhoneState extends State<ResetWithPhone> {
                         ),
                       ],
                     ),
-                    labelText: 'Phone Number',
+                    labelText: 'phone_number'.tr,
                     hintText: '(+1) 234 567 890',
                     onChanged: (value) {
                       setState(() {
@@ -68,7 +69,7 @@ class _ResetWithPhoneState extends State<ResetWithPhone> {
                   ),
                   MyButton(
                     isActive: isActive,
-                    buttonText: 'Continue',
+                    buttonText: 'send'.tr,
                     onTap: () => Get.to(() => VerifyCodeForPhone()),
                   ),
                 ],

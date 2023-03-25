@@ -52,7 +52,7 @@ class _VerifyCodeForEmailState extends State<VerifyCodeForEmail> {
             vertical: 10,
           ),
           children: [
-            authHeading('Verification Code'),
+            authHeading('verification_code'.tr),
             SizedBox(
               height: 8,
             ),
@@ -66,7 +66,7 @@ class _VerifyCodeForEmailState extends State<VerifyCodeForEmail> {
                 ),
                 children: [
                   TextSpan(
-                    text: 'Please enter the code we just sent to your email ',
+                    text: 'verification_code_on_email'.tr,
                   ),
                   TextSpan(
                     style: TextStyle(
@@ -120,13 +120,13 @@ class _VerifyCodeForEmailState extends State<VerifyCodeForEmail> {
               alignment: WrapAlignment.center,
               children: [
                 MyText(
-                  text: 'If you didn’t receive a code?',
+                  text: 'receive_a_code'.tr,
                   size: 14,
                   weight: FontWeight.w700,
                   color: kTertiaryColor,
                 ),
                 MyText(
-                  text: ' Resend',
+                  text: 'resend'.tr,
                   size: 14,
                   weight: FontWeight.w700,
                   color: kSecondaryColor,
@@ -138,7 +138,7 @@ class _VerifyCodeForEmailState extends State<VerifyCodeForEmail> {
             ),
             MyButton(
               isActive: isActive,
-              buttonText: 'Continue',
+              buttonText: 'continue'.tr,
               onTap: () => Get.to(() => CreateNewPass()),
             ),
           ],

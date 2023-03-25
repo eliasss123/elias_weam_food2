@@ -2,6 +2,7 @@ import 'package:elias_weam_food2/config/routes/routes.dart';
 import 'package:elias_weam_food2/config/theme/dark_theme.dart';
 import 'package:elias_weam_food2/config/theme/light_theme.dart';
 import 'package:elias_weam_food2/config/theme/theme_controller.dart';
+import 'package:elias_weam_food2/controller/language_controller/language_controller.dart';
 import 'package:elias_weam_food2/controller/main_app_controller/browse_controller/browse_controller.dart';
 import 'package:elias_weam_food2/controller/main_app_controller/cart_and_checkout_controller/cart_and_checkout_controller.dart';
 import 'package:elias_weam_food2/controller/main_app_controller/home_controller/home_controller.dart';
@@ -14,6 +15,7 @@ import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Get.put(LanguageController());
   Get.put(ThemeController());
   Get.put(HomeController());
   Get.put(BrowseController());
@@ -44,6 +46,8 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return GetMaterialApp(
+      locale: Localization.currentLocale,
+      translations: Localization(),
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       title: 'Elias Weam Food 2',

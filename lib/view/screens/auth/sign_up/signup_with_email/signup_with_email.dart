@@ -44,7 +44,7 @@ class _SignupWithEmailState extends State<SignupWithEmail> {
             vertical: 10,
           ),
           children: [
-            authHeading('Enter your email'),
+            authHeading('enter_your_email'.tr),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 10,
@@ -56,12 +56,12 @@ class _SignupWithEmailState extends State<SignupWithEmail> {
                   SimpleTextField(
                     controller: emailCon,
                     onChanged: (value) => onChanged(),
-                    hintText: 'Email',
+                    hintText: 'email'.tr,
                     marginBottom: 25,
                   ),
                   MyButton(
                     isActive: isActive,
-                    buttonText: 'Next',
+                    buttonText: 'next'.tr,
                     onTap: () => Get.to(
                       () => YourName(),
                     ),

@@ -42,7 +42,7 @@ class VerifyOtp extends StatelessWidget {
             vertical: 10,
           ),
           children: [
-            authHeading('Verify your phone number'),
+            authHeading('verify_your_phone_number'.tr),
             SizedBox(
               height: 8,
             ),
@@ -56,7 +56,7 @@ class VerifyOtp extends StatelessWidget {
                 ),
                 children: [
                   TextSpan(
-                    text: 'Enter the 4-digit code sent to you at\n',
+                    text: 'enter_the_4_digit_code_sent_to_you_at'.tr,
                   ),
                   TextSpan(
                     style: TextStyle(
@@ -101,7 +101,7 @@ class VerifyOtp extends StatelessWidget {
             MyText(
               paddingTop: 27,
               decoration: TextDecoration.underline,
-              text: 'Resend code via SMS',
+              text: 'resend_code_via_sms'.tr,
               size: 14,
               weight: FontWeight.w700,
               color:

@@ -51,26 +51,26 @@ class Signup extends StatelessWidget {
                   MyText(
                     paddingTop: 20,
                     align: TextAlign.end,
-                    text: 'Skip',
+                    text: 'skip'.tr,
                     weight: FontWeight.w500,
                     color: kGreyColor,
                   ),
                   MyText(
-                    text: 'Sign Up',
+                    text: 'sign_Up'.tr,
                     size: 23,
                     weight: FontWeight.w700,
                     paddingBottom: 8,
                     color: isDark ? kPrimaryColor : kBlackColor2,
                   ),
                   MyText(
-                    text: 'Order to your location in one click!',
+                    text: 'order_to_your_location_in_one_click'.tr,
                     color: isDark
                         ? kPrimaryColor.withOpacity(0.71)
                         : kBlackColor2.withOpacity(0.71),
                     paddingBottom: 30,
                   ),
                   PrefixTextField(
-                    hintText: 'Your phone number',
+                    hintText: 'your_phone_number'.tr,
                     prefixIcon: Assets.imagesPhone,
                     prefixIconSize: 17,
                   ),
@@ -89,7 +89,7 @@ class Signup extends StatelessWidget {
                         MyText(
                           paddingLeft: 10,
                           paddingRight: 10,
-                          text: 'or',
+                          text: 'or'.tr,
                           size: 14,
                           color: isDark ? kPrimaryColor : kDarkGreyColor2,
                         ),
@@ -136,7 +136,7 @@ class Signup extends StatelessWidget {
                   MyText(
                     onTap: () => Get.to(() => SignupWithEmail()),
                     paddingTop: 20,
-                    text: 'I don’t have social media',
+                    text: 'i_don\'t_have_social_media'.tr,
                     weight: FontWeight.w500,
                     color: kSecondaryColor,
                     align: TextAlign.end,
@@ -147,7 +147,7 @@ class Signup extends StatelessWidget {
                       width: 213,
                       child: MyButton(
                         height: 52,
-                        buttonText: 'Sign Up',
+                        buttonText: 'sign_Up'.tr,
                         onTap: () => Get.to(
                           () => VerifyOtp(),
                         ),
@@ -165,7 +165,7 @@ class Signup extends StatelessWidget {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 MyText(
-                  text: 'Already have an account?',
+                  text: 'already_have_an_account'.tr,
                   color: isDark
                       ? kPrimaryColor.withOpacity(0.71)
                       : kBlackColor2.withOpacity(0.71),
@@ -174,7 +174,7 @@ class Signup extends StatelessWidget {
                   onTap: () => Get.to(
                     () => Login(),
                   ),
-                  text: ' Sign In',
+                  text: ' ${'sign_in'.tr}',
                   weight: FontWeight.w500,
                   color: kSecondaryColor,
                 ),

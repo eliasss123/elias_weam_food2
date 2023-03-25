@@ -1,5 +1,6 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
+import 'package:elias_weam_food2/shared_preferences/user_simple_preferences.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
@@ -17,8 +18,26 @@ class _LanguagesState extends State<Languages> {
     'Hebrew',
     'Arabic',
   ];
+  final List<String> languages = [
+    'english',
+    'hebrew',
+    'arabic',
+  ];
 
-  int currentIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    getLanguageIndex();
+  }
+
+  void getLanguageIndex() async {
+    languageController.currentIndex.value =
+        await UserSimplePreferences.getLanguageIndex() ?? 0;
+    languageController.currentIndex.value != 0
+        ? languageController.isEnglish.value = false
+        : languageController.isEnglish.value = true;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +47,7 @@ class _LanguagesState extends State<Languages> {
       bool isDark = themeController.isDarkTheme.value;
       return Scaffold(
         appBar: simpleAppBar(
-          title: 'Language',
+          title: 'language'.tr,
           titleWeight: FontWeight.w700,
           isDark: isDark,
         ),
@@ -43,7 +62,7 @@ class _LanguagesState extends State<Languages> {
                   horizontal: 20,
                   vertical: 15,
                 ),
-                itemCount: 3,
+                itemCount: languagesList.length,
                 itemBuilder: (context, index) {
                   return Container(
                     height: 60,
@@ -58,9 +77,10 @@ class _LanguagesState extends State<Languages> {
                       color: Colors.transparent,
                       child: InkWell(
                         onTap: () {
-                          setState(() {
-                            currentIndex = index;
-                          });
+                          languageController.onLanguageChanged(
+                            languagesList[index],
+                            index,
+                          );
                         },
                         borderRadius: BorderRadius.circular(10),
                         child: Padding(
@@ -71,33 +91,41 @@ class _LanguagesState extends State<Languages> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               MyText(
-                                text: languagesList[index],
+                                text: languages[index].tr,
                                 size: 18,
                                 color: isDark ? kPrimaryColor : kBlackColor2,
                               ),
-                              Container(
-                                height: 22.5,
-                                width: 22.5,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: currentIndex == index
-                                      ? kSecondaryColor
-                                      : Colors.transparent,
-                                  border: Border.all(
-                                    width: 1.5,
-                                    color: currentIndex == index
-                                        ? kSecondaryColor
-                                        : kBorderColor4,
+                              Obx(() {
+                                return Container(
+                                  height: 22.5,
+                                  width: 22.5,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color:
+                                        languageController.currentIndex.value ==
+                                                index
+                                            ? kSecondaryColor
+                                            : Colors.transparent,
+                                    border: Border.all(
+                                      width: 1.5,
+                                      color: languageController
+                                                  .currentIndex.value ==
+                                              index
+                                          ? kSecondaryColor
+                                          : kBorderColor4,
+                                    ),
                                   ),
-                                ),
-                                child: Icon(
-                                  Icons.check,
-                                  size: 15,
-                                  color: currentIndex == index
-                                      ? kPrimaryColor
-                                      : Colors.transparent,
-                                ),
-                              ),
+                                  child: Icon(
+                                    Icons.check,
+                                    size: 15,
+                                    color:
+                                        languageController.currentIndex.value ==
+                                                index
+                                            ? kPrimaryColor
+                                            : Colors.transparent,
+                                  ),
+                                );
+                              }),
                             ],
                           ),
                         ),
@@ -107,18 +135,18 @@ class _LanguagesState extends State<Languages> {
                 },
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: 45,
-                right: 45,
-                top: 20,
-                bottom: isIos ? 23 : 20,
-              ),
-              child: MyButton(
-                buttonText: 'Next',
-                onTap: () {},
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.only(
+            //     left: 45,
+            //     right: 45,
+            //     top: 20,
+            //     bottom: isIos ? 23 : 20,
+            //   ),
+            //   child: MyButton(
+            //     buttonText: 'Next',
+            //     onTap: () {},
+            //   ),
+            // ),
           ],
         ),
       );

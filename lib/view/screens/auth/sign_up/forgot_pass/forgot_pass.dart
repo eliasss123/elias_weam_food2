@@ -26,19 +26,19 @@ class ForgotPass extends StatelessWidget {
             vertical: 10,
           ),
           children: [
-            authHeading('Forgot Password'),
+            authHeading('forgot_password'.tr),
             SizedBox(
               height: 8,
             ),
-            authSubHeading('Choose how you want to sign in:'),
+            authSubHeading('choose_how_you_want_to_sign_in'.tr),
             SizedBox(
               height: 40,
             ),
             ForgotPasswordTile(
               icon: Assets.imagesPhone,
               iconSize: 20.57,
-              title: 'Phone Number',
-              subTitle: 'Send to your phone number',
+              title: 'phone_number'.tr,
+              subTitle: 'send_to_your_phone_number'.tr,
               onTap: () => Get.to(() => ResetWithPhone()),
             ),
             SizedBox(
@@ -47,15 +47,15 @@ class ForgotPass extends StatelessWidget {
             ForgotPasswordTile(
               icon: Assets.imagesEmail,
               iconSize: 23,
-              title: 'Email',
-              subTitle: 'Send to your email',
+              title: 'email'.tr,
+              subTitle: 'send_to_your_email'.tr,
               onTap: () => Get.to(() => ResetWithEmail()),
             ),
             SizedBox(
               height: 40,
             ),
             MyButton(
-              buttonText: 'Continue',
+              buttonText: 'continue'.tr,
               onTap: () {},
             ),
           ],

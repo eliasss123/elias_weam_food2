@@ -22,7 +22,7 @@ class ForgotPasswordTile extends StatelessWidget {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
       return Container(
-        height: 72.22,
+        height: languageController.isEnglish.value ? 72.22 : 82.22,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           color: isDark ? kDarkInputBgColor : kSeoulColor,

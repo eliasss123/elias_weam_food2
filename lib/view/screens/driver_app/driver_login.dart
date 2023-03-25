@@ -3,14 +3,14 @@ import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/forgot_pass/forgot_pass.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/sign_up.dart';
-import 'package:elias_weam_food2/view/screens/main_app/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:elias_weam_food2/view/screens/driver_app/driver_bottom_nav/driver_bottom_nav.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/prefix_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Login extends StatelessWidget {
+class DriverLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -96,7 +96,7 @@ class Login extends StatelessWidget {
                             child: MyButton(
                               height: 52,
                               buttonText: 'Log In',
-                              onTap: () => Get.offAll(() => BottomNavBar()),
+                              onTap: () => Get.to(() => DriverBottomNav()),
                             ),
                           ),
                         ),
@@ -119,9 +119,9 @@ class Login extends StatelessWidget {
                         : kBlackColor2.withOpacity(0.71),
                   ),
                   MyText(
-                    onTap: () => Get.offAll(
-                      () => Signup(),
-                    ),
+                    // onTap: () => Get.offAll(
+                    //   () => Signup(),
+                    // ),
                     text: ' Sign Up',
                     weight: FontWeight.w500,
                     color: kSecondaryColor,

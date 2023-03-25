@@ -45,7 +45,7 @@ class _YourNameState extends State<YourName> {
             vertical: 10,
           ),
           children: [
-            authHeading('Enter your name'),
+            authHeading('enter_your_name'.tr),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 10,
@@ -57,17 +57,17 @@ class _YourNameState extends State<YourName> {
                   SimpleTextField(
                     controller: fNameCon,
                     onChanged: (value) => onChanged(),
-                    hintText: 'First name',
+                    hintText: 'first_name'.tr,
                   ),
                   SimpleTextField(
                     controller: lNameCon,
                     onChanged: (value) => onChanged(),
-                    hintText: 'Last Name',
+                    hintText: 'last_name'.tr,
                     marginBottom: 45,
                   ),
                   MyButton(
                     isActive: isActive,
-                    buttonText: 'Next',
+                    buttonText: 'next'.tr,
                     onTap: () => Get.to(
                       () => CreatePass(),
                     ),

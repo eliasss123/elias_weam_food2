@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
@@ -13,19 +14,24 @@ AppBar simpleAppBar({
 }) {
   return AppBar(
     backgroundColor:
-        isDark! ? bgColor ?? kDarkPrimaryColor : bgColor ?? kPrimaryColor,
+    isDark! ? bgColor ?? kDarkPrimaryColor : bgColor ?? kPrimaryColor,
     centerTitle: true,
     leading: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        GestureDetector(
-          onTap: () => Get.back(),
-          child: Image.asset(
-            Assets.imagesArrowBack,
-            height: 24,
-            color: isDark ? kPrimaryColor : kBlackColor2,
-          ),
-        ),
+        Obx(() {
+          return GestureDetector(
+            onTap: () => Get.back(),
+            child: RotatedBox(
+              quarterTurns: languageController.isEnglish.value ? 0 : 2,
+              child: Image.asset(
+                Assets.imagesArrowBack,
+                height: 24,
+                color: isDark ? kPrimaryColor : kBlackColor2,
+              ),
+            ),
+          );
+        }),
       ],
     ),
     title: MyText(

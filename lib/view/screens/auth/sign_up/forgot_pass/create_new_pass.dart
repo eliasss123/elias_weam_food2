@@ -45,12 +45,12 @@ class _CreateNewPassState extends State<CreateNewPass> {
             vertical: 10,
           ),
           children: [
-            authHeading('Create password'),
+            authHeading('create_password'.tr),
             SizedBox(
               height: 8,
             ),
             authSubHeading(
-              'Your password must be at least 8 characters , and contains at least one letter and one digit.',
+              'your_password_must_be_at_least_8_characters'.tr,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -60,15 +60,15 @@ class _CreateNewPassState extends State<CreateNewPass> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   PasswordField(
-                    labelText: 'Enter password',
-                    hintText: 'Password',
+                    labelText: 'enter_password'.tr,
+                    hintText: 'password'.tr,
                     controller: passCon,
                     onChanged: (value) => onChanged(),
                     marginBottom: 18,
                   ),
                   PasswordField(
-                    labelText: 'Confirm password',
-                    hintText: 'Password',
+                    labelText: 'confirm_password'.tr,
+                    hintText: 'password'.tr,
                     controller: cPassCon,
                     onChanged: (value) => onChanged(),
                     marginBottom: 40,
@@ -77,14 +77,13 @@ class _CreateNewPassState extends State<CreateNewPass> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: MyButton(
                       isActive: isActive,
-                      buttonText: 'Next',
+                      buttonText: 'next'.tr,
                       onTap: () => Get.to(
                         () => Congrats(
-                          heading: 'Password Changed!',
-                          congratsMsg:
-                              'Password changed successfully, you can login again with a new password',
+                          heading: 'password_changed'.tr,
+                          congratsMsg: 'password_changed_successfully'.tr,
                           onContinue: () {},
-                          buttonText: 'Done',
+                          buttonText: 'done'.tr,
                         ),
                       ),
                     ),

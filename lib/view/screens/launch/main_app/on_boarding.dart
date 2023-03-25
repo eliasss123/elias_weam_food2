@@ -35,15 +35,18 @@ class _OnBoardingState extends State<OnBoarding> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                MyText(
-                  paddingTop: 35,
-                  paddingRight: 15,
-                  align: TextAlign.end,
-                  text: 'Skip',
-                  weight: FontWeight.w500,
-                  color: kGreyColor,
-                  paddingBottom: 10,
-                ),
+                Obx(() {
+                  return MyText(
+                    paddingTop: 35,
+                    paddingRight: 15,
+                    paddingLeft: languageController.isEnglish.value ? 0 : 15,
+                    align: TextAlign.end,
+                    text: 'skip'.tr,
+                    weight: FontWeight.w500,
+                    color: kGreyColor,
+                    paddingBottom: 10,
+                  );
+                }),
                 Center(
                   child: Image.asset(
                     Assets.imagesLogoHoriz,
@@ -83,7 +86,7 @@ class _OnBoardingState extends State<OnBoarding> {
                           children: [
                             Obx(() {
                               return MyText(
-                                text: 'Delivery at your ',
+                                text: 'delivery_at_your'.tr,
                                 size: 20,
                                 weight: FontWeight.w700,
                                 color: themeController.isDarkTheme.value
@@ -92,7 +95,7 @@ class _OnBoardingState extends State<OnBoarding> {
                               );
                             }),
                             MyText(
-                              text: 'doorstep',
+                              text: 'doorstep'.tr,
                               size: 20,
                               weight: FontWeight.w700,
                               color: kSecondaryColor,
@@ -104,8 +107,7 @@ class _OnBoardingState extends State<OnBoarding> {
                             paddingTop: 13,
                             paddingRight: 30,
                             paddingLeft: 30,
-                            text:
-                                'Your order will be delivered as soon as possible by our courier.',
+                            text: 'intro1'.tr,
                             color: themeController.isDarkTheme.value
                                 ? kPrimaryColor.withOpacity(0.68)
                                 : kBlackColor2.withOpacity(0.48),
@@ -160,15 +162,21 @@ class _OnBoardingState extends State<OnBoarding> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         MyText(
-                          text: 'Next',
+                          text: 'next'.tr,
                           weight: FontWeight.w700,
                           color: kPrimaryColor,
                           paddingRight: 8,
                         ),
-                        Image.asset(
-                          Assets.imagesArrowForward,
-                          height: 13,
-                        ),
+                        Obx(() {
+                          return RotatedBox(
+                            quarterTurns:
+                                languageController.isEnglish.value ? 0 : 2,
+                            child: Image.asset(
+                              Assets.imagesArrowForward,
+                              height: 13,
+                            ),
+                          );
+                        }),
                       ],
                     ),
                   ),
