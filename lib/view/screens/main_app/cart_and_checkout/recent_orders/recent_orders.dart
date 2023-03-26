@@ -18,7 +18,7 @@ class RecentOrders extends StatelessWidget {
       bool isDark = themeController.isDarkTheme.value;
       return Scaffold(
         appBar: simpleAppBar(
-          title: 'Order History',
+          title: 'orders'.tr,
           titleWeight: FontWeight.w700,
           isDark: isDark,
         ),
@@ -31,7 +31,7 @@ class RecentOrders extends StatelessWidget {
           ),
           children: [
             MyText(
-              text: 'Last 7 days',
+              text: 'last_7_days'.tr,
               size: 18,
               weight: FontWeight.w500,
               paddingBottom: 15,
@@ -114,7 +114,7 @@ class RecentOrderTiles extends StatelessWidget {
                   Row(
                     children: [
                       MyText(
-                        text: isDelivered! ? 'Delivered' : 'Picked up',
+                        text: isDelivered! ? 'delivered'.tr : 'picked_up'.tr,
                         size: 14,
                         color: kSecondaryColor,
                         weight: FontWeight.w500,
@@ -126,7 +126,7 @@ class RecentOrderTiles extends StatelessWidget {
                         paddingRight: 8,
                       ),
                       MyText(
-                        text: '$totalItems items',
+                        text: '$totalItems ${'items'.tr}',
                         size: 14,
                         color: kGreyColor5,
                         weight: FontWeight.w500,
@@ -146,109 +146,7 @@ class RecentOrderTiles extends StatelessWidget {
                   builder: (_) {
                     return SimpleBottomSheet(
                       height: 210,
-                      content: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (_) {
-                                    return OrderDetails(
-                                      orderNo: '701',
-                                      restaurantName: 'Pie pizza restaurant',
-                                      subTotal: '87.10',
-                                      items: [
-                                        OrderDetailsModel(
-                                          itemQuantity: '1',
-                                          itemName:
-                                              'Squid Sweet and Sour Salad',
-                                          itemPrice: '19.99',
-                                          subItems: [],
-                                        ),
-                                        OrderDetailsModel(
-                                          itemQuantity: '1',
-                                          itemName: 'Japan Hainanese Sashimi',
-                                          itemPrice: '37.99',
-                                          subItems: [
-                                            OrderDetailsSubItemsModel(
-                                              itemName: 'Teriyaki Sause',
-                                              itemPrice: '0',
-                                            ),
-                                            OrderDetailsSubItemsModel(
-                                              itemName: 'Omelet',
-                                              itemPrice: '2',
-                                            ),
-                                          ],
-                                        ),
-                                        OrderDetailsModel(
-                                          itemQuantity: '1',
-                                          itemName: 'Black Pepper Beef Lumpia',
-                                          itemPrice: '27.12',
-                                          subItems: [],
-                                        ),
-                                      ],
-                                      deliveryFee: '1.5',
-                                      total: '88.6',
-                                      orderDate: '28/10/2021',
-                                      orderDeliveryTime: '16:55',
-                                    );
-                                  },
-                                );
-                              },
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                height: 54,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(14),
-                                  color:
-                                      isDark ? kDarkPrimaryColor : kSeoulColor4,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 15,
-                                  ),
-                                  child: MyText(
-                                    text: 'Order details',
-                                    size: 16,
-                                    color:
-                                        isDark ? kPrimaryColor : kBlackColor2,
-                                    weight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              alignment: Alignment.centerLeft,
-                              height: 54,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(14),
-                                color:
-                                    isDark ? kDarkPrimaryColor : kSeoulColor4,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 15,
-                                ),
-                                child: MyText(
-                                  text: 'Make same order',
-                                  size: 16,
-                                  color: isDark ? kPrimaryColor : kBlackColor2,
-                                  weight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      content: OrderInfo(isDark: isDark),
                     );
                   },
                 );
@@ -256,6 +154,123 @@ class RecentOrderTiles extends StatelessWidget {
               child: Image.asset(
                 Assets.imagesIconsMoreVert,
                 height: 30,
+              ),
+            ),
+          ],
+        ),
+      );
+    });
+  }
+}
+
+class OrderInfo extends StatelessWidget {
+  const OrderInfo({
+    super.key,
+    required this.isDark,
+  });
+
+  final bool isDark;
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      bool isEnglish = languageController.isEnglish.value;
+      return Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (_) {
+                    return OrderDetails(
+                      orderNo: '701',
+                      restaurantName: 'Pie pizza restaurant',
+                      subTotal: '87.10',
+                      items: [
+                        OrderDetailsModel(
+                          itemQuantity: '1',
+                          itemName: 'Squid Sweet and Sour Salad',
+                          itemPrice: '19.99',
+                          subItems: [],
+                        ),
+                        OrderDetailsModel(
+                          itemQuantity: '1',
+                          itemName: 'Japan Hainanese Sashimi',
+                          itemPrice: '37.99',
+                          subItems: [
+                            OrderDetailsSubItemsModel(
+                              itemName: 'Teriyaki Sause',
+                              itemPrice: '0',
+                            ),
+                            OrderDetailsSubItemsModel(
+                              itemName: 'Omelet',
+                              itemPrice: '2',
+                            ),
+                          ],
+                        ),
+                        OrderDetailsModel(
+                          itemQuantity: '1',
+                          itemName: 'Black Pepper Beef Lumpia',
+                          itemPrice: '27.12',
+                          subItems: [],
+                        ),
+                      ],
+                      deliveryFee: '1.5',
+                      total: '88.6',
+                      orderDate: '28/10/2021',
+                      orderDeliveryTime: '16:55',
+                    );
+                  },
+                );
+              },
+              child: Container(
+                alignment:
+                    isEnglish ? Alignment.centerLeft : Alignment.centerRight,
+                height: 54,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14),
+                  color: isDark ? kDarkPrimaryColor : kSeoulColor4,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  child: MyText(
+                    text: 'order_details'.tr,
+                    size: 16,
+                    color: isDark ? kPrimaryColor : kBlackColor2,
+                    weight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              alignment:
+                  isEnglish ? Alignment.centerLeft : Alignment.centerRight,
+              height: 54,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(14),
+                color: isDark ? kDarkPrimaryColor : kSeoulColor4,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: MyText(
+                  text: 'make_same_order'.tr,
+                  size: 16,
+                  color: isDark ? kPrimaryColor : kBlackColor2,
+                  weight: FontWeight.w500,
+                ),
               ),
             ),
           ],

@@ -25,7 +25,7 @@ class MyCart extends StatelessWidget {
           toolbarHeight: 65,
           centerTitle: true,
           title: MyText(
-            text: 'My Cart',
+            text: 'my_cart'.tr,
             size: 21.5,
             weight: FontWeight.w700,
             color: isDark ? kPrimaryColor : kBlackColor2,
@@ -55,7 +55,7 @@ class MyCart extends StatelessWidget {
                       MyText(
                         paddingLeft: 3,
                         paddingRight: 4,
-                        text: 'Orders',
+                        text: 'orders'.tr,
                         size: 13,
                         weight: FontWeight.w700,
                         color: isDark ? kBlackColor2 : kPrimaryColor,
@@ -248,7 +248,7 @@ class EmptyCartState extends StatelessWidget {
             ),
             MyText(
               paddingTop: 15,
-              text: 'Add items to start a cart',
+              text: 'add_items_to_start_a_cart'.tr,
               size: 20,
               weight: FontWeight.w700,
               align: TextAlign.center,
@@ -257,8 +257,7 @@ class EmptyCartState extends StatelessWidget {
             ),
             MyText(
               letterSpacing: 0.0,
-              text:
-                  'Once you add items from a restaurant or store, your cart will appear here',
+              text: 'cart_empty_state_message'.tr,
               size: 14,
               weight: FontWeight.w500,
               color: kGreyColor9,
@@ -270,7 +269,7 @@ class EmptyCartState extends StatelessWidget {
               child: SizedBox(
                 width: 140,
                 child: MyButton(
-                  buttonText: 'Start shopping',
+                  buttonText: 'start_shopping'.tr,
                   fontWeight: FontWeight.w500,
                   textColor: isDark ? kBlackColor2 : kPrimaryColor,
                   textSize: 14,

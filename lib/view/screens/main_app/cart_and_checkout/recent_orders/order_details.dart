@@ -33,6 +33,7 @@ class OrderDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -55,8 +56,13 @@ class OrderDetails extends StatelessWidget {
                     height: 10,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: isEnglish
+                        ? MainAxisAlignment.end
+                        : MainAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        width: 15,
+                      ),
                       GestureDetector(
                         onTap: () => Get.back(),
                         child: Image.asset(
@@ -71,14 +77,14 @@ class OrderDetails extends StatelessWidget {
                     ],
                   ),
                   MyText(
-                    text: 'Order Details',
+                    text: 'order_details'.tr,
                     size: 23,
                     align: TextAlign.center,
                     paddingBottom: 10,
                     color: isDark ? kPrimaryColor : kBlackColor2,
                   ),
                   MyText(
-                    text: 'Order number #$orderNo',
+                    text: '${'order_number'.tr} #$orderNo',
                     size: 12,
                     color: kSecondaryColor,
                     align: TextAlign.center,
@@ -107,7 +113,7 @@ class OrderDetails extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             MyText(
-                              text: 'Subtotal',
+                              text: 'subtotal'.tr,
                               size: 14,
                               weight: FontWeight.w500,
                               color: isDark ? kPrimaryColor : kBlackColor2,
@@ -149,7 +155,8 @@ class OrderDetails extends StatelessWidget {
                                           size: 14,
                                           color: kGreyColor4,
                                           weight: FontWeight.w500,
-                                          paddingRight: 15,
+                                          paddingRight: isEnglish ? 15 : 0,
+                                          paddingLeft: isEnglish ? 0 : 15,
                                         ),
                                         Expanded(
                                           child: MyText(
@@ -163,7 +170,7 @@ class OrderDetails extends StatelessWidget {
                                           ),
                                         ),
                                         MyText(
-                                          paddingLeft: 15,
+                                          paddingLeft: isEnglish ? 15 : 0,
                                           text: '\$${data.itemPrice}',
                                           size: 14,
                                           color: kGreyColor4,
@@ -203,7 +210,8 @@ class OrderDetails extends StatelessWidget {
                                                       ),
                                                     ),
                                                     MyText(
-                                                      paddingLeft: 15,
+                                                      paddingLeft:
+                                                          isEnglish ? 15 : 0,
                                                       text:
                                                           '\$${subItems.itemPrice}',
                                                       size: 12,
@@ -227,7 +235,7 @@ class OrderDetails extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             MyText(
-                              text: 'Delivery fee',
+                              text: 'delivery_fee'.tr,
                               weight: FontWeight.w500,
                               color: isDark ? kPrimaryColor : kBlackColor2,
                             ),
@@ -252,7 +260,7 @@ class OrderDetails extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             MyText(
-                              text: 'Total Payment',
+                              text: 'total_payment'.tr,
                               size: 14,
                               weight: FontWeight.w700,
                               color: isDark ? kPrimaryColor : kBlackColor2,
@@ -272,7 +280,7 @@ class OrderDetails extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             MyText(
-                              text: 'Order date',
+                              text: 'order_date'.tr,
                               size: 14,
                               weight: FontWeight.w500,
                               color: isDark ? kPrimaryColor : kBlackColor2,
@@ -292,7 +300,7 @@ class OrderDetails extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             MyText(
-                              text: 'Delivery time',
+                              text: 'delivery_time'.tr,
                               size: 14,
                               weight: FontWeight.w500,
                               color: isDark ? kPrimaryColor : kBlackColor2,
