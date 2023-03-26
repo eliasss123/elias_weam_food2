@@ -331,7 +331,7 @@ class OrderAcceptDialog extends StatelessWidget {
                       ),
                     ),
                     MyText(
-                      text: '\$11.45',
+                      text: '₪11.45',
                       size: 13,
                       weight: FontWeight.w700,
                       color: kSecondaryColor,

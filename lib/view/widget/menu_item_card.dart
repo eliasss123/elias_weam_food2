@@ -80,7 +80,7 @@ class MenuItemCard extends StatelessWidget {
                 color: isDark ? kPrimaryColor : kDarkGreyColor,
               ),
               MyText(
-                text: '\$$price',
+                text: '₪$price',
                 size: 13,
                 weight: FontWeight.w500,
                 color: kSecondaryColor,

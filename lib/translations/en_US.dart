@@ -1,7 +1,7 @@
 final Map<String, String> english = {
   'english': 'English',
-  'hebrew': 'Hebrew',
-  'arabic': 'Arabic',
+  'hebrew': 'עברית',
+  'arabic': 'العربية',
   'language': 'Language',
   'skip': 'Skip',
   'delivery_at_your': 'Delivery at your ',

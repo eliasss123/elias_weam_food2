@@ -28,6 +28,7 @@ class PrefixTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return TextFormField(
         cursorColor: kSecondaryColor,
         obscuringCharacter: '•',
@@ -70,10 +71,15 @@ class PrefixTextField extends StatelessWidget {
           ),
           prefixIcon: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment:isEnglish ? CrossAxisAlignment.center: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                prefixIcon!,
-                height: prefixIconSize,
+              Transform(
+                transform: Matrix4.identity()
+                  ..scale(isEnglish ? 1.0 : -1.0, 1.0, 1.0),
+                child: Image.asset(
+                  prefixIcon!,
+                  height: prefixIconSize,
+                ),
               ),
             ],
           ),

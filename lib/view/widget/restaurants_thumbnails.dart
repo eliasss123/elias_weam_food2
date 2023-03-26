@@ -30,10 +30,11 @@ class RestaurantsThumbnail extends StatelessWidget {
   }) : super(key: key);
 
   final String imgUrl, name, deliveryTime, totalReviews;
-  final double totalRating, deliveryFee;
+  final double totalRating;
   final bool isFreeDelivery, isFeatured, isClosed, isLiked;
   double? width, horizontalMargin;
   VoidCallback? onTap, onLikeTap;
+  final int deliveryFee;
   final bool isDark;
 
   @override
@@ -131,7 +132,7 @@ class RestaurantsThumbnail extends StatelessWidget {
                         MyText(
                           text: isFreeDelivery
                               ? 'free_delivery'.tr
-                              : '\$$deliveryFee ${'delivery_fee'.tr}',
+                              : '₪$deliveryFee ${'delivery_fee'.tr}',
                           size: 12,
                           color: isDark
                               ? kPrimaryColor.withOpacity(0.4)
@@ -191,7 +192,7 @@ class RestaurantsThumbnail extends StatelessWidget {
                                       ? 'featured'.tr
                                       : isFreeDelivery
                                           ? 'free_delivery'.tr
-                                          : '\$ · \$\$',
+                                          : '₪ · ₪₪',
                                   size: 12,
                                   weight: FontWeight.w500,
                                   color: kPrimaryColor,

@@ -175,7 +175,7 @@ class MyCart extends StatelessWidget {
                                                     width: 15,
                                                   ),
                                                   MyText(
-                                                    text: '\$19.99',
+                                                    text: '₪19.99',
                                                     size: 16,
                                                     weight: FontWeight.w500,
                                                     color: kSecondaryColor,

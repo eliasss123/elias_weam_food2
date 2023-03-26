@@ -137,10 +137,10 @@ class _TipsAndNotesState extends State<TipsAndNotes> {
                               child: Center(
                                 child: MyText(
                                   text: index == 0
-                                      ? '\$5'
+                                      ? '₪5'
                                       : index == 1
-                                          ? '\$10'
-                                          : '\$15',
+                                          ? '₪10'
+                                          : '₪15',
                                   size: 16,
                                   color: priceRangeIndex == index
                                       ? kSecondaryColor

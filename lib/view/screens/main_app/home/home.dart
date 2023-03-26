@@ -102,31 +102,34 @@ class _HomeState extends State<Home> {
                               paddingBottom: 6,
                               color: isDark ? kPrimaryColor : kBlackColor2,
                             ),
-                            Wrap(
-                              spacing: 5,
-                              children: [
-                                MyText(
-                                  text: 'city_center_hotel_jerusalem'.tr,
-                                  size: 14,
-                                  weight: FontWeight.w500,
-                                  color: kGreenColor2,
-                                  paddingBottom: 10,
+                            GestureDetector(
+                              onTap: () => showModalBottomSheet(
+                                backgroundColor: Colors.transparent,
+                                elevation: 0,
+                                isScrollControlled: true,
+                                context: context,
+                                builder: (_) => BrowseByLocation(),
+                              ),
+                              child: Container(
+                                color: Colors.transparent,
+                                child: Wrap(
+                                  spacing: 5,
+                                  children: [
+                                    MyText(
+                                      text: 'city_center_hotel_jerusalem'.tr,
+                                      size: 14,
+                                      weight: FontWeight.w500,
+                                      color: kGreenColor2,
+                                      paddingBottom: 10,
+                                    ),
+                                    Image.asset(
+                                      Assets.imagesArrowDropDown,
+                                      height: 13.5,
+                                      color: kGreenColor2,
+                                    ),
+                                  ],
                                 ),
-                                GestureDetector(
-                                  onTap: () => showModalBottomSheet(
-                                    backgroundColor: Colors.transparent,
-                                    elevation: 0,
-                                    isScrollControlled: true,
-                                    context: context,
-                                    builder: (_) => BrowseByLocation(),
-                                  ),
-                                  child: Image.asset(
-                                    Assets.imagesArrowDropDown,
-                                    height: 13.5,
-                                    color: kGreenColor2,
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
@@ -218,6 +221,8 @@ class _HomeState extends State<Home> {
                                     child: Center(
                                       child: Image.asset(
                                         Assets.imagesFilters,
+                                        color:
+                                            isDark ? kDarkInputBgColor : null,
                                         height: 22,
                                       ),
                                     ),
@@ -289,7 +294,7 @@ class _HomeState extends State<Home> {
                                     deliveryTime: '30',
                                     totalRating: 4.8,
                                     totalReviews: '122',
-                                    deliveryFee: 10.0,
+                                    deliveryFee: 10,
                                     isClosed: index == 2 ? true : false,
                                     isFeatured: index == 1 ? true : false,
                                     isFreeDelivery: index == 0 ? true : false,
@@ -370,7 +375,7 @@ class _HomeState extends State<Home> {
                                   deliveryTime: '30',
                                   totalRating: 4.8,
                                   totalReviews: '122',
-                                  deliveryFee: 10.0,
+                                  deliveryFee: 10,
                                   isClosed: index == 2 ? true : false,
                                   isFeatured: index == 1 ? true : false,
                                   isFreeDelivery: index == 0 ? true : false,

@@ -157,6 +157,7 @@ class _BrowseState extends State<Browse> {
                                   child: Center(
                                     child: Image.asset(
                                       Assets.imagesFilters,
+                                      color: isDark ? kDarkInputBgColor : null,
                                       height: 22,
                                     ),
                                   ),
@@ -317,7 +318,7 @@ class SearchResults extends StatelessWidget {
               deliveryTime: '30',
               totalRating: 4.8,
               totalReviews: '122',
-              deliveryFee: 10.0,
+              deliveryFee: 10,
               isClosed: index == 2 ? true : false,
               isFeatured: index == 1 ? true : false,
               isFreeDelivery: index == 0 ? true : false,

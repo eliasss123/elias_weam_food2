@@ -15,6 +15,7 @@ class Signup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Column(
@@ -135,12 +136,12 @@ class Signup extends StatelessWidget {
                   ),
                   MyText(
                     onTap: () => Get.to(() => SignupWithEmail()),
-                    paddingTop: 20,
+                    paddingTop: isEnglish ? 20 : 15,
                     text: 'i_don\'t_have_social_media'.tr,
                     weight: FontWeight.w500,
                     color: kSecondaryColor,
                     align: TextAlign.end,
-                    paddingBottom: 50,
+                    paddingBottom: isEnglish ? 50 : 40,
                   ),
                   Center(
                     child: SizedBox(
@@ -158,7 +159,7 @@ class Signup extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 10,
             ),
             Wrap(
               alignment: WrapAlignment.center,

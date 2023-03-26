@@ -354,7 +354,7 @@ final Map<String, String> arabic = {
   'off':'',
   'schedule':'',
   'weekends':'',
-  'login':'',
+  'login':'تسجيل الدخول',
   'dont_have_an_account_yet':'',
   'every_sunday':'',
   //Merchant App

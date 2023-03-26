@@ -54,7 +54,7 @@ class PopularRestaurants extends StatelessWidget {
                     deliveryTime: '30',
                     totalRating: 4.8,
                     totalReviews: '122',
-                    deliveryFee: 10.0,
+                    deliveryFee: 10,
                     isClosed: index == 2 ? true : false,
                     isFeatured: index == 1 ? true : false,
                     isFreeDelivery: index == 0 ? true : false,

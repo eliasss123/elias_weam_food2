@@ -75,6 +75,7 @@ class Assets {
   static const String imagesFavoriteDark = 'assets/images/favorite_dark.png';
   static const String imagesFeedback = 'assets/images/feedback.png';
   static const String imagesFile = 'assets/images/file.png';
+  static const String imagesFilterInBlack = 'assets/images/filter_in_black.png';
   static const String imagesFilters = 'assets/images/filters.png';
   static const String imagesFire = 'assets/images/fire.png';
   static const String imagesFish = 'assets/images/fish.png';

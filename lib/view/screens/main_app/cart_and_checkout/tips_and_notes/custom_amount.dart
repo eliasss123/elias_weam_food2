@@ -77,7 +77,7 @@ class _CustomAmountState extends State<CustomAmount> {
                     decoration: InputDecoration(
                       counterText: '',
                       contentPadding: EdgeInsets.zero,
-                      hintText: '\$',
+                      hintText: '₪',
                       hintStyle: TextStyle(
                         fontSize: 23.04,
                         fontWeight: FontWeight.w700,

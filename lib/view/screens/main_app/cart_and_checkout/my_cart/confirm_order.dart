@@ -94,7 +94,7 @@ class ConfirmOrder extends StatelessWidget {
                                         isDark ? kPrimaryColor : kBlackColor2,
                                   ),
                                   MyText(
-                                    text: '\$87.10',
+                                    text: '₪87.10',
                                     size: 14,
                                     weight: FontWeight.w500,
                                     color:
@@ -117,7 +117,7 @@ class ConfirmOrder extends StatelessWidget {
                                         isDark ? kPrimaryColor : kBlackColor2,
                                   ),
                                   MyText(
-                                    text: isPickUp ? '-' : '10\$',
+                                    text: isPickUp ? '-' : '10₪',
                                     size: 14,
                                     weight: FontWeight.w500,
                                     color:
@@ -147,7 +147,7 @@ class ConfirmOrder extends StatelessWidget {
                                         isDark ? kPrimaryColor : kBlackColor2,
                                   ),
                                   MyText(
-                                    text: '\$88.6',
+                                    text: '₪88.6',
                                     size: 14,
                                     weight: FontWeight.w700,
                                     color:
@@ -268,7 +268,7 @@ class ConfirmOrder extends StatelessWidget {
                                       ),
                                       MyText(
                                         paddingTop: 8,
-                                        text: '\$88.60',
+                                        text: '₪88.60',
                                         size: 14,
                                         color: kGreyColor5,
                                         weight: FontWeight.w500,

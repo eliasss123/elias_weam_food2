@@ -105,7 +105,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                     MyText(
                       paddingLeft: 15,
                       paddingRight: isEnglish ? 0 : 15,
-                      text: '\$19.99',
+                      text: '₪19.99',
                       size: 16,
                       weight: FontWeight.w500,
                       color: kSecondaryColor,
@@ -138,7 +138,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                     children: [
                       CustomCheckBoxTile(
                         title: 'teriyaki'.tr,
-                        trailingText: '+\$0',
+                        trailingText: '+₪0',
                         isChecked: true,
                         onTap: () {},
                       ),
@@ -149,7 +149,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                       ),
                       CustomCheckBoxTile(
                         title: 'yakiniku'.tr,
-                        trailingText: '+\$0',
+                        trailingText: '+₪0',
                         isChecked: false,
                         onTap: () {},
                       ),
@@ -174,7 +174,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                     children: [
                       CustomCheckBoxTile(
                         title: 'omelet'.tr,
-                        trailingText: '+\$2',
+                        trailingText: '+₪2',
                         isChecked: false,
                         onTap: () {},
                       ),
@@ -185,7 +185,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                       ),
                       CustomCheckBoxTile(
                         title: 'sausage'.tr,
-                        trailingText: '+\$3',
+                        trailingText: '+₪3',
                         isChecked: true,
                         onTap: () {},
                       ),
@@ -196,7 +196,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                       ),
                       CustomCheckBoxTile(
                         title: 'cheese'.tr,
-                        trailingText: '+\$5',
+                        trailingText: '+₪5',
                         isChecked: true,
                         onTap: () {},
                       ),
@@ -214,7 +214,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                 ),
                 child: MyButton(
                   height: 54,
-                  buttonText: widget.buttonText ?? '${'add_to_cart'.tr} (\$41.99)',
+                  buttonText: widget.buttonText ?? '${'add_to_cart'.tr} (₪41.99)',
                   onTap: widget.onAddToCartTap!,
                 ),
               ),

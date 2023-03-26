@@ -45,7 +45,7 @@ class PaymentDetailBottomSheet extends StatelessWidget {
                           color: isDark ? kPrimaryColor : kBlackColor2,
                         ),
                         MyText(
-                          text: '\$87.10',
+                          text: '₪87.10',
                           size: 14,
                           weight: FontWeight.w500,
                           color: isDark ? kPrimaryColor : kBlackColor2,
@@ -71,7 +71,7 @@ class PaymentDetailBottomSheet extends StatelessWidget {
                                   color: kLightGreyColor2,
                                 ),
                                 MyText(
-                                  text: '\$19.99',
+                                  text: '₪19.99',
                                   size: 12,
                                   color: kLightGreyColor2,
                                 ),
@@ -101,7 +101,7 @@ class PaymentDetailBottomSheet extends StatelessWidget {
                           color: isDark ? kPrimaryColor : kBlackColor2,
                         ),
                         MyText(
-                          text: '\$1.5',
+                          text: '₪1.5',
                           size: 14,
                           weight: FontWeight.w500,
                           color: isDark ? kPrimaryColor : kBlackColor2,
@@ -128,7 +128,7 @@ class PaymentDetailBottomSheet extends StatelessWidget {
                           color: isDark ? kPrimaryColor : kBlackColor2,
                         ),
                         MyText(
-                          text: '\$88.6',
+                          text: '₪88.6',
                           size: 14,
                           weight: FontWeight.w700,
                           color: isDark ? kPrimaryColor : kBlackColor2,

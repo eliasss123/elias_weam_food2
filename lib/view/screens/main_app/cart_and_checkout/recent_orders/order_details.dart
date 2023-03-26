@@ -119,7 +119,7 @@ class OrderDetails extends StatelessWidget {
                               color: isDark ? kPrimaryColor : kBlackColor2,
                             ),
                             MyText(
-                              text: '\$$subTotal',
+                              text: '₪$subTotal',
                               size: 14,
                               weight: FontWeight.w500,
                               color: isDark ? kPrimaryColor : kBlackColor2,
@@ -171,7 +171,7 @@ class OrderDetails extends StatelessWidget {
                                         ),
                                         MyText(
                                           paddingLeft: isEnglish ? 15 : 0,
-                                          text: '\$${data.itemPrice}',
+                                          text: '₪${data.itemPrice}',
                                           size: 14,
                                           color: kGreyColor4,
                                           weight: FontWeight.w500,
@@ -213,7 +213,7 @@ class OrderDetails extends StatelessWidget {
                                                       paddingLeft:
                                                           isEnglish ? 15 : 0,
                                                       text:
-                                                          '\$${subItems.itemPrice}',
+                                                          '₪${subItems.itemPrice}',
                                                       size: 12,
                                                       color: kGreyColor4,
                                                     ),
@@ -240,7 +240,7 @@ class OrderDetails extends StatelessWidget {
                               color: isDark ? kPrimaryColor : kBlackColor2,
                             ),
                             MyText(
-                              text: '\$$deliveryFee',
+                              text: '₪$deliveryFee',
                               weight: FontWeight.w500,
                               color: isDark ? kPrimaryColor : kBlackColor2,
                             ),
@@ -266,7 +266,7 @@ class OrderDetails extends StatelessWidget {
                               color: isDark ? kPrimaryColor : kBlackColor2,
                             ),
                             MyText(
-                              text: '\$$total',
+                              text: '₪$total',
                               size: 14,
                               weight: FontWeight.w700,
                               color: isDark ? kPrimaryColor : kBlackColor2,

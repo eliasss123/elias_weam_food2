@@ -227,7 +227,7 @@ class DeliveryFeeAndTime extends StatelessWidget {
                   color: kBlackColor.withOpacity(0.44),
                 ),
                 MyText(
-                  text: '\$$fee',
+                  text: '₪$fee',
                   size: 15,
                   weight: FontWeight.w500,
                   color: kBlackColor,

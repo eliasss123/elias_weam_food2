@@ -119,7 +119,7 @@ class EditPanelItem extends StatelessWidget {
               height: 20,
             ),
             MyText(
-              text: '\$19.99',
+              text: '₪19.99',
               size: 16,
               weight: FontWeight.w500,
               color: kSecondaryColor,
@@ -160,7 +160,7 @@ class EditPanelItem extends StatelessWidget {
                           children: [
                             EditPanelItemTiles(
                               title: 'Teriyaki',
-                              trailingText: '+\$0',
+                              trailingText: '+₪0',
                             ),
                             Image.asset(
                               Assets.imagesDivider,
@@ -214,7 +214,7 @@ class EditPanelItem extends StatelessWidget {
                           children: [
                             EditPanelItemTiles(
                               title: index == 0 ? 'Omelet' : 'Sausage',
-                              trailingText: '+\$2',
+                              trailingText: '+₪2',
                             ),
                             Image.asset(
                               Assets.imagesDivider,
