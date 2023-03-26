@@ -47,7 +47,7 @@ class MerchantLogin extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       MyText(
-                        text: 'login'.tr.camelCase,
+                        text: 'login'.tr,
                         size: 23,
                         weight: FontWeight.w700,
                         paddingBottom: 8,
@@ -88,7 +88,7 @@ class MerchantLogin extends StatelessWidget {
                           width: 213,
                           child: MyButton(
                             height: 52,
-                            buttonText: 'login'.tr.camelCase!,
+                            buttonText: 'login'.tr,
                             onTap: () => Get.to(() => MerchantBottomNav()),
                           ),
                         ),

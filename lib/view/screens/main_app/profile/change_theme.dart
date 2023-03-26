@@ -43,7 +43,8 @@ class ChangeTheme extends StatelessWidget {
                           text: themeController.isDarkTheme.value
                               ? 'Light Mode'
                               : 'Dark Mode',
-                          size: 20,
+                          size: 16,
+                          weight: FontWeight.w500,
                           color: isDark ? kPrimaryColor : kBlackColor,
                         ),
                       ),

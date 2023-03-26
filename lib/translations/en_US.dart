@@ -378,7 +378,7 @@ final Map<String, String> english = {
   'off':'Off',
   'schedule':'Schedule',
   'weekends':'Weekends',
-  'login':'Login',
+  'login':'Log In',
   'dont_have_an_account_yet':'Don’t have an account yet? ',
   'every_sunday':'Every sun',
 
