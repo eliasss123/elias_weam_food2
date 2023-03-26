@@ -13,6 +13,7 @@ class Delivery extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return ListView(
         shrinkWrap: true,
         padding: EdgeInsets.symmetric(
@@ -22,8 +23,9 @@ class Delivery extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         children: [
           MyText(
-            paddingLeft: 20,
-            text: 'You set your order as delivery.',
+            paddingLeft: isEnglish ? 20 : 0,
+            paddingRight: isEnglish ? 0 : 20,
+            text: 'you_set_your_order_as_delivery'.tr,
             size: 11,
             color: isDark ? kPrimaryColor : kBlackColor,
             paddingBottom: 40,
@@ -55,13 +57,13 @@ class Delivery extends StatelessWidget {
                   Column(
                     children: [
                       MyText(
-                        text: 'Saved as',
+                        text: 'saved_as'.tr,
                         size: 12,
                         weight: FontWeight.w500,
                         color: isDark ? kGreyColor12 : kGreyColor5,
                       ),
                       MyText(
-                        text: 'Home',
+                        text: 'home'.tr,
                         size: 12,
                         weight: FontWeight.w500,
                         color: isDark ? kPrimaryColor : kBlackColor2,
@@ -108,7 +110,7 @@ class Delivery extends StatelessWidget {
                             ),
                             child: Center(
                               child: MyText(
-                                text: 'Change',
+                                text: 'change'.tr,
                                 size: 12,
                                 weight: FontWeight.w700,
                                 color: kSecondaryColor,

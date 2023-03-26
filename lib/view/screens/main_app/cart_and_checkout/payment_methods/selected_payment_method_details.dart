@@ -13,6 +13,7 @@ class SelectedPaymentMethodDetails extends StatelessWidget {
     var platform = Theme.of(context).platform;
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return SimpleBottomSheet(
         height: Get.height * 0.48,
         content: Padding(
@@ -42,7 +43,7 @@ class SelectedPaymentMethodDetails extends StatelessWidget {
                         },
                       );
                     },
-                    text: 'Edit',
+                    text: 'edit'.tr,
                     size: 16,
                     weight: FontWeight.w700,
                     decoration: TextDecoration.underline,
@@ -84,7 +85,7 @@ class SelectedPaymentMethodDetails extends StatelessWidget {
               ),
               MyText(
                 paddingTop: 40,
-                text: 'Expiry date',
+                text: 'expiry_date'.tr,
                 size: 14,
                 letterSpacing: 1.3,
                 color: kGreyColor4,
@@ -110,8 +111,9 @@ class SelectedPaymentMethodDetails extends StatelessWidget {
                   ),
                   Expanded(
                     child: MyText(
-                      paddingLeft: 10,
-                      text: 'Remove payment method',
+                      paddingLeft: isEnglish ? 10 : 0,
+                      paddingRight: isEnglish ? 0 : 10,
+                      text: 'remove_payment_method'.tr,
                       size: 14,
                       weight: FontWeight.w500,
                       color: isDark ? kPrimaryColor : kBlackColor2,

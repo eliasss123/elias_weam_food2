@@ -32,9 +32,10 @@ class ConfirmOrder extends StatelessWidget {
 
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         appBar: simpleAppBar(
-          title: 'Confirm Order',
+          title: 'confirm_order'.tr,
           titleWeight: FontWeight.w700,
           isDark: isDark,
         ),
@@ -67,9 +68,10 @@ class ConfirmOrder extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         MyText(
+                          paddingRight: isEnglish ? 0 : 15,
                           paddingTop: 20,
                           paddingLeft: 15,
-                          text: 'Summary',
+                          text: 'summary'.tr,
                           letterSpacing: 0.3,
                           size: 18,
                           weight: FontWeight.w500,
@@ -85,7 +87,7 @@ class ConfirmOrder extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   MyText(
-                                    text: 'Price',
+                                    text: 'price'.tr,
                                     size: 14,
                                     weight: FontWeight.w500,
                                     color:
@@ -108,7 +110,7 @@ class ConfirmOrder extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   MyText(
-                                    text: 'Delivery fee',
+                                    text: 'delivery_fee'.tr,
                                     size: 14,
                                     weight: FontWeight.w500,
                                     color:
@@ -138,7 +140,7 @@ class ConfirmOrder extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   MyText(
-                                    text: 'Total Payment',
+                                    text: 'total_payment'.tr,
                                     size: 14,
                                     weight: FontWeight.w700,
                                     color:
@@ -178,12 +180,12 @@ class ConfirmOrder extends StatelessWidget {
                                   },
                                 );
                               },
-                              paddingLeft: 15,
-                              text: 'See details',
+                              paddingLeft: isEnglish ? 15 : 4,
+                              text: 'see_details'.tr,
                               color: kSecondaryColor,
                               size: 14,
                               weight: FontWeight.w700,
-                              paddingRight: 4,
+                              paddingRight: isEnglish ? 4 : 15,
                             ),
                             Icon(
                               Icons.arrow_forward_ios,
@@ -224,7 +226,7 @@ class ConfirmOrder extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             MyText(
-                              text: 'Payment',
+                              text: 'payment'.tr,
                               size: 18,
                               weight: FontWeight.w500,
                               paddingBottom: 17,
@@ -256,8 +258,8 @@ class ConfirmOrder extends StatelessWidget {
                                     children: [
                                       MyText(
                                         text: isPickUp
-                                            ? 'Cash on pick up'
-                                            : 'Cash on Delivery',
+                                            ? 'cash_on_pick_up'.tr
+                                            : 'cash_on_delivery'.tr,
                                         size: 14,
                                         weight: FontWeight.w500,
                                         color: isDark
@@ -274,12 +276,15 @@ class ConfirmOrder extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                Image.asset(
-                                  Assets.imagesArrowRight,
-                                  color: isDark
-                                      ? kPrimaryColor.withOpacity(0.8)
-                                      : kBlackColor,
-                                  height: 24,
+                                RotatedBox(
+                                  quarterTurns: isEnglish ? 0 : 2,
+                                  child: Image.asset(
+                                    Assets.imagesArrowRight,
+                                    color: isDark
+                                        ? kPrimaryColor.withOpacity(0.8)
+                                        : kBlackColor,
+                                    height: 24,
+                                  ),
                                 ),
                               ],
                             ),
@@ -326,19 +331,22 @@ class ConfirmOrder extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: MyText(
-                                      text: 'Tips and notes to the courier',
+                                      text: 'tips_and_notes_to_the_courier'.tr,
                                       size: 14,
                                       weight: FontWeight.w500,
                                       color:
                                           isDark ? kPrimaryColor : kBlackColor2,
                                     ),
                                   ),
-                                  Image.asset(
-                                    Assets.imagesArrowRight,
-                                    color: isDark
-                                        ? kPrimaryColor.withOpacity(0.8)
-                                        : kBlackColor,
-                                    height: 24,
+                                  RotatedBox(
+                                    quarterTurns: isEnglish ? 0 : 2,
+                                    child: Image.asset(
+                                      Assets.imagesArrowRight,
+                                      color: isDark
+                                          ? kPrimaryColor.withOpacity(0.8)
+                                          : kBlackColor,
+                                      height: 24,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -354,7 +362,7 @@ class ConfirmOrder extends StatelessWidget {
                 vertical: platform == TargetPlatform.iOS ? 23 : 15,
               ),
               child: MyButton(
-                buttonText: 'Checkout',
+                buttonText: 'checkout'.tr,
                 onTap: () {
                   Get.offAll(() => BottomNavBar());
                   cartCheckOutController.confirmOrder(
@@ -380,6 +388,7 @@ class OrderCompletedDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -402,8 +411,13 @@ class OrderCompletedDialog extends StatelessWidget {
                     height: 10,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: isEnglish
+                        ? MainAxisAlignment.end
+                        : MainAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        width: isEnglish ? 0 : 10,
+                      ),
                       GestureDetector(
                         onTap: () => Get.back(),
                         child: Image.asset(
@@ -415,7 +429,7 @@ class OrderCompletedDialog extends StatelessWidget {
                     ],
                   ),
                   MyText(
-                    text: 'Thank you for your order',
+                    text: 'thank_you_for_your_order'.tr,
                     size: 17,
                     color: kSecondaryColor,
                     fontFamily: GoogleFonts.adamina().fontFamily,
@@ -423,8 +437,7 @@ class OrderCompletedDialog extends StatelessWidget {
                     paddingBottom: 20,
                   ),
                   MyText(
-                    text:
-                        'Keep tracking you order , It will be delivered soon.',
+                    text: 'keep_tracking_your_order_delivery'.tr,
                     size: 12,
                     weight: FontWeight.w500,
                     color: isDark ? kPrimaryColor : kBlackColor,
@@ -439,7 +452,7 @@ class OrderCompletedDialog extends StatelessWidget {
                       children: [
                         MyButton(
                           textColor: isDark ? kBlackColor2 : kPrimaryColor,
-                          buttonText: 'Track Order',
+                          buttonText: 'track_order'.tr,
                           onTap: () => Get.to(
                             () => TrackOrder(),
                           ),
@@ -449,7 +462,7 @@ class OrderCompletedDialog extends StatelessWidget {
                         ),
                         MyButton(
                           textColor: isDark ? kBlackColor2 : kPrimaryColor,
-                          buttonText: 'Order Details',
+                          buttonText: 'order_details'.tr,
                           onTap: () => Get.to(
                             () => OrderReceipt(
                               orderNo: '701',
@@ -505,7 +518,7 @@ class OrderCompletedDialog extends StatelessWidget {
                     height: 15,
                   ),
                   MyText(
-                    text: 'Please feel free to contact us for any questions',
+                    text: 'please_feel_free_to_contact_us_for_any_questions'.tr,
                     size: 12,
                     color: isDark ? kPrimaryColor : kBlackColor,
                     align: TextAlign.center,
@@ -530,7 +543,7 @@ class OrderCompletedDialog extends StatelessWidget {
                         ),
                         child: Center(
                           child: MyText(
-                            text: 'Contact support',
+                            text: 'contact_support'.tr,
                             size: 14,
                             weight: FontWeight.w700,
                             color: kSecondaryColor,

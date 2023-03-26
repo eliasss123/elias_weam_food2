@@ -25,7 +25,7 @@ class PaymentMethods extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               MyText(
-                text: 'Your Payments',
+                text: 'your_payments'.tr,
                 size: 16,
                 weight: FontWeight.w500,
                 paddingBottom: 20,
@@ -56,14 +56,14 @@ class PaymentMethods extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           MyText(
-                            text: 'Cash on delivery',
+                            text: 'cash_on_delivery'.tr,
                             size: 16,
                             weight: FontWeight.w700,
                             paddingBottom: 3,
                             color: isDark ? kPrimaryColor : kBlackColor2,
                           ),
                           MyText(
-                            text: 'Provide cash',
+                            text: 'provide_cash'.tr,
                             size: 12,
                             color: kGreyColor5,
                           ),
@@ -78,7 +78,7 @@ class PaymentMethods extends StatelessWidget {
                 ),
               ),
               MyText(
-                text: 'Wallet',
+                text: 'wallet'.tr,
                 size: 16,
                 weight: FontWeight.w500,
                 paddingBottom: 13,
@@ -95,7 +95,7 @@ class PaymentMethods extends StatelessWidget {
               ),
               paymentMethodTile(
                 icon: Assets.imagesApplePay,
-                title: 'Pay with Apple',
+                title: 'pay_with_apple'.tr,
                 iconColor: isDark ? kPrimaryColor : null,
                 iconSize: 26,
                 onTap: () {},
@@ -105,14 +105,14 @@ class PaymentMethods extends StatelessWidget {
               ),
               paymentMethodTile(
                 icon: Assets.imagesPayPal,
-                title: 'Pay with PayPal',
+                title: 'pay_with_payPal'.tr,
                 onTap: () {},
               ),
               MyText(
                 onTap: () => Get.to(
                   () => AddPaymentMethod(),
                 ),
-                text: '+ Add payment method',
+                text: 'add_payment_method'.tr,
                 size: 14,
                 weight: FontWeight.w500,
                 paddingTop: 25,
@@ -120,7 +120,7 @@ class PaymentMethods extends StatelessWidget {
                 color: isDark ? kPrimaryColor : kBlackColor2,
               ),
               MyText(
-                text: 'Credits',
+                text: 'credits'.tr,
                 size: 16,
                 weight: FontWeight.w500,
                 paddingBottom: 13,
@@ -128,7 +128,7 @@ class PaymentMethods extends StatelessWidget {
               ),
               paymentMethodTile(
                 icon: Assets.imagesAppCash,
-                title: 'App Cash',
+                title: 'app_cash'.tr,
                 iconSize: 16,
                 iconColor: isDark ? kPrimaryColor : null,
                 onTap: () {},
@@ -140,69 +140,70 @@ class PaymentMethods extends StatelessWidget {
     });
   }
 
-  Container paymentMethodTile({
+  Widget paymentMethodTile({
     String? icon,
     String? title,
     double? iconSize,
     VoidCallback? onTap,
     Color? iconColor,
   }) {
-    return Container(
-      height: 48,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          width: 1.0,
-          color: kBorderColor3,
-        ),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
+      return Container(
+        height: 48,
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 16,
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 40,
-                  alignment: Alignment.centerLeft,
-                  child: Image.asset(
-                    icon!,
-                    height: iconSize ?? 24,
-                    color: iconColor ?? null,
+          border: Border.all(
+            width: 1.0,
+            color: kBorderColor3,
+          ),
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(12),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 40,
+                    alignment: isEnglish
+                        ? Alignment.centerLeft
+                        : Alignment.centerRight,
+                    child: Image.asset(
+                      icon!,
+                      height: iconSize ?? 24,
+                      color: iconColor ?? null,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: Container(
-                    child: Obx(() {
-                      return MyText(
+                  Expanded(
+                    child: Container(
+                      child: MyText(
                         text: title,
-                        color: themeController.isDarkTheme.value
-                            ? kPrimaryColor
-                            : kBlackColor2,
-                      );
-                    }),
+                        color: isDark ? kPrimaryColor : kBlackColor2,
+                      ),
+                    ),
                   ),
-                ),
-                Obx(() {
-                  return Image.asset(
-                    Assets.imagesArrowRight,
-                    color: themeController.isDarkTheme.value
-                        ? kPrimaryColor
-                        : kBlackColor,
-                    height: 20,
-                  );
-                }),
-              ],
+                  RotatedBox(
+                    quarterTurns: isEnglish ? 0 : 2,
+                    child: Image.asset(
+                      Assets.imagesArrowRight,
+                      color: isDark ? kPrimaryColor : kBlackColor,
+                      height: 20,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

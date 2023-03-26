@@ -47,14 +47,14 @@ class _CustomAmountState extends State<CustomAmount> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   MyText(
-                    text: 'Custom amount',
+                    text: 'custom_amount'.tr,
                     size: 24,
                     weight: FontWeight.w700,
                     color: isDark ? kPrimaryColor : kBlackColor2,
                   ),
                   MyText(
                     paddingTop: 8,
-                    text: 'Custom your favorite amount for tips.',
+                    text: 'custom_your_favorite_amount_for_tips'.tr,
                     size: 16,
                     paddingBottom: 80,
                     color:
@@ -110,7 +110,7 @@ class _CustomAmountState extends State<CustomAmount> {
               ),
               child: MyButton(
                 isActive: isActive,
-                buttonText: 'Ok',
+                buttonText: 'ok'.tr,
                 onTap: () {},
               ),
             ),

@@ -11,6 +11,7 @@ class LiveTracking extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         body: Stack(
           children: [
@@ -48,16 +49,20 @@ class LiveTracking extends StatelessWidget {
             ),
             Positioned(
               top: 50,
-              left: 20,
+              left: isEnglish ? 20 : 0,
+              right: isEnglish ? 0 : 20,
               child: Align(
-                alignment: Alignment.topLeft,
+                alignment: isEnglish ? Alignment.topLeft : Alignment.topRight,
                 child: GestureDetector(
                   onTap: () => Get.back(),
-                  child: Image.asset(
-                    isDark
-                        ? Assets.imagesArrowBackDark
-                        : Assets.imagesBackRoundedBlack,
-                    height: 43,
+                  child: RotatedBox(
+                    quarterTurns: isEnglish ? 0 : 2,
+                    child: Image.asset(
+                      isDark
+                          ? Assets.imagesArrowBackDark
+                          : Assets.imagesBackRoundedBlack,
+                      height: 43,
+                    ),
                   ),
                 ),
               ),
@@ -68,8 +73,9 @@ class LiveTracking extends StatelessWidget {
               right: 20,
               child: DeliveryInformation(
                 riderName: 'Leo',
-                msgAboutRider: 'He is on his way to you.',
+                msgAboutRider: 'he_is_on_his_way_to_you'.tr,
                 time: '6:11 pm',
+                isEnglish: isEnglish,
               ),
             ),
           ],
@@ -85,14 +91,16 @@ class DeliveryInformation extends StatelessWidget {
     required this.riderName,
     required this.msgAboutRider,
     required this.time,
+    required this.isEnglish,
   }) : super(key: key);
   final String riderName, msgAboutRider, time;
+  final bool isEnglish;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(15),
-      height: 80,
+      height: isEnglish ? 80: 90,
       width: Get.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
@@ -106,7 +114,7 @@ class DeliveryInformation extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 MyText(
-                  text: '$riderName just picked up your food',
+                  text: '$riderName ${'just_picked_up_your_food'.tr}',
                   weight: FontWeight.w500,
                   color: kPrimaryColor,
                   letterSpacing: 0.0,

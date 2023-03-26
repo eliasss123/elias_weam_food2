@@ -467,7 +467,7 @@ class PickupOrderCompletedDialog extends StatelessWidget {
                     ],
                   ),
                   MyText(
-                    text: 'Thank you for your order',
+                    text: 'thank_you_for_your_order'.tr,
                     size: 17,
                     color: kSecondaryColor,
                     fontFamily: GoogleFonts.adamina().fontFamily,
@@ -475,7 +475,7 @@ class PickupOrderCompletedDialog extends StatelessWidget {
                     paddingBottom: 20,
                   ),
                   MyText(
-                    text: 'Keep tracking you order , to pick up on time.',
+                    text: 'keep_tracking_your_order_pick_up'.tr,
                     size: 12,
                     weight: FontWeight.w500,
                     color: isDark ? kPrimaryColor : kBlackColor2,
@@ -490,7 +490,7 @@ class PickupOrderCompletedDialog extends StatelessWidget {
                       children: [
                         MyButton(
                           textColor: isDark ? kBlackColor2 : kPrimaryColor,
-                          buttonText: 'Track Order',
+                          buttonText: 'track_order'.tr,
                           onTap: () => Get.to(
                             () => PickupOrderStatus(),
                           ),
@@ -500,7 +500,7 @@ class PickupOrderCompletedDialog extends StatelessWidget {
                         ),
                         MyButton(
                           textColor: isDark ? kBlackColor2 : kPrimaryColor,
-                          buttonText: 'Order Details',
+                          buttonText: 'order_details'.tr,
                           onTap: () => Get.to(
                             () => OrderReceipt(
                               orderNo: '701',
@@ -556,7 +556,7 @@ class PickupOrderCompletedDialog extends StatelessWidget {
                     height: 15,
                   ),
                   MyText(
-                    text: 'Please feel free to contact us for any questions',
+                    text: 'please_feel_free_to_contact_us_for_any_questions'.tr,
                     size: 12,
                     color: isDark ? kPrimaryColor : kBlackColor,
                     align: TextAlign.center,
@@ -581,7 +581,7 @@ class PickupOrderCompletedDialog extends StatelessWidget {
                         ),
                         child: Center(
                           child: MyText(
-                            text: 'Contact support',
+                            text: 'contact_support'.tr,
                             size: 14,
                             weight: FontWeight.w700,
                             color: kSecondaryColor,

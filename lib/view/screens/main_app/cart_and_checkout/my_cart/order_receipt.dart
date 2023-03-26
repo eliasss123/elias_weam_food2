@@ -33,6 +33,7 @@ class OrderReceipt extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         backgroundColor: isDark ? kDarkPrimaryColor : kSeoulColor6,
         body: Column(
@@ -44,12 +45,15 @@ class OrderReceipt extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () => Get.back(),
-                    child: Image.asset(
-                      isDark
-                          ? Assets.imagesArrowBackDark
-                          : Assets.imagesRoundedBackBlk,
-                      height: 43,
-                      width: 43,
+                    child: RotatedBox(
+                      quarterTurns: isEnglish ? 0 : 2,
+                      child: Image.asset(
+                        isDark
+                            ? Assets.imagesArrowBackDark
+                            : Assets.imagesRoundedBackBlk,
+                        height: 43,
+                        width: 43,
+                      ),
                     ),
                   ),
                   Expanded(
@@ -58,14 +62,14 @@ class OrderReceipt extends StatelessWidget {
                       children: [
                         MyText(
                           paddingTop: 25,
-                          text: 'Order Receipt',
+                          text: 'order_receipt'.tr,
                           size: 24,
                           weight: FontWeight.w700,
                           paddingBottom: 7,
                           color: isDark ? kPrimaryColor : kBlackColor2,
                         ),
                         MyText(
-                          text: 'Order number #$orderNo',
+                          text: '${'order_number'.tr} #$orderNo',
                           size: 12.5,
                           color: kSecondaryColor,
                           paddingBottom: 3.0,
@@ -115,7 +119,7 @@ class OrderReceipt extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               MyText(
-                                text: 'Subtotal',
+                                text: 'subtotal'.tr,
                                 size: 14,
                                 weight: FontWeight.w500,
                                 color: isDark ? kPrimaryColor : kBlackColor2,
@@ -157,7 +161,8 @@ class OrderReceipt extends StatelessWidget {
                                             size: 14,
                                             color: kGreyColor4,
                                             weight: FontWeight.w500,
-                                            paddingRight: 15,
+                                            paddingRight: isEnglish ? 15 : 0,
+                                            paddingLeft: isEnglish ? 0 : 15,
                                           ),
                                           Expanded(
                                             child: MyText(
@@ -171,7 +176,8 @@ class OrderReceipt extends StatelessWidget {
                                             ),
                                           ),
                                           MyText(
-                                            paddingLeft: 15,
+                                            paddingRight: isEnglish ? 0 : 15,
+                                            paddingLeft: isEnglish ? 15 : 0,
                                             text: '\$${data.itemPrice}',
                                             size: 14,
                                             color: isDark
@@ -214,7 +220,10 @@ class OrderReceipt extends StatelessWidget {
                                                         ),
                                                       ),
                                                       MyText(
-                                                        paddingLeft: 15,
+                                                        paddingRight:
+                                                            isEnglish ? 0 : 15,
+                                                        paddingLeft:
+                                                            isEnglish ? 15 : 0,
                                                         text:
                                                             '\$${subItems.itemPrice}',
                                                         size: 12,
@@ -238,7 +247,7 @@ class OrderReceipt extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               MyText(
-                                text: 'Delivery fee',
+                                text: 'delivery_fee'.tr,
                                 weight: FontWeight.w500,
                                 color: isDark ? kPrimaryColor : kBlackColor2,
                               ),
@@ -263,7 +272,7 @@ class OrderReceipt extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               MyText(
-                                text: 'Total Payment',
+                                text: 'total_payment'.tr,
                                 size: 14,
                                 weight: FontWeight.w700,
                                 color: isDark ? kPrimaryColor : kBlackColor2,
@@ -283,7 +292,7 @@ class OrderReceipt extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               MyText(
-                                text: 'Order date',
+                                text: 'order_date'.tr,
                                 size: 14,
                                 weight: FontWeight.w500,
                                 color: isDark ? kPrimaryColor : kBlackColor2,
@@ -303,7 +312,7 @@ class OrderReceipt extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               MyText(
-                                text: 'Delivery time',
+                                text: 'delivery_time'.tr,
                                 size: 14,
                                 weight: FontWeight.w500,
                                 color: isDark ? kPrimaryColor : kBlackColor2,

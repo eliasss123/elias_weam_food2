@@ -42,7 +42,7 @@ class _TipsAndNotesState extends State<TipsAndNotes> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               MyText(
-                text: 'Tips and Notes',
+                text: 'tips_and_notes'.tr,
                 size: 24,
                 weight: FontWeight.w700,
                 color: isDark ? kPrimaryColor : kBlackColor2,
@@ -56,7 +56,7 @@ class _TipsAndNotesState extends State<TipsAndNotes> {
                     MyText(
                       paddingTop: 60,
                       align: TextAlign.center,
-                      text: 'Add Notes',
+                      text: 'add_notes'.tr,
                       color: isDark
                           ? kPrimaryColor.withOpacity(0.6)
                           : kBlackColor4,
@@ -78,7 +78,7 @@ class _TipsAndNotesState extends State<TipsAndNotes> {
                           horizontal: 21,
                           vertical: 16.5,
                         ),
-                        hintText: 'Type here',
+                        hintText: 'type_here'.tr,
                         hintStyle: TextStyle(
                           fontSize: 13.5,
                           color: kGreyColor8,
@@ -103,7 +103,7 @@ class _TipsAndNotesState extends State<TipsAndNotes> {
                       paddingTop: 38,
                       weight: FontWeight.w500,
                       size: 18,
-                      text: 'Courier tip',
+                      text: 'courier_tip'.tr,
                       color: isDark
                           ? kPrimaryColor.withOpacity(0.8)
                           : kBlackColor4,
@@ -161,7 +161,7 @@ class _TipsAndNotesState extends State<TipsAndNotes> {
                       paddingTop: 25,
                       weight: FontWeight.w500,
                       size: 13.33,
-                      text: 'Custom amount',
+                      text: 'custom_amount'.tr,
                       color: kSecondaryColor,
                       align: TextAlign.center,
                       decoration: TextDecoration.underline,
@@ -191,7 +191,7 @@ class _TipsAndNotesState extends State<TipsAndNotes> {
                             ),
                           ),
                           MyText(
-                            text: 'Change',
+                            text: 'change'.tr,
                             size: 13.33,
                             weight: FontWeight.w500,
                             color: kSecondaryColor,
@@ -208,7 +208,7 @@ class _TipsAndNotesState extends State<TipsAndNotes> {
                   vertical: 20,
                 ),
                 child: MyButton(
-                  buttonText: 'Done',
+                  buttonText: 'done'.tr,
                   onTap: () {},
                 ),
               ),

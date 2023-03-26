@@ -42,21 +42,44 @@ class _TrackOrderState extends State<TrackOrder> {
     },
   ];
 
+  final List<Map<String, dynamic>> orderStatusFlipped = [
+    {
+      'icon': Assets.imagesOrderGreen,
+      'iconSize': 20.84,
+      'isCompleted': true,
+    },
+    {
+      'icon': Assets.imagesCooking,
+      'iconSize': 23.0,
+      'isCompleted': true,
+    },
+    {
+      'icon': Assets.imagesFlippedBike,
+      'iconSize': 29.18,
+      'isCompleted': true,
+    },
+    {
+      'icon': Assets.imagesUnCompleted,
+      'iconSize': 20.84,
+      'isCompleted': false,
+    },
+  ];
+
   final List<Map<String, dynamic>> orderActivities = [
     {
-      'title': 'Your order has been received',
+      'title': 'your_order_has_been_received',
       'isActive': true,
     },
     {
-      'title': 'The restaurant is preparing your food',
+      'title': 'the_restaurant_is_preparing_your_food',
       'isActive': true,
     },
     {
-      'title': 'Your order has been picked up for delivery',
+      'title': 'your_order_has_been_picked_up_for_delivery',
       'isActive': true,
     },
     {
-      'title': 'Order arriving soon!',
+      'title': 'order_arriving_soon',
       'isActive': false,
     },
   ];
@@ -83,6 +106,7 @@ class _TrackOrderState extends State<TrackOrder> {
             var platform = Theme.of(context).platform;
             return Obx(() {
               bool isDark = themeController.isDarkTheme.value;
+              bool isEnglish = languageController.isEnglish.value;
               return SimpleBottomSheet(
                 height: Get.height * 0.9,
                 content: Padding(
@@ -106,7 +130,8 @@ class _TrackOrderState extends State<TrackOrder> {
                                     alignment: WrapAlignment.center,
                                     children: [
                                       MyText(
-                                        text: 'Estimated delivery time is ',
+                                        text:
+                                            '${'estimated_delivery_time_is'.tr} ',
                                         size: 17,
                                         weight: FontWeight.w500,
                                         letterSpacing: 0.0,
@@ -128,7 +153,8 @@ class _TrackOrderState extends State<TrackOrder> {
                                   MyText(
                                     paddingTop: 10,
                                     text:
-                                        'Your order is already on its way to you!',
+                                        'your_order_is_already_on_its_way_to_you'
+                                            .tr,
                                     size: 14,
                                     color: isDark
                                         ? kPrimaryColor.withOpacity(0.5)
@@ -143,7 +169,9 @@ class _TrackOrderState extends State<TrackOrder> {
                                     children: List.generate(
                                       4,
                                       (index) {
-                                        var data = orderStatus[index];
+                                        var data = isEnglish
+                                            ? orderStatus[index]
+                                            : orderStatusFlipped[index];
                                         return index == 3
                                             ? Image.asset(
                                                 data['icon'],
@@ -204,7 +232,7 @@ class _TrackOrderState extends State<TrackOrder> {
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   MyText(
-                                    text: 'Order status activities',
+                                    text: 'order_status_activities'.tr,
                                     letterSpacing: 0.0,
                                     weight: FontWeight.w500,
                                     paddingBottom: 25,
@@ -288,18 +316,22 @@ class _TrackOrderState extends State<TrackOrder> {
                                         ),
                                         Expanded(
                                           child: MyText(
-                                            paddingLeft: 15,
-                                            text: 'Order Receipt',
+                                            paddingLeft: isEnglish ? 15 : 0,
+                                            paddingRight: isEnglish ? 0 : 15,
+                                            text: 'order_receipt'.tr,
                                             size: 16,
                                             weight: FontWeight.w500,
                                             color:
                                                 kGreyColor5.withOpacity(0.70),
                                           ),
                                         ),
-                                        Image.asset(
-                                          Assets.imagesArrowRight,
-                                          height: 22,
-                                          color: kSecondaryColor,
+                                        RotatedBox(
+                                          quarterTurns: isEnglish ? 0 : 2,
+                                          child: Image.asset(
+                                            Assets.imagesArrowRight,
+                                            height: 22,
+                                            color: kSecondaryColor,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -321,7 +353,7 @@ class _TrackOrderState extends State<TrackOrder> {
                           bottom: platform == TargetPlatform.iOS ? 3 : 0,
                         ),
                         child: MyButton(
-                          buttonText: 'Live tracking',
+                          buttonText: 'live_tracking'.tr,
                           onTap: () => Get.to(
                             () => LiveTracking(),
                           ),
@@ -403,6 +435,7 @@ class _TrackOrderState extends State<TrackOrder> {
   Widget orderActivitiesStepper() {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: List.generate(
@@ -424,7 +457,8 @@ class _TrackOrderState extends State<TrackOrder> {
                             ),
                       Expanded(
                         child: MyText(
-                          paddingLeft: 15,
+                          paddingLeft: isEnglish ? 15 : 0,
+                          paddingRight: isEnglish ? 0 : 15,
                           size: 13,
                           weight: FontWeight.w500,
                           color: data['isActive'] == true
@@ -432,7 +466,7 @@ class _TrackOrderState extends State<TrackOrder> {
                               : isDark
                                   ? kDarkModeGrey3Color
                                   : kGreyColor3,
-                          text: data['title'],
+                          text: data['title'].toString().tr,
                           letterSpacing: 0.0,
                           maxLines: 1,
                           overFlow: TextOverflow.ellipsis,
@@ -457,13 +491,14 @@ class _TrackOrderState extends State<TrackOrder> {
                                 ),
                           Expanded(
                             child: MyText(
-                              paddingLeft: 15,
+                              paddingLeft: isEnglish ? 15 : 0,
+                              paddingRight: isEnglish ? 0 : 15,
                               size: 13,
                               weight: FontWeight.w500,
                               color: data['isActive'] == true
                                   ? kSecondaryColor
                                   : kGreyColor3,
-                              text: data['title'],
+                              text: data['title'].toString().tr,
                               letterSpacing: 0.0,
                               maxLines: 1,
                               overFlow: TextOverflow.ellipsis,
@@ -472,9 +507,8 @@ class _TrackOrderState extends State<TrackOrder> {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(
-                          left: 8,
-                        ),
+                        padding: EdgeInsets.only(
+                            left: isEnglish ? 8 : 0, right: isEnglish ? 0 : 8),
                         child: Image.asset(
                           Assets.imagesLineVertical,
                           height: 35,

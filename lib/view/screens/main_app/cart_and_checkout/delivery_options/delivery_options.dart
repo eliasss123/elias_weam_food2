@@ -27,8 +27,8 @@ class _DeliveryOptionsState extends State<DeliveryOptions>
 
   late TabController tabController;
   final List<String> _labels = [
-    'Delivery',
-    'Pick up ',
+    'delivery',
+    'pick_up',
   ];
   final List<Widget> tabsData = [
     Delivery(),
@@ -42,6 +42,7 @@ class _DeliveryOptionsState extends State<DeliveryOptions>
     var platform = Theme.of(context).platform;
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         appBar: AppBar(
           backgroundColor: isDark ? kDarkPrimaryColor : kPrimaryColor,
@@ -51,16 +52,19 @@ class _DeliveryOptionsState extends State<DeliveryOptions>
             children: [
               GestureDetector(
                 onTap: () => Get.back(),
-                child: Image.asset(
-                  Assets.imagesArrowBack,
-                  height: 24,
-                  color: isDark ? kPrimaryColor : kBlackColor2,
+                child: RotatedBox(
+                  quarterTurns: isEnglish ? 0 : 2,
+                  child: Image.asset(
+                    Assets.imagesArrowBack,
+                    height: 24,
+                    color: isDark ? kPrimaryColor : kBlackColor2,
+                  ),
                 ),
               ),
             ],
           ),
           title: MyText(
-            text: 'Delivery options',
+            text: 'delivery_options'.tr,
             size: 21,
             weight: FontWeight.w700,
             color: isDark ? kPrimaryColor : kBlackColor2,
@@ -109,7 +113,7 @@ class _DeliveryOptionsState extends State<DeliveryOptions>
                         child: Center(
                           child: MyText(
                             size: 13,
-                            text: _labels[index],
+                            text: _labels[index].toString().tr,
                             color: currentTab == index
                                 ? kPrimaryColor
                                 : kSecondaryColor,
@@ -140,7 +144,7 @@ class _DeliveryOptionsState extends State<DeliveryOptions>
                 vertical: platform == TargetPlatform.iOS ? 23 : 20,
               ),
               child: MyButton(
-                buttonText: 'Save',
+                buttonText: 'save'.tr,
                 onTap: () => cartCheckOutController.changeDeliveryOption(
                   tabController.index == 0 ? false : true,
                 ),

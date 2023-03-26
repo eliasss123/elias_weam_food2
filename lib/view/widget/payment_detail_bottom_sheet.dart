@@ -14,15 +14,16 @@ class PaymentDetailBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return SimpleBottomSheet(
-        height: 373,
+        height: isEnglish ? 373 : 400,
         content: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               MyText(
-                text: 'Payment Details',
+                text: 'payment_details'.tr,
                 size: 18,
                 weight: FontWeight.w700,
                 paddingBottom: 20,
@@ -38,7 +39,7 @@ class PaymentDetailBottomSheet extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         MyText(
-                          text: 'Price',
+                          text: 'price'.tr,
                           size: 14,
                           weight: FontWeight.w500,
                           color: isDark ? kPrimaryColor : kBlackColor2,
@@ -94,7 +95,7 @@ class PaymentDetailBottomSheet extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         MyText(
-                          text: 'Delivery fee',
+                          text: 'delivery_fee'.tr,
                           size: 14,
                           weight: FontWeight.w500,
                           color: isDark ? kPrimaryColor : kBlackColor2,
@@ -121,7 +122,7 @@ class PaymentDetailBottomSheet extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         MyText(
-                          text: 'Total Payment',
+                          text: 'total_payment'.tr,
                           size: 14,
                           weight: FontWeight.w700,
                           color: isDark ? kPrimaryColor : kBlackColor2,

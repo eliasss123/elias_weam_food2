@@ -22,6 +22,7 @@ class DeliveryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Container(
         height: 101,
         decoration: BoxDecoration(
@@ -46,16 +47,19 @@ class DeliveryCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       MyText(
-                        text: isPickUp ? 'Pick up' : 'Delivery to Home',
+                        text: isPickUp ? 'pick_up'.tr : 'delivery_to_home'.tr,
                         size: 16,
                         weight: FontWeight.w700,
                         color: isDark ? kBlackColor2 : kPrimaryColor,
                         paddingBottom: 2,
                       ),
-                      Image.asset(
-                        Assets.imagesArrowRight,
-                        height: 24,
-                        color: isDark ? kBlackColor2 : kPrimaryColor,
+                      RotatedBox(
+                        quarterTurns: isEnglish ? 0 : 2,
+                        child: Image.asset(
+                          Assets.imagesArrowRight,
+                          height: 24,
+                          color: isDark ? kBlackColor2 : kPrimaryColor,
+                        ),
                       ),
                     ],
                   ),
@@ -74,12 +78,12 @@ class DeliveryCard extends StatelessWidget {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color:isDark ? kBlackColor2: kPrimaryColor,
+                      color: isDark ? kBlackColor2 : kPrimaryColor,
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     child: Center(
                       child: MyText(
-                        text: '$distance km',
+                        text: '$distance ${'km'.tr}',
                         size: 12,
                         weight: FontWeight.w700,
                         color: kSecondaryColor,

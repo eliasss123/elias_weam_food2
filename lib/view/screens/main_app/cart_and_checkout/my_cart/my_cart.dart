@@ -95,7 +95,7 @@ class MyCart extends StatelessWidget {
                           MyText(
                             paddingTop: 30,
                             paddingBottom: 20,
-                            text: 'Your Order (3)',
+                            text: '${'your_order'.tr} (3)',
                             size: 17,
                             weight: FontWeight.w700,
                             color: isDark ? kPrimaryColor : kBlackColor2,
@@ -117,7 +117,7 @@ class MyCart extends StatelessWidget {
                                     isScrollControlled: true,
                                     builder: (_) => MenuItemBottomSheet(
                                       onAddToCartTap: () {},
-                                      buttonText: 'Save changes',
+                                      buttonText: 'save_changes'.tr,
                                     ),
                                   );
                                 },
@@ -203,7 +203,7 @@ class MyCart extends StatelessWidget {
                               vertical: 15,
                             ),
                             child: MyButton(
-                              buttonText: 'Place Order',
+                              buttonText: 'place_order'.tr,
                               onTap: () => Get.to(
                                 () => Obx(() {
                                   return ConfirmOrder(

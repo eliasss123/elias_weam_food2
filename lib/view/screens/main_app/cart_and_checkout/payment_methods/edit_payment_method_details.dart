@@ -32,21 +32,21 @@ class EditPaymentMethodDetails extends StatelessWidget {
               ),
               MyText(
                 paddingTop: 25,
-                text: 'Add payment method',
+                text: 'add_payment_method'.tr,
                 size: 24,
                 weight: FontWeight.w700,
                 paddingBottom: 40,
                 color: isDark ? kPrimaryColor : kBlackColor2,
               ),
               EditPaymentMethodFields(
-                label: 'Card holder name',
+                label: 'card_holder_name'.tr,
                 hint: 'Alex Smith',
               ),
               SizedBox(
                 height: 30,
               ),
               EditPaymentMethodFields(
-                label: 'Card number',
+                label: 'card_number'.tr,
                 hint: '**** **** **** 2542',
                 haveSuffix: true,
                 suffixIcon: Assets.imagesMas,
@@ -59,7 +59,7 @@ class EditPaymentMethodDetails extends StatelessWidget {
                 children: [
                   Expanded(
                     child: EditPaymentMethodFields(
-                      label: 'Expire date',
+                      label: 'expiry_date'.tr,
                       hint: '20/25',
                       maxLength: 5,
                       isTransparentBorder: true,
@@ -67,7 +67,7 @@ class EditPaymentMethodDetails extends StatelessWidget {
                   ),
                   Expanded(
                     child: EditPaymentMethodFields(
-                      label: 'CVC',
+                      label: 'cvc'.tr,
                       hint: '254',
                       isTransparentBorder: true,
                       maxLength: 3,
@@ -81,7 +81,7 @@ class EditPaymentMethodDetails extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 7),
                 child: MyButton(
-                  buttonText: 'Save & make payment',
+                  buttonText: 'save_make_payment'.tr,
                   onTap: () {},
                 ),
               ),

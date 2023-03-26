@@ -16,6 +16,7 @@ class SupportCenter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 15),
         height: 76,
@@ -44,14 +45,14 @@ class SupportCenter extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   MyText(
-                    text: 'Support center',
+                    text: 'support_center'.tr,
                     size: 14,
                     weight: FontWeight.w700,
                     color: isDark ? kPrimaryColor : kBlackColor2,
                   ),
                   MyText(
                     paddingTop: 6,
-                    text: 'Order #$orderNo',
+                    text: '${'order'.tr} #$orderNo',
                     size: 13,
                     color: isDark
                         ? kPrimaryColor.withOpacity(0.40)
@@ -64,15 +65,25 @@ class SupportCenter extends StatelessWidget {
               crossAxisAlignment: WrapCrossAlignment.center,
               spacing: isDark ? 5 : 15.0,
               children: [
-                Image.asset(
-                  isDark ? Assets.imagesCallDark : Assets.imagesCallSupport,
-                  height: isDark ? 40 : 35,
+                Transform(
+                  transform: Matrix4.identity()
+                    ..scale(isEnglish ? 1.0 : -1.0, 1.0, 1.0),
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    isDark ? Assets.imagesCallDark : Assets.imagesCallSupport,
+                    height: isDark ? 40 : 35,
+                  ),
                 ),
-                Image.asset(
-                  isDark
-                      ? Assets.imagesMessageDark
-                      : Assets.imagesMessageSupport,
-                  height: isDark ? 40 : 35,
+                Transform(
+                  transform: Matrix4.identity()
+                    ..scale(isEnglish ? 1.0 : -1.0, 1.0, 1.0),
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    isDark
+                        ? Assets.imagesMessageDark
+                        : Assets.imagesMessageSupport,
+                    height: isDark ? 40 : 35,
+                  ),
                 ),
               ],
             ),
