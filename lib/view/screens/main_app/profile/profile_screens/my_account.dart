@@ -70,7 +70,7 @@ class MyAccount extends StatelessWidget {
                     ),
                     ProfileFilledTextField(
                       labelText: 'name'.tr,
-                      hintText: 'Test',
+                      hintText: '',
                     ),
                     ProfileFilledTextField(
                       labelText: 'email'.tr,

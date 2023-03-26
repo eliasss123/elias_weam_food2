@@ -13,6 +13,7 @@ class SetLocationByPin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         body: Stack(
           alignment: Alignment.bottomRight,
@@ -38,13 +39,16 @@ class SetLocationByPin extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () => Get.back(),
-                          child: Image.asset(
-                            Assets.imagesArrowBack,
-                            height: 24,
+                          child: RotatedBox(
+                            quarterTurns: isEnglish ? 0 : 2,
+                            child: Image.asset(
+                              Assets.imagesArrowBack,
+                              height: 24,
+                            ),
                           ),
                         ),
                         MyText(
-                          text: 'Pin Location',
+                          text: 'pin_location'.tr,
                           size: 21,
                           weight: FontWeight.w700,
                         ),
