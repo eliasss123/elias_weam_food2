@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/view/screens/merchant_app/merchant_home/change_pickup_time.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
@@ -28,14 +29,14 @@ class CanYouMakeIt extends StatelessWidget {
               children: [
                 MyText(
                   paddingTop: 20,
-                  text: 'Pickup in 5 min.\nCan you make it?',
+                  text: '${'pickup_in'.tr} 5 ${'min_can_you_make_it'.tr}',
                   size: 17,
                   weight: FontWeight.w700,
                   height: 1.7,
                   align: TextAlign.center,
                 ),
                 MyText(
-                  text: 'We’ll also send this update to\nthe customer.',
+                  text: 'we_also_send_this_update_to_the_customer'.tr,
                   height: 1.7,
                   color: kDarkGreyColor4.withOpacity(0.60),
                   align: TextAlign.center,
@@ -65,7 +66,7 @@ class CanYouMakeIt extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                               child: Center(
                                 child: MyText(
-                                  text: 'Change estimate',
+                                  text: 'change_estimate'.tr,
                                   size: 14,
                                   weight: FontWeight.w700,
                                   color: kSecondaryColor,
@@ -78,16 +79,19 @@ class CanYouMakeIt extends StatelessWidget {
                       SizedBox(
                         width: 13,
                       ),
-                      Expanded(
-                        flex: 4,
-                        child: MyButton(
-                          buttonText: 'Let’s do it',
-                          onTap: () {},
-                          height: 45,
-                          radius: 10.0,
-                          textSize: 14,
-                        ),
-                      ),
+                      Obx(() {
+                        bool isEnglish = languageController.isEnglish.value;
+                        return Expanded(
+                          flex: isEnglish ? 4 : 5,
+                          child: MyButton(
+                            buttonText: 'lets_do_it'.tr,
+                            onTap: () {},
+                            height: 45,
+                            radius: 10.0,
+                            textSize: 14,
+                          ),
+                        );
+                      }),
                     ],
                   ),
                 ),

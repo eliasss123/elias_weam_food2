@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/merchant_app/auth/merchant_login.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
@@ -56,7 +57,7 @@ class MerchantGetStarted extends StatelessWidget {
                     child: MyButton(
                       height: 52,
                       textSize: 16,
-                      buttonText: 'Login',
+                      buttonText: 'login'.tr,
                       onTap: () => Get.to(() => MerchantLogin()),
                     ),
                   ),
@@ -84,7 +85,7 @@ class MerchantGetStarted extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         child: Center(
                           child: MyText(
-                            text: 'Sign Up',
+                            text: 'sign_Up'.tr,
                             size: 16,
                             weight: FontWeight.w500,
                             color: kPrimaryColor,
@@ -96,38 +97,45 @@ class MerchantGetStarted extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(
-                    bottom: 40,
-                    right: 40,
-                  ),
-                  height: 51,
-                  width: 51,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: kPrimaryColor,
-                  ),
-                  child: Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      onTap: () {},
-                      splashColor: kSecondaryColor.withOpacity(0.05),
-                      highlightColor: kSecondaryColor.withOpacity(0.05),
-                      borderRadius: BorderRadius.circular(100),
-                      child: Center(
-                        child: Image.asset(
-                          Assets.imagesArrowRightNormal,
-                          height: 19,
+            Obx(() {
+              bool isEnglish = languageController.isEnglish.value;
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(
+                      bottom: 40,
+                      right: isEnglish ? 40 : 0,
+                      left: isEnglish ? 0 : 40,
+                    ),
+                    height: 51,
+                    width: 51,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: kPrimaryColor,
+                    ),
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () => Get.to(() => MerchantLogin()),
+                        splashColor: kSecondaryColor.withOpacity(0.05),
+                        highlightColor: kSecondaryColor.withOpacity(0.05),
+                        borderRadius: BorderRadius.circular(100),
+                        child: Center(
+                          child: RotatedBox(
+                            quarterTurns: isEnglish ? 0 : 2,
+                            child: Image.asset(
+                              Assets.imagesArrowRightNormal,
+                              height: 19,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              );
+            }),
           ],
         ),
       ),

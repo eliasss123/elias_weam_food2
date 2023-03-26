@@ -10,9 +10,9 @@ class MerchantHomeController extends GetxController {
   RxInt currentTab = 0.obs;
 
   final List<String> tabs = [
-    'Incoming · 3',
-    'Outgoing · 0',
-    'Ready · 0',
+    'incoming',
+    'outgoing',
+    'ready',
   ];
   final List<Widget> tabsData = [
     IncomingOrders(),

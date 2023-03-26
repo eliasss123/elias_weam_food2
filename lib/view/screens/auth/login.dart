@@ -51,21 +51,21 @@ class Login extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         MyText(
-                          text: 'Log In',
+                          text: 'login'.tr.camelCase,
                           size: 23,
                           weight: FontWeight.w700,
                           paddingBottom: 8,
                           color: isDark ? kPrimaryColor : kBlackColor2,
                         ),
                         MyText(
-                          text: 'Welcome back to Vai',
+                          text: 'welcome_back_to_vai'.tr,
                           color: isDark
                               ? kPrimaryColor.withOpacity(0.71)
                               : Colors.black.withOpacity(0.71),
                           paddingBottom: 30.0,
                         ),
                         PrefixTextField(
-                          hintText: 'Email',
+                          hintText: 'email'.tr,
                           prefixIcon: Assets.imagesEmailBorder,
                           prefixIconSize: 17,
                         ),
@@ -74,7 +74,7 @@ class Login extends StatelessWidget {
                         ),
                         PrefixTextField(
                           isObSecure: true,
-                          hintText: 'Password',
+                          hintText: 'password'.tr,
                           prefixIcon: Assets.imagesLock,
                           prefixIconSize: 17,
                         ),
@@ -82,7 +82,7 @@ class Login extends StatelessWidget {
                           paddingTop: 13,
                           paddingBottom: 50,
                           align: TextAlign.end,
-                          text: 'Forgot password?',
+                          text: 'forgot_password'.tr,
                           size: 14,
                           weight: FontWeight.w500,
                           color: kSecondaryColor,
@@ -95,7 +95,7 @@ class Login extends StatelessWidget {
                             width: 213,
                             child: MyButton(
                               height: 52,
-                              buttonText: 'Log In',
+                              buttonText: 'login'.tr.camelCase!,
                               onTap: () => Get.offAll(() => BottomNavBar()),
                             ),
                           ),
@@ -113,7 +113,7 @@ class Login extends StatelessWidget {
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   MyText(
-                    text: 'Don’t have an account yet?',
+                    text: 'dont_have_an_account_yet'.tr,
                     color: isDark
                         ? kPrimaryColor.withOpacity(0.71)
                         : kBlackColor2.withOpacity(0.71),
@@ -122,7 +122,7 @@ class Login extends StatelessWidget {
                     onTap: () => Get.offAll(
                       () => Signup(),
                     ),
-                    text: ' Sign Up',
+                    text: 'sign_Up'.tr,
                     weight: FontWeight.w500,
                     color: kSecondaryColor,
                   ),

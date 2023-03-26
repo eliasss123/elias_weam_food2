@@ -5,6 +5,7 @@ import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
 import 'package:elias_weam_food2/view/widget/week_day_toggle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:get/get.dart';
 
 class ScheduleDetails extends StatefulWidget {
   @override
@@ -16,31 +17,31 @@ class _ScheduleDetailsState extends State<ScheduleDetails> {
 
   final List<Map<String, dynamic>> weekdays = [
     {
-      'day': 'S',
+      'day': 'sun',
       'isSelected': false,
     },
     {
-      'day': 'M',
+      'day': 'mon',
       'isSelected': false,
     },
     {
-      'day': 'T',
+      'day': 'tue',
       'isSelected': false,
     },
     {
-      'day': 'W',
+      'day': 'wed',
       'isSelected': false,
     },
     {
-      'day': 'T',
+      'day': 'thu',
       'isSelected': false,
     },
     {
-      'day': 'F',
+      'day': 'fri',
       'isSelected': false,
     },
     {
-      'day': 'S',
+      'day': 'sat',
       'isSelected': false,
     },
   ];
@@ -51,7 +52,7 @@ class _ScheduleDetailsState extends State<ScheduleDetails> {
       backgroundColor: kSeoulColor6,
       appBar: simpleAppBar(
         bgColor: kSeoulColor6,
-        title: 'Time',
+        title: 'time'.tr.capitalizeFirst,
         titleWeight: FontWeight.w700,
       ),
       body: ListView(
@@ -75,7 +76,7 @@ class _ScheduleDetailsState extends State<ScheduleDetails> {
               children: [
                 Expanded(
                   child: MyText(
-                    text: 'Schedule',
+                    text: 'schedule'.tr,
                     size: 20,
                     color: kBlackColor,
                   ),
@@ -103,7 +104,7 @@ class _ScheduleDetailsState extends State<ScheduleDetails> {
           ),
           MyText(
             paddingTop: 40,
-            text: 'TIME',
+            text: 'time'.tr.toUpperCase(),
             size: 14,
             weight: FontWeight.w500,
             color: kBlackColor.withOpacity(0.60),
@@ -126,7 +127,7 @@ class _ScheduleDetailsState extends State<ScheduleDetails> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText(
-                      text: 'From',
+                      text: 'from'.tr,
                       size: 20,
                       color: kBlackColor,
                     ),
@@ -156,7 +157,7 @@ class _ScheduleDetailsState extends State<ScheduleDetails> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText(
-                      text: 'To',
+                      text: 'to'.tr,
                       size: 20,
                       color: kBlackColor,
                     ),
@@ -183,7 +184,7 @@ class _ScheduleDetailsState extends State<ScheduleDetails> {
           ),
           MyText(
             paddingTop: 40,
-            text: 'REPEAT',
+            text: 'repeat'.tr.toUpperCase(),
             size: 14,
             weight: FontWeight.w500,
             color: kBlackColor.withOpacity(0.60),
@@ -211,7 +212,7 @@ class _ScheduleDetailsState extends State<ScheduleDetails> {
                       });
                     },
                     isSelected: data['isSelected'],
-                    weekDay: data['day'],
+                    weekDay: data['day'].toString().tr,
                   );
                 },
               ),
@@ -219,7 +220,7 @@ class _ScheduleDetailsState extends State<ScheduleDetails> {
           ),
           MyText(
             paddingTop: 10,
-            text: 'Every day',
+            text: 'every_day'.tr,
             size: 14,
             weight: FontWeight.w500,
             color: kBlackColor.withOpacity(0.60),
@@ -240,7 +241,7 @@ class _ScheduleDetailsState extends State<ScheduleDetails> {
                 borderRadius: BorderRadius.circular(16),
                 child: Center(
                   child: MyText(
-                    text: 'Delete',
+                    text: 'delete'.tr,
                     size: 20,
                     color: kRedColor3,
                   ),

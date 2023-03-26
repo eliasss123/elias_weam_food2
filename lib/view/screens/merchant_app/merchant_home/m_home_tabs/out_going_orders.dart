@@ -2,6 +2,7 @@ import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class OutGoingOrders extends StatelessWidget {
@@ -73,14 +74,14 @@ class OutGoingOrders extends StatelessWidget {
         ),
         MyText(
           paddingTop: 80,
-          text: '5 minutes left',
+          text: '5 ${'minutes'.tr} ${'left'.tr}',
           size: 19,
           weight: FontWeight.w700,
           align: TextAlign.center,
           paddingBottom: 15,
         ),
         MyText(
-          text: 'Start preparing the order',
+          text: 'start_preparing_the_order'.tr,
           color: kDarkGreyColor4.withOpacity(0.60),
           align: TextAlign.center,
           paddingBottom: 70,
@@ -91,7 +92,7 @@ class OutGoingOrders extends StatelessWidget {
             child: MyButton(
               height: 50,
               radius: 14.0,
-              buttonText: 'OK',
+              buttonText: 'ok'.tr.toUpperCase(),
               onTap: () {},
             ),
           ),

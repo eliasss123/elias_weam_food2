@@ -1,4 +1,5 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/utils/instances.dart';
 import 'package:elias_weam_food2/view/screens/merchant_app/edit_merchant_app/change_restaurant_details.dart';
@@ -67,28 +68,34 @@ class EditMerchantAppBar extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        GestureDetector(
-                          onTap: () => Get.back(),
-                          child: Image.asset(
-                            Assets.imagesRoundedBack,
-                            height: 41,
-                          ),
-                        ),
+                        Obx(() {
+                          return GestureDetector(
+                            onTap: () => Get.back(),
+                            child: RotatedBox(
+                              quarterTurns:
+                                  languageController.isEnglish.value ? 0 : 2,
+                              child: Image.asset(
+                                Assets.imagesRoundedBack,
+                                height: 41,
+                              ),
+                            ),
+                          );
+                        }),
                         Obx(() {
                           return SizedBox(
                             child: editMerchantAppController.isEditMode.value
                                 ? editModeButton(context)
                                 : Container(
-                              width: 154,
-                              child: MyButton(
-                                height: 40,
-                                radius: 12.0,
-                                textSize: 16,
-                                buttonText: 'Edit details',
-                                onTap: () => editMerchantAppController
-                                    .activateEditMode(),
-                              ),
-                            ),
+                                    width: 154,
+                                    child: MyButton(
+                                      height: 40,
+                                      radius: 12.0,
+                                      textSize: 16,
+                                      buttonText: 'Edit details',
+                                      onTap: () => editMerchantAppController
+                                          .activateEditMode(),
+                                    ),
+                                  ),
                           );
                         }),
                         SizedBox(
@@ -176,5 +183,4 @@ class EditMerchantAppBar extends StatelessWidget {
       ),
     );
   }
-
 }

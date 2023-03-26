@@ -1,93 +1,102 @@
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/order_detail_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ReadyOrders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      padding: EdgeInsets.symmetric(vertical: 30),
-      physics: BouncingScrollPhysics(),
-      children: [
-        MyText(
-          paddingLeft: 30,
-          text: 'Orders Ready',
-          size: 17,
-          weight: FontWeight.w700,
-          paddingBottom: 15,
-        ),
-        SizedBox(
-          height: 103,
-          child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.symmetric(
-              horizontal: 25,
-            ),
-            physics: BouncingScrollPhysics(),
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return ReadyOrderButton(
-                onTap: () {},
-                isSelected: index == 0 ? true : false,
-                cusName: 'Nic L',
-                orderNo: '172',
-                pickupIn: '2',
-              );
-            },
+    return Obx(() {
+      bool isEnglish = languageController.isEnglish.value;
+      return ListView(
+        shrinkWrap: true,
+        padding: EdgeInsets.symmetric(vertical: 30),
+        physics: BouncingScrollPhysics(),
+        children: [
+          MyText(
+            paddingLeft: isEnglish ? 30 : 0,
+            paddingRight: isEnglish ? 0 : 30,
+            text: 'orders_ready'.tr,
+            size: 17,
+            weight: FontWeight.w700,
+            paddingBottom: 15,
           ),
-        ),
-        MyText(
-          paddingLeft: 30,
-          paddingTop: 40,
-          text: 'Order Status',
-          size: 15,
-          weight: FontWeight.w700,
-          paddingBottom: 15,
-        ),
-        Column(
-          children: List.generate(
-            2,
-            (index) {
-              return OrderStatusCard(
-                isCompleted: index == 0 ? true : false,
-                statusMsg:
-                    index == 0 ? 'Completed 2 min ago' : 'Pickup in 1 min',
-                time: '13:00',
-              );
-            },
-          ),
-        ),
-        MyText(
-          paddingLeft: 30,
-          paddingTop: 25,
-          text: 'Order Detail',
-          size: 15,
-          weight: FontWeight.w700,
-          paddingBottom: 15,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: List.generate(
-              3,
-              (index) {
-                return OrderDetailCard(
+          SizedBox(
+            height: 103,
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.symmetric(
+                horizontal: 25,
+              ),
+              physics: BouncingScrollPhysics(),
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return ReadyOrderButton(
                   onTap: () {},
-                  orderCount: '${index + 1}',
-                  orderedItem: 'Americana Pizza',
-                  specialNote: index == 2 ? '' : 'Extra fromage · no butter',
+                  isSelected: index == 0 ? true : false,
+                  cusName: 'Nic L',
+                  orderNo: '172',
+                  pickupIn: '2',
                 );
               },
             ),
           ),
-        ),
-      ],
-    );
+          MyText(
+            paddingLeft: isEnglish ? 30 : 0,
+            paddingRight: isEnglish ? 0 : 30,
+            paddingTop: 40,
+            text: 'order_status'.tr,
+            size: 17,
+            weight: FontWeight.w700,
+            paddingBottom: 15,
+          ),
+          Column(
+            children: List.generate(
+              2,
+              (index) {
+                return OrderStatusCard(
+                  isCompleted: index == 0 ? true : false,
+                  statusMsg: index == 0
+                      ? '${'completed'.tr} 2 ${'min_ago'.tr}'
+                      : '${'pickup_in'.tr} 1 ${'min'.tr}',
+                  time: '13:00',
+                );
+              },
+            ),
+          ),
+          MyText(
+            paddingLeft: isEnglish ? 30 : 0,
+            paddingRight: isEnglish ? 0 : 30,
+            paddingTop: 25,
+            text: 'order_detail'.tr,
+            size: 17,
+            weight: FontWeight.w700,
+            paddingBottom: 15,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: List.generate(
+                3,
+                (index) {
+                  return OrderDetailCard(
+                    onTap: () {},
+                    orderCount: '${index + 1}',
+                    orderedItem: 'Americana Pizza',
+                    specialNote: index == 2 ? '' : '${'extra_fromage'.tr} · ${'no_butter'.tr}',
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
+      );
+    });
   }
 }
 
@@ -223,7 +232,7 @@ class ReadyOrderButton extends StatelessWidget {
               color: isSelected ? kPrimaryColor : kSecondaryColor,
             ),
             MyText(
-              text: 'pickup in $pickupIn\m',
+              text: '${'pickup_in'.tr} $pickupIn\m',
               size: 13,
               color: isSelected ? kPrimaryColor : kLightGreyColor3,
             ),

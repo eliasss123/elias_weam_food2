@@ -4,6 +4,7 @@ import 'package:elias_weam_food2/view/screens/merchant_app/merchant_app_stats/me
 import 'package:elias_weam_food2/view/screens/merchant_app/merchant_app_settings/merchant_app_settings.dart';
 import 'package:elias_weam_food2/view/screens/merchant_app/merchant_home/merchant_home.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MerchantBottomNav extends StatefulWidget {
   @override
@@ -15,15 +16,15 @@ class _MerchantBottomNavState extends State<MerchantBottomNav> {
   final List<Map<String, dynamic>> items = [
     {
       'icon': Assets.imagesHomeA,
-      'label': 'Home',
+      'label': 'home',
     },
     {
       'icon': Assets.imagesStats,
-      'label': 'Statistics',
+      'label': 'statistics',
     },
     {
       'icon': Assets.imagesGear,
-      'label': 'Settings',
+      'label': 'settings',
     },
   ];
   final List<Widget> screens = [
@@ -91,7 +92,7 @@ class _MerchantBottomNavState extends State<MerchantBottomNav> {
                     size: 19.0,
                   ),
                 ),
-                label: data['label'],
+                label: data['label'].toString().tr,
               );
             },
           ),

@@ -1,8 +1,10 @@
 import 'package:elias_weam_food2/constant/color.dart';
-import 'package:elias_weam_food2/view/widget/my_button.dart';
+import 'package:elias_weam_food2/constant/instance.dart';
+import 'package:elias_weam_food2/shared_preferences/user_simple_preferences.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MerchantLanguages extends StatefulWidget {
   @override
@@ -15,17 +17,36 @@ class _MerchantLanguagesState extends State<MerchantLanguages> {
     'Hebrew',
     'Arabic',
   ];
+  final List<String> languages = [
+    'english',
+    'hebrew',
+    'arabic',
+  ];
 
-  int currentIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    getLanguageIndex();
+  }
+
+  void getLanguageIndex() async {
+    languageController.currentIndex.value =
+        await UserSimplePreferences.getLanguageIndex() ?? 0;
+    languageController.currentIndex.value != 0
+        ? languageController.isEnglish.value = false
+        : languageController.isEnglish.value = true;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
+    var platform = Theme.of(context).platform;
+    bool isIos = platform == TargetPlatform.iOS;
     return Scaffold(
-      backgroundColor: kSeoulColor6,
       appBar: simpleAppBar(
-        bgColor: kSeoulColor6,
-        title: 'Language',
+        title: 'language'.tr,
         titleWeight: FontWeight.w700,
+        isDark: false,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -38,7 +59,7 @@ class _MerchantLanguagesState extends State<MerchantLanguages> {
                 horizontal: 20,
                 vertical: 15,
               ),
-              itemCount: 3,
+              itemCount: 2,
               itemBuilder: (context, index) {
                 return Container(
                   height: 60,
@@ -47,15 +68,16 @@ class _MerchantLanguagesState extends State<MerchantLanguages> {
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: kPrimaryColor,
+                    color: kSeoulColor3,
                   ),
                   child: Material(
                     color: Colors.transparent,
                     child: InkWell(
                       onTap: () {
-                        setState(() {
-                          currentIndex = index;
-                        });
+                        languageController.onLanguageChanged(
+                          languagesList[index],
+                          index,
+                        );
                       },
                       borderRadius: BorderRadius.circular(10),
                       child: Padding(
@@ -66,32 +88,41 @@ class _MerchantLanguagesState extends State<MerchantLanguages> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             MyText(
-                              text: languagesList[index],
+                              text: languages[index].tr,
                               size: 18,
+                              color: kBlackColor2,
                             ),
-                            Container(
-                              height: 22.5,
-                              width: 22.5,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: currentIndex == index
-                                    ? kSecondaryColor
-                                    : Colors.transparent,
-                                border: Border.all(
-                                  width: 1.5,
-                                  color: currentIndex == index
-                                      ? kSecondaryColor
-                                      : kBorderColor4,
+                            Obx(() {
+                              return Container(
+                                height: 22.5,
+                                width: 22.5,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color:
+                                      languageController.currentIndex.value ==
+                                              index
+                                          ? kSecondaryColor
+                                          : Colors.transparent,
+                                  border: Border.all(
+                                    width: 1.5,
+                                    color:
+                                        languageController.currentIndex.value ==
+                                                index
+                                            ? kSecondaryColor
+                                            : kBorderColor4,
+                                  ),
                                 ),
-                              ),
-                              child: Icon(
-                                Icons.check,
-                                size: 15,
-                                color: currentIndex == index
-                                    ? kPrimaryColor
-                                    : Colors.transparent,
-                              ),
-                            ),
+                                child: Icon(
+                                  Icons.check,
+                                  size: 15,
+                                  color:
+                                      languageController.currentIndex.value ==
+                                              index
+                                          ? kPrimaryColor
+                                          : Colors.transparent,
+                                ),
+                              );
+                            }),
                           ],
                         ),
                       ),
@@ -101,16 +132,18 @@ class _MerchantLanguagesState extends State<MerchantLanguages> {
               },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 50,
-              vertical: 20,
-            ),
-            child: MyButton(
-              buttonText: 'Next',
-              onTap: () {},
-            ),
-          ),
+          // Padding(
+          //   padding: EdgeInsets.only(
+          //     left: 45,
+          //     right: 45,
+          //     top: 20,
+          //     bottom: isIos ? 23 : 20,
+          //   ),
+          //   child: MyButton(
+          //     buttonText: 'Next',
+          //     onTap: () {},
+          //   ),
+          // ),
         ],
       ),
     );
