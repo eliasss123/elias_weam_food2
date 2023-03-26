@@ -17,7 +17,7 @@ class ChangeTheme extends StatelessWidget {
         backgroundColor: isDark ? kDarkPrimaryColor : kSeoulColor6,
         appBar: simpleAppBar(
           bgColor: isDark ? kDarkPrimaryColor : kSeoulColor6,
-          title: 'Change theme',
+          title: 'change_theme'.tr,
           titleWeight: FontWeight.w700,
           isDark: isDark,
         ),

@@ -33,7 +33,7 @@ class HelpCenter extends StatelessWidget {
             children: [
               simpleAppBar(
                 bgColor: Colors.transparent,
-                title: 'Help Center',
+                title: 'help_center'.tr,
                 titleWeight: FontWeight.w700,
                 isDark: isDark,
               ),
@@ -61,10 +61,10 @@ class HelpCenter extends StatelessWidget {
                       icon: isDark
                           ? Assets.imagesContactUsDark
                           : Assets.imagesContactUs,
-                      title: 'Contact us',
+                      title: 'contact_us'.tr,
                       onTap: () => Get.to(
                         () => Support(
-                          title: 'Contact Us',
+                          title: 'contact_us'.tr,
                         ),
                       ),
                     ),
@@ -75,7 +75,7 @@ class HelpCenter extends StatelessWidget {
                       icon: isDark
                           ? Assets.imagesVisitUsDark
                           : Assets.imagesVisitUs,
-                      title: 'Visit us ',
+                      title: 'visit_us'.tr,
                       onTap: () {},
                     ),
                     SizedBox(
@@ -85,7 +85,7 @@ class HelpCenter extends StatelessWidget {
                       icon: isDark
                           ? Assets.imagesDeliverWithVaiDark
                           : Assets.imagesDeliverWithVaiContact,
-                      title: 'Deliver with “vai”',
+                      title: 'deliver_with_“vai”'.tr,
                       onTap: () {},
                     ),
                     SizedBox(
@@ -93,7 +93,7 @@ class HelpCenter extends StatelessWidget {
                     ),
                     profileTiles(
                       icon: isDark ? Assets.imagesFaqDark : Assets.imagesFaq,
-                      title: 'FAQs',
+                      title: 'faqs'.tr,
                       onTap: () {},
                     ),
                     SizedBox(
@@ -103,7 +103,7 @@ class HelpCenter extends StatelessWidget {
                       icon: isDark
                           ? Assets.imagesPrivacyDark
                           : Assets.imagesPrivacyPolicies,
-                      title: 'Privacy polices ',
+                      title: 'privacy_polices'.tr,
                       onTap: () {},
                     ),
                     SizedBox(
@@ -113,7 +113,7 @@ class HelpCenter extends StatelessWidget {
                       icon: isDark
                           ? Assets.imagesDeleteAccountDark
                           : Assets.imagesDeleteAcc,
-                      title: 'Delete account',
+                      title: 'delete_account'.tr,
                       onTap: () {},
                     ),
                   ],

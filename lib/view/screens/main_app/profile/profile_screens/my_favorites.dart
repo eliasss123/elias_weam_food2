@@ -15,7 +15,7 @@ class MyFavorites extends StatelessWidget {
       bool isDark = themeController.isDarkTheme.value;
       return Scaffold(
         appBar: simpleAppBar(
-          title: 'Your Favorites',
+          title: 'your_favorites'.tr,
           titleWeight: FontWeight.w700,
           isDark: isDark,
         ),
@@ -57,6 +57,7 @@ class FavoriteTiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Container(
         height: 88,
         margin: EdgeInsets.only(
@@ -85,7 +86,8 @@ class FavoriteTiles extends StatelessWidget {
                   ),
                   Expanded(
                     child: MyText(
-                      paddingLeft: 15,
+                      paddingLeft: isEnglish ? 15 : 0,
+                      paddingRight: isEnglish ? 0 : 15,
                       text: title,
                       size: 14,
                       weight: FontWeight.w500,

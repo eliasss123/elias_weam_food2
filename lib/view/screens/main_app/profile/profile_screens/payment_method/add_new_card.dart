@@ -39,21 +39,21 @@ class AddNewCard extends StatelessWidget {
                     ),
                     MyText(
                       paddingTop: 25,
-                      text: 'Add card',
+                      text: 'add_card'.tr,
                       size: 24,
                       weight: FontWeight.w700,
                       paddingBottom: 40,
                       color: isDark ? kPrimaryColor : kBlackColor2,
                     ),
                     EditPaymentMethodFields(
-                      label: 'Card holder name',
+                      label: 'card_holder_name'.tr,
                       hint: 'Alex Smith',
                     ),
                     SizedBox(
                       height: 30,
                     ),
                     EditPaymentMethodFields(
-                      label: 'Card number',
+                      label: 'card_number'.tr,
                       hint: '**** **** **** 2542',
                       haveSuffix: true,
                       suffixIcon: Assets.imagesMas,
@@ -66,7 +66,7 @@ class AddNewCard extends StatelessWidget {
                       children: [
                         Expanded(
                           child: EditPaymentMethodFields(
-                            label: 'Expire date',
+                            label: 'expiry_date'.tr,
                             hint: '20/25',
                             maxLength: 5,
                             isTransparentBorder: true,
@@ -74,7 +74,7 @@ class AddNewCard extends StatelessWidget {
                         ),
                         Expanded(
                           child: EditPaymentMethodFields(
-                            label: 'CVC',
+                            label: 'cvc'.tr,
                             hint: '254',
                             isTransparentBorder: true,
                             maxLength: 3,
@@ -91,7 +91,7 @@ class AddNewCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: MyButton(
-                  buttonText: 'Save Card',
+                  buttonText: 'save_card'.tr,
                   onTap: () => Get.to(
                     () => MyCards(),
                   ),

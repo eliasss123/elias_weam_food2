@@ -18,7 +18,7 @@ class RecentOrders extends StatelessWidget {
       bool isDark = themeController.isDarkTheme.value;
       return Scaffold(
         appBar: simpleAppBar(
-          title: 'orders'.tr,
+          title: 'order_history'.tr,
           titleWeight: FontWeight.w700,
           isDark: isDark,
         ),

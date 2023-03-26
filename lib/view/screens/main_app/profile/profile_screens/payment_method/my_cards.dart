@@ -17,7 +17,7 @@ class MyCards extends StatelessWidget {
       bool isDark = themeController.isDarkTheme.value;
       return Scaffold(
         appBar: simpleAppBar(
-          title: 'Payment Methods',
+          title: 'payment_methods'.tr,
           titleWeight: FontWeight.w700,
           isDark: isDark,
         ),
@@ -30,7 +30,7 @@ class MyCards extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               MyText(
-                text: 'Your payment methods:',
+                text: 'your_payment_methods:'.tr,
                 size: 14,
                 color: kGreyColor7,
                 weight: FontWeight.w500,
@@ -48,7 +48,7 @@ class MyCards extends StatelessWidget {
                           ? Assets.imagesPayApple
                           : Assets.imagesVisaPay,
                       holderName: 'Alex Smith',
-                      cardType: 'Credit card',
+                      cardType: 'credit_card'.tr,
                       isDefault: index == 0 ? true : false,
                     );
                   },
@@ -59,7 +59,7 @@ class MyCards extends StatelessWidget {
                   horizontal: 25,
                 ),
                 child: MyButton(
-                  buttonText: '+ Add new card',
+                  buttonText: '+ ${'add_new_card'.tr}',
                   onTap: () {
                     showModalBottomSheet(
                       context: context,
@@ -98,11 +98,13 @@ class CardsTiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Container(
         margin: EdgeInsets.only(
           bottom: 13,
         ),
-        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+        padding:
+            EdgeInsets.fromLTRB(isEnglish ? 10 : 0, 0, isEnglish ? 0 : 10, 0),
         height: 79,
         decoration: BoxDecoration(
           border: Border.all(
@@ -182,22 +184,28 @@ class CardsTiles extends StatelessWidget {
                             GestureDetector(
                               onTap: () {},
                               child: Container(
-                                alignment: Alignment.centerLeft,
+                                alignment: isEnglish
+                                    ? Alignment.centerLeft
+                                    : Alignment.centerRight,
                                 height: 53,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(14),
-                                  color: isDark ? kDarkPrimaryColor : Colors.transparent,
+                                  color: isDark
+                                      ? kDarkPrimaryColor
+                                      : Colors.transparent,
                                   border: Border.all(
                                     width: 1.0,
-                                    color: isDark ? kDarkPrimaryColor : kBlackColor2,
+                                    color: isDark
+                                        ? kDarkPrimaryColor
+                                        : kBlackColor2,
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(
+                                  padding: EdgeInsets.symmetric(
                                     horizontal: 15,
                                   ),
                                   child: MyText(
-                                    text: 'Update card Details',
+                                    text: 'update_card_details'.tr,
                                     size: 16,
                                     weight: FontWeight.w500,
                                     color:
@@ -210,14 +218,19 @@ class CardsTiles extends StatelessWidget {
                               height: 15,
                             ),
                             Container(
-                              alignment: Alignment.centerLeft,
+                              alignment: isEnglish
+                                  ? Alignment.centerLeft
+                                  : Alignment.centerRight,
                               height: 53,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(14),
-                                color: isDark ? kDarkPrimaryColor : Colors.transparent,
+                                color: isDark
+                                    ? kDarkPrimaryColor
+                                    : Colors.transparent,
                                 border: Border.all(
                                   width: 1.0,
-                                  color: isDark ? kDarkPrimaryColor : kBlackColor2,
+                                  color:
+                                      isDark ? kDarkPrimaryColor : kBlackColor2,
                                 ),
                               ),
                               child: Padding(
@@ -225,7 +238,7 @@ class CardsTiles extends StatelessWidget {
                                   horizontal: 15,
                                 ),
                                 child: MyText(
-                                  text: 'Remove card',
+                                  text: 'remove_card'.tr,
                                   size: 16,
                                   weight: FontWeight.w500,
                                   color: isDark ? kPrimaryColor : kBlackColor2,

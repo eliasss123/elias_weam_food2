@@ -52,7 +52,7 @@ class MyAccount extends StatelessWidget {
               ),
               MyText(
                 paddingTop: 3,
-                text: 'Change Picture',
+                text: 'change_picture'.tr,
                 size: 16,
                 weight: FontWeight.w700,
                 align: TextAlign.center,
@@ -106,7 +106,7 @@ class MyAccount extends StatelessWidget {
                   top: 15,
                 ),
                 child: MyButton(
-                  buttonText: 'Save Changes',
+                  buttonText: 'save_changes'.tr,
                   onTap: () {},
                 ),
               ),

@@ -15,7 +15,7 @@ class MyLocation extends StatelessWidget {
       bool isDark = themeController.isDarkTheme.value;
       return Scaffold(
         appBar: simpleAppBar(
-          title: 'My Location',
+          title: 'my_location'.tr,
           titleWeight: FontWeight.w700,
           isDark: isDark,
         ),
@@ -36,7 +36,7 @@ class MyLocation extends StatelessWidget {
                 ),
                 MyText(
                   paddingTop: 40,
-                  text: 'Set your address to start exploring.',
+                  text: 'set_your_address_to_start_exploring'.tr,
                   size: 14,
                   weight: FontWeight.w500,
                   color: kGreyColor12,
@@ -46,7 +46,7 @@ class MyLocation extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: MyButton(
-                    buttonText: 'Set Your Address',
+                    buttonText: 'set_your_address'.tr,
                     onTap: () =>
                         Get.to(
                               () => SetLocationByPin(),

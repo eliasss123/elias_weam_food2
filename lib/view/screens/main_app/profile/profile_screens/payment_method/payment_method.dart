@@ -21,7 +21,7 @@ class PaymentMethod extends StatelessWidget {
       bool isDark = themeController.isDarkTheme.value;
       return Scaffold(
         appBar: simpleAppBar(
-          title: 'Payment Methods',
+          title: 'payment_methods'.tr,
           titleWeight: FontWeight.w700,
           isDark: isDark,
         ),
@@ -33,7 +33,7 @@ class PaymentMethod extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               MyText(
-                text: 'Select your preferred payment method:',
+                text: 'select_your_preferred_payment_method'.tr,
                 align: TextAlign.center,
                 size: 14,
                 weight: FontWeight.w500,
