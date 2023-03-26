@@ -37,21 +37,44 @@ class PickupOrderStatus extends StatelessWidget {
     },
   ];
 
+  final List<Map<String, dynamic>> orderStatusFlipped = [
+    {
+      'icon': Assets.imagesOrderGreen,
+      'iconSize': 20.84,
+      'isCompleted': true,
+    },
+    {
+      'icon': Assets.imagesCooking,
+      'iconSize': 23.0,
+      'isCompleted': true,
+    },
+    {
+      'icon': Assets.imagesFlippedPickUp,
+      'iconSize': 29.18,
+      'isCompleted': false,
+    },
+    {
+      'icon': Assets.imagesUnCompleted,
+      'iconSize': 20.84,
+      'isCompleted': false,
+    },
+  ];
+
   final List<Map<String, dynamic>> orderActivities = [
     {
-      'title': 'Your order has been received',
+      'title': 'your_order_has_been_received',
       'isActive': true,
     },
     {
-      'title': 'The restaurant is preparing your food',
+      'title': 'the_restaurant_is_preparing_your_food',
       'isActive': true,
     },
     {
-      'title': 'Your order preparation done',
+      'title': 'your_order_preparation_done',
       'isActive': true,
     },
     {
-      'title': 'Waiting for you to pick up the order',
+      'title': 'waiting_for_you_to_pick_up_the_order',
       'isActive': false,
     },
   ];
@@ -61,6 +84,7 @@ class PickupOrderStatus extends StatelessWidget {
     var platform = Theme.of(context).platform;
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -80,10 +104,13 @@ class PickupOrderStatus extends StatelessWidget {
                           children: [
                             GestureDetector(
                               onTap: () => Get.back(),
-                              child: Image.asset(
-                                Assets.imagesArrowBack,
-                                height: 24,
-                                color: isDark ? kPrimaryColor : kBlackColor2,
+                              child: RotatedBox(
+                                quarterTurns: isEnglish ? 0 : 2,
+                                child: Image.asset(
+                                  Assets.imagesArrowBack,
+                                  height: 24,
+                                  color: isDark ? kPrimaryColor : kBlackColor2,
+                                ),
                               ),
                             ),
                             Expanded(
@@ -91,7 +118,7 @@ class PickupOrderStatus extends StatelessWidget {
                                 alignment: WrapAlignment.center,
                                 children: [
                                   MyText(
-                                    text: 'Estimated pick up time is ',
+                                    text: '${'estimated_pick_up_time_is'.tr} ',
                                     size: 17,
                                     weight: FontWeight.w500,
                                     letterSpacing: 0.0,
@@ -115,8 +142,8 @@ class PickupOrderStatus extends StatelessWidget {
                           paddingTop: 10,
                           paddingLeft: 45,
                           paddingRight: 25,
-                          text:
-                              'Your order is already done and waiting for you!',
+                          text: 'your_order_is_already_done_and_waiting_for_you'
+                              .tr,
                           size: 14,
                           color: isDark
                               ? kPrimaryColor.withOpacity(0.5)
@@ -137,7 +164,9 @@ class PickupOrderStatus extends StatelessWidget {
                                 children: List.generate(
                                   4,
                                   (index) {
-                                    var data = orderStatus[index];
+                                    var data = isEnglish
+                                        ? orderStatus[index]
+                                        : orderStatusFlipped[index];
                                     return index == 3
                                         ? Image.asset(
                                             data['icon'],
@@ -210,10 +239,11 @@ class PickupOrderStatus extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               MyText(
-                                text: 'Order status activities',
+                                text: 'order_status_activities'.tr,
                                 letterSpacing: 0.0,
                                 weight: FontWeight.w500,
                                 paddingBottom: 25,
+                                color: isDark ? kPrimaryColor : kBlackColor2,
                               ),
                               orderActivitiesStepper(),
                               SizedBox(
@@ -291,17 +321,21 @@ class PickupOrderStatus extends StatelessWidget {
                                     ),
                                     Expanded(
                                       child: MyText(
-                                        paddingLeft: 15,
-                                        text: 'Order Receipt',
+                                        paddingLeft: isEnglish ? 15 : 0,
+                                        paddingRight: isEnglish ? 0 : 15,
+                                        text: 'order_receipt'.tr,
                                         size: 16,
                                         weight: FontWeight.w500,
                                         color: kGreyColor5.withOpacity(0.70),
                                       ),
                                     ),
-                                    Image.asset(
-                                      Assets.imagesArrowRight,
-                                      height: 22,
-                                      color: kSecondaryColor,
+                                    RotatedBox(
+                                      quarterTurns: isEnglish ? 0 : 2,
+                                      child: Image.asset(
+                                        Assets.imagesArrowRight,
+                                        height: 22,
+                                        color: kSecondaryColor,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -324,7 +358,7 @@ class PickupOrderStatus extends StatelessWidget {
                 vertical: platform == TargetPlatform.iOS ? 23 : 20,
               ),
               child: MyButton(
-                buttonText: 'Go Home',
+                buttonText: 'go_home'.tr,
                 onTap: () => Get.offAll(
                   () => BottomNavBar(),
                 ),
@@ -337,89 +371,98 @@ class PickupOrderStatus extends StatelessWidget {
   }
 
   Widget orderActivitiesStepper() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(
-        orderActivities.length,
-        (index) {
-          var data = orderActivities[index];
-          return index == 3
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    data['isActive'] == true
-                        ? Image.asset(
-                            Assets.imagesCheckRounded,
-                            height: 17,
-                          )
-                        : Image.asset(
-                            Assets.imagesInProgress,
-                            height: 17,
-                          ),
-                    Expanded(
-                      child: MyText(
-                        paddingLeft: 15,
-                        size: 13,
-                        weight: FontWeight.w500,
-                        color: data['isActive'] == true
-                            ? kSecondaryColor
-                            : kGreyColor3,
-                        text: data['title'],
-                        letterSpacing: 0.0,
-                        maxLines: 1,
-                        overFlow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                )
-              : Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        data['isActive'] == true
-                            ? Image.asset(
-                                Assets.imagesCheckRounded,
-                                height: 17,
-                              )
-                            : Image.asset(
-                                Assets.imagesInProgress,
-                                height: 17,
-                              ),
-                        Expanded(
-                          child: MyText(
-                            paddingLeft: 15,
-                            size: 13,
-                            weight: FontWeight.w500,
-                            color: data['isActive'] == true
-                                ? kSecondaryColor
-                                : kGreyColor3,
-                            text: data['title'],
-                            letterSpacing: 0.0,
-                            maxLines: 1,
-                            overFlow: TextOverflow.ellipsis,
-                          ),
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: List.generate(
+          orderActivities.length,
+          (index) {
+            var data = orderActivities[index];
+            return index == 3
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      data['isActive'] == true
+                          ? Image.asset(
+                              Assets.imagesCheckRounded,
+                              height: 17,
+                            )
+                          : Image.asset(
+                              Assets.imagesInProgress,
+                              height: 17,
+                            ),
+                      Expanded(
+                        child: MyText(
+                          paddingLeft: isEnglish ? 15 : 0,
+                          paddingRight: isEnglish ? 0 : 15,
+                          size: 13,
+                          weight: FontWeight.w500,
+                          color: data['isActive'] == true
+                              ? kSecondaryColor
+                              : isDark
+                                  ? kDarkModeGrey3Color
+                                  : kGreyColor3,
+                          text: data['title'].toString().tr,
+                          letterSpacing: 0.0,
+                          maxLines: 1,
+                          overFlow: TextOverflow.ellipsis,
                         ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 8,
                       ),
-                      child: Image.asset(
-                        Assets.imagesLineVertical,
-                        height: 35,
-                        color: data['isActive'] == true
-                            ? kSecondaryColor
-                            : kGreyColor3,
+                    ],
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          data['isActive'] == true
+                              ? Image.asset(
+                                  Assets.imagesCheckRounded,
+                                  height: 17,
+                                )
+                              : Image.asset(
+                                  Assets.imagesInProgress,
+                                  height: 17,
+                                ),
+                          Expanded(
+                            child: MyText(
+                              paddingLeft: isEnglish ? 15 : 0,
+                              paddingRight: isEnglish ? 0 : 15,
+                              size: 13,
+                              weight: FontWeight.w500,
+                              color: data['isActive'] == true
+                                  ? kSecondaryColor
+                                  : kGreyColor3,
+                              text: data['title'].toString().tr,
+                              letterSpacing: 0.0,
+                              maxLines: 1,
+                              overFlow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                );
-        },
-      ),
-    );
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: isEnglish ? 8 : 0,
+                          right: isEnglish ? 0 : 8,
+                        ),
+                        child: Image.asset(
+                          Assets.imagesLineVertical,
+                          height: 35,
+                          color: data['isActive'] == true
+                              ? kSecondaryColor
+                              : kGreyColor3,
+                        ),
+                      ),
+                    ],
+                  );
+          },
+        ),
+      );
+    });
   }
 }
 
@@ -432,6 +475,7 @@ class PickupOrderCompletedDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -454,14 +498,19 @@ class PickupOrderCompletedDialog extends StatelessWidget {
                     height: 10,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: isEnglish
+                        ? MainAxisAlignment.end
+                        : MainAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        width: isEnglish ? 0 : 10,
+                      ),
                       GestureDetector(
                         onTap: () => Get.back(),
                         child: Image.asset(
                           Assets.imagesX,
                           height: 18,
-                          color: isDark ? kPrimaryColor : kBlackColor,
+                          color: isDark ? kPrimaryColor : null,
                         ),
                       ),
                     ],

@@ -508,7 +508,9 @@ class _TrackOrderState extends State<TrackOrder> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                            left: isEnglish ? 8 : 0, right: isEnglish ? 0 : 8),
+                          left: isEnglish ? 8 : 0,
+                          right: isEnglish ? 0 : 8,
+                        ),
                         child: Image.asset(
                           Assets.imagesLineVertical,
                           height: 35,

@@ -81,6 +81,7 @@ class Assets {
   static const String imagesFlippedBike = 'assets/images/flipped_bike.png';
   static const String imagesFlippedCall = 'assets/images/flipped_call.png';
   static const String imagesFlippedMessage = 'assets/images/flipped_message.png';
+  static const String imagesFlippedPickUp = 'assets/images/flipped_pick_up.png';
   static const String imagesGear = 'assets/images/gear.png';
   static const String imagesGeoLocation = 'assets/images/geo_location.png';
   static const String imagesGetStartedBg = 'assets/images/get_started_bg.png';

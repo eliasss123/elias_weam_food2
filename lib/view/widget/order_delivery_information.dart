@@ -17,6 +17,7 @@ class OrderDeliveryInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Container(
         padding: EdgeInsets.symmetric(
           horizontal: 20,
@@ -52,7 +53,8 @@ class OrderDeliveryInformation extends StatelessWidget {
                         height: 15,
                       ),
                       MyText(
-                        paddingLeft: 10,
+                        paddingLeft: isEnglish ? 10 : 0,
+                        paddingRight: isEnglish ? 0 : 10,
                         text: 'Pie Pizza',
                         size: 14,
                         weight: FontWeight.w700,
@@ -62,7 +64,7 @@ class OrderDeliveryInformation extends StatelessWidget {
                   ),
                   MyText(
                     paddingTop: 5,
-                    text: 'Got your order Ashley, Sit back...',
+                    text: '${'got_your_order'.tr} Ashley ${'sit_back'.tr}',
                     size: 12,
                     color: kDarkGreyColor3,
                   ),
@@ -87,7 +89,7 @@ class OrderDeliveryInformation extends StatelessWidget {
                   ),
                   child: Center(
                     child: MyText(
-                      text: 'Track order',
+                      text: 'track_order'.tr,
                       size: 13,
                       weight: FontWeight.w700,
                       color: isDark ? kBlackColor2 : kPrimaryColor,
