@@ -82,7 +82,7 @@ class OrderDeliveryInformation extends StatelessWidget {
                         ),
                 child: Container(
                   height: 36,
-                  width: 85,
+                  width: languageController.currentIndex.value == 1 ? 110 : 85,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: kSecondaryColor,
