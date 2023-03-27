@@ -3,6 +3,7 @@ import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:get/get.dart';
 
 class SetAvailability extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class _SetAvailabilityState extends State<SetAvailability> {
       backgroundColor: kSeoulColor6,
       appBar: simpleAppBar(
         bgColor: kSeoulColor6,
-        title: 'Set availability',
+        title: 'set_availability'.tr,
         titleWeight: FontWeight.w700,
       ),
       body: Padding(
@@ -38,7 +39,7 @@ class _SetAvailabilityState extends State<SetAvailability> {
                 children: [
                   Expanded(
                     child: MyText(
-                      text: 'Available',
+                      text: 'available'.tr,
                       size: 20,
                       color: kBlackColor,
                     ),

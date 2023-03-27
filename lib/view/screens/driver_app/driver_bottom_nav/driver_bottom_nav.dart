@@ -20,15 +20,15 @@ class _DriverBottomNavState extends State<DriverBottomNav> {
   final List<Map<String, dynamic>> items = [
     {
       'icon': Assets.imagesHomeA,
-      'label': 'Home',
+      'label': 'home',
     },
     {
       'icon': Assets.imagesStats,
-      'label': 'Statistics',
+      'label': 'statistics',
     },
     {
       'icon': Assets.imagesGear,
-      'label': 'Settings',
+      'label': 'settings',
     },
   ];
   final List<Widget> screens = [
@@ -100,7 +100,7 @@ class _DriverBottomNavState extends State<DriverBottomNav> {
                       size: 19.0,
                     ),
                   ),
-                  label: data['label'],
+                  label: data['label'].toString().tr,
                 );
               },
             ),

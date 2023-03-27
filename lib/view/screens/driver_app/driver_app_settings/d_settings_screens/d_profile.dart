@@ -22,7 +22,7 @@ class DProfile extends StatelessWidget {
               physics: BouncingScrollPhysics(),
               children: [
                 MyText(
-                  text: 'Profile',
+                  text: 'profile'.tr,
                   size: 22,
                   weight: FontWeight.w700,
                   paddingBottom: 30,
@@ -36,7 +36,7 @@ class DProfile extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           MyText(
-                            text: 'Full name',
+                            text: 'full_name'.tr,
                             size: 16,
                             weight: FontWeight.w500,
                           ),
@@ -53,7 +53,7 @@ class DProfile extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             MyText(
-                              text: 'Phone number',
+                              text: 'phone_number'.tr,
                               size: 16,
                               weight: FontWeight.w500,
                             ),
@@ -69,7 +69,7 @@ class DProfile extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           MyText(
-                            text: 'Mail',
+                            text: 'mail'.tr,
                             size: 16,
                             weight: FontWeight.w600,
                           ),
@@ -92,7 +92,7 @@ class DProfile extends StatelessWidget {
                     children: [
                       Expanded(
                         child: MyText(
-                          text: 'Status',
+                          text: 'status'.tr,
                           size: 20,
                           weight: FontWeight.w500,
                           color: kSecondaryColor,
@@ -119,7 +119,7 @@ class DProfile extends StatelessWidget {
                   paddingTop: 30,
                   paddingLeft: 10,
                   paddingBottom: 5,
-                  text: 'Gear',
+                  text: 'gear'.tr,
                   size: 16,
                   weight: FontWeight.w500,
                   color: kBlackColor,
@@ -156,10 +156,10 @@ class DProfile extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(45, 20, 45, 20),
             child: MyButton(
-              buttonText: 'Contact Support',
+              buttonText: 'contact_support'.tr,
               onTap: () => Get.to(
                 () => Support(
-                  title: 'Support',
+                  title: 'support'.tr,
                 ),
               ),
             ),

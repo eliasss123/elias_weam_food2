@@ -2,6 +2,7 @@ import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Finances extends StatelessWidget {
   @override
@@ -14,7 +15,7 @@ class Finances extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         children: [
           MyText(
-            text: 'Finances',
+            text: 'finances'.tr,
             size: 22,
             weight: FontWeight.w700,
             paddingBottom: 30,
@@ -22,7 +23,7 @@ class Finances extends StatelessWidget {
           MyText(
             paddingLeft: 10,
             paddingBottom: 5,
-            text: 'Unpaid',
+            text: 'unpaid'.tr,
             size: 20,
             weight: FontWeight.w500,
             color: kBlackColor,
@@ -59,7 +60,7 @@ class Finances extends StatelessWidget {
           MyText(
             paddingLeft: 10,
             paddingBottom: 5,
-            text: 'Paid',
+            text: 'paid'.tr,
             size: 20,
             weight: FontWeight.w500,
             color: kBlackColor,

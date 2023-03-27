@@ -2,7 +2,6 @@ import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/forgot_pass/forgot_pass.dart';
-import 'package:elias_weam_food2/view/screens/auth/sign_up/sign_up.dart';
 import 'package:elias_weam_food2/view/screens/driver_app/driver_bottom_nav/driver_bottom_nav.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
@@ -51,21 +50,21 @@ class DriverLogin extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         MyText(
-                          text: 'Log In',
+                          text: 'login'.tr,
                           size: 23,
                           weight: FontWeight.w700,
                           paddingBottom: 8,
                           color: isDark ? kPrimaryColor : kBlackColor2,
                         ),
                         MyText(
-                          text: 'Welcome back to Vai',
+                          text: 'welcome_back_to_vai'.tr,
                           color: isDark
                               ? kPrimaryColor.withOpacity(0.71)
                               : Colors.black.withOpacity(0.71),
                           paddingBottom: 30.0,
                         ),
                         PrefixTextField(
-                          hintText: 'Email',
+                          hintText: 'email'.tr,
                           prefixIcon: Assets.imagesEmailBorder,
                           prefixIconSize: 17,
                         ),
@@ -74,7 +73,7 @@ class DriverLogin extends StatelessWidget {
                         ),
                         PrefixTextField(
                           isObSecure: true,
-                          hintText: 'Password',
+                          hintText: 'password'.tr,
                           prefixIcon: Assets.imagesLock,
                           prefixIconSize: 17,
                         ),
@@ -82,7 +81,7 @@ class DriverLogin extends StatelessWidget {
                           paddingTop: 13,
                           paddingBottom: 50,
                           align: TextAlign.end,
-                          text: 'Forgot password?',
+                          text: 'forgot_password'.tr,
                           size: 14,
                           weight: FontWeight.w500,
                           color: kSecondaryColor,
@@ -95,7 +94,7 @@ class DriverLogin extends StatelessWidget {
                             width: 213,
                             child: MyButton(
                               height: 52,
-                              buttonText: 'Log In',
+                              buttonText: 'login'.tr,
                               onTap: () => Get.to(() => DriverBottomNav()),
                             ),
                           ),
@@ -113,7 +112,7 @@ class DriverLogin extends StatelessWidget {
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   MyText(
-                    text: 'Don’t have an account yet?',
+                    text: 'dont_have_an_account_yet'.tr,
                     color: isDark
                         ? kPrimaryColor.withOpacity(0.71)
                         : kBlackColor2.withOpacity(0.71),
@@ -122,7 +121,7 @@ class DriverLogin extends StatelessWidget {
                     // onTap: () => Get.offAll(
                     //   () => Signup(),
                     // ),
-                    text: ' Sign Up',
+                    text: 'sign_Up'.tr,
                     weight: FontWeight.w500,
                     color: kSecondaryColor,
                   ),

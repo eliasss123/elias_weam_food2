@@ -107,7 +107,7 @@ class DriverAppHome extends StatelessWidget {
                                         isDark ? kPrimaryColor : kBlackColor2,
                                   ),
                                   MyText(
-                                    text: '12 courses',
+                                    text: '12 ${'courses'.tr}',
                                     size: 13,
                                     color: isDark
                                         ? kPrimaryColor.withOpacity(0.40)
@@ -120,7 +120,7 @@ class DriverAppHome extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 MyText(
-                                  text: 'Balance',
+                                  text: 'balance'.tr,
                                   size: 12,
                                   color: isDark
                                       ? kPrimaryColor.withOpacity(0.40)
@@ -176,7 +176,7 @@ class DriverAppHome extends StatelessWidget {
                   children: [
                     Expanded(
                       child: MyText(
-                        text: 'Online',
+                        text: 'online'.tr,
                         size: 15,
                         weight: FontWeight.w500,
                         color: kBlackColor,
@@ -246,11 +246,11 @@ class OrderAcceptDialog extends StatelessWidget {
 
   final List<Map<String, dynamic>> refundSteps = [
     {
-      'title': 'Pickup Point  -  16:32',
+      'title': 'pickup_point',
       'subTitle': '302 Manor St. Brooklyn',
     },
     {
-      'title': 'Drop off point  -  16:41',
+      'title': 'drop_off_point',
       'subTitle': '710 S. High Point Street, New York',
     },
   ];
@@ -284,7 +284,7 @@ class OrderAcceptDialog extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MyText(
-                text: 'Would you like to\naccept this order?',
+                text: 'would_you_like_to_accept_this_order'.tr,
                 size: 17,
                 weight: FontWeight.w700,
                 align: TextAlign.center,
@@ -323,7 +323,7 @@ class OrderAcceptDialog extends StatelessWidget {
                             paddingBottom: 8,
                           ),
                           MyText(
-                            text: '2.3 km',
+                            text: '2.3 ${'km'.tr}',
                             size: 12,
                             color: kBlackColor.withOpacity(0.4),
                           ),
@@ -357,7 +357,7 @@ class OrderAcceptDialog extends StatelessWidget {
                         title: MyText(
                           size: 12,
                           color: kBlackColor.withOpacity(0.40),
-                          text: data['title'],
+                          text: data['title'].toString().tr + '  -  16:32',
                         ),
                         subtitle: MyText(
                           size: 12,
@@ -410,7 +410,7 @@ class OrderAcceptDialog extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.0),
                           child: Center(
                             child: MyText(
-                              text: 'Support',
+                              text: 'support'.tr,
                               size: 15,
                               weight: FontWeight.w500,
                               color: kSecondaryColor,
@@ -427,7 +427,7 @@ class OrderAcceptDialog extends StatelessWidget {
                     child: MyButton(
                       height: 45,
                       textSize: 14,
-                      buttonText: 'Accept',
+                      buttonText: 'accept'.tr,
                       radius: 10.0,
                       onTap: () => Get.to(
                         () => DeliveryDetailPage(),

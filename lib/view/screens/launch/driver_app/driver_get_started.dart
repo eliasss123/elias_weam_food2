@@ -1,7 +1,6 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
-import 'package:elias_weam_food2/view/screens/driver_app/driver_bottom_nav/driver_bottom_nav.dart';
 import 'package:elias_weam_food2/view/screens/driver_app/driver_login.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
@@ -13,6 +12,7 @@ class DriverGetStarted extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         body: Container(
           height: Get.height,
@@ -62,7 +62,7 @@ class DriverGetStarted extends StatelessWidget {
                         textColor: isDark ? kDarkPrimaryColor : kPrimaryColor,
                         height: 52,
                         textSize: 16,
-                        buttonText: 'Login',
+                        buttonText: 'login'.tr,
                         onTap: () => Get.to(() => DriverLogin()),
                       ),
                     ),
@@ -94,7 +94,7 @@ class DriverGetStarted extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                           child: Center(
                             child: MyText(
-                              text: 'Sign Up',
+                              text: 'sign_Up'.tr,
                               size: 16,
                               weight: FontWeight.w500,
                               color: isDark ? kDarkPrimaryColor : kPrimaryColor,
@@ -112,7 +112,8 @@ class DriverGetStarted extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(
                       bottom: 40,
-                      right: 40,
+                      right: isEnglish ? 40 : 0,
+                      left: isEnglish ? 0 : 40,
                     ),
                     height: 51,
                     width: 51,
@@ -125,14 +126,17 @@ class DriverGetStarted extends StatelessWidget {
                     child: Material(
                       color: Colors.transparent,
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () => Get.to(() => DriverLogin()),
                         splashColor: kSecondaryColor.withOpacity(0.05),
                         highlightColor: kSecondaryColor.withOpacity(0.05),
                         borderRadius: BorderRadius.circular(100),
                         child: Center(
-                          child: Image.asset(
-                            Assets.imagesArrowRightNormal,
-                            height: 19,
+                          child: RotatedBox(
+                            quarterTurns: isEnglish ? 0 : 2,
+                            child: Image.asset(
+                              Assets.imagesArrowRightNormal,
+                              height: 19,
+                            ),
                           ),
                         ),
                       ),

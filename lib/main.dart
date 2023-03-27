@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.light,
-      initialRoute: AppLinks.splashScreen,
+      initialRoute: AppLinks.driver_splash_screen,
       getPages: AppRoutes.pages,
       defaultTransition: Transition.fade,
     );

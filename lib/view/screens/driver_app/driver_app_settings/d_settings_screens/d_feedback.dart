@@ -23,12 +23,12 @@ class DFeedback extends StatelessWidget {
               physics: BouncingScrollPhysics(),
               children: [
                 MyText(
-                  text: 'Feedback',
+                  text: 'feedback'.tr,
                   size: 22,
                   weight: FontWeight.w700,
                 ),
                 MyText(
-                  text: 'Please rate us',
+                  text: 'please_rate_us'.tr,
                   size: 16,
                   paddingLeft: 10,
                   weight: FontWeight.w500,
@@ -36,7 +36,7 @@ class DFeedback extends StatelessWidget {
                   paddingBottom: 50,
                 ),
                 MyText(
-                  text: 'Functionality',
+                  text: 'functionality'.tr,
                   size: 16,
                   align: TextAlign.center,
                   paddingBottom: 5,
@@ -72,7 +72,7 @@ class DFeedback extends StatelessWidget {
                 ),
                 SizedBox(height: 50,),
                 MyText(
-                  text: 'Support services',
+                  text: 'support_services'.tr,
                   size: 16,
                   align: TextAlign.center,
                   paddingBottom: 5,
@@ -108,7 +108,7 @@ class DFeedback extends StatelessWidget {
                 ),
                 MyText(
                   paddingTop: 50,
-                  text: 'Our customers',
+                  text: 'our_customers'.tr,
                   size: 16,
                   align: TextAlign.center,
                   paddingBottom: 5,
@@ -148,10 +148,10 @@ class DFeedback extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(45, 20, 45, 20),
             child: MyButton(
-              buttonText: 'Contact Support',
+              buttonText: 'contact_support'.tr,
               onTap: () => Get.to(
                 () => Support(
-                  title: 'Support',
+                  title: 'support'.tr,
                 ),
               ),
             ),
