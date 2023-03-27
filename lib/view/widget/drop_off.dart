@@ -29,7 +29,7 @@ class DropOff extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 MyText(
-                  text: 'Drop off',
+                  text: 'drop_off'.tr,
                   weight: FontWeight.w500,
                   color: kPrimaryColor,
                   size: 15,
@@ -54,7 +54,7 @@ class DropOff extends StatelessWidget {
             ),
             child: Center(
               child: MyText(
-                text: 'time',
+                text: 'time'.tr,
                 size: 12,
                 weight: FontWeight.w500,
                 color: kPrimaryColor,

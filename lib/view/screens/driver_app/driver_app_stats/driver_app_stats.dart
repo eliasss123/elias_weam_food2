@@ -41,14 +41,16 @@ class DriverAppStats extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         backgroundColor: isDark ? kDarkPrimaryColor : kSeoulColor10,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             MyText(
-              paddingLeft: 30,
-              text: 'Statistics',
+              paddingLeft: isEnglish ? 30 : 0,
+              paddingRight: isEnglish ? 0 : 30,
+              text: 'statistics'.tr,
               size: 22,
               weight: FontWeight.w700,
               paddingTop: 55,
@@ -61,8 +63,9 @@ class DriverAppStats extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 children: [
                   MyText(
-                    paddingLeft: 30,
-                    text: 'Total Revenue Earned',
+                    paddingLeft: isEnglish ? 30 : 0,
+                    paddingRight: isEnglish ? 0 : 30,
+                    text: 'total_revenue_earned'.tr,
                     size: 14,
                     color: kDarkGreyColor4,
                     weight: FontWeight.w500,
@@ -75,7 +78,8 @@ class DriverAppStats extends StatelessWidget {
                     children: [
                       MyText(
                         text: '9,190.62',
-                        paddingLeft: 30,
+                        paddingLeft: isEnglish ? 30 : 0,
+                        paddingRight: isEnglish ? 0 : 30,
                         size: 28,
                         weight: FontWeight.w500,
                         letterSpacing: 0.0,
@@ -120,7 +124,7 @@ class DriverAppStats extends StatelessWidget {
                     child: Row(
                       children: [
                         StatsCard(
-                          heading: 'Total courses',
+                          heading: 'total_courses'.tr,
                           subHeading: '123',
                           targetedText: '',
                         ),
@@ -128,7 +132,7 @@ class DriverAppStats extends StatelessWidget {
                           width: 15,
                         ),
                         StatsCard(
-                          heading: 'Average rating',
+                          heading: 'average_rating'.tr,
                           subHeading: '4.9',
                           targetedText: '/5',
                         ),
@@ -143,7 +147,7 @@ class DriverAppStats extends StatelessWidget {
                     child: Row(
                       children: [
                         StatsCard(
-                          heading: 'Accepted',
+                          heading: 'accepted'.tr,
                           subHeading: '87%',
                           targetedText: '',
                         ),
@@ -151,7 +155,7 @@ class DriverAppStats extends StatelessWidget {
                           width: 15,
                         ),
                         StatsCard(
-                          heading: 'Tip',
+                          heading: 'tip'.tr,
                           subHeading: '100',
                           targetedText: '€',
                         ),
@@ -160,10 +164,11 @@ class DriverAppStats extends StatelessWidget {
                   ),
                   MyText(
                     paddingTop: 40,
-                    paddingLeft: 30,
+                    paddingLeft: isEnglish ? 30 : 0,
+                    paddingRight: isEnglish ? 0 : 30,
                     size: 16,
                     weight: FontWeight.w700,
-                    text: 'Your Latest Courses',
+                    text: 'your_latest_courses'.tr,
                     paddingBottom: 15,
                     color: isDark ? kPrimaryColor : kBlackColor2,
                   ),
@@ -176,9 +181,9 @@ class DriverAppStats extends StatelessWidget {
                           imgUrl: dummyImg1,
                           name: 'Maria Cantina',
                           price: '12,87€',
-                          day: 'Today',
+                          day: '${'today'.tr}',
                           time: '12:32pm',
-                          distance: '3.2 km',
+                          distance: '3.2 ${'km'.tr}',
                           onTap: () {},
                         );
                       },
@@ -213,6 +218,7 @@ class CourseTiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return GestureDetector(
         onTap: onTap,
         child: Container(
@@ -366,7 +372,6 @@ class StatsCard extends StatelessWidget {
   }
 }
 
-
 // ignore: must_be_immutable
 class CustomChartWidget extends StatefulWidget {
   final String heading;
@@ -432,7 +437,7 @@ class _CustomChartWidgetState extends State<CustomChartWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(
                 statusBy.length,
-                    (index) {
+                (index) {
                   return IntrinsicWidth(
                     child: GestureDetector(
                       onTap: () {
@@ -581,9 +586,9 @@ class CustomChart extends StatelessWidget {
 
 class CustomSplineChartData {
   CustomSplineChartData(
-      this.xValueMapper,
-      this.yValueMapper,
-      );
+    this.xValueMapper,
+    this.yValueMapper,
+  );
 
   String? xValueMapper;
   int? yValueMapper;

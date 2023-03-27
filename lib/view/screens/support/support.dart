@@ -17,6 +17,7 @@ class Support extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
       return Scaffold(
         backgroundColor: isDark ? kDarkPrimaryColor : kSeoulColor6,
         body: Column(
@@ -29,11 +30,14 @@ class Support extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () => Get.back(),
-                    child: Image.asset(
-                      Assets.imagesArrowBack,
-                      height: 24,
-                      width: 24,
-                      color: isDark ? kPrimaryColor : kBlackColor2,
+                    child: RotatedBox(
+                      quarterTurns: isEnglish ? 0 : 2,
+                      child: Image.asset(
+                        Assets.imagesArrowBack,
+                        height: 24,
+                        width: 24,
+                        color: isDark ? kPrimaryColor : kBlackColor2,
+                      ),
                     ),
                   ),
                   Expanded(

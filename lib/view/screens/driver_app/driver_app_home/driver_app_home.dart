@@ -479,7 +479,7 @@ class ProfileCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 MyText(
-                  text: 'Accepted',
+                  text: 'accepted'.tr,
                   size: 12,
                   color: isDark
                       ? kPrimaryColor.withOpacity(0.44)
@@ -506,7 +506,7 @@ class ProfileCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 MyText(
-                  text: 'Rating',
+                  text: 'rating'.tr,
                   size: 12,
                   color: isDark
                       ? kPrimaryColor.withOpacity(0.44)
@@ -533,7 +533,7 @@ class ProfileCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 MyText(
-                  text: 'Tip',
+                  text: 'tip'.tr,
                   size: 12,
                   color: isDark
                       ? kPrimaryColor.withOpacity(0.44)
