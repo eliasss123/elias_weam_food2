@@ -383,6 +383,9 @@ final Map<String, String> english = {
   'login': 'Log In',
   'dont_have_an_account_yet': 'Don’t have an account yet? ',
   'every_sunday': 'Every sun',
+  'call_us': 'Call Us',
+  'email_us': 'Email Us',
+  'chat': 'Chat',
   //Merchant App
 
  //Driver App

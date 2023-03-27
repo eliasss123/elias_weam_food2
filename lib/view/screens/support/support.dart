@@ -8,10 +8,16 @@ import 'package:get/get.dart';
 // ignore: must_be_immutable
 class Support extends StatelessWidget {
   Support({
-    this.title = 'Contact Support',
+    this.title,
   });
 
   String? title;
+
+  final List<String> icons = [
+    Assets.imagesCallSupport,
+    Assets.imagesEmailSupport,
+    Assets.imagesChatSupport,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +49,7 @@ class Support extends StatelessWidget {
                   Expanded(
                     child: Center(
                       child: MyText(
-                        text: title,
+                        text: title ?? 'contact_support'.tr,
                         size: 24,
                         weight: FontWeight.w700,
                         align: TextAlign.center,
@@ -58,25 +64,27 @@ class Support extends StatelessWidget {
               ),
             ),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Image.asset(
-                  isDark ? Assets.imagesSupportCall : Assets.imagesCallUs,
-                  height: 94,
+                supportButton(
+                  isDark: isDark,
+                  isEnglish: isEnglish,
+                  icon: Assets.imagesPhone,
+                  text: 'call_us'.tr,
+                  onTap: () {},
                 ),
-                SizedBox(
-                  height: 10,
+                supportButton(
+                  isDark: isDark,
+                  isEnglish: isEnglish,
+                  icon: Assets.imagesEmailSupport,
+                  text: 'email_us'.tr,
+                  onTap: () {},
                 ),
-                Image.asset(
-                  isDark ? Assets.imagesSupportEmail : Assets.imagesEmailUs,
-                  height: 94,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Image.asset(
-                  isDark ? Assets.imagesSupportChat : Assets.imagesChat,
-                  height: 94,
+                supportButton(
+                  isDark: isDark,
+                  isEnglish: isEnglish,
+                  icon: Assets.imagesChatSupport,
+                  text: 'chat'.tr,
+                  onTap: () {},
                 ),
               ],
             ),
@@ -91,5 +99,66 @@ class Support extends StatelessWidget {
         ),
       );
     });
+  }
+
+  Widget supportButton({
+    required bool isDark,
+    required bool isEnglish,
+    required String text,
+    required String icon,
+    required VoidCallback onTap,
+  }) {
+    return Center(
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          height: 94,
+          width: 110,
+          margin: EdgeInsets.only(bottom: 26),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: isDark ? Color(0xff292929) : kSeoulColor4,
+            boxShadow: [
+              BoxShadow(
+                color: kBlackColor.withOpacity(0.2),
+                offset: Offset(0, 0),
+                blurRadius: 10,
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 44,
+                width: 44,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: kSecondaryColor.withOpacity(0.2),
+                ),
+                child: Center(
+                  child: Transform(
+                    transform: Matrix4.identity()
+                      ..scale(isEnglish ? 1.0 : -1.0, 1.0, 1.0),
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      icon,
+                      height: 21,
+                    ),
+                  ),
+                ),
+              ),
+              MyText(
+                paddingTop: 7,
+                text: text,
+                size: 14.5,
+                weight: FontWeight.w700,
+                color: kSecondaryColor,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

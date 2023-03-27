@@ -30,6 +30,7 @@ class Assets {
   static const String imagesCartEmptyState = 'assets/images/cart_empty_state.png';
   static const String imagesCashOnDelivery = 'assets/images/cash_on_delivery.png';
   static const String imagesChat = 'assets/images/chat.png';
+  static const String imagesChatSupport = 'assets/images/chat_support.png';
   static const String imagesCheckGreen = 'assets/images/check_green.png';
   static const String imagesCheckRounded = 'assets/images/check_rounded.png';
   static const String imagesChecked = 'assets/images/checked.png';
@@ -64,6 +65,7 @@ class Assets {
   static const String imagesEditPencil = 'assets/images/edit_pencil.png';
   static const String imagesEmail = 'assets/images/email.png';
   static const String imagesEmailBorder = 'assets/images/email_border.png';
+  static const String imagesEmailSupport = 'assets/images/email_support.png';
   static const String imagesEmailUs = 'assets/images/email_us.png';
   static const String imagesEye = 'assets/images/eye.png';
   static const String imagesEyeDisable = 'assets/images/eye_disable.png';
@@ -196,6 +198,7 @@ class Assets {
   static const String imagesSupportCall = 'assets/images/support_call.png';
   static const String imagesSupportChat = 'assets/images/support_chat.png';
   static const String imagesSupportEmail = 'assets/images/support_email.png';
+  static const String imagesSupportPhone = 'assets/images/support_phone.png';
   static const String imagesTheme = 'assets/images/theme.png';
   static const String imagesThemeEmpty = 'assets/images/theme_empty.png';
   static const String imagesThemeIcon = 'assets/images/theme_icon.png';

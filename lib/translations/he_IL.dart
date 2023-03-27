@@ -357,6 +357,9 @@ final Map<String, String> hebrew = {
   'login':'התחבר',
   'dont_have_an_account_yet':'אין לך עדיין חשבון? ',
   'every_sunday':'בכל יום ראשון',
+  'call_us': 'טלפון',
+  'email_us': 'אימייל',
+  'chat': 'צ׳אט',
   //Merchant App
 
   //Driver App

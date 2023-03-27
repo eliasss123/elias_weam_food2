@@ -357,6 +357,9 @@ final Map<String, String> arabic = {
   'login':'تسجيل الدخول',
   'dont_have_an_account_yet':'',
   'every_sunday':'',
+  'call_us': 'هاتف',
+  'email_us': 'البريد الإلكتروني',
+  'chat': 'محادثة',
   //Merchant App
 
   //Driver App
