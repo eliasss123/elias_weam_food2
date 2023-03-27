@@ -2,6 +2,7 @@ import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/driver_app/driver_app_settings/d_settings_screens/d_availability.dart';
+import 'package:elias_weam_food2/view/screens/driver_app/driver_app_settings/d_settings_screens/d_change_theme.dart';
 import 'package:elias_weam_food2/view/screens/driver_app/driver_app_settings/d_settings_screens/d_feedback.dart';
 import 'package:elias_weam_food2/view/screens/driver_app/driver_app_settings/d_settings_screens/d_languages.dart';
 import 'package:elias_weam_food2/view/screens/driver_app/driver_app_settings/d_settings_screens/d_profile.dart';
@@ -18,7 +19,7 @@ class DriverAppSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isEnglish = languageController.isEnglish.value;
-
+      bool isDark = themeController.isDarkTheme.value;
       return Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -35,10 +36,12 @@ class DriverAppSettings extends StatelessWidget {
                     text: 'settings'.tr,
                     size: 22,
                     weight: FontWeight.w700,
+                    color: isDark ? kPrimaryColor : kBlackColor2,
                   ),
                   Image.asset(
                     Assets.imagesBellBlack,
                     height: 23,
+                    color: isDark ? kPrimaryColor : kBlackColor2,
                   ),
                 ],
               ),
@@ -57,11 +60,16 @@ class DriverAppSettings extends StatelessWidget {
                     size: 16,
                     weight: FontWeight.w700,
                     paddingBottom: 10,
+                    color: isDark ? kPrimaryColor : kBlackColor2,
                   ),
                   InkWell(
                     onTap: () => Get.to(() => DriverLanguages()),
-                    splashColor: kBlackColor.withOpacity(0.05),
-                    highlightColor: kBlackColor.withOpacity(0.05),
+                    splashColor: isDark
+                        ? kPrimaryColor.withOpacity(0.05)
+                        : kBlackColor.withOpacity(0.05),
+                    highlightColor: isDark
+                        ? kPrimaryColor.withOpacity(0.05)
+                        : kBlackColor.withOpacity(0.05),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 30,
@@ -72,6 +80,7 @@ class DriverAppSettings extends StatelessWidget {
                           Image.asset(
                             Assets.imagesGlobe,
                             height: 18,
+                            color: isDark ? kPrimaryColor : null,
                           ),
                           Expanded(
                             child: MyText(
@@ -79,7 +88,9 @@ class DriverAppSettings extends StatelessWidget {
                               paddingRight: isEnglish ? 0 : 15,
                               text: 'language'.tr,
                               size: 15,
-                              color: kBlackColor.withOpacity(0.80),
+                              color: isDark
+                                  ? kPrimaryColor.withOpacity(0.80)
+                                  : kBlackColor.withOpacity(0.80),
                             ),
                           ),
                           MyText(
@@ -95,6 +106,9 @@ class DriverAppSettings extends StatelessWidget {
                             child: Image.asset(
                               Assets.imagesNextLight,
                               height: 19,
+                              color: isDark
+                                  ? kPrimaryColor.withOpacity(0.9)
+                                  : null,
                             ),
                           ),
                         ],
@@ -103,8 +117,12 @@ class DriverAppSettings extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () => Get.to(() => SetAvailability()),
-                    splashColor: kBlackColor.withOpacity(0.05),
-                    highlightColor: kBlackColor.withOpacity(0.05),
+                    splashColor: isDark
+                        ? kPrimaryColor.withOpacity(0.05)
+                        : kBlackColor.withOpacity(0.05),
+                    highlightColor: isDark
+                        ? kPrimaryColor.withOpacity(0.05)
+                        : kBlackColor.withOpacity(0.05),
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 30,
@@ -115,6 +133,7 @@ class DriverAppSettings extends StatelessWidget {
                           Image.asset(
                             Assets.imagesOpenStatus,
                             height: 18,
+                            color: isDark ? kPrimaryColor : null,
                           ),
                           Expanded(
                             child: MyText(
@@ -122,7 +141,9 @@ class DriverAppSettings extends StatelessWidget {
                               paddingRight: isEnglish ? 0 : 15,
                               text: 'set_availability'.tr,
                               size: 15,
-                              color: kBlackColor.withOpacity(0.80),
+                              color: isDark
+                                  ? kPrimaryColor.withOpacity(0.80)
+                                  : kBlackColor.withOpacity(0.80),
                             ),
                           ),
                           MyText(
@@ -138,6 +159,62 @@ class DriverAppSettings extends StatelessWidget {
                             child: Image.asset(
                               Assets.imagesNextLight,
                               height: 19,
+                              color: isDark
+                                  ? kPrimaryColor.withOpacity(0.9)
+                                  : null,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => Get.to(() => DChangeTheme()),
+                    splashColor: isDark
+                        ? kPrimaryColor.withOpacity(0.05)
+                        : kBlackColor.withOpacity(0.05),
+                    highlightColor: isDark
+                        ? kPrimaryColor.withOpacity(0.05)
+                        : kBlackColor.withOpacity(0.05),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 15,
+                      ),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            Assets.imagesThemeEmpty,
+                            height: 18,
+                            color: isDark ? kPrimaryColor : null,
+                          ),
+                          Expanded(
+                            child: MyText(
+                              paddingLeft: isEnglish ? 15 : 0,
+                              paddingRight: isEnglish ? 0 : 15,
+                              text: 'change_theme'.tr.capitalizeFirst,
+                              size: 15,
+                              color: isDark
+                                  ? kPrimaryColor.withOpacity(0.80)
+                                  : kBlackColor.withOpacity(0.80),
+                            ),
+                          ),
+                          // MyText(
+                          //   paddingRight: isEnglish ? 10 : 0,
+                          //   paddingLeft: isEnglish ? 0 : 10,
+                          //   text: 'Light Mode'.tr,
+                          //   size: 15,
+                          //   weight: FontWeight.w500,
+                          //   color: kSecondaryColor,
+                          // ),
+                          RotatedBox(
+                            quarterTurns: isEnglish ? 0 : 2,
+                            child: Image.asset(
+                              Assets.imagesNextLight,
+                              height: 19,
+                              color: isDark
+                                  ? kPrimaryColor.withOpacity(0.9)
+                                  : null,
                             ),
                           ),
                         ],
@@ -160,6 +237,7 @@ class DriverAppSettings extends StatelessWidget {
                     size: 16,
                     weight: FontWeight.w700,
                     paddingBottom: 10,
+                    color: isDark ? kPrimaryColor : kBlackColor2,
                   ),
                   DriverAppProfileTiles(
                     onTap: () => Get.to(() => Finances()),
@@ -188,6 +266,7 @@ class DriverAppSettings extends StatelessWidget {
                     size: 16,
                     weight: FontWeight.w700,
                     paddingBottom: 10,
+                    color: isDark ? kPrimaryColor : kBlackColor2,
                   ),
                   DriverAppProfileTiles(
                     onTap: () => Get.to(() => DProfile()),
@@ -234,19 +313,25 @@ class DriverAppSettings extends StatelessWidget {
                     icon: Assets.imagesVehicle,
                     title: 'vehicle'.tr,
                     iconSize: 14.25,
-                    titleColor: kBlackColor.withOpacity(0.45),
+                    titleColor: isDark
+                        ? kPrimaryColor.withOpacity(0.80)
+                        : kBlackColor.withOpacity(0.45),
                   ),
                   DriverAppProfileTiles(
                     onTap: () => Get.to(() => DFeedback()),
                     icon: Assets.imagesFeedback,
                     title: 'feedback'.tr,
-                    titleColor: kBlackColor.withOpacity(0.45),
+                    titleColor: isDark
+                        ? kPrimaryColor.withOpacity(0.80)
+                        : kBlackColor.withOpacity(0.45),
                   ),
                   DriverAppProfileTiles(
                     onTap: () => Get.offAll(() => DriverSplashScreen()),
                     icon: Assets.imagesSignOut,
                     title: 'sign_out'.tr,
-                    titleColor: kBlackColor.withOpacity(0.45),
+                    titleColor: isDark
+                        ? kPrimaryColor.withOpacity(0.80)
+                        : kBlackColor.withOpacity(0.45),
                   ),
                   SizedBox(
                     height: 20,
@@ -281,73 +366,77 @@ class _VehicleBottomSheetState extends State<VehicleBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(
-          3,
-          (index) {
-            return Container(
-              height: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Color(0xffF1F1F1),
-              ),
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      currentIndex = index;
-                    });
-                  },
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(
+            3,
+            (index) {
+              return Container(
+                height: 60,
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 15,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        MyText(
-                          text: vehicles[index].toString().tr,
-                          size: 18,
-                        ),
-                        Container(
-                          height: 22.5,
-                          width: 22.5,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: currentIndex == index
-                                ? kSecondaryColor
-                                : Colors.transparent,
-                            border: Border.all(
-                              width: 1.5,
+                  color: isDark ? kDarkPrimaryColor : Color(0xffF1F1F1),
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        currentIndex = index;
+                      });
+                    },
+                    borderRadius: BorderRadius.circular(10),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 15,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          MyText(
+                            text: vehicles[index].toString().tr,
+                            size: 18,
+                            color: isDark ? kPrimaryColor : null,
+                          ),
+                          Container(
+                            height: 22.5,
+                            width: 22.5,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
                               color: currentIndex == index
                                   ? kSecondaryColor
-                                  : kBorderColor4,
+                                  : Colors.transparent,
+                              border: Border.all(
+                                width: 1.5,
+                                color: currentIndex == index
+                                    ? kSecondaryColor
+                                    : kBorderColor4,
+                              ),
+                            ),
+                            child: Icon(
+                              Icons.check,
+                              size: 15,
+                              color: currentIndex == index
+                                  ? kPrimaryColor
+                                  : Colors.transparent,
                             ),
                           ),
-                          child: Icon(
-                            Icons.check,
-                            size: 15,
-                            color: currentIndex == index
-                                ? kPrimaryColor
-                                : Colors.transparent,
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
 
@@ -369,10 +458,15 @@ class DriverAppProfileTiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isEnglish = languageController.isEnglish.value;
+      bool isDark = themeController.isDarkTheme.value;
       return InkWell(
         onTap: onTap,
-        splashColor: kBlackColor.withOpacity(0.05),
-        highlightColor: kBlackColor.withOpacity(0.05),
+        splashColor: isDark
+            ? kPrimaryColor.withOpacity(0.05)
+            : kBlackColor.withOpacity(0.05),
+        highlightColor: isDark
+            ? kPrimaryColor.withOpacity(0.05)
+            : kBlackColor.withOpacity(0.05),
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 30,
@@ -384,6 +478,7 @@ class DriverAppProfileTiles extends StatelessWidget {
               Image.asset(
                 icon,
                 height: iconSize ?? 18,
+                color: isDark ? kPrimaryColor : null,
               ),
               Expanded(
                 child: MyText(
@@ -391,7 +486,11 @@ class DriverAppProfileTiles extends StatelessWidget {
                   paddingRight: isEnglish ? 0 : 15,
                   text: title,
                   size: 15,
-                  color: titleColor ?? kBlackColor.withOpacity(0.80),
+                  color: titleColor == null
+                      ? isDark
+                          ? kPrimaryColor.withOpacity(0.80)
+                          : kBlackColor.withOpacity(0.80)
+                      : titleColor,
                 ),
               ),
               RotatedBox(
@@ -399,6 +498,7 @@ class DriverAppProfileTiles extends StatelessWidget {
                 child: Image.asset(
                   Assets.imagesNextLight,
                   height: 19,
+                  color: isDark ? kPrimaryColor.withOpacity(0.9) : null,
                 ),
               ),
             ],

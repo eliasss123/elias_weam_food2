@@ -338,7 +338,7 @@ class OrderReceipt extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 30, 0, 80),
               child: Image.asset(
-                Assets.imagesLogoHorizBlk,
+                isDark ? Assets.imagesVaiLight : Assets.imagesLogoHorizBlk,
                 height: 52.93,
               ),
             ),

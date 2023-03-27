@@ -556,7 +556,7 @@ class OrderCompletedDialog extends StatelessWidget {
                     height: 70,
                   ),
                   Image.asset(
-                    Assets.imagesLogoHorizBlk,
+                    isDark ? Assets.imagesVaiLight : Assets.imagesLogoHorizBlk,
                     height: 52.93,
                   ),
                   SizedBox(

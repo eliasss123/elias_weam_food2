@@ -69,7 +69,7 @@ class OutOfRangeDialog extends StatelessWidget {
                     height: Get.height * 0.25,
                   ),
                   Image.asset(
-                    Assets.imagesLogoHorizBlk,
+                    isDark ? Assets.imagesVaiLight : Assets.imagesLogoHorizBlk,
                     height: 53,
                   ),
                 ],

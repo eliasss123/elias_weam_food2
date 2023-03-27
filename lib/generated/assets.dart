@@ -197,6 +197,7 @@ class Assets {
   static const String imagesSupportChat = 'assets/images/support_chat.png';
   static const String imagesSupportEmail = 'assets/images/support_email.png';
   static const String imagesTheme = 'assets/images/theme.png';
+  static const String imagesThemeEmpty = 'assets/images/theme_empty.png';
   static const String imagesThemeIcon = 'assets/images/theme_icon.png';
   static const String imagesTime = 'assets/images/time.png';
   static const String imagesTimer = 'assets/images/timer.png';
@@ -206,6 +207,7 @@ class Assets {
   static const String imagesUserB = 'assets/images/user_b.png';
   static const String imagesVaiGetStarted = 'assets/images/vai_get_started.png';
   static const String imagesVaiHelpCenter = 'assets/images/vai_help_center.png';
+  static const String imagesVaiLight = 'assets/images/vai_light.png';
   static const String imagesVaiSupport = 'assets/images/vai_support.png';
   static const String imagesVegetable = 'assets/images/vegetable.png';
   static const String imagesVehicle = 'assets/images/vehicle.png';

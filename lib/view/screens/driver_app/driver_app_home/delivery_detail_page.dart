@@ -15,6 +15,7 @@ class DeliveryDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isEnglish = languageController.isEnglish.value;
+      bool isDark = themeController.isDarkTheme.value;
       return Scaffold(
         body: Stack(
           children: [
@@ -63,6 +64,7 @@ class DeliveryDetailPage extends StatelessWidget {
                           radius: 8.0,
                           buttonText: 'restaurant_details'.tr,
                           textSize: 12,
+                          textColor: isDark ? kDarkPrimaryColor : kPrimaryColor,
                           fontWeight: FontWeight.w500,
                           onTap: () {
                             showDialog(
@@ -78,7 +80,9 @@ class DeliveryDetailPage extends StatelessWidget {
                         height: 45,
                         width: 45,
                         radius: 12.0,
-                        imagePath: Assets.imagesCurrentLoc,
+                        imagePath: isDark
+                            ? Assets.imagesDarkModeLoc
+                            : Assets.imagesCurrentLoc,
                       ),
                     ],
                   ),
@@ -90,7 +94,7 @@ class DeliveryDetailPage extends StatelessWidget {
                     width: Get.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(14.0),
-                      color: kPrimaryColor,
+                      color: isDark ? kDarkPrimaryColor : kPrimaryColor,
                       boxShadow: [
                         BoxShadow(
                           color: kBlackColor.withOpacity(0.03),
@@ -110,16 +114,19 @@ class DeliveryDetailPage extends StatelessWidget {
                               text: 'started'.tr,
                               size: 13,
                               weight: FontWeight.w500,
+                              color: isDark ? kPrimaryColor : kBlackColor2,
                             ),
                             MyText(
                               text: 'food_pickup'.tr,
                               size: 13,
                               weight: FontWeight.w500,
+                              color: isDark ? kPrimaryColor : kBlackColor2,
                             ),
                             MyText(
                               text: 'delivered'.tr,
                               size: 13,
                               weight: FontWeight.w500,
+                              color: isDark ? kPrimaryColor : kBlackColor2,
                             ),
                           ],
                         ),
@@ -154,18 +161,24 @@ class DeliveryDetailPage extends StatelessWidget {
                             MyText(
                               text: '3:01 PM',
                               size: 13,
-                              color: kBlackColor.withOpacity(0.40),
+                              color: isDark
+                                  ? kPrimaryColor.withOpacity(0.40)
+                                  : kBlackColor.withOpacity(0.40),
                             ),
                             MyText(
                               paddingRight: 60,
                               text: '3:12 PM',
                               size: 13,
-                              color: kBlackColor.withOpacity(0.40),
+                              color: isDark
+                                  ? kPrimaryColor.withOpacity(0.40)
+                                  : kBlackColor.withOpacity(0.40),
                             ),
                             MyText(
                               text: '',
                               size: 13,
-                              color: kBlackColor.withOpacity(0.40),
+                              color: isDark
+                                  ? kPrimaryColor.withOpacity(0.40)
+                                  : kBlackColor.withOpacity(0.40),
                             ),
                           ],
                         ),
@@ -176,6 +189,7 @@ class DeliveryDetailPage extends StatelessWidget {
                           radius: 13.0,
                           textSize: 13,
                           buttonText: 'complete_pickup'.tr,
+                          textColor: isDark ? kDarkPrimaryColor : kPrimaryColor,
                           onTap: () {},
                         ),
                       ],
@@ -216,6 +230,7 @@ class DeliveryDetailPage extends StatelessWidget {
                           textSize: 17,
                           radius: 8.0,
                           buttonText: 'order_ready'.tr,
+                          textColor: isDark ? kDarkPrimaryColor : kPrimaryColor,
                           onTap: () {},
                         ),
                       ),
@@ -240,6 +255,7 @@ class RestaurantDetailDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isEnglish = languageController.isEnglish.value;
+      bool isDark = themeController.isDarkTheme.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -247,6 +263,7 @@ class RestaurantDetailDialog extends StatelessWidget {
           SizedBox(
             height: Get.height * 0.7,
             child: Card(
+              color: isDark ? kDarkInputBgColor : kPrimaryColor,
               margin: EdgeInsets.all(20),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
@@ -272,6 +289,7 @@ class RestaurantDetailDialog extends StatelessWidget {
                           child: Image.asset(
                             Assets.imagesX,
                             height: 18,
+                            color: isDark ? kPrimaryColor : null,
                           ),
                         ),
                       ],
@@ -281,6 +299,7 @@ class RestaurantDetailDialog extends StatelessWidget {
                       size: 23,
                       weight: FontWeight.w700,
                       align: TextAlign.center,
+                      color: isDark ? kPrimaryColor : kBlackColor2,
                     ),
                     MyText(
                       text: '302 Manor St. Brooklyn',
@@ -296,6 +315,7 @@ class RestaurantDetailDialog extends StatelessWidget {
                       weight: FontWeight.w500,
                       align: TextAlign.center,
                       paddingBottom: 40,
+                      color: isDark ? kPrimaryColor : kBlackColor2,
                     ),
                     MyText(
                       text: 'notes_from_the_restaurant'.tr,
@@ -303,13 +323,14 @@ class RestaurantDetailDialog extends StatelessWidget {
                       weight: FontWeight.w500,
                       paddingBottom: 13,
                       paddingLeft: 3,
+                      color: isDark ? kPrimaryColor : kBlackColor2,
                     ),
                     Container(
                       height: 113,
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
-                        color: kSeoulColor1,
+                        color: isDark ? kDarkPrimaryColor : kSeoulColor1,
                       ),
                       child: MyText(
                         text:
@@ -356,6 +377,7 @@ class AddressDetailsDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isEnglish = languageController.isEnglish.value;
+      bool isDark = themeController.isDarkTheme.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -363,6 +385,7 @@ class AddressDetailsDialog extends StatelessWidget {
           SizedBox(
             height: Get.height * 0.7,
             child: Card(
+              color: isDark ? kDarkInputBgColor : kPrimaryColor,
               margin: EdgeInsets.all(20),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
@@ -388,6 +411,7 @@ class AddressDetailsDialog extends StatelessWidget {
                           child: Image.asset(
                             Assets.imagesX,
                             height: 18,
+                            color: isDark ? kPrimaryColor : null,
                           ),
                         ),
                       ],
@@ -397,6 +421,7 @@ class AddressDetailsDialog extends StatelessWidget {
                       size: 23,
                       weight: FontWeight.w700,
                       align: TextAlign.center,
+                      color: isDark ? kPrimaryColor : kBlackColor2,
                     ),
                     MyText(
                       text: '731 S. High Point Street',
@@ -415,6 +440,7 @@ class AddressDetailsDialog extends StatelessWidget {
                           weight: FontWeight.w700,
                           paddingRight: isEnglish ? 10 : 0,
                           paddingLeft: isEnglish ? 0 : 10,
+                          color: isDark ? kPrimaryColor : kBlackColor2,
                         ),
                         Image.asset(
                           Assets.imagesCheckRounded,
@@ -429,13 +455,14 @@ class AddressDetailsDialog extends StatelessWidget {
                       weight: FontWeight.w500,
                       paddingBottom: 13,
                       paddingLeft: 3,
+                      color: isDark ? kPrimaryColor : kBlackColor2,
                     ),
                     Container(
                       height: 113,
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
-                        color: kSeoulColor1,
+                        color: isDark ? kDarkPrimaryColor : kSeoulColor1,
                       ),
                       child: MyText(
                         text:
@@ -482,6 +509,7 @@ class CustomerDetailsDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isEnglish = languageController.isEnglish.value;
+      bool isDark = themeController.isDarkTheme.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -489,6 +517,7 @@ class CustomerDetailsDialog extends StatelessWidget {
           SizedBox(
             height: Get.height * 0.7,
             child: Card(
+              color: isDark ? kDarkInputBgColor : kPrimaryColor,
               margin: EdgeInsets.all(20),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
@@ -514,6 +543,7 @@ class CustomerDetailsDialog extends StatelessWidget {
                           child: Image.asset(
                             Assets.imagesX,
                             height: 18,
+                            color: isDark ? kPrimaryColor : null,
                           ),
                         ),
                       ],
@@ -523,6 +553,7 @@ class CustomerDetailsDialog extends StatelessWidget {
                       size: 23,
                       weight: FontWeight.w700,
                       align: TextAlign.center,
+                      color: isDark ? kPrimaryColor : kBlackColor2,
                     ),
                     MyText(
                       text: 'Alex S.',
@@ -540,11 +571,11 @@ class CustomerDetailsDialog extends StatelessWidget {
                           children: [
                             MyText(
                               text: 'phone_number'.tr,
-                              color: kBlackColor,
+                              color: isDark ? kPrimaryColor : kBlackColor,
                             ),
                             MyText(
                               text: '0501234567',
-                              color: kBlackColor,
+                              color: isDark ? kPrimaryColor : kBlackColor,
                               weight: FontWeight.w700,
                             ),
                           ],
@@ -557,11 +588,11 @@ class CustomerDetailsDialog extends StatelessWidget {
                           children: [
                             MyText(
                               text: 'order_number'.tr,
-                              color: kBlackColor,
+                              color: isDark ? kPrimaryColor : kBlackColor,
                             ),
                             MyText(
                               text: '#701',
-                              color: kBlackColor,
+                              color: isDark ? kPrimaryColor : kBlackColor,
                               weight: FontWeight.w700,
                             ),
                           ],
@@ -576,7 +607,7 @@ class CustomerDetailsDialog extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
-                        color: kSeoulColor1,
+                        color: isDark ? kDarkPrimaryColor : kSeoulColor1,
                       ),
                       child: MyText(
                         text:
@@ -632,6 +663,7 @@ class OnlyOneMinuteLeftDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isEnglish = languageController.isEnglish.value;
+      bool isDark = themeController.isDarkTheme.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -639,6 +671,7 @@ class OnlyOneMinuteLeftDialog extends StatelessWidget {
           SizedBox(
             height: Get.height * 0.7,
             child: Card(
+              color: isDark ? kDarkInputBgColor : kPrimaryColor,
               margin: EdgeInsets.all(20),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
@@ -665,6 +698,7 @@ class OnlyOneMinuteLeftDialog extends StatelessWidget {
                           child: Image.asset(
                             Assets.imagesX,
                             height: 18,
+                            color: isDark ? kPrimaryColor : null,
                           ),
                         ),
                       ],
@@ -682,7 +716,7 @@ class OnlyOneMinuteLeftDialog extends StatelessWidget {
                           fontSize: 17,
                           fontFamily: GoogleFonts.dmSans().fontFamily,
                           fontWeight: FontWeight.w700,
-                          color: kBlackColor2,
+                          color: isDark ? kPrimaryColor : kBlackColor2,
                         ),
                         children: [
                           TextSpan(
@@ -709,7 +743,9 @@ class OnlyOneMinuteLeftDialog extends StatelessWidget {
                           fontSize: 14,
                           fontFamily: GoogleFonts.dmSans().fontFamily,
                           fontWeight: FontWeight.w400,
-                          color: kDarkGreyColor4.withOpacity(0.80),
+                          color: isDark
+                              ? kPrimaryColor.withOpacity(0.80)
+                              : kDarkGreyColor4.withOpacity(0.80),
                         ),
                         children: [
                           TextSpan(
@@ -768,6 +804,7 @@ class CongratulationDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       bool isEnglish = languageController.isEnglish.value;
+      bool isDark = themeController.isDarkTheme.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -775,6 +812,7 @@ class CongratulationDialog extends StatelessWidget {
           SizedBox(
             height: Get.height * 0.7,
             child: Card(
+              color: isDark ? kDarkInputBgColor : kPrimaryColor,
               margin: EdgeInsets.all(20),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
@@ -801,6 +839,7 @@ class CongratulationDialog extends StatelessWidget {
                           child: Image.asset(
                             Assets.imagesX,
                             height: 18,
+                            color: isDark ? kPrimaryColor : null,
                           ),
                         ),
                       ],
@@ -814,6 +853,7 @@ class CongratulationDialog extends StatelessWidget {
                       size: 17,
                       weight: FontWeight.w700,
                       align: TextAlign.center,
+                      color: isDark ? kPrimaryColor : kBlackColor2,
                     ),
                     RichText(
                       textAlign: TextAlign.center,
@@ -824,7 +864,9 @@ class CongratulationDialog extends StatelessWidget {
                           fontSize: 14,
                           fontFamily: GoogleFonts.dmSans().fontFamily,
                           fontWeight: FontWeight.w400,
-                          color: kDarkGreyColor4.withOpacity(0.80),
+                          color: isDark
+                              ? kPrimaryColor.withOpacity(0.80)
+                              : kDarkGreyColor4.withOpacity(0.80),
                         ),
                         children: [
                           TextSpan(

@@ -41,7 +41,9 @@ class DriverLogin extends StatelessWidget {
                     Row(
                       children: [
                         Image.asset(
-                          Assets.imagesLogoHorizBlk,
+                          isDark
+                              ? Assets.imagesVaiLight
+                              : Assets.imagesLogoHorizBlk,
                           height: 53.2,
                         ),
                       ],
@@ -94,6 +96,8 @@ class DriverLogin extends StatelessWidget {
                             width: 213,
                             child: MyButton(
                               height: 52,
+                              textColor:
+                                  isDark ? kDarkPrimaryColor : kPrimaryColor,
                               buttonText: 'login'.tr,
                               onTap: () => Get.to(() => DriverBottomNav()),
                             ),

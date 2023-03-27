@@ -47,12 +47,16 @@ class _OnBoardingState extends State<OnBoarding> {
                     paddingBottom: 10,
                   );
                 }),
-                Center(
-                  child: Image.asset(
-                    Assets.imagesLogoHoriz,
-                    height: 53,
-                  ),
-                ),
+                Obx(() {
+                  return Center(
+                    child: Image.asset(
+                      themeController.isDarkTheme.value
+                          ? Assets.imagesVaiLight
+                          : Assets.imagesLogoHoriz,
+                      height: 53,
+                    ),
+                  );
+                }),
               ],
             ),
             Expanded(

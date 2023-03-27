@@ -47,7 +47,7 @@ class DriverAppHome extends StatelessWidget {
                       height: 45,
                       width: 45,
                       radius: 12.0,
-                      imagePath: Assets.imagesWaze,
+                      imagePath: isDark ? Assets.imagesWaze : Assets.imagesWaze,
                     ),
                   ),
                   SizedBox(
@@ -59,7 +59,9 @@ class DriverAppHome extends StatelessWidget {
                       height: 45,
                       width: 45,
                       radius: 12.0,
-                      imagePath: Assets.imagesCurrentLoc,
+                      imagePath: isDark
+                          ? Assets.imagesDarkModeLoc
+                          : Assets.imagesCurrentLoc,
                     ),
                   ),
                   SizedBox(
@@ -170,7 +172,7 @@ class DriverAppHome extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: kPrimaryColor,
+                  color: isDark ? kDarkPrimaryColor : kPrimaryColor,
                 ),
                 child: Row(
                   children: [
@@ -179,7 +181,7 @@ class DriverAppHome extends StatelessWidget {
                         text: 'online'.tr,
                         size: 15,
                         weight: FontWeight.w500,
-                        color: kBlackColor,
+                        color: isDark ? kPrimaryColor : kBlackColor,
                       ),
                     ),
                     FlutterSwitch(
@@ -259,188 +261,203 @@ class OrderAcceptDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Container(
-          height: 391,
-          margin: EdgeInsets.all(20),
-          padding: EdgeInsets.all(20),
-          width: Get.width,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.0),
-            color: kPrimaryColor,
-            boxShadow: [
-              BoxShadow(
-                color: kBlackColor.withOpacity(0.03),
-                offset: Offset(10, 10),
-                blurRadius: 30,
-                spreadRadius: 14,
-              ),
-            ],
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              MyText(
-                text: 'would_you_like_to_accept_this_order'.tr,
-                size: 17,
-                weight: FontWeight.w700,
-                align: TextAlign.center,
-              ),
-              Container(
-                height: 65,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 15,
+    return Obx(() {
+      bool isDark = themeController.isDarkTheme.value;
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            height: 391,
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(20),
+            width: Get.width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16.0),
+              color: isDark ? kDarkPrimaryColor : kPrimaryColor,
+              boxShadow: [
+                BoxShadow(
+                  color: kBlackColor.withOpacity(0.03),
+                  offset: Offset(10, 10),
+                  blurRadius: 30,
+                  spreadRadius: 14,
                 ),
-                width: Get.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0),
-                  color: kSeoulColor6,
+              ],
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                MyText(
+                  text: 'would_you_like_to_accept_this_order'.tr,
+                  size: 17,
+                  weight: FontWeight.w700,
+                  align: TextAlign.center,
+                  color: isDark ? kPrimaryColor : kBlackColor2,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CommonImageView(
-                      height: 39,
-                      width: 39,
-                      radius: 100.0,
-                      url: dummyImg2,
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          MyText(
-                            text: 'Italia Trattoria',
-                            size: 13,
-                            weight: FontWeight.w500,
-                            paddingBottom: 8,
-                          ),
-                          MyText(
-                            text: '2.3 ${'km'.tr}',
-                            size: 12,
-                            color: kBlackColor.withOpacity(0.4),
-                          ),
-                        ],
+                Container(
+                  height: 65,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  width: Get.width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: isDark ? kDarkInputBgColor : kSeoulColor6,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CommonImageView(
+                        height: 39,
+                        width: 39,
+                        radius: 100.0,
+                        url: dummyImg2,
                       ),
-                    ),
-                    MyText(
-                      text: '₪11.45',
-                      size: 13,
-                      weight: FontWeight.w700,
-                      color: kSecondaryColor,
-                    ),
-                  ],
-                ),
-              ),
-              Material(
-                color: Colors.transparent,
-                child: EnhanceStepper(
-                  type: StepperType.vertical,
-                  stepIconSize: 16,
-                  currentStep: 0,
-                  physics: BouncingScrollPhysics(),
-                  steps: List.generate(
-                    refundSteps.length,
-                    (index) {
-                      var data = refundSteps[index];
-                      return EnhanceStep(
-                        state: index == 0
-                            ? StepState.complete
-                            : StepState.disabled,
-                        title: MyText(
-                          size: 12,
-                          color: kBlackColor.withOpacity(0.40),
-                          text: data['title'].toString().tr + '  -  16:32',
-                        ),
-                        subtitle: MyText(
-                          size: 12,
-                          text: data['subTitle'],
-                        ),
-                        isActive: false,
-                        icon: Image.asset(
-                          index == 0
-                              ? Assets.imagesPickUpOrder
-                              : Assets.imagesDropOffOrder,
-                          height: 16,
-                        ),
-                        content: Row(
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(),
+                            MyText(
+                              text: 'Italia Trattoria',
+                              size: 13,
+                              weight: FontWeight.w500,
+                              paddingBottom: 8,
+                              color: isDark ? kPrimaryColor : kBlackColor2,
+                            ),
+                            MyText(
+                              text: '2.3 ${'km'.tr}',
+                              size: 12,
+                              color: isDark
+                                  ? kPrimaryColor.withOpacity(0.4)
+                                  : kBlackColor.withOpacity(0.4),
+                            ),
                           ],
                         ),
-                      );
+                      ),
+                      MyText(
+                        text: '₪11.45',
+                        size: 13,
+                        weight: FontWeight.w700,
+                        color: kSecondaryColor,
+                      ),
+                    ],
+                  ),
+                ),
+                Material(
+                  color: Colors.transparent,
+                  child: EnhanceStepper(
+                    type: StepperType.vertical,
+                    stepIconSize: 16,
+                    currentStep: 0,
+                    physics: BouncingScrollPhysics(),
+                    steps: List.generate(
+                      refundSteps.length,
+                      (index) {
+                        var data = refundSteps[index];
+                        return EnhanceStep(
+                          state: index == 0
+                              ? StepState.complete
+                              : StepState.disabled,
+                          title: MyText(
+                            size: 12,
+                            color: isDark
+                                ? kPrimaryColor.withOpacity(0.40)
+                                : kBlackColor.withOpacity(0.40),
+                            text: data['title'].toString().tr + '  -  16:32',
+                          ),
+                          subtitle: MyText(
+                            size: 12,
+                            text: data['subTitle'],
+                            color: isDark ? kPrimaryColor : kBlackColor2,
+                          ),
+                          isActive: false,
+                          icon: Image.asset(
+                            index == 0
+                                ? Assets.imagesPickUpOrder
+                                : Assets.imagesDropOffOrder,
+                            height: 16,
+                            color: index == 0
+                                ? isDark
+                                    ? kPrimaryColor
+                                    : null
+                                : null,
+                          ),
+                          content: Row(
+                            children: [
+                              SizedBox(),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                    onStepCancel: () {},
+                    onStepContinue: () {},
+                    onStepTapped: (index) {},
+                    controlsBuilder: (
+                      BuildContext context,
+                      ControlsDetails details,
+                    ) {
+                      return SizedBox();
                     },
                   ),
-                  onStepCancel: () {},
-                  onStepContinue: () {},
-                  onStepTapped: (index) {},
-                  controlsBuilder: (
-                    BuildContext context,
-                    ControlsDetails details,
-                  ) {
-                    return SizedBox();
-                  },
                 ),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 44,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1.0,
-                          color: kSecondaryColor,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {},
-                          splashColor: kSecondaryColor.withOpacity(0.1),
-                          highlightColor: kSecondaryColor.withOpacity(0.1),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 44,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 1.0,
+                            color: kSecondaryColor,
+                          ),
                           borderRadius: BorderRadius.circular(10.0),
-                          child: Center(
-                            child: MyText(
-                              text: 'support'.tr,
-                              size: 15,
-                              weight: FontWeight.w500,
-                              color: kSecondaryColor,
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {},
+                            splashColor: kSecondaryColor.withOpacity(0.1),
+                            highlightColor: kSecondaryColor.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Center(
+                              child: MyText(
+                                text: 'support'.tr,
+                                size: 15,
+                                weight: FontWeight.w500,
+                                color: kSecondaryColor,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Expanded(
-                    child: MyButton(
-                      height: 45,
-                      textSize: 14,
-                      buttonText: 'accept'.tr,
-                      radius: 10.0,
-                      onTap: () => Get.to(
-                        () => DeliveryDetailPage(),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Expanded(
+                      child: MyButton(
+                        height: 45,
+                        textSize: 14,
+                        buttonText: 'accept'.tr,
+                        radius: 10.0,
+                        onTap: () => Get.to(
+                          () => DeliveryDetailPage(),
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }
 

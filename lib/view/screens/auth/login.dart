@@ -42,7 +42,9 @@ class Login extends StatelessWidget {
                     Row(
                       children: [
                         Image.asset(
-                          Assets.imagesLogoHorizBlk,
+                          isDark
+                              ? Assets.imagesVaiLight
+                              : Assets.imagesLogoHorizBlk,
                           height: 53.2,
                         ),
                       ],
@@ -96,6 +98,8 @@ class Login extends StatelessWidget {
                             child: MyButton(
                               height: 52,
                               buttonText: 'login'.tr,
+                              textColor:
+                                  isDark ? kDarkPrimaryColor : kPrimaryColor,
                               onTap: () => Get.offAll(() => BottomNavBar()),
                             ),
                           ),
