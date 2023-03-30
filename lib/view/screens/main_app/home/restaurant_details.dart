@@ -119,29 +119,8 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                         itemBuilder: (context, index) {
                           var value = homeController.homeDetailMenu[index];
                           return Obx(() {
-                            if (languageController.currentIndex.value == 3 ||
-                                languageController.currentIndex.value == 4) {
-                              return HomeDetailToggleButton(
-                                // paddingTop: languageController
-                                //                 .currentIndex.value !=
-                                //             0 ||
-                                //         languageController.currentIndex.value !=
-                                //             2
-                                //     ? index == 3
-                                //         ? 13
-                                //         : 17
-                                //     : null,
-                                // paddingBottom: languageController
-                                //                 .currentIndex.value !=
-                                //             0 ||
-                                //         languageController.currentIndex.value !=
-                                //             2
-                                //     ? index == 3
-                                //         ? 18
-                                //         : 14
-                                //     : null,
-                                paddingTop: 14,
-                                paddingBottom: 14,
+                  
+                              return SimpleToggleButton(
                                 isDark: isDark,
                                 paddingHorizontal: 20.0,
                                 text: _cats[index].tr,
@@ -153,20 +132,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                                   value,
                                 ),
                               );
-                            } else {
-                              return HomeDetailToggleButton(
-                                isDark: isDark,
-                                paddingHorizontal: 20.0,
-                                text: _cats[index].tr,
-                                isSelected:
-                                    homeController.homeDetailMenuIndex == index,
-                                onTap: () =>
-                                    homeController.getHomeDetailMenuIndex(
-                                  index,
-                                  value,
-                                ),
-                              );
-                            }
+                          
                           });
                         },
                       ),
@@ -299,9 +265,8 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
   }
 }
 
-// ignore: must_be_immutable
-class HomeDetailToggleButton extends StatelessWidget {
-  HomeDetailToggleButton({
+class CustomToggleButton extends StatelessWidget {
+  CustomToggleButton({
     Key? key,
     required this.text,
     required this.isSelected,
