@@ -53,6 +53,7 @@ class MyCart extends StatelessWidget {
                         color: isDark ? kBlackColor2 : kPrimaryColor,
                       ),
                       MyText(
+                        paddingTop: isEnglish ? 0:4,
                         paddingLeft: 3,
                         paddingRight: 4,
                         text: 'orders'.tr,

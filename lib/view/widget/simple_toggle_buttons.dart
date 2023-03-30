@@ -11,11 +11,13 @@ class SimpleToggleButtons extends StatelessWidget {
     required this.onTap,
     this.paddingHorizontal,
     required this.isDark,
+    this.paddingBottom,
+    this.paddingTop,
   }) : super(key: key);
   final String text;
   final bool isSelected, isDark;
   final VoidCallback onTap;
-  double? paddingHorizontal;
+  double? paddingHorizontal, paddingTop, paddingBottom;
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +50,11 @@ class SimpleToggleButtons extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(13),
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: paddingHorizontal ?? 17,
-              vertical: 14,
+            padding: EdgeInsets.only(
+              left: paddingHorizontal ?? 17,
+              right: paddingHorizontal ?? 17,
+              top: paddingTop ?? 14,
+              bottom: paddingBottom ?? 14,
             ),
             child: MyText(
               text: text,

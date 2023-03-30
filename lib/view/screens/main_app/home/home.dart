@@ -62,6 +62,8 @@ class _HomeState extends State<Home> {
     var platform = Theme.of(context).platform;
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
+      bool isEnglish = languageController.isEnglish.value;
+
       return Scaffold(
         backgroundColor: isDark ? kDarkPrimaryColor : kSeoulColor3,
         body: Stack(
@@ -334,11 +336,33 @@ class _HomeState extends State<Home> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 var value = homeController.popularList[index];
-                                return Obx(
-                                  () {
-                                    return SimpleToggleButtons(
+
+                               return  Obx(() {
+if(languageController.currentIndex.value == 0 || languageController.currentIndex.value == 1){
+ return SimpleToggleButtons(
+                                      paddingTop: languageController
+                                                      .currentIndex.value !=
+                                                  0 ||
+                                              languageController
+                                                      .currentIndex.value !=
+                                                  2
+                                          ? index == 3
+                                              ? 13
+                                              : 17
+                                          : null,
+                                      paddingBottom: languageController
+                                                      .currentIndex.value !=
+                                                  0 ||
+                                              languageController
+                                                      .currentIndex.value !=
+                                                  2
+                                          ? index == 3
+                                              ? 18
+                                              : 14
+                                          : null,
                                       isDark: isDark,
-                                      text: homeController.popularList[index].tr,
+                                      text:
+                                          homeController.popularList[index].tr,
                                       isSelected:
                                           homeController.popularIndex.value ==
                                               index,
@@ -350,6 +374,49 @@ class _HomeState extends State<Home> {
                                     );
                                   },
                                 );
+}else{
+  return SimpleToggleButtons(
+                                      paddingTop: languageController
+                                                      .currentIndex.value !=
+                                                  0 ||
+                                              languageController
+                                                      .currentIndex.value !=
+                                                  2
+                                          ? index == 3
+                                              ? 13
+                                              : 17
+                                          : null,
+                                      paddingBottom: languageController
+                                                      .currentIndex.value !=
+                                                  0 ||
+                                              languageController
+                                                      .currentIndex.value !=
+                                                  2
+                                          ? index == 3
+                                              ? 18
+                                              : 14
+                                          : null,
+                                      isDark: isDark,
+                                      text:
+                                          homeController.popularList[index].tr,
+                                      isSelected:
+                                          homeController.popularIndex.value ==
+                                              index,
+                                      onTap: () =>
+                                          homeController.getPopularIndex(
+                                        index,
+                                        value,
+                                      ),
+                                    );
+                                  },
+                                ); 
+}
+
+
+
+
+                               });
+                                   
                               },
                             ),
                           ),
@@ -411,5 +478,75 @@ class _HomeState extends State<Home> {
         ),
       );
     });
+  }
+}
+
+// ignore: must_be_immutable
+class SimpleToggleButtons extends StatelessWidget {
+  SimpleToggleButtons({
+    Key? key,
+    required this.text,
+    required this.isSelected,
+    required this.onTap,
+    this.paddingHorizontal,
+    required this.isDark,
+    this.paddingBottom,
+    this.paddingTop,
+  }) : super(key: key);
+  final String text;
+  final bool isSelected, isDark;
+  final VoidCallback onTap;
+  double? paddingHorizontal, paddingTop, paddingBottom;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      child: AnimatedContainer(
+        height: 45,
+        curve: Curves.easeInOut,
+        duration: Duration(
+          milliseconds: 110,
+        ),
+        margin: EdgeInsets.symmetric(
+          horizontal: 7,
+        ),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? kSecondaryColor
+              : isDark
+                  ? kDarkInputBgColor
+                  : kPrimaryColor,
+          borderRadius: BorderRadius.circular(13),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.02),
+              spreadRadius: 0,
+              blurRadius: 6,
+              offset: Offset(0, 0),
+            ),
+          ],
+        ),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(13),
+          child: MyText(
+            paddingLeft: paddingHorizontal ?? 17,
+            paddingRight: paddingHorizontal ?? 17,
+            paddingTop: paddingTop ?? 14,
+            paddingBottom: paddingBottom ?? 14,
+            text: text,
+            size: 13,
+            color: isSelected
+                ? isDark
+                    ? kBlackColor2
+                    : kPrimaryColor
+                : isDark
+                    ? kDarkModeGrey1Color
+                    : kGreyColor3,
+            weight: isSelected ? FontWeight.w700 : FontWeight.w400,
+          ),
+        ),
+      ),
+    );
   }
 }

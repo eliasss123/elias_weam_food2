@@ -24,7 +24,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     },
     {
       'icon': Assets.imagesBrowse,
-      'label': 'browse',
+      'label': 'browse_nav',
     },
     {
       'icon': Assets.imagesShoppingCart,
@@ -107,7 +107,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                           right: index == 2 ? 6 : 0,
                           left: index == 2
                               ? !isEnglish
-                                  ? 6
+                                  ? 10
                                   : 0
                               : 0,
                         ),
@@ -126,7 +126,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                           ? Positioned(
                               top: isIos ? -1.5 : -5,
                               right: isEnglish ? -2 : null,
-                              left: isEnglish ? null : -2,
+                              left: isEnglish ? null : 3.5,
                               child: Container(
                                 height: 15,
                                 width: 15,
