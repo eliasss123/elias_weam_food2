@@ -13,8 +13,8 @@ final Map<String, String> arabic = {
   'your_phone_number': 'رقم هاتفك الخاص',
   'or': 'أو',
   'i_don\'t_have_social_media': 'ليس لدي وسائل التواصل الاجتماعي',
-  'already_have_an_account': 'ليس لديك حساب؟ ',
-  'sign_in': 'سجل',
+  'already_have_an_account': 'هل لديك حساب؟ ',
+  'sign_in': 'ادخل',
   'verify_your_phone_number': 'قم بتأكيد رقم هاتفك',
   'enter_the_4_digit_code_sent_to_you_at': 'أدخل الرمز المكون من 4 أرقام المرسل إليك على الرقم ',
   'resend_code_via_sms': 'أرسل مرة أخرى عبر SMS',
@@ -416,4 +416,6 @@ final Map<String, String> arabic = {
   'car': 'سيارة',
   'available': 'متاح',
   //Driver App
+  'sign_up':'تسجيل',
+  'sign_up1':'التسجيل',
 };

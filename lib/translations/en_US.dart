@@ -442,4 +442,6 @@ final Map<String, String> english = {
   'car': 'Car',
   'available': 'Available',
   //Driver App
+  'sign_up':'Sign Up',
+  'sign_up1':'Sign Up',
 };

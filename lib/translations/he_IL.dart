@@ -416,4 +416,6 @@ final Map<String, String> hebrew = {
   'car': 'רכב',
   'available': 'זמין',
   //Driver App
+  'sign_up':'הרשמה',
+  'sign_up1':'הרשמה',
 };

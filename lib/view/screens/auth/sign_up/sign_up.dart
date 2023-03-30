@@ -57,7 +57,7 @@ class Signup extends StatelessWidget {
                     color: kGreyColor,
                   ),
                   MyText(
-                    text: 'sign_Up'.tr,
+                    text: 'sign_up1'.tr,
                     size: 23,
                     weight: FontWeight.w700,
                     paddingBottom: 8,
@@ -148,7 +148,7 @@ class Signup extends StatelessWidget {
                       width: 213,
                       child: MyButton(
                         height: 52,
-                        buttonText: 'sign_Up'.tr,
+                        buttonText: 'sign_up'.tr,
                         onTap: () => Get.to(
                           () => VerifyOtp(),
                         ),
