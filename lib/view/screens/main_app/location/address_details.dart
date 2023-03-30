@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:elias_weam_food2/constant/color.dart';
+import 'package:elias_weam_food2/constant/sizes_constant.dart';
 import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/view/screens/main_app/location/save_address.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
@@ -14,13 +17,12 @@ class AddressDetails extends StatelessWidget {
     required this.isDark,
   }) : super(key: key);
 
-
   final bool isDark;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 380,
+      height: 400,
       padding: EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 30,
@@ -88,8 +90,9 @@ class AddressDetails extends StatelessWidget {
             height: 30,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: 30,
+              vertical: Platform.isIOS ? IOS_BUTTON_PADDING : 0,
             ),
             child: MyButton(
               buttonText: 'continue'.tr,

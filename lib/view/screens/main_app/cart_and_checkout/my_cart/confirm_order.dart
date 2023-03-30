@@ -1,5 +1,6 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
+import 'package:elias_weam_food2/constant/sizes_constant.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/model/recent_order_model/recent_order_model.dart';
 import 'package:elias_weam_food2/utils/instances.dart';
@@ -359,7 +360,7 @@ class ConfirmOrder extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 40,
-                vertical: platform == TargetPlatform.iOS ? 23 : 15,
+                vertical: platform == TargetPlatform.iOS ? IOS_BUTTON_PADDING : 15,
               ),
               child: MyButton(
                 buttonText: 'checkout'.tr,
