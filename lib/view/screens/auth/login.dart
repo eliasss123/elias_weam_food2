@@ -122,14 +122,18 @@ class Login extends StatelessWidget {
                         ? kPrimaryColor.withOpacity(0.71)
                         : kBlackColor2.withOpacity(0.71),
                   ),
-                  MyText(
-                    onTap: () => Get.offAll(
-                      () => Signup(),
-                    ),
-                    text: 'sign_Up'.tr,
-                    weight: FontWeight.w500,
-                    color: kSecondaryColor,
-                  ),
+                  Obx(() {
+                    return MyText(
+                      paddingTop:
+                          languageController.currentIndex.value == 1 ? 4 : 0,
+                      onTap: () => Get.offAll(
+                        () => Signup(),
+                      ),
+                      text: 'sign_Up'.tr,
+                      weight: FontWeight.w500,
+                      color: kSecondaryColor,
+                    );
+                  }),
                 ],
               ),
               SizedBox(

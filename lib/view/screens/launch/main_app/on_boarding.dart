@@ -98,12 +98,18 @@ class _OnBoardingState extends State<OnBoarding> {
                                     : kBlackColor2,
                               );
                             }),
-                            MyText(
-                              text: 'doorstep'.tr,
-                              size: 20,
-                              weight: FontWeight.w700,
-                              color: kSecondaryColor,
-                            ),
+                            Obx(() {
+                              return MyText(
+                                text: 'doorstep'.tr,
+                                size: 20,
+                                paddingTop:
+                                    languageController.currentIndex.value == 1
+                                        ? 4
+                                        : 0,
+                                weight: FontWeight.w700,
+                                color: kSecondaryColor,
+                              );
+                            }),
                           ],
                         ),
                         Obx(() {
