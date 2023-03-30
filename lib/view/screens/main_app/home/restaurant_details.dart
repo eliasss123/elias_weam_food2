@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
@@ -135,10 +136,16 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                               );
                             } else {
                               return HomeDetailToggleButton(
-                                paddingTop:
-                                    index == 2 || index == 3 ? 18 : null,
-                                paddingBottom:
-                                    index == 2 || index == 3 ? 10 : null,
+                                paddingTop: Platform.isIOS
+                                    ? index == 2 || index == 3
+                                        ? 18
+                                        : null
+                                    : null,
+                                paddingBottom: Platform.isIOS
+                                    ? index == 2 || index == 3
+                                        ? 10
+                                        : null
+                                    : null,
                                 isDark: isDark,
                                 paddingHorizontal: 20.0,
                                 text: _cats[index].tr,

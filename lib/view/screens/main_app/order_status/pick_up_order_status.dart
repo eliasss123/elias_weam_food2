@@ -150,6 +150,7 @@ class PickupOrderStatus extends StatelessWidget {
                               : kBlackColor.withOpacity(0.5),
                           letterSpacing: 0.0,
                           paddingBottom: 30,
+                          align: TextAlign.center,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(

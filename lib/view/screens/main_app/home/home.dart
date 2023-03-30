@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
@@ -356,25 +358,29 @@ class _HomeState extends State<Home> {
                                     );
                                   } else {
                                     return HomeToggleButton(
-                                      paddingTop: languageController
-                                                      .currentIndex.value !=
-                                                  0 ||
-                                              languageController
-                                                      .currentIndex.value !=
-                                                  2
-                                          ? index == 3
-                                              ? 13
-                                              : 17
+                                      paddingTop: Platform.isIOS
+                                          ? languageController
+                                                          .currentIndex.value !=
+                                                      0 ||
+                                                  languageController
+                                                          .currentIndex.value !=
+                                                      2
+                                              ? index == 3
+                                                  ? 13
+                                                  : 17
+                                              : null
                                           : null,
-                                      paddingBottom: languageController
-                                                      .currentIndex.value !=
-                                                  0 ||
-                                              languageController
-                                                      .currentIndex.value !=
-                                                  2
-                                          ? index == 3
-                                              ? 18
-                                              : 14
+                                      paddingBottom: Platform.isIOS
+                                          ? languageController
+                                                          .currentIndex.value !=
+                                                      0 ||
+                                                  languageController
+                                                          .currentIndex.value !=
+                                                      2
+                                              ? index == 3
+                                                  ? 18
+                                                  : 14
+                                              : null
                                           : null,
                                       isDark: isDark,
                                       text:
