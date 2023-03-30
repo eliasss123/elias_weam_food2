@@ -136,9 +136,9 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                             } else {
                               return HomeDetailToggleButton(
                                 paddingTop:
-                                    index == 2 || index == 3 ? 16 : null,
+                                    index == 2 || index == 3 ? 18 : null,
                                 paddingBottom:
-                                    index == 2 || index == 3 ? 12 : null,
+                                    index == 2 || index == 3 ? 10 : null,
                                 isDark: isDark,
                                 paddingHorizontal: 20.0,
                                 text: _cats[index].tr,
