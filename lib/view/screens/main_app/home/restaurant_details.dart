@@ -118,22 +118,6 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           var value = homeController.homeDetailMenu[index];
-                          // return Obx(
-                          //   () {
-                          //     return SimpleToggleButtons(
-                          //       isDark: isDark,
-                          //       paddingHorizontal: 20.0,
-                          //       text: _cats[index].tr,
-                          //       isSelected:
-                          //           homeController.homeDetailMenuIndex == index,
-                          //       onTap: () =>
-                          //           homeController.getHomeDetailMenuIndex(
-                          //         index,
-                          //         value,
-                          //       ),
-                          //     );
-                          //   },
-                          // );
                           return Obx(() {
                             if (languageController.currentIndex.value == 3 ||
                                 languageController.currentIndex.value == 4) {
