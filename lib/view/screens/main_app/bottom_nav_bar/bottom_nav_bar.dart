@@ -57,6 +57,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
       bottomNavigationBar: Obx(() {
         bool isDark = themeController.isDarkTheme.value;
+        bool isEnglish = languageController.isEnglish.value;
         return Container(
           height: isIos ? null : 75,
           decoration: BoxDecoration(
@@ -104,15 +105,20 @@ class _BottomNavBarState extends State<BottomNavBar> {
                           top: isIos ? 4.5 : 0,
                           right: index == 2 ? 6 : 0,
                         ),
-                        child: ImageIcon(
-                          AssetImage(data['icon']),
-                          size: 19.0,
+                        child: Transform(
+                          transform: Matrix4.identity()
+                            ..scale(isEnglish ? 1.0 : -1.0, 1.0, 1.0),
+                          child: ImageIcon(
+                            AssetImage(data['icon']),
+                            size: 19.0,
+                          ),
                         ),
                       ),
                       index == 2
                           ? Positioned(
                               top: isIos ? -1.5 : -5,
-                              right: -2,
+                              right: isEnglish ? -2 : 0,
+                              left: isEnglish ? 0 : -2,
                               child: Container(
                                 height: 15,
                                 width: 15,
