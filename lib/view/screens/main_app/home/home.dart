@@ -33,10 +33,10 @@ class _HomeState extends State<Home> {
   ];
   final List<String> popularList = [
     'all',
-    'asian',
     'italian',
     'vegetarian',
     'healthy_food',
+    'asian',
   ];
 
   // bool isForFirstTime = true;
@@ -338,7 +338,7 @@ class _HomeState extends State<Home> {
                                   () {
                                     return SimpleToggleButtons(
                                       isDark: isDark,
-                                      text: popularList[index].tr,
+                                      text: homeController.popularList[index].tr,
                                       isSelected:
                                           homeController.popularIndex.value ==
                                               index,

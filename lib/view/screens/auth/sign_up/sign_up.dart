@@ -4,6 +4,7 @@ import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/auth/login.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_email/signup_with_email.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_phone/verify_otp.dart';
+import 'package:elias_weam_food2/view/screens/main_app/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/prefix_text_field.dart';
@@ -50,6 +51,7 @@ class Signup extends StatelessWidget {
                 shrinkWrap: true,
                 children: [
                   MyText(
+                    onTap: () => Get.offAll(() => BottomNavBar()),
                     paddingTop: 20,
                     align: TextAlign.end,
                     text: 'skip'.tr,

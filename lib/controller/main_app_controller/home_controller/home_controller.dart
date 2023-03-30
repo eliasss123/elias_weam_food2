@@ -23,10 +23,11 @@ class HomeController extends GetxController {
     },
   ];
   final List<String> popularList = [
-    'All',
-    'Italian',
-    'Vegetarian',
-    'Healthy Food',
+    'all',
+    'italian',
+    'vegetarian',
+    'healthy_food',
+    'asian',
   ];
 
   final List<String> homeDetailMenu = [
