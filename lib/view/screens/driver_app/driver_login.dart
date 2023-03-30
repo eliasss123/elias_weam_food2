@@ -132,7 +132,7 @@ class DriverLogin extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 80,
+                height: 35,
               ),
             ],
           ),
