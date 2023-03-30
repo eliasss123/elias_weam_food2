@@ -157,7 +157,7 @@ final Map<String, String> hebrew = {
   'chinese': 'סינית',
   'results_for': 'תוצאות עבור',
   'notifications': 'התראות',
-  'delivery': 'הזמנות',
+  'delivery': 'משלוח',
   'news_update': 'חדשות ועדכונים',
   'current': 'כיום',
   'items': 'פריטים',

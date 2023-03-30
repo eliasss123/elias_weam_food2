@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
@@ -118,6 +120,13 @@ class _DeliveryOptionsState extends State<DeliveryOptions>
                                 ? kPrimaryColor
                                 : kSecondaryColor,
                             weight: FontWeight.w700,
+                            paddingTop: Platform.isIOS
+                                ? index == 0
+                                    ? languageController.currentIndex.value == 1
+                                        ? 5
+                                        : 0
+                                    : 0
+                                : 0,
                           ),
                         ),
                       );

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:elias_weam_food2/constant/color.dart';
@@ -241,6 +242,13 @@ class RestaurantsThumbnail extends StatelessWidget {
                                       size: 30,
                                       weight: FontWeight.w700,
                                       color: kBlackColor2.withOpacity(0.65),
+                                      paddingTop: Platform.isIOS
+                                          ? languageController
+                                                      .currentIndex.value ==
+                                                  1
+                                              ? 4
+                                              : 0
+                                          : null,
                                     ),
                                   ),
                                 ),

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
@@ -123,9 +124,17 @@ class HomeDetailAppBar extends StatelessWidget {
                                           child: Center(
                                             child: MyText(
                                               text: 'closed'.tr,
-                                              size: 13,
+                                              size: 14,
                                               weight: FontWeight.w700,
                                               color: kMaroonColor,
+                                              paddingTop: Platform.isIOS
+                                                  ? languageController
+                                                              .currentIndex
+                                                              .value ==
+                                                          1
+                                                      ? 3
+                                                      : 0
+                                                  : null,
                                             ),
                                           ),
                                         ),
@@ -151,7 +160,8 @@ class HomeDetailAppBar extends StatelessWidget {
                           ),
                           MyText(
                             paddingBottom: 13,
-                            text: '${'from'.tr} $openingTime am ${'to'.tr} $closingTime pm',
+                            text:
+                                '${'from'.tr} $openingTime am ${'to'.tr} $closingTime pm',
                             size: 15,
                             color: kPrimaryColor.withOpacity(0.77),
                           ),
@@ -202,7 +212,7 @@ class HomeDetailAppBar extends StatelessWidget {
                                           size: 12,
                                           weight: FontWeight.w700,
                                           color: isOutOfRange
-                                              ? kRedColor
+                                              ? Color(0xff941616)
                                               : kPrimaryColor,
                                         ),
                                       ),
