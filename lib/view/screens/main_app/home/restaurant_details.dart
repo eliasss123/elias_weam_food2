@@ -118,9 +118,44 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           var value = homeController.homeDetailMenu[index];
-                          return Obx(
-                            () {
-                              return SimpleToggleButtons(
+                          // return Obx(
+                          //   () {
+                          //     return SimpleToggleButtons(
+                          //       isDark: isDark,
+                          //       paddingHorizontal: 20.0,
+                          //       text: _cats[index].tr,
+                          //       isSelected:
+                          //           homeController.homeDetailMenuIndex == index,
+                          //       onTap: () =>
+                          //           homeController.getHomeDetailMenuIndex(
+                          //         index,
+                          //         value,
+                          //       ),
+                          //     );
+                          //   },
+                          // );
+                          return Obx(() {
+                            if (languageController.currentIndex.value == 3 ||
+                                languageController.currentIndex.value == 4) {
+                              return HomeDetailToggleButton(
+                                // paddingTop: languageController
+                                //                 .currentIndex.value !=
+                                //             0 ||
+                                //         languageController.currentIndex.value !=
+                                //             2
+                                //     ? index == 3
+                                //         ? 13
+                                //         : 17
+                                //     : null,
+                                // paddingBottom: languageController
+                                //                 .currentIndex.value !=
+                                //             0 ||
+                                //         languageController.currentIndex.value !=
+                                //             2
+                                //     ? index == 3
+                                //         ? 18
+                                //         : 14
+                                //     : null,
                                 isDark: isDark,
                                 paddingHorizontal: 20.0,
                                 text: _cats[index].tr,
@@ -132,8 +167,21 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                                   value,
                                 ),
                               );
-                            },
-                          );
+                            } else {
+                              return HomeDetailToggleButton(
+                                isDark: isDark,
+                                paddingHorizontal: 20.0,
+                                text: _cats[index].tr,
+                                isSelected:
+                                    homeController.homeDetailMenuIndex == index,
+                                onTap: () =>
+                                    homeController.getHomeDetailMenuIndex(
+                                  index,
+                                  value,
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                     ),
@@ -262,5 +310,75 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
         ),
       );
     });
+  }
+}
+
+// ignore: must_be_immutable
+class HomeDetailToggleButton extends StatelessWidget {
+  HomeDetailToggleButton({
+    Key? key,
+    required this.text,
+    required this.isSelected,
+    required this.onTap,
+    this.paddingHorizontal,
+    required this.isDark,
+    this.paddingBottom,
+    this.paddingTop,
+  }) : super(key: key);
+  final String text;
+  final bool isSelected, isDark;
+  final VoidCallback onTap;
+  double? paddingHorizontal, paddingTop, paddingBottom;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      child: AnimatedContainer(
+        height: 45,
+        curve: Curves.easeInOut,
+        duration: Duration(
+          milliseconds: 110,
+        ),
+        margin: EdgeInsets.symmetric(
+          horizontal: 7,
+        ),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? kSecondaryColor
+              : isDark
+                  ? kDarkInputBgColor
+                  : kPrimaryColor,
+          borderRadius: BorderRadius.circular(13),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.02),
+              spreadRadius: 0,
+              blurRadius: 6,
+              offset: Offset(0, 0),
+            ),
+          ],
+        ),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(13),
+          child: MyText(
+            paddingLeft: paddingHorizontal ?? 17,
+            paddingRight: paddingHorizontal ?? 17,
+            paddingTop: paddingTop ?? 14,
+            paddingBottom: paddingBottom ?? 14,
+            text: text,
+            size: 13,
+            color: isSelected
+                ? isDark
+                    ? kBlackColor2
+                    : kPrimaryColor
+                : isDark
+                    ? kDarkModeGrey1Color
+                    : kGreyColor3,
+            weight: isSelected ? FontWeight.w700 : FontWeight.w400,
+          ),
+        ),
+      ),
+    );
   }
 }

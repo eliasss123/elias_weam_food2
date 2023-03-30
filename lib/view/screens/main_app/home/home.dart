@@ -341,7 +341,7 @@ class _HomeState extends State<Home> {
                                           0 ||
                                       languageController.currentIndex.value ==
                                           2) {
-                                    return SimpleToggleButtons(
+                                    return HomeToggleButton(
                                       isDark: isDark,
                                       text:
                                           homeController.popularList[index].tr,
@@ -355,7 +355,7 @@ class _HomeState extends State<Home> {
                                       ),
                                     );
                                   } else {
-                                    return SimpleToggleButtons(
+                                    return HomeToggleButton(
                                       paddingTop: languageController
                                                       .currentIndex.value !=
                                                   0 ||
@@ -455,8 +455,8 @@ class _HomeState extends State<Home> {
 }
 
 // ignore: must_be_immutable
-class SimpleToggleButtons extends StatelessWidget {
-  SimpleToggleButtons({
+class HomeToggleButton extends StatelessWidget {
+  HomeToggleButton({
     Key? key,
     required this.text,
     required this.isSelected,
