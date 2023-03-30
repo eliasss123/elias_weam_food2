@@ -5,6 +5,7 @@ import 'package:elias_weam_food2/main.dart';
 import 'package:elias_weam_food2/view/screens/launch/main_app/splash_screen.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/recent_orders/recent_orders.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/change_theme.dart';
+import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/currency.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/help_center.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/languages.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile_screens/my_account.dart';
@@ -155,6 +156,13 @@ class Profile extends StatelessWidget {
                       onTap: () => Get.to(
                         () => ChangeTheme(),
                       ),
+                    ),
+                    profileTiles(
+                      icon: isDark
+                          ? Assets.imagesCurrency
+                          : Assets.imagesCurrencyLight,
+                      title: 'change_currency'.tr,
+                      onTap: () => Get.to(() => Currency()),
                     ),
                     profileTiles(
                       icon: isDark

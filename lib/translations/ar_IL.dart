@@ -421,4 +421,6 @@ final Map<String, String> arabic = {
   'asian':'اسيوي',
   'home_nav':'الصفحة الرئيسية',
   'browse_nav':'متصفح',
+  'currency': 'عملة',
+  'change_currency': 'تغيير العملة',
 };

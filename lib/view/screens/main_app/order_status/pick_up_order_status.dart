@@ -172,6 +172,8 @@ class PickupOrderStatus extends StatelessWidget {
                                         ? Image.asset(
                                             data['icon'],
                                             height: data['iconSize'],
+                                            color:
+                                                isDark ? kPrimaryColor : null,
                                           )
                                         : Expanded(
                                             child: Row(

@@ -388,12 +388,13 @@ final Map<String, String> english = {
   'chat': 'Chat',
   //Merchant App
 
- //Driver App
+  //Driver App
   'courses': 'courses',
   'balance': 'Balance',
   'accepted': 'Accepted',
   'tip': 'Tip',
-  'would_you_like_to_accept_this_order': 'Would you like to\naccept this order?',
+  'would_you_like_to_accept_this_order':
+      'Would you like to\naccept this order?',
   'pickup_point': 'Pickup Point',
   'drop_off_point': 'Drop off point',
   'accept': 'Accept',
@@ -411,14 +412,15 @@ final Map<String, String> english = {
   'there_are': 'There are',
   'minute': 'minute',
   'left_to_deliver_the_order': 'left to deliver the order.',
-  'try_to_deliver_the_order_in_time_to_be': 'Try to deliver the order in time to be',
+  'try_to_deliver_the_order_in_time_to_be':
+      'Try to deliver the order in time to be',
   'well_rated': 'well-rated',
   'by_the_customer': 'by the customer.',
   'understood': 'Understood!',
   'you_ve_completed_your': 'You’ve completed your',
   'course_and_earned': 'course and earned',
-  'total_courses':'Total courses',
-  'average_rating':'Average rating',
+  'total_courses': 'Total courses',
+  'average_rating': 'Average rating',
   'your_latest_courses': 'Your Latest Courses',
   'today': 'Today',
   'set_availability': 'Set availability',
@@ -442,9 +444,11 @@ final Map<String, String> english = {
   'car': 'Car',
   'available': 'Available',
   //Driver App
-  'sign_up':'Sign Up',
-  'sign_up1':'Sign Up',
-  'asian':'Asian',
-  'home_nav':'Home',
-   'browse_nav':'Browse',
+  'sign_up': 'Sign Up',
+  'sign_up1': 'Sign Up',
+  'asian': 'Asian',
+  'home_nav': 'Home',
+  'browse_nav': 'Browse',
+  'currency': 'Currency',
+  'change_currency': 'Change Currency',
 };

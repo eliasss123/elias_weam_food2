@@ -437,4 +437,6 @@ final Map<String, String> hebrew = {
   'asian': 'אסייתי',
   'home_nav': 'עמוד הבית',
   'browse_nav': 'דפדפן',
+  'currency': 'מַטְבֵּעַ',
+  'change_currency': 'שנה מטבע',
 };

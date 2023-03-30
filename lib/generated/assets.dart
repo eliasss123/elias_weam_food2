@@ -44,6 +44,8 @@ class Assets {
   static const String imagesConvi = 'assets/images/convi.png';
   static const String imagesCooking = 'assets/images/cooking.png';
   static const String imagesCreditCard = 'assets/images/credit_card.png';
+  static const String imagesCurrency = 'assets/images/currency.png';
+  static const String imagesCurrencyLight = 'assets/images/currency_light.png';
   static const String imagesCurrentLoc = 'assets/images/current_loc.png';
   static const String imagesDarkModeAnimatedLogo = 'assets/images/dark_mode_animated_logo.json';
   static const String imagesDarkModeLoc = 'assets/images/dark_mode_loc.png';

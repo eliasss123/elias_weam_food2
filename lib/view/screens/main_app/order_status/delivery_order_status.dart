@@ -176,6 +176,9 @@ class _TrackOrderState extends State<TrackOrder> {
                                             ? Image.asset(
                                                 data['icon'],
                                                 height: data['iconSize'],
+                                                color: isDark
+                                                    ? kPrimaryColor
+                                                    : null,
                                               )
                                             : Expanded(
                                                 child: Row(
