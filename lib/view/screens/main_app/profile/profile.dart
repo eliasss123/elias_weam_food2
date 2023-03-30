@@ -44,30 +44,31 @@ class Profile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              GestureDetector(
-                onTap: () => Get.offAll(() => SplashScreen()),
-                child: Wrap(
-                  spacing: 7,
-                  alignment: WrapAlignment.end,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    RotatedBox(
-                      quarterTurns: isEnglish ? 0 : 2,
+              Wrap(
+                spacing: 7,
+                alignment: WrapAlignment.end,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  RotatedBox(
+                    quarterTurns: isEnglish ? 0 : 2,
+                    child: GestureDetector(
+                      onTap: () => Get.offAll(() => SplashScreen()),
                       child: Image.asset(
                         Assets.imagesLogout,
                         height: 15,
                         color: isDark ? kPrimaryColor : kBlackColor2,
                       ),
                     ),
-                    MyText(
-                      text: 'logout'.tr,
-                      size: 16,
-                      paddingLeft: isEnglish ? 0 : 20,
-                      paddingRight: isEnglish ? 20 : 0,
-                      color: isDark ? kPrimaryColor : kBlackColor2,
-                    ),
-                  ],
-                ),
+                  ),
+                  MyText(
+                    onTap: () => Get.offAll(() => SplashScreen()),
+                    text: 'logout'.tr,
+                    size: 16,
+                    paddingLeft: isEnglish ? 0 : 20,
+                    paddingRight: isEnglish ? 20 : 0,
+                    color: isDark ? kPrimaryColor : kBlackColor2,
+                  ),
+                ],
               ),
               SizedBox(
                 height: 10,
