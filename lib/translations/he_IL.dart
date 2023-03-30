@@ -419,4 +419,5 @@ final Map<String, String> hebrew = {
   'sign_up':'הרשמה',
   'sign_up1':'הרשמה',
   'asian':'אסייתי',
+  'home_nav':'עמוד הבית',
 };

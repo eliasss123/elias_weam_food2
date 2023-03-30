@@ -16,7 +16,7 @@ class _MerchantBottomNavState extends State<MerchantBottomNav> {
   final List<Map<String, dynamic>> items = [
     {
       'icon': Assets.imagesHomeA,
-      'label': 'home',
+      'label': 'home_nav',
     },
     {
       'icon': Assets.imagesStats,

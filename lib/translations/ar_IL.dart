@@ -419,4 +419,5 @@ final Map<String, String> arabic = {
   'sign_up':'تسجيل',
   'sign_up1':'التسجيل',
   'asian':'اسيوي',
+  'home_nav':'الصفحة الرئيسية',
 };

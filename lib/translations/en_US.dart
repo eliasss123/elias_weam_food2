@@ -445,4 +445,5 @@ final Map<String, String> english = {
   'sign_up':'Sign Up',
   'sign_up1':'Sign Up',
   'asian':'Asian',
+  'home_nav':'Home',
 };
