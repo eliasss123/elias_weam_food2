@@ -156,6 +156,8 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                                 //         ? 18
                                 //         : 14
                                 //     : null,
+                                paddingTop: 14,
+                                paddingBottom: 14,
                                 isDark: isDark,
                                 paddingHorizontal: 20.0,
                                 text: _cats[index].tr,
