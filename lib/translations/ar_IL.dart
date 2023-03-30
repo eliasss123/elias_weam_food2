@@ -355,7 +355,7 @@ final Map<String, String> arabic = {
   'schedule':'',
   'weekends':'',
   'login':'دخول',
-  'dont_have_an_account_yet':'ليس لديك حساب؟',
+  'dont_have_an_account_yet':'ليس لديك حساب؟ ',
   'every_sunday':'',
   'call_us': 'هاتف',
   'email_us': 'البريد الإلكتروني',
