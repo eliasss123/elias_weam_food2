@@ -336,10 +336,26 @@ class _HomeState extends State<Home> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 var value = homeController.popularList[index];
-
-                               return  Obx(() {
-if(languageController.currentIndex.value == 0 || languageController.currentIndex.value == 1){
- return SimpleToggleButtons(
+                                return Obx(() {
+                                  if (languageController.currentIndex.value ==
+                                          0 ||
+                                      languageController.currentIndex.value ==
+                                          2) {
+                                    return SimpleToggleButtons(
+                                      isDark: isDark,
+                                      text:
+                                          homeController.popularList[index].tr,
+                                      isSelected:
+                                          homeController.popularIndex.value ==
+                                              index,
+                                      onTap: () =>
+                                          homeController.getPopularIndex(
+                                        index,
+                                        value,
+                                      ),
+                                    );
+                                  } else {
+                                    return SimpleToggleButtons(
                                       paddingTop: languageController
                                                       .currentIndex.value !=
                                                   0 ||
@@ -372,51 +388,8 @@ if(languageController.currentIndex.value == 0 || languageController.currentIndex
                                         value,
                                       ),
                                     );
-                                  },
-                                );
-}else{
-  return SimpleToggleButtons(
-                                      paddingTop: languageController
-                                                      .currentIndex.value !=
-                                                  0 ||
-                                              languageController
-                                                      .currentIndex.value !=
-                                                  2
-                                          ? index == 3
-                                              ? 13
-                                              : 17
-                                          : null,
-                                      paddingBottom: languageController
-                                                      .currentIndex.value !=
-                                                  0 ||
-                                              languageController
-                                                      .currentIndex.value !=
-                                                  2
-                                          ? index == 3
-                                              ? 18
-                                              : 14
-                                          : null,
-                                      isDark: isDark,
-                                      text:
-                                          homeController.popularList[index].tr,
-                                      isSelected:
-                                          homeController.popularIndex.value ==
-                                              index,
-                                      onTap: () =>
-                                          homeController.getPopularIndex(
-                                        index,
-                                        value,
-                                      ),
-                                    );
-                                  },
-                                ); 
-}
-
-
-
-
-                               });
-                                   
+                                  }
+                                });
                               },
                             ),
                           ),
