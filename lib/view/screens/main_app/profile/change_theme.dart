@@ -41,8 +41,8 @@ class ChangeTheme extends StatelessWidget {
                       Expanded(
                         child: MyText(
                           text: themeController.isDarkTheme.value
-                              ? 'Light Mode'
-                              : 'Dark Mode',
+                              ? 'Dark Mode'
+                              : 'Light Mode',
                           size: 16,
                           weight: FontWeight.w500,
                           color: isDark ? kPrimaryColor : kBlackColor,

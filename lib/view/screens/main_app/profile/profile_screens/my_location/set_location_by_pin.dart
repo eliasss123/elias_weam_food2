@@ -44,6 +44,7 @@ class SetLocationByPin extends StatelessWidget {
                             child: Image.asset(
                               Assets.imagesArrowBack,
                               height: 24,
+                              color: isDark ? kGreyColor : null,
                             ),
                           ),
                         ),
@@ -51,6 +52,7 @@ class SetLocationByPin extends StatelessWidget {
                           text: 'pin_location'.tr,
                           size: 21,
                           weight: FontWeight.w700,
+                          color: isDark ? kGreyColor : null,
                         ),
                         Container(
                           width: 20,

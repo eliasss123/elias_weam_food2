@@ -188,7 +188,7 @@ final Map<String, String> hebrew = {
   'payment_methods': 'אמצעי תשלום',
   'deliver_with_“vai”': 'Deliver with "vai"',
   'help_center': 'מרכז תמיכה',
-  'change_theme': 'לשנות נושא',
+  'change_theme': 'לשנות רקע',
   'logout': 'התנתק',
   'profile': 'פרופיל',
   'cart': 'הסל שלי',
