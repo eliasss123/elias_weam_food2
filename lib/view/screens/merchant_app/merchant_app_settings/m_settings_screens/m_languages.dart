@@ -1,6 +1,7 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/shared_preferences/user_simple_preferences.dart';
+import 'package:elias_weam_food2/view/screens/merchant_app/merchant_bottom_nav/merchant_bottom_nav.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -78,6 +79,7 @@ class _MerchantLanguagesState extends State<MerchantLanguages> {
                           languagesList[index],
                           index,
                         );
+                        Get.offAll(() => MerchantBottomNav());
                       },
                       borderRadius: BorderRadius.circular(10),
                       child: Padding(

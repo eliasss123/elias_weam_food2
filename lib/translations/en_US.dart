@@ -444,4 +444,5 @@ final Map<String, String> english = {
   //Driver App
   'sign_up':'Sign Up',
   'sign_up1':'Sign Up',
+  'asian':'Asian',
 };

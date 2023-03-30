@@ -33,6 +33,7 @@ class _HomeState extends State<Home> {
   ];
   final List<String> popularList = [
     'all',
+    'asian',
     'italian',
     'vegetarian',
     'healthy_food',

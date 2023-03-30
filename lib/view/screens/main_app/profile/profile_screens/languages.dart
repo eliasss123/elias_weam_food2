@@ -1,6 +1,7 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/shared_preferences/user_simple_preferences.dart';
+import 'package:elias_weam_food2/view/screens/main_app/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
@@ -81,6 +82,7 @@ class _LanguagesState extends State<Languages> {
                             languagesList[index],
                             index,
                           );
+                          Get.offAll(() => BottomNavBar());
                         },
                         borderRadius: BorderRadius.circular(10),
                         child: Padding(

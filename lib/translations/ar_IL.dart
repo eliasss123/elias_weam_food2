@@ -418,4 +418,5 @@ final Map<String, String> arabic = {
   //Driver App
   'sign_up':'تسجيل',
   'sign_up1':'التسجيل',
+  'asian':'اسيوي',
 };
