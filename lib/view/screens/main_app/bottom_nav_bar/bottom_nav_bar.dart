@@ -108,9 +108,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
                         child: Transform(
                           transform: Matrix4.identity()
                             ..scale(isEnglish ? 1.0 : -1.0, 1.0, 1.0),
-                          child: ImageIcon(
-                            AssetImage(data['icon']),
-                            size: 19.0,
+                          child: Center(
+                            child: ImageIcon(
+                              AssetImage(data['icon']),
+                              size: 19.0,
+                            ),
                           ),
                         ),
                       ),
