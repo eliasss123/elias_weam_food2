@@ -1,0 +1,2 @@
+
+const IOS_BUTTON_PADDING = 30.0;

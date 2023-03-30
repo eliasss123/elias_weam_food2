@@ -1,5 +1,6 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
+import 'package:elias_weam_food2/constant/sizes_constant.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
 import 'package:elias_weam_food2/view/widget/custom_check_box_tile.dart';
@@ -210,7 +211,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 20,
-                  vertical: platform == TargetPlatform.iOS ? 23 : 20,
+                  vertical: platform == TargetPlatform.iOS ? IOS_BUTTON_PADDING : 20,
                 ),
                 child: MyButton(
                   height: 54,

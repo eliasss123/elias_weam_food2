@@ -1,5 +1,6 @@
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
+import 'package:elias_weam_food2/constant/sizes_constant.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
@@ -323,10 +324,10 @@ class _FilterPageState extends State<FilterPage> {
             ),
             Padding(
               padding: EdgeInsets.all(
-                platform == TargetPlatform.iOS ? 23 : 20.0,
+                platform == TargetPlatform.iOS ? IOS_BUTTON_PADDING : 20.0,
               ),
-              child: MyButton(
-                height: 52,
+             child: MyButton(
+                 height: 52,
                 buttonText: 'apply'.tr,
                 onTap: () {},
               ),
