@@ -8,6 +8,7 @@ import 'package:elias_weam_food2/view/screens/main_app/profile/profile.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'dart:math' as math;
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -104,23 +105,28 @@ class _BottomNavBarState extends State<BottomNavBar> {
                           bottom: 6,
                           top: isIos ? 4.5 : 0,
                           right: index == 2 ? 6 : 0,
+                          left: index == 2
+                              ? !isEnglish
+                                  ? 6
+                                  : 0
+                              : 0,
                         ),
                         child: Transform(
-                          transform: Matrix4.identity()
-                            ..scale(isEnglish ? 1.0 : -1.0, 1.0, 1.0),
-                          child: Center(
-                            child: ImageIcon(
-                              AssetImage(data['icon']),
-                              size: 19.0,
-                            ),
+                          alignment: Alignment.center,
+                          transform: isEnglish
+                              ? Matrix4.identity()
+                              : Matrix4.rotationY(math.pi),
+                          child: ImageIcon(
+                            AssetImage(data['icon']),
+                            size: 19.0,
                           ),
                         ),
                       ),
                       index == 2
                           ? Positioned(
                               top: isIos ? -1.5 : -5,
-                              right: isEnglish ? -2 : 0,
-                              left: isEnglish ? 0 : -2,
+                              right: isEnglish ? -2 : null,
+                              left: isEnglish ? null : -2,
                               child: Container(
                                 height: 15,
                                 width: 15,

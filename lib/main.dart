@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.light,
-      initialRoute: AppLinks.bottomNavBar,
+      initialRoute: AppLinks.splashScreen,
       getPages: AppRoutes.pages,
       defaultTransition: Transition.fade,
     );
