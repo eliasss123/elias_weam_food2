@@ -119,8 +119,9 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                         itemBuilder: (context, index) {
                           var value = homeController.homeDetailMenu[index];
                           return Obx(() {
-                  
-                              return SimpleToggleButton(
+                            if (languageController.currentIndex.value == 0 ||
+                                languageController.currentIndex.value == 2) {
+                              return HomeDetailToggleButton(
                                 isDark: isDark,
                                 paddingHorizontal: 20.0,
                                 text: _cats[index].tr,
@@ -132,7 +133,24 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                                   value,
                                 ),
                               );
-                          
+                            } else {
+                              return HomeDetailToggleButton(
+                                paddingTop:
+                                    index == 2 || index == 3 ? 16 : null,
+                                paddingBottom:
+                                    index == 2 || index == 3 ? 12 : null,
+                                isDark: isDark,
+                                paddingHorizontal: 20.0,
+                                text: _cats[index].tr,
+                                isSelected:
+                                    homeController.homeDetailMenuIndex == index,
+                                onTap: () =>
+                                    homeController.getHomeDetailMenuIndex(
+                                  index,
+                                  value,
+                                ),
+                              );
+                            }
                           });
                         },
                       ),
@@ -265,8 +283,8 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
   }
 }
 
-class CustomToggleButton extends StatelessWidget {
-  CustomToggleButton({
+class HomeDetailToggleButton extends StatelessWidget {
+  HomeDetailToggleButton({
     Key? key,
     required this.text,
     required this.isSelected,
