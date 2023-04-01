@@ -439,4 +439,5 @@ final Map<String, String> hebrew = {
   'browse_nav': 'דפדפן',
   'currency': 'מַטְבֵּעַ',
   'change_currency': 'שנה מטבע',
+  'kilo_meter': 'ק״מ',
 };

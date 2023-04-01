@@ -15,7 +15,7 @@ class EditPaymentMethodDetails extends StatelessWidget {
       return SimpleBottomSheet(
         height: Get.height * 0.85,
         content: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -79,7 +79,7 @@ class EditPaymentMethodDetails extends StatelessWidget {
                 height: 50,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 7),
+                padding: EdgeInsets.symmetric(horizontal: 7),
                 child: MyButton(
                   buttonText: 'save_make_payment'.tr,
                   onTap: () {},

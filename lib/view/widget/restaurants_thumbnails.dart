@@ -248,7 +248,7 @@ class RestaurantsThumbnail extends StatelessWidget {
                                                   1
                                               ? 4
                                               : 0
-                                          : null,
+                                          : 0,
                                     ),
                                   ),
                                 ),

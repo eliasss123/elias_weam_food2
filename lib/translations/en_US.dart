@@ -451,4 +451,5 @@ final Map<String, String> english = {
   'browse_nav': 'Browse',
   'currency': 'Currency',
   'change_currency': 'Change Currency',
+  'kilo_meter': 'km',
 };

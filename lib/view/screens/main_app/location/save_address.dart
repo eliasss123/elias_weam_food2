@@ -94,7 +94,7 @@ class SaveAddress extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: 30,
             ),
             child: MyButton(

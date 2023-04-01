@@ -43,7 +43,7 @@ class _SetLocationForFirstTimeState extends State<SetLocationForFirstTime> {
           return SimpleBottomSheet(
             height: Get.height * 0.55,
             content: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -166,7 +166,7 @@ class _SetLocationForFirstTimeState extends State<SetLocationForFirstTime> {
                     padding: EdgeInsets.only(
                       left: 30,
                       right: 30,
-                      bottom: platform == TargetPlatform.iOS ? 3 : 0,
+                      bottom: platform == TargetPlatform.iOS ? 10 : 0,
                     ),
                     child: MyButton(
                       buttonText: 'continue'.tr,
@@ -214,7 +214,7 @@ class _SetLocationForFirstTimeState extends State<SetLocationForFirstTime> {
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(
+              padding: EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 10,
               ),

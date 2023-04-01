@@ -353,7 +353,7 @@ class _TrackOrderState extends State<TrackOrder> {
                           left: 15,
                           right: 15,
                           top: 20,
-                          bottom: platform == TargetPlatform.iOS ? 3 : 0,
+                          bottom: platform == TargetPlatform.iOS ? 10 : 0,
                         ),
                         child: MyButton(
                           buttonText: 'live_tracking'.tr,

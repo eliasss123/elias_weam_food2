@@ -360,7 +360,7 @@ class ConfirmOrder extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 40,
-                vertical: platform == TargetPlatform.iOS ? IOS_BUTTON_PADDING : 15,
+                vertical: platform == TargetPlatform.iOS ? IOS_DEFAULT_MARGIN : 20,
               ),
               child: MyButton(
                 buttonText: 'checkout'.tr,

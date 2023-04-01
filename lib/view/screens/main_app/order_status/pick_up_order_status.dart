@@ -358,7 +358,7 @@ class PickupOrderStatus extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 30,
-                vertical: platform == TargetPlatform.iOS ? 23 : 20,
+                vertical: platform == TargetPlatform.iOS ? 30 : 20,
               ),
               child: MyButton(
                 buttonText: 'go_home'.tr,

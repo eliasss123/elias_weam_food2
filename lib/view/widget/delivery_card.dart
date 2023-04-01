@@ -72,7 +72,7 @@ class DeliveryCard extends StatelessWidget {
                   ),
                   Container(
                     height: 24,
-                    width: 59,
+                    width: languageController.currentIndex.value == 1 ? 70  : 59,
                     padding: EdgeInsets.symmetric(
                       horizontal: 10,
                       vertical: 4,
@@ -83,7 +83,7 @@ class DeliveryCard extends StatelessWidget {
                     ),
                     child: Center(
                       child: MyText(
-                        text: '$distance ${'km'.tr}',
+                        text: '$distance ${'kilo_meter'.tr}',
                         size: 12,
                         weight: FontWeight.w700,
                         color: kSecondaryColor,

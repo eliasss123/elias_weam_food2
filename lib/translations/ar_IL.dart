@@ -423,4 +423,5 @@ final Map<String, String> arabic = {
   'browse_nav':'متصفح',
   'currency': 'عملة',
   'change_currency': 'تغيير العملة',
+  'kilo_meter': 'كم',
 };

@@ -211,7 +211,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 20,
-                  vertical: platform == TargetPlatform.iOS ? IOS_BUTTON_PADDING : 20,
+                  vertical: platform == TargetPlatform.iOS ? IOS_DEFAULT_MARGIN : 20,
                 ),
                 child: MyButton(
                   height: 54,

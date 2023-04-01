@@ -24,8 +24,8 @@ class AddressDetails extends StatelessWidget {
     return Container(
       height: 400,
       padding: EdgeInsets.symmetric(
-        horizontal: 20,
         vertical: 30,
+        horizontal: 20,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -92,7 +92,7 @@ class AddressDetails extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 30,
-              vertical: Platform.isIOS ? IOS_BUTTON_PADDING : 0,
+              vertical: Platform.isIOS ? IOS_DEFAULT_MARGIN : 0,
             ),
             child: MyButton(
               buttonText: 'continue'.tr,

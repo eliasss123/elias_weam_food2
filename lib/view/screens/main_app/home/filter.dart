@@ -324,7 +324,7 @@ class _FilterPageState extends State<FilterPage> {
             ),
             Padding(
               padding: EdgeInsets.all(
-                platform == TargetPlatform.iOS ? IOS_BUTTON_PADDING : 20.0,
+                platform == TargetPlatform.iOS ? IOS_DEFAULT_MARGIN : 20.0,
               ),
              child: MyButton(
                  height: 52,
