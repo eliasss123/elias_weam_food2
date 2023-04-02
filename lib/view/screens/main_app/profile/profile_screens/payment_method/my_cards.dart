@@ -55,7 +55,7 @@ class MyCards extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
+                padding: EdgeInsets.symmetric(
                   horizontal: 25,
                 ),
                 child: MyButton(
