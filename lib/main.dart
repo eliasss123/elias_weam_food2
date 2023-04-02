@@ -12,6 +12,8 @@ import 'package:elias_weam_food2/shared_preferences/user_simple_preferences.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'view/screens/launch/main_app/choose_language.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

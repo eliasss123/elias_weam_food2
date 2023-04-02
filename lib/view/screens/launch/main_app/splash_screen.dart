@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 import 'package:elias_weam_food2/config/theme/dark_theme.dart';
 import 'package:elias_weam_food2/config/theme/light_theme.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/controller/language_controller/language_controller.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/shared_preferences/user_simple_preferences.dart';
-import 'package:elias_weam_food2/view/screens/launch/main_app/on_boarding.dart';
+import 'package:elias_weam_food2/view/screens/auth/sign_up/sign_up.dart';
+import 'package:elias_weam_food2/view/screens/launch/main_app/choose_language.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -17,36 +19,19 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  bool isFirstLaunch = true;
+
   @override
   void initState() {
     super.initState();
-    splashScreenHandler();
+    getIsFirstLaunch();
     getTheme();
     getLanguage();
+    splashScreenHandler();
   }
 
-  void splashScreenHandler() {
-    Timer(
-      Duration(milliseconds: 2520),
-      () => Get.offAll(
-        () => OnBoarding(),
-      ),
-    );
-  }
-
-  void getLanguage() async {
-    languageController.currentIndex.value =
-        await UserSimplePreferences.getLanguageIndex() ?? 0;
-    languageController.currentIndex.value != 0
-        ? languageController.isEnglish.value = false
-        : languageController.isEnglish.value = true;
-    if (languageController.currentIndex.value == 0) {
-      Localization().selectedLocale('English');
-    } else if (languageController.currentIndex.value == 1) {
-      Localization().selectedLocale('Hebrew');
-    } else if (languageController.currentIndex.value == 2) {
-      Localization().selectedLocale('Arabic');
-    }
+  void getIsFirstLaunch() async {
+    isFirstLaunch = await UserSimplePreferences.getIsFirstLaunch() ?? true;
   }
 
   void getTheme() async {
@@ -63,6 +48,38 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
+  void getLanguage() async {
+    languageController.currentIndex.value =
+        await UserSimplePreferences.getLanguageIndex() ?? -1;
+    languageController.currentIndex.value != 0
+        ? languageController.isEnglish.value = false
+        : languageController.isEnglish.value = true;
+    if (languageController.currentIndex.value == 0) {
+      Localization().selectedLocale('English');
+    } else if (languageController.currentIndex.value == 1) {
+      Localization().selectedLocale('Hebrew');
+    } else if (languageController.currentIndex.value == 2) {
+      Localization().selectedLocale('Arabic');
+    }
+  }
+
+  void splashScreenHandler() {
+    Timer(
+      Duration(milliseconds: 2520),
+      () {
+        isFirstLaunch
+            ? Get.offAll(
+                () => ChooseLanguage(),
+                transition: Transition.fadeIn,
+              )
+            : Get.offAll(
+                () => Signup(),
+                transition: Transition.fadeIn,
+              );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +89,7 @@ class _SplashScreenState extends State<SplashScreen> {
             themeController.isDarkTheme.value
                 ? Assets.imagesDarkModeAnimatedLogo
                 : Assets.imagesLightModeAnimatedLogo,
+            repeat: false,
           );
         }),
       ),

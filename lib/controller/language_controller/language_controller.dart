@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class LanguageController extends GetxController {
   static LanguageController instance = Get.find<LanguageController>();
 
-  RxInt currentIndex = 0.obs;
+  RxInt currentIndex = RxInt(-1);
   RxBool isEnglish = true.obs;
 
   void onLanguageChanged(
