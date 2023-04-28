@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:elias_weam_food2/constant/color.dart';
@@ -20,26 +21,59 @@ import 'package:elias_weam_food2/view/widget/search_bar.dart';
 import 'package:elias_weam_food2/view/widget/simple_toggle_buttons.dart';
 import 'package:elias_weam_food2/view/widget/toggle_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide Response;
+import 'package:http/http.dart';
+class Homecat{
+  final int id;
+  final String name;
+  Homecat({
+    required this.id,
+    required this.name,
 
+  });
+  factory Homecat.fromJson(Map<String, dynamic> json) {
+
+    return Homecat(
+      id: json['id'],
+      name: json['name'],
+    );
+  }
+}
 class Home extends StatefulWidget {
+  Home({Key? key, required this.homecats,required this.resturants,required this.resturantcats});
+  final List<Homecat> homecats;
+  final List resturants;
+  final List<Homecat> resturantcats;
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  final List<String> _cats = [
-    'all_places',
-    'grocery_shop',
-    'fast_food',
-  ];
-  final List<String> popularList = [
-    'all',
-    'italian',
-    'vegetarian',
-    'healthy_food',
-    'asian',
-  ];
+  void getresturant(String id) async {
+    try{
+      String j="https://10.0.2.2:7264/api/resturants/"+id;
+      Response respone= await get(
+        Uri.parse(j),
+      );
+
+      if(respone.statusCode==200){
+
+        RestaurantDetails  resturant=RestaurantDetails.fromJson( jsonDecode(respone.body));
+        int i=0;
+
+        Get.to(()=>RestaurantDetails(id: resturant.id, name:  resturant.name, address: resturant.address, categories: resturant.categories));
+
+
+      }else{
+        print("no");
+      }
+    }catch(e){
+      print(e.toString());
+    }
+
+
+
+  }
 
   // bool isForFirstTime = true;
   //
@@ -61,6 +95,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Homecat> _cats = this.widget.homecats;
+    final List<Homecat> popularList =this.widget.homecats;
     var platform = Theme.of(context).platform;
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
@@ -99,7 +135,7 @@ class _HomeState extends State<Home> {
                               onTap: () => Get.to(
                                 () => PinLocation(),
                               ),
-                              text: 'deliver_now'.tr,
+                              text: 'ELIAS_APP'.tr,
                               size: 21.5,
                               letterSpacing: 0.4,
                               weight: FontWeight.w800,
@@ -252,12 +288,12 @@ class _HomeState extends State<Home> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 var data =
-                                    homeController.instantFilterList[index];
+                                    _cats[index];
                                 return Obx(
                                   () {
                                     return ToggleButtonsWithImage(
-                                      img: data['img'],
-                                      title: _cats[index].tr,
+                                      img: Assets.imagesAllPlaces,
+                                      title: data.name,
                                       isSelected: homeController
                                               .currentInstantFilterIndex
                                               .value ==
@@ -265,7 +301,7 @@ class _HomeState extends State<Home> {
                                       onTap: () => homeController
                                           .getSelectedInstantFilerIndex(
                                         index,
-                                        data['title'],
+                                        data.name,//watch out here safwan
                                       ),
                                     );
                                   },
@@ -285,17 +321,17 @@ class _HomeState extends State<Home> {
                                 horizontal: 13,
                               ),
                               physics: BouncingScrollPhysics(),
-                              itemCount: 10,
+                              itemCount: this.widget.resturants.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
-                                // var data = homeController.instantFilterList[index];
+                                 var data = this.widget.resturants[index];
                                 return Align(
                                   child: RestaurantsThumbnail(
                                     isDark: isDark,
                                     imgUrl: index == 0
                                         ? Assets.imagesPicture2
                                         : Assets.imagesAwacado,
-                                    name: 'marina_coastal_food'.tr,
+                                    name: data.name,
                                     deliveryTime: '30',
                                     totalRating: 4.8,
                                     totalReviews: '122',
@@ -305,12 +341,11 @@ class _HomeState extends State<Home> {
                                     isFreeDelivery: index == 0 ? true : false,
                                     isLiked: index == 0 ? true : false,
                                     onLikeTap: () {},
-                                    onTap: () => Get.to(
-                                      () => RestaurantDetails(
-                                        isClosed: index == 2 ? true : false,
-                                        isOutOfRange: index == 2 ? true : false,
+                                    onTap: () =>
+                                      getresturant(
+                                        data.id.toString()
                                       ),
-                                    ),
+
                                   ),
                                 );
                               },
@@ -334,10 +369,10 @@ class _HomeState extends State<Home> {
                                 horizontal: 13,
                               ),
                               physics: BouncingScrollPhysics(),
-                              itemCount: homeController.popularList.length,
+                              itemCount: this.widget.resturantcats.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
-                                var value = homeController.popularList[index];
+                                var value = this.widget.resturantcats[index];
                                 return Obx(() {
                                   if (languageController.currentIndex.value ==
                                           0 ||
@@ -346,14 +381,14 @@ class _HomeState extends State<Home> {
                                     return HomeToggleButton(
                                       isDark: isDark,
                                       text:
-                                          homeController.popularList[index].tr,
+                                          value.name,
                                       isSelected:
                                           homeController.popularIndex.value ==
                                               index,
                                       onTap: () =>
                                           homeController.getPopularIndex(
                                         index,
-                                        value,
+                                        value.name,
                                       ),
                                     );
                                   } else {
@@ -384,14 +419,14 @@ class _HomeState extends State<Home> {
                                           : null,
                                       isDark: isDark,
                                       text:
-                                          homeController.popularList[index].tr,
+                                          value.name,
                                       isSelected:
                                           homeController.popularIndex.value ==
                                               index,
                                       onTap: () =>
                                           homeController.getPopularIndex(
                                         index,
-                                        value,
+                                        value.name,
                                       ),
                                     );
                                   }
@@ -406,9 +441,9 @@ class _HomeState extends State<Home> {
                               vertical: 10,
                             ),
                             physics: BouncingScrollPhysics(),
-                            itemCount: 10,
+                            itemCount: this.widget.resturantcats.length,
                             itemBuilder: (context, index) {
-                              // var data = homeController.instantFilterList[index];
+                               var data = this.widget.resturantcats[index];
                               return Padding(
                                 padding: const EdgeInsets.only(bottom: 25),
                                 child: RestaurantsThumbnail(
@@ -428,12 +463,9 @@ class _HomeState extends State<Home> {
                                   isFreeDelivery: index == 0 ? true : false,
                                   isLiked: index == 0 ? true : false,
                                   onLikeTap: () {},
-                                  onTap: () => Get.to(
-                                    () => RestaurantDetails(
-                                      isClosed: index == 2 ? true : false,
-                                      isOutOfRange: index == 2 ? true : false,
+                                  onTap:
+                                    () => getresturant(data.id.toString()
                                     ),
-                                  ),
                                 ),
                               );
                             },

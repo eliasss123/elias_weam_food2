@@ -14,7 +14,7 @@ class ResetWithEmail extends StatefulWidget {
 
 class _ResetWithEmailState extends State<ResetWithEmail> {
   bool isActive = false;
-
+  TextEditingController emailCon = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -47,6 +47,7 @@ class _ResetWithEmailState extends State<ResetWithEmail> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   FilledTextField(
+                    controller: emailCon,
                     labelText: 'email'.tr,
                     hintText: 'louisiana12232@email.com',
                     onChanged: (value) {
@@ -59,7 +60,7 @@ class _ResetWithEmailState extends State<ResetWithEmail> {
                   MyButton(
                     isActive: isActive,
                     buttonText: 'send'.tr,
-                    onTap: () => Get.to(() => VerifyCodeForEmail()),
+                    onTap: () => Get.to(() => VerifyCodeForEmail(email: this.emailCon.text,)),
                   ),
                 ],
               ),

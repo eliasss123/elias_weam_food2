@@ -2,6 +2,7 @@ import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/constant/sizes_constant.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
+import 'package:elias_weam_food2/view/screens/main_app/home/restaurant_details.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
 import 'package:elias_weam_food2/view/widget/custom_check_box_tile.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
@@ -15,10 +16,12 @@ import 'package:get/get.dart';
 class MenuItemBottomSheet extends StatefulWidget {
   MenuItemBottomSheet({
     Key? key,
+    required this.item,
     required this.onAddToCartTap,
-    this.buttonText,
-  }) : super(key: key);
+    this.buttonText, required Item,
 
+  }) : super(key: key);
+  final Item item;
   final VoidCallback? onAddToCartTap;
   String? buttonText;
 
@@ -66,7 +69,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           MyText(
-                            text: 'german_hamburger'.tr,
+                            text: this.widget.item.itemName,
                             size: 20,
                             color: isDark ? kPrimaryColor : kBlackColor2,
                             weight: FontWeight.w700,
@@ -124,7 +127,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                 SizedBox(
                   height: 30,
                 ),
-                customHeading('sauce'.tr),
+                customHeading(this.widget.item.itemOptions[0].name),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
@@ -138,7 +141,7 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       CustomCheckBoxTile(
-                        title: 'teriyaki'.tr,
+                        title: this.widget.item.itemOptions[0].options[0].name,
                         trailingText: '+₪0',
                         isChecked: true,
                         onTap: () {},

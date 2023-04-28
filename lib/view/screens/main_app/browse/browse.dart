@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
@@ -10,7 +12,8 @@ import 'package:elias_weam_food2/view/widget/restaurants_thumbnails.dart';
 import 'package:elias_weam_food2/view/widget/search_bar.dart';
 import 'package:elias_weam_food2/view/widget/simple_toggle_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide Response;
+import 'package:http/http.dart';
 
 class Browse extends StatefulWidget {
   @override
@@ -18,6 +21,31 @@ class Browse extends StatefulWidget {
 }
 
 class _BrowseState extends State<Browse> {
+  void getresturant(String id) async {
+    try{
+      String j="https://10.0.2.2:7264/api/resturants/5";
+      Response respone= await get(
+        Uri.parse(j),
+      );
+
+      if(respone.statusCode==200){
+
+        RestaurantDetails  resturant=RestaurantDetails.fromJson( jsonDecode(respone.body));
+        int i=0;
+
+        Get.to(()=>RestaurantDetails(id: resturant.id, name:  resturant.name, address: resturant.address, categories: resturant.categories));
+
+
+      }else{
+        print("no");
+      }
+    }catch(e){
+      print(e.toString());
+    }
+
+
+
+  }
   final List<Map<String, dynamic>> categories = [
     {
       'img': Assets.imagesPizza,
@@ -325,10 +353,7 @@ class SearchResults extends StatelessWidget {
               isLiked: index == 0 ? true : false,
               onLikeTap: () {},
               onTap: () => Get.to(
-                () => RestaurantDetails(
-                  isClosed: index == 2 ? true : false,
-                  isOutOfRange: index == 2 ? true : false,
-                ),
+                () =>get,
               ),
             ),
           );

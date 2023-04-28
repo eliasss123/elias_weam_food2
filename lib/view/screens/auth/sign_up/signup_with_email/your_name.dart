@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class YourName extends StatefulWidget {
+  const YourName({Key? key, required this.email,}) : super(key: key);
+  final String email;
   @override
   State<YourName> createState() => _YourNameState();
 }

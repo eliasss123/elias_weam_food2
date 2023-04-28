@@ -5,6 +5,7 @@ import 'package:elias_weam_food2/utils/instances.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/delivery_options/delivery_options.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/confirm_order.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/recent_orders/recent_orders.dart';
+import 'package:elias_weam_food2/view/screens/main_app/home/restaurant_details.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
 import 'package:elias_weam_food2/view/widget/delivery_card.dart';
 import 'package:elias_weam_food2/view/widget/menu_item_bottom_sheet.dart';
@@ -118,7 +119,9 @@ class MyCart extends StatelessWidget {
                                     isScrollControlled: true,
                                     builder: (_) => MenuItemBottomSheet(
                                       onAddToCartTap: () {},
-                                      buttonText: 'save_changes'.tr,
+                                      buttonText: 'save_changes'.tr, Item: null, item: Item.fromJson(
+                                        {}),
+                                      
                                     ),
                                   );
                                 },

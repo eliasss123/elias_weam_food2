@@ -11,6 +11,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 
 class VerifyCodeForEmail extends StatefulWidget {
+  const VerifyCodeForEmail({Key? key, required this.email,}) : super(key: key);
+  final String email;
   @override
   State<VerifyCodeForEmail> createState() => _VerifyCodeForEmailState();
 }
@@ -72,7 +74,7 @@ class _VerifyCodeForEmailState extends State<VerifyCodeForEmail> {
                     style: TextStyle(
                       color: isDark ? kPrimaryColor : kBlackColor2,
                     ),
-                    text: 'rifqyauxxx@gmail.com',
+                    text: this.widget.email,
                   ),
                 ],
               ),

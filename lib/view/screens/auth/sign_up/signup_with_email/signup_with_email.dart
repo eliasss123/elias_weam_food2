@@ -5,9 +5,11 @@ import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/simple_app_bar.dart';
 import 'package:elias_weam_food2/view/widget/simple_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide Response;
+import 'package:http/http.dart';
 
 class SignupWithEmail extends StatefulWidget {
+
   @override
   State<SignupWithEmail> createState() => _SignupWithEmailState();
 }
@@ -15,7 +17,30 @@ class SignupWithEmail extends StatefulWidget {
 class _SignupWithEmailState extends State<SignupWithEmail> {
   bool isActive = false;
   TextEditingController emailCon = TextEditingController();
+  void login(String email,String password) async {
+    try{
+      String j="https://10.0.2.2:7264/api/Clients"+"/"+email;
+      Response respone= await get(
+          Uri.parse(j),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json'
+          }
 
+
+      );
+      if(respone.statusCode==200){
+
+        Get.to(
+                () => YourName(email: email));
+      }else{
+        print("no");
+      }
+    }catch(e){
+      print(e.toString());
+    }
+
+  }
   void onChanged() {
     if (emailCon.text.isNotEmpty) {
       setState(() {
@@ -63,7 +88,7 @@ class _SignupWithEmailState extends State<SignupWithEmail> {
                     isActive: isActive,
                     buttonText: 'next'.tr,
                     onTap: () => Get.to(
-                      () => YourName(),
+                      () => YourName(email: emailCon.text,),
                     ),
                   ),
                 ],

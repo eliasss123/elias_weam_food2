@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:elias_weam_food2/view/screens/auth/login.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/forgot_pass/create_new_pass.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/forgot_pass/forgot_pass.dart';
@@ -29,14 +31,18 @@ import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/recent_
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/tips_and_notes/custom_amount.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/tips_and_notes/tips_and_notes.dart';
 import 'package:elias_weam_food2/view/screens/main_app/home/home.dart';
+import 'package:elias_weam_food2/view/screens/main_app/home/restaurant_details.dart';
 import 'package:elias_weam_food2/view/screens/main_app/notifications/notifications.dart';
 import 'package:elias_weam_food2/view/screens/main_app/notifications/promotions.dart';
 import 'package:elias_weam_food2/view/screens/main_app/order_status/delivery_order_status.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile.dart';
 import 'package:elias_weam_food2/view/screens/support/support.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide Response;
+import 'package:http/http.dart';
 
 class AppRoutes {
+
+
   static final List<GetPage> pages = [
     GetPage(
       name: AppLinks.splashScreen,
@@ -57,15 +63,15 @@ class AppRoutes {
 
     GetPage(
       name: AppLinks.verifyOtp,
-      page: () => VerifyOtp(),
+      page: () => VerifyOtp( phonenum: '',),
     ),
     GetPage(
       name: AppLinks.name,
-      page: () => Name(),
+      page: () => Name(phonenum: '',),
     ),
     GetPage(
       name: AppLinks.yourName,
-      page: () => YourName(),
+      page: () => YourName(email: '',),
     ),
     GetPage(
       name: AppLinks.signupWithEmail,
@@ -93,7 +99,7 @@ class AppRoutes {
     ),
     GetPage(
       name: AppLinks.verifyCodeForEmail,
-      page: () => VerifyCodeForEmail(),
+      page: () => VerifyCodeForEmail(email: "",),
     ),
     GetPage(
       name: AppLinks.verifyCodeForPhone,
@@ -107,7 +113,7 @@ class AppRoutes {
     ),
     GetPage(
       name: AppLinks.home,
-      page: () => Home(),
+      page: ()=>Home(homecats: [], resturants: [], resturantcats: []),
     ),
     GetPage(
       name: AppLinks.browse,

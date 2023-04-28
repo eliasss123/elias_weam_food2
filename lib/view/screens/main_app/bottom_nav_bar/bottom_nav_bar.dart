@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
@@ -7,8 +9,11 @@ import 'package:elias_weam_food2/view/screens/main_app/home/home.dart';
 import 'package:elias_weam_food2/view/screens/main_app/profile/profile.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide Response;
+import 'package:http/http.dart';
 import 'dart:math' as math;
+
+import '../home/restaurant_details.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -16,6 +21,54 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+  void getresturant(String id) async {
+    try{
+      String j="https://10.0.2.2:7264/api/homecats";
+      Response respone= await get(
+        Uri.parse(j),
+      );
+
+      if(respone.statusCode==200){
+
+        Iterable l = json.decode(respone.body);
+        List<Homecat> homecats = List<Homecat>.from(l.map((model)=> Homecat.fromJson(model)));
+        String j="https://10.0.2.2:7264/api/homecats";
+        Response respone1= await get(
+          Uri.parse(j),
+        );
+        if (respone1.statusCode==200){
+          String j="https://10.0.2.2:7264/api/restcats";
+          Response respone1= await get(
+            Uri.parse(j),
+          );
+          Iterable l = json.decode(respone1.body);
+          List<Homecat> restcat = List<Homecat>.from(l.map((model)=> Homecat.fromJson(model)));
+          String j1="https://10.0.2.2:7264/api/resturants";
+          Response respone2= await get(
+            Uri.parse(j1),
+          );
+          if(respone2.statusCode==200){
+            Iterable l = json.decode(respone2.body);
+            List<Restaurant> resturants = List<Restaurant>.from(l.map((model)=> Homecat.fromJson(model)));
+            int i=0;
+
+            Get.to(()=>Home(homecats: homecats, resturants: resturants, resturantcats: restcat));
+
+          }
+        }
+
+
+
+      }else{
+        print("no");
+      }
+    }catch(e){
+      print(e.toString());
+    }
+
+
+
+  }
   int currentIndex = 0;
   final List<Map<String, dynamic>> items = [
     {
@@ -36,7 +89,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     },
   ];
   final List<Widget> screens = [
-    Home(),
+    Home(homecats: [],resturantcats: [],resturants: [],),
     Browse(),
     MyCart(),
     Profile(),

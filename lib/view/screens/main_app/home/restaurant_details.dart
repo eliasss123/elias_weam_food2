@@ -4,6 +4,7 @@ import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/utils/instances.dart';
+import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/my_cart.dart';
 import 'package:elias_weam_food2/view/widget/delivery_fee_and_time.dart';
 import 'package:elias_weam_food2/view/widget/home_detail_app_bar.dart';
 import 'package:elias_weam_food2/view/widget/home_detail_information.dart';
@@ -16,14 +17,172 @@ import 'package:elias_weam_food2/view/widget/simple_toggle_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RestaurantDetails extends StatefulWidget {
-  RestaurantDetails({
-    required this.isClosed,
-    required this.isOutOfRange,
+class Restaurant {
+  final int id;
+  final String name;
+  final String address;
+  final List<Category> categories;
+
+  Restaurant({
+    required this.id,
+    required this.name,
+    required this.address,
+    required this.categories,
   });
 
-  final bool isClosed, isOutOfRange;
+  factory Restaurant.fromJson(Map<String, dynamic> json) {
+    var categoriesList = json['categorie'] as List;
+    List<Category> categories =
+    categoriesList.map((category) => Category.fromJson(category)).toList();
 
+    return Restaurant(
+      id: json['id'],
+      name: json['name'],
+      address: json['adress'],
+      categories: categories,
+    );
+  }
+}
+class homecat{
+  final int id;
+  final String name;
+  homecat({
+    required this.id,
+    required this.name,
+
+  });
+}
+class Category {
+  final int id;
+  final String name;
+  final int restaurantId;
+  final List<Item> items;
+
+  Category({
+    required this.id,
+    required this.name,
+    required this.restaurantId,
+    required this.items,
+  });
+
+  factory Category.fromJson(Map<String, dynamic> json) {
+    var itemsList = json['items'] as List;
+    List<Item> items = itemsList.map((item) => Item.fromJson(item)).toList();
+
+    return Category(
+      id: json['id'],
+      name: json['name'],
+      restaurantId: json['resturantsid'],
+      items: items,
+    );
+  }
+}
+
+class Item {
+  final int id;
+  final int categoryId;
+  final String itemName;
+  final List<ItemOption> itemOptions;
+
+  Item({
+    required this.id,
+    required this.categoryId,
+    required this.itemName,
+    required this.itemOptions,
+  });
+
+  factory Item.fromJson(Map<String, dynamic> json) {
+    var itemOptionsList = json['itemoptions'] as List;
+    List<ItemOption> itemOptions =
+    itemOptionsList.map((itemOption) => ItemOption.fromJson(itemOption)).toList();
+
+    return Item(
+      id: json['id'],
+      categoryId: json['categorieid'],
+      itemName: json['item_name'],
+      itemOptions: itemOptions,
+    );
+  }
+}
+
+class ItemOption {
+  final int id;
+  final int menuItemId;
+  final String name;
+  final List<Option> options;
+
+  ItemOption({
+    required this.id,
+    required this.menuItemId,
+    required this.name,
+    required this.options,
+  });
+
+  factory ItemOption.fromJson(Map<String, dynamic> json) {
+    var optionsList = json['options'] as List;
+    List<Option> options = optionsList.map((option) => Option.fromJson(option)).toList();
+
+    return ItemOption(
+      id: json['id'],
+      menuItemId: json['menu_itemid'],
+      name: json['name'],
+      options: options,
+    );
+  }
+}
+
+class Option {
+  final int id;
+  final String name;
+  final int itemOptionsId;
+  final double price;
+  final bool isSelected;
+
+  Option({
+    required this.id,
+    required this.name,
+    required this.itemOptionsId,
+    required this.price,
+    required this.isSelected,
+  });
+
+  factory Option.fromJson(Map<String, dynamic> json) {
+    return Option(
+      id: json['id'],
+      name: json['name'],
+      itemOptionsId: json['itemoptionsid'],
+      price: json['price'].toDouble(),
+      isSelected: json['isSelected'],
+    );
+  }
+}
+class RestaurantDetails extends StatefulWidget {
+  final int id;
+  final String name;
+  final String address;
+  final List<Category> categories;
+  final bool isOutOfRange=false;
+  final bool isClosed=false;
+
+  RestaurantDetails({
+    required this.id,
+    required this.name,
+    required this.address,
+    required this.categories,
+  });
+
+  factory RestaurantDetails.fromJson(Map<String, dynamic> json) {
+    var categoriesList = json['categorie'] as List;
+    List<Category> categories =
+    categoriesList.map((category) => Category.fromJson(category)).toList();
+
+    return RestaurantDetails(
+      id: json['id'],
+      name: json['name'],
+      address: json['adress'],
+      categories: categories,
+    );
+  }
   @override
   State<RestaurantDetails> createState() => _RestaurantDetailsState();
 }
@@ -81,7 +240,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                       isEnglish: isEnglish,
                       isDark: isDark,
                       imgUrl: Assets.imagesPicture5,
-                      name: 'pansi_restaurant'.tr,
+                      name: this.widget.name,
                       tagLine: '${'sandwiches'.tr} · ${'salad'.tr}',
                       openingTime: '12',
                       closingTime: '11',
@@ -115,23 +274,23 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                           horizontal: 13,
                         ),
                         physics: BouncingScrollPhysics(),
-                        itemCount: homeController.homeDetailMenu.length,
+                        itemCount: this.widget.categories.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          var value = homeController.homeDetailMenu[index];
+                          var value = this.widget.categories[index];
                           return Obx(() {
                             if (languageController.currentIndex.value == 0 ||
                                 languageController.currentIndex.value == 2) {
                               return HomeDetailToggleButton(
                                 isDark: isDark,
                                 paddingHorizontal: 20.0,
-                                text: _cats[index].tr,
+                                text: value.name,
                                 isSelected:
                                     homeController.homeDetailMenuIndex == index,
                                 onTap: () =>
                                     homeController.getHomeDetailMenuIndex(
                                   index,
-                                  value,
+                                  value.name,
                                 ),
                               );
                             } else {
@@ -148,13 +307,13 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                                     : null,
                                 isDark: isDark,
                                 paddingHorizontal: 20.0,
-                                text: _cats[index].tr,
+                                text: value.name,
                                 isSelected:
                                     homeController.homeDetailMenuIndex == index,
                                 onTap: () =>
                                     homeController.getHomeDetailMenuIndex(
                                   index,
-                                  value,
+                                  value.name,
                                 ),
                               );
                             }
@@ -170,7 +329,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                           horizontal: 13,
                         ),
                         physics: BouncingScrollPhysics(),
-                        itemCount: 5,
+                        itemCount: this.widget.categories[homeController.homeDetailMenuIndex.value].items.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Align(
@@ -178,7 +337,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                               itemImgUrl: index == 0
                                   ? Assets.imagesBurger
                                   : Assets.imagesPepperBeef,
-                              itemName: 'german_hamburger'.tr,
+                              itemName: this.widget.categories[homeController.homeDetailMenuIndex.value].items[index].itemName,
                               price: '14.99',
                               onTap: () {
                                 showModalBottomSheet(
@@ -187,11 +346,12 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                                   elevation: 0,
                                   isScrollControlled: true,
                                   builder: (_) => MenuItemBottomSheet(
+                                    item: this.widget.categories[homeController.homeDetailMenuIndex.value].items[index],
                                     onAddToCartTap: () {
                                       setState(() {
                                         showViewCartButton = true;
                                       });
-                                    },
+                                    }, Item: {},
                                   ),
                                 );
                               },
@@ -277,7 +437,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                         child: MyButton(
                           height: 54,
                           buttonText: '(1) ${'view_cart'.tr}',
-                          onTap: () {},
+                          onTap: ()=>Get.to(MyCart()) ,
                         ),
                       ),
                     )
