@@ -14,7 +14,8 @@ import 'package:http/http.dart';
 import 'dart:math' as math;
 
 import '../home/restaurant_details.dart';
-
+import 'package:elias_weam_food2/api/requests.dart';
+import 'package:elias_weam_food2/api/api.dart';
 class BottomNavBar extends StatefulWidget {
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
@@ -31,7 +32,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       if(respone.statusCode==200){
 
         Iterable l = json.decode(respone.body);
-        List<Homecat> homecats = List<Homecat>.from(l.map((model)=> Homecat.fromJson(model)));
+        List<HomeCat> homecats = List<HomeCat>.from(l.map((model)=> HomeCat.fromJson(model)));
         String j="https://10.0.2.2:7264/api/homecats";
         Response respone1= await get(
           Uri.parse(j),
@@ -42,17 +43,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
             Uri.parse(j),
           );
           Iterable l = json.decode(respone1.body);
-          List<Homecat> restcat = List<Homecat>.from(l.map((model)=> Homecat.fromJson(model)));
+          List<HomeCat> restcat = List<HomeCat>.from(l.map((model)=> HomeCat.fromJson(model)));
           String j1="https://10.0.2.2:7264/api/resturants";
           Response respone2= await get(
             Uri.parse(j1),
           );
           if(respone2.statusCode==200){
             Iterable l = json.decode(respone2.body);
-            List<Restaurant> resturants = List<Restaurant>.from(l.map((model)=> Homecat.fromJson(model)));
+            List<Restaurant> resturants = List<Restaurant>.from(l.map((model)=> HomeCat.fromJson(model)));
             int i=0;
 
-            Get.to(()=>Home(homecats: homecats, resturants: resturants, resturantcats: restcat));
+            Get.to(()=>Home(homecats: homecats, resturants: resturants, resturantcats: restcat,));
 
           }
         }
@@ -89,7 +90,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     },
   ];
   final List<Widget> screens = [
-    Home(homecats: [],resturantcats: [],resturants: [],),
+    Home(homecats: [], resturants: [], resturantcats: [],),
     Browse(),
     MyCart(),
     Profile(),

@@ -1,3 +1,4 @@
+import 'package:elias_weam_food2/api/api.dart';
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
@@ -5,7 +6,6 @@ import 'package:elias_weam_food2/utils/instances.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/delivery_options/delivery_options.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/my_cart/confirm_order.dart';
 import 'package:elias_weam_food2/view/screens/main_app/cart_and_checkout/recent_orders/recent_orders.dart';
-import 'package:elias_weam_food2/view/screens/main_app/home/restaurant_details.dart';
 import 'package:elias_weam_food2/view/widget/common_image_view.dart';
 import 'package:elias_weam_food2/view/widget/delivery_card.dart';
 import 'package:elias_weam_food2/view/widget/menu_item_bottom_sheet.dart';
@@ -14,10 +14,15 @@ import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/quantity_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../../api/ClientSession.dart';
 
 class MyCart extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    ClientSession c = Provider.of<ClientSession>(context);
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
       bool isEnglish = languageController.isEnglish.value;
@@ -35,7 +40,7 @@ class MyCart extends StatelessWidget {
             Center(
               child: GestureDetector(
                 onTap: () => Get.to(
-                  () => RecentOrders(),
+                      () => RecentOrders(),
                 ),
                 child: Container(
                   margin: EdgeInsets.fromLTRB(isEnglish ? 0 : 20, 0, 20, 0),
@@ -70,158 +75,157 @@ class MyCart extends StatelessWidget {
           ],
         ),
         body: Obx(
-          () {
+              () {
             return cartCheckOutController.isEmptyCart.value
                 ? EmptyCartState()
                 : Stack(
-                    children: [
-                      ListView(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 10,
+              children: [
+                ListView(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  physics: BouncingScrollPhysics(),
+                  children: [
+                    Obx(() {
+                      return DeliveryCard(
+                        isPickUp: cartCheckOutController.isPickUp.value,
+                        address:
+                        '27H8+RC Mi’ilya , bornad street, Israel',
+                        distance: '2.5',
+                        onTap: () => Get.to(
+                              () => DeliveryOptions(),
                         ),
-                        physics: BouncingScrollPhysics(),
-                        children: [
-                          Obx(() {
-                            return DeliveryCard(
-                              isPickUp: cartCheckOutController.isPickUp.value,
-                              address:
-                                  '27H8+RC Mi’ilya , bornad street, Israel',
-                              distance: '2.5',
-                              onTap: () => Get.to(
-                                () => DeliveryOptions(),
+                      );
+                    }),
+                    MyText(
+                      paddingTop: 30,
+                      paddingBottom: 20,
+                      text: '${'your_order'.tr} (3)',
+                      size: 17,
+                      weight: FontWeight.w700,
+                      color: isDark ? kPrimaryColor : kBlackColor2,
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.only(
+                        bottom: 80,
+                      ),
+                      physics: BouncingScrollPhysics(),
+                      itemCount: c.menuItems?.length,
+                      itemBuilder: (context, index) {
+
+                        return GestureDetector(
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              backgroundColor: Colors.transparent,
+                              elevation: 0,
+                              isScrollControlled: true,
+                              builder: (_) => MenuItemBottomSheet(
+                                onAddToCartTap: () {},
+                                buttonText: 'save_changes'.tr,item:c.menuItems![index],
                               ),
                             );
-                          }),
-                          MyText(
-                            paddingTop: 30,
-                            paddingBottom: 20,
-                            text: '${'your_order'.tr} (3)',
-                            size: 17,
-                            weight: FontWeight.w700,
-                            color: isDark ? kPrimaryColor : kBlackColor2,
-                          ),
-                          ListView.builder(
-                            shrinkWrap: true,
-                            padding: EdgeInsets.only(
-                              bottom: 80,
+                          },
+                          child: Container(
+                            padding: EdgeInsets.only(bottom: 20),
+                            margin: EdgeInsets.only(
+                              bottom: 20,
                             ),
-                            physics: BouncingScrollPhysics(),
-                            itemCount: 6,
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  showModalBottomSheet(
-                                    context: context,
-                                    backgroundColor: Colors.transparent,
-                                    elevation: 0,
-                                    isScrollControlled: true,
-                                    builder: (_) => MenuItemBottomSheet(
-                                      onAddToCartTap: () {},
-                                      buttonText: 'save_changes'.tr, Item: null, item: Item.fromJson(
-                                        {}),
-                                      
-                                    ),
-                                  );
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.only(bottom: 20),
-                                  margin: EdgeInsets.only(
-                                    bottom: 20,
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                  width: 1.0,
+                                  color: isDark
+                                      ? kGreyColor10
+                                      : kBorderColor3,
+                                ),
+                              ),
+                            ),
+                            child: IntrinsicHeight(
+                              child: Row(
+                                crossAxisAlignment:
+                                CrossAxisAlignment.start,
+                                children: [
+                                  CommonImageView(
+                                    width: 85,
+                                    height: 85,
+                                    radius: 14.0,
+                                    imagePath: Assets.imagesBurger,
                                   ),
-                                  decoration: BoxDecoration(
-                                    border: Border(
-                                      bottom: BorderSide(
-                                        width: 1.0,
-                                        color: isDark
-                                            ? kGreyColor10
-                                            : kBorderColor3,
-                                      ),
-                                    ),
+                                  SizedBox(
+                                    width: 15,
                                   ),
-                                  child: IntrinsicHeight(
-                                    child: Row(
+                                  Expanded(
+                                    child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.stretch,
                                       children: [
-                                        CommonImageView(
-                                          width: 85,
-                                          height: 85,
-                                          radius: 14.0,
-                                          imagePath: Assets.imagesBurger,
+                                        MyText(
+                                          text: c.menuItems![index]?.itemName,
+                                          size: 16,
+                                          weight: FontWeight.w500,
+                                          paddingBottom: 20,
+                                          color: isDark
+                                              ? kPrimaryColor
+                                              : kBlackColor2,
                                         ),
-                                        SizedBox(
-                                          width: 15,
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.stretch,
-                                            children: [
-                                              MyText(
-                                                text: 'German hamburger',
-                                                size: 16,
-                                                weight: FontWeight.w500,
-                                                paddingBottom: 20,
-                                                color: isDark
-                                                    ? kPrimaryColor
-                                                    : kBlackColor2,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  QuantityManager(
-                                                    value: '1',
-                                                    onLessTap: () {},
-                                                    onMoreTap: () {},
-                                                  ),
-                                                  SizedBox(
-                                                    width: 15,
-                                                  ),
-                                                  MyText(
-                                                    text: '₪19.99',
-                                                    size: 16,
-                                                    weight: FontWeight.w500,
-                                                    color: kSecondaryColor,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
+                                        Row(
+                                          children: [
+                                            QuantityManager(
+                                              value: '1',
+                                              onLessTap: () {},
+                                              onMoreTap: () {},
+                                            ),
+                                            SizedBox(
+                                              width: 15,
+                                            ),
+                                            MyText(
+                                              text: '₪19.99',
+                                              size: 16,
+                                              weight: FontWeight.w500,
+                                              color: kSecondaryColor,
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
                                   ),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 40,
-                              vertical: 15,
-                            ),
-                            child: MyButton(
-                              buttonText: 'place_order'.tr,
-                              onTap: () => Get.to(
-                                () => Obx(() {
-                                  return ConfirmOrder(
-                                    isPickUp:
-                                        cartCheckOutController.isPickUp.value,
-                                  );
-                                }),
+                                ],
                               ),
                             ),
                           ),
-                        ],
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 40,
+                        vertical: 15,
                       ),
-                    ],
-                  );
+                      child: MyButton(
+                        buttonText: 'place_order'.tr,
+                        onTap: () => Get.to(
+                              () => Obx(() {
+                            return ConfirmOrder(
+                              isPickUp:
+                              cartCheckOutController.isPickUp.value,
+                            );
+                          }),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            );
           },
         ),
       );

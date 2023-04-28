@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:http/http.dart';
 
+import '../../../../api/api.dart';
 import '../../main_app/home/home.dart';
 import '../../main_app/home/restaurant_details.dart';
 
@@ -29,7 +30,7 @@ class Signup extends StatelessWidget {
       if(respone.statusCode==200){
 
         Iterable l = json.decode(respone.body);
-        List<Homecat> homecats = List<Homecat>.from(l.map((model)=> Homecat.fromJson(model)));
+        List<HomeCat> homecats = List<HomeCat>.from(l.map((model)=> HomeCat.fromJson(model)));
         String j="https://10.0.2.2:7264/api/restcats";
         Response respone1= await get(
           Uri.parse(j),
@@ -40,7 +41,7 @@ class Signup extends StatelessWidget {
             Uri.parse(j),
           );
           Iterable l = json.decode(respone1.body);
-          List<Homecat> restcat = List<Homecat>.from(l.map((model)=> Homecat.fromJson(model)));
+          List<HomeCat> restcat = List<HomeCat>.from(l.map((model)=> HomeCat.fromJson(model)));
           String j1="https://10.0.2.2:7264/api/resturants";
           Response respone2= await get(
             Uri.parse(j1),
@@ -49,8 +50,9 @@ class Signup extends StatelessWidget {
             Iterable l = json.decode(respone2.body);
             List<Restaurant> resturants = List<Restaurant>.from(l.map((model)=> Restaurant.fromJson(model)));
             int i=0;
+            Get.to(()=>Home(homecats: homecats , resturants: resturants, resturantcats:restcat,));
 
-            Get.to(()=>Home(homecats: homecats, resturants: resturants, resturantcats: restcat));
+
 
           }
         }

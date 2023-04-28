@@ -23,7 +23,7 @@ class VerifyOtp extends StatelessWidget {
     const String authToken = "636fb4b764aa83091d1de759cd6cbb42";
     const String verifySid = "VAd5409cc024bded63fa4afaa095cb81ec";
     const String verifiedNumber = "+972542500657";
-    Future<String> checkVerification( String otpCode) async {
+    Future<bool> checkVerification( String otpCode) async {
       final String url = "https://verify.twilio.com/v2/Services/$verifySid/VerificationCheck";
       final response = await post(
         Uri.parse(url),
@@ -38,7 +38,12 @@ class VerifyOtp extends StatelessWidget {
       );
 
       final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
-      return jsonResponse["status"];
+      if (jsonResponse['status'] == 'approved') {
+        return true;
+      } else {
+        return false;
+      }
+
     }
     Future<String> sendVerification() async {
 
@@ -50,7 +55,7 @@ class VerifyOtp extends StatelessWidget {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: {
-          "To": verifiedNumber,
+          "To": "+972"+phonenum,
           "Channel": "sms",
         },
       );
@@ -119,7 +124,7 @@ class VerifyOtp extends StatelessWidget {
               height: 40,
             ),
             Pinput(
-              length: 4,
+              length: 6,
               mainAxisAlignment: MainAxisAlignment.center,
               defaultPinTheme: defaultPinTheme,
               focusedPinTheme: defaultPinTheme.copyDecorationWith(
@@ -143,7 +148,12 @@ class VerifyOtp extends StatelessWidget {
               },
               onCompleted: (pin) async {
 
-                checkVerification(pin);
+                if( await checkVerification(pin)){
+                  Get.to(Name(phonenum: phonenum));
+
+                }else{
+                  int i=0;
+                }
               },
               separator: SizedBox(
                 width: 12,

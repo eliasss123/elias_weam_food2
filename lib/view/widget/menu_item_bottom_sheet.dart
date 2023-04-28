@@ -12,16 +12,18 @@ import 'package:elias_weam_food2/view/widget/simple_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../api/api.dart';
+
 // ignore: must_be_immutable
 class MenuItemBottomSheet extends StatefulWidget {
   MenuItemBottomSheet({
     Key? key,
     required this.item,
     required this.onAddToCartTap,
-    this.buttonText, required Item,
+    this.buttonText,
 
   }) : super(key: key);
-  final Item item;
+  final Menuitem item;
   final VoidCallback? onAddToCartTap;
   String? buttonText;
 

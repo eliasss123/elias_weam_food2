@@ -11,6 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:http/http.dart';
 
+import '../../../../../api/api.dart';
+import '../../../main_app/home/home.dart';
+import '../../login.dart';
+
 class Name extends StatefulWidget {
   Name({Key? key, required this.phonenum});
   final  String   phonenum;
@@ -19,6 +23,54 @@ class Name extends StatefulWidget {
 }
 
 class _NameState extends State<Name> {
+  void getresturant( ) async {
+    try{
+      String j="https://10.0.2.2:7264/api/homecats";
+      Response respone= await get(
+        Uri.parse(j),
+      );
+
+      if(respone.statusCode==200){
+
+        Iterable l = json.decode(respone.body);
+        List<HomeCat> homecats = List<HomeCat>.from(l.map((model)=> HomeCat.fromJson(model)));
+        String j="https://10.0.2.2:7264/api/homecats";
+        Response respone1= await get(
+          Uri.parse(j),
+        );
+        if (respone1.statusCode==200){
+          String j="https://10.0.2.2:7264/api/restcats";
+          Response respone1= await get(
+            Uri.parse(j),
+          );
+          Iterable l = json.decode(respone1.body);
+          List<HomeCat> restcat = List<HomeCat>.from(l.map((model)=> HomeCat.fromJson(model)));
+          String j1="https://10.0.2.2:7264/api/resturants";
+          Response respone2= await get(
+            Uri.parse(j1),
+          );
+          if(respone2.statusCode==200){
+            Iterable l = json.decode(respone2.body);
+            List<Restaurant> resturants = List<Restaurant>.from(l.map((model)=> HomeCat.fromJson(model)));
+            int i=0;
+
+            Get.to(()=>Home(homecats: homecats , resturants: resturants, resturantcats:restcat,));
+
+          }
+        }
+
+
+
+      }else{
+        print("no");
+      }
+    }catch(e){
+      print(e.toString());
+    }
+
+
+
+  }
    _NameState({Key? key, required this.phonenum});
   final  String   phonenum;
   bool isActive = false;
@@ -38,24 +90,29 @@ class _NameState extends State<Name> {
   }
    void register() async {
      try{
-       String j="https://10.0.2.2:7264/api/Clients/2";
-       Response respone= await get(
+       String j="https://10.0.2.2:7264/api/Clients";
+       Response respone= await post(
            Uri.parse(j),
            headers: {
              'Accept': 'application/json',
              'Content-Type':'application/json'
            },
+         body: jsonEncode({
+           'firstname':this.fNameCon.text,'phonenumber':this.phonenum
+           ,'lastName':this.lNameCon.text
+
+         })
 
 
 
        );
-       if(respone.statusCode==200){
+       if(respone.statusCode==201){
          var k=jsonDecode(respone.body);
          Get.to(
                () => Congrats(
              heading: 'congratulations'.tr,
              congratsMsg: 'your_account_is_complete'.tr,
-             onContinue: () => Get.offAll(() => BottomNavBar()),
+             onContinue: () => Get.offAll(() =>Login()),
              buttonText: 'done'.tr,
            ),
          );

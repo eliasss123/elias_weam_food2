@@ -113,7 +113,7 @@ class AppRoutes {
     ),
     GetPage(
       name: AppLinks.home,
-      page: ()=>Home(homecats: [], resturants: [], resturantcats: []),
+      page: ()=>Home( homecats: [], resturants: [], resturantcats: [],),
     ),
     GetPage(
       name: AppLinks.browse,

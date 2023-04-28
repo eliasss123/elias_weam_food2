@@ -23,32 +23,89 @@ import 'package:elias_weam_food2/view/widget/toggle_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:http/http.dart';
-class Homecat{
-  final int id;
-  final String name;
-  Homecat({
-    required this.id,
-    required this.name,
-
-  });
-  factory Homecat.fromJson(Map<String, dynamic> json) {
-
-    return Homecat(
-      id: json['id'],
-      name: json['name'],
-    );
-  }
-}
+import 'package:elias_weam_food2/api/requests.dart';
+import 'package:elias_weam_food2/api/api.dart';
 class Home extends StatefulWidget {
   Home({Key? key, required this.homecats,required this.resturants,required this.resturantcats});
-  final List<Homecat> homecats;
+  final List<HomeCat> homecats;
   final List resturants;
-  final List<Homecat> resturantcats;
+  final List<HomeCat> resturantcats;
   @override
   State<Home> createState() => _HomeState();
 }
 
+Future<List<Restaurant>> _initializeRestaurants() async {
+  final response =
+  await get(Uri.parse('https://10.0.2.2:7264/api/restaurants'));
+  final data = jsonDecode(response.body);
+  final List<Restaurant> restaurantsList =
+  List<Restaurant>.from(data.map((model) => Restaurant.fromJson(model)));
+  return restaurantsList;
+
+
+}
+
+Future<List<HomeCat>> _initializeResturantCats() async {
+  final response =
+  await get(Uri.parse('https://10.0.2.2:7264/api/resturantcats'));
+  final data = jsonDecode(response.body);
+  final List<HomeCat> resturantCatsList =
+  List<HomeCat>.from(data.map((model) => HomeCat.fromJson(model)));
+
+  return resturantCatsList;
+
+}
 class _HomeState extends State<Home> {
+
+
+  Future<void> getresturants() async {
+    try{
+      String j="https://10.0.2.2:7264/api/homecats";
+      Response respone= await get(
+        Uri.parse(j),
+      );
+
+      if(respone.statusCode==200){
+
+        Iterable l = json.decode(respone.body);
+        List<HomeCat> homecats = List<HomeCat>.from(l.map((model)=> HomeCat.fromJson(model)));
+
+
+          String j="https://10.0.2.2:7264/api/restcats";
+          Response respone1= await get(
+            Uri.parse(j),
+          );
+           l = json.decode(respone1.body);
+          List<HomeCat> restcat = List<HomeCat>.from(l.map((model)=> HomeCat.fromJson(model)));
+          String j1="https://10.0.2.2:7264/api/resturants";
+          Response respone2= await get(
+            Uri.parse(j1),
+          );
+          if(respone2.statusCode==200){
+            Iterable l = json.decode(respone2.body);
+            List<Restaurant> resturants = List<Restaurant>.from(l.map((model)=> Restaurant.fromJson(model)));
+            int i=0;
+
+
+
+
+
+
+          }
+
+
+
+
+      }else{
+        print("no");
+      }
+    }catch(e){
+      print(e.toString());
+    }
+
+
+
+  }
   void getresturant(String id) async {
     try{
       String j="https://10.0.2.2:7264/api/resturants/"+id;
@@ -95,8 +152,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Homecat> _cats = this.widget.homecats;
-    final List<Homecat> popularList =this.widget.homecats;
+    final List<HomeCat> _cats = this.widget.homecats;
+    final List<HomeCat> popularList =this.widget.homecats;
     var platform = Theme.of(context).platform;
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;

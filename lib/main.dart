@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:provider/provider.dart';
 import 'package:elias_weam_food2/config/routes/routes.dart';
 import 'package:elias_weam_food2/config/theme/dark_theme.dart';
 import 'package:elias_weam_food2/config/theme/light_theme.dart';
@@ -18,57 +18,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:http/http.dart';
+import 'api/ClientSession.dart';
 import 'view/screens/launch/main_app/choose_language.dart';
 
-Future<Home> gethome(String id) async {
-  try{
-    String j="https://10.0.2.2:7264/api/homecats";
-    Response respone= await get(
-      Uri.parse(j),
-    );
 
-    if(respone.statusCode==200){
-
-      Iterable l = json.decode(respone.body);
-      List<Homecat> homecats = List<Homecat>.from(l.map((model)=> Homecat.fromJson(model)));
-      String j="https://10.0.2.2:7264/api/homecats";
-      Response respone1= await get(
-        Uri.parse(j),
-      );
-      if (respone1.statusCode==200){
-        String j="https://10.0.2.2:7264/api/restcats";
-        Response respone1= await get(
-          Uri.parse(j),
-        );
-        Iterable l = json.decode(respone1.body);
-        List<Homecat> restcat = List<Homecat>.from(l.map((model)=> Homecat.fromJson(model)));
-        String j1="https://10.0.2.2:7264/api/resturants";
-        Response respone2= await get(
-          Uri.parse(j1),
-        );
-        if(respone2.statusCode==200){
-          Iterable l = json.decode(respone2.body);
-          List<Restaurant> resturants = List<Restaurant>.from(l.map((model)=> Homecat.fromJson(model)));
-          int i=0;
-
-          return Home(homecats: homecats, resturants: resturants, resturantcats: restcat);
-
-        }
-      }
-
-
-
-    }else{
-      print("no");
-    }
-  }catch(e){
-    print(e.toString());
-  }
-  return Home(homecats: [],  resturants: [], resturantcats: []);
-
-
-
-}
 void main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
@@ -80,7 +33,12 @@ void main() async {
   Get.put(MerchantHomeController());
   Get.put(EditMerchantAppController());
   await UserSimplePreferences.init();
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider<ClientSession>(
+      create: (_) => ClientSession(),
+      child: MyApp(),
+    ),
+  );
 }
 
 //DO NOT REMOVE Unless you find their usage.
@@ -121,7 +79,7 @@ class MyApp extends StatelessWidget {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.light,
-      initialRoute: AppLinks.signup,
+      initialRoute: AppLinks.login,
       getPages: AppRoutes.pages,
       defaultTransition: Transition.fade,
     );
