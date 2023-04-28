@@ -112,7 +112,7 @@ class _CurrencyState extends State<Currency> {
                 left: 45,
                 right: 45,
                 top: 20,
-                bottom: isIos ? 30 : 20,
+                bottom: isIos ? 23 : 20,
               ),
               child: MyButton(
                 buttonText: 'save'.tr,

@@ -89,7 +89,7 @@ class AddNewCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 25),
+                padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: MyButton(
                   buttonText: 'save_card'.tr,
                   onTap: () => Get.to(

@@ -54,7 +54,7 @@ class ChooseLanguage extends StatelessWidget {
                   ),
                   MyText(
                     paddingTop: 32.8,
-                    text: 'Choose your preferred language',
+                    text: 'Choose your preferred language:',
                     size: 16,
                     align: TextAlign.center,
                     color: isDark ? kPrimaryColor : kDarkInputBgColor,
