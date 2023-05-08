@@ -1,16 +1,62 @@
+import 'dart:convert';
+
+
+import 'package:elias_weam_food2/api/api.dart';
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/generated/assets.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/forgot_pass/forgot_pass.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/sign_up.dart';
 import 'package:elias_weam_food2/view/screens/main_app/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:elias_weam_food2/view/screens/main_app/home/home.dart';
+import 'package:elias_weam_food2/view/screens/main_app/home/restaurant_details.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/prefix_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
+import 'package:get/get.dart' hide Response;
+import 'package:http/http.dart';
+import 'package:provider/provider.dart';
+import '../../../api/requests.dart';
+import '../../../api/ClientSession.dart';
 class Login extends StatelessWidget {
+
+  TextEditingController email=new TextEditingController();
+  TextEditingController password=new TextEditingController();
+
+  Future<void> loginUser(String email, String password,BuildContext context) async {
+    // Replace this URL with your own API endpoint
+    String apiUrl = 'https://10.0.2.2:7264/api/Clients/login';
+    ClientSession clientSession = Provider.of<ClientSession>(context, listen: false);
+    // Create the request body
+    Map<String, String> requestBody = {
+      'email': email,
+      'password': password,
+    };
+
+    // Send the POST request
+    Response response = await post(
+      Uri.parse(apiUrl),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode(requestBody),
+    );
+
+    // Check the response status
+    if (response.statusCode == 200) {
+      clientSession.accessToken=response.body;
+      // Handle successful response, e.g., save the access token
+      print('Login successful: ${response.body}');
+        List<HomeCat> homeca= await HomeCatApi().getHomeCats();
+      List<HomeCat> restca= await RestcatApi().getHomeCats();
+      List<Restaurant> rests= await RestaurantApi().getRestaurants();
+       Get.to( ()=>Home(homecats:homeca, resturants: rests, resturantcats:restca,));
+    } else {
+      // Handle error response, e.g., show an error message
+      print('Login failed: ${response.body}');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -67,6 +113,7 @@ class Login extends StatelessWidget {
                           paddingBottom: 30.0,
                         ),
                         PrefixTextField(
+                          controller: email,
                           hintText: 'email'.tr,
                           prefixIcon: Assets.imagesEmailBorder,
                           prefixIconSize: 17,
@@ -75,6 +122,7 @@ class Login extends StatelessWidget {
                           height: 15,
                         ),
                         PrefixTextField(
+                          controller: password,
                           isObSecure: true,
                           hintText: 'password'.tr,
                           prefixIcon: Assets.imagesLock,
@@ -100,7 +148,7 @@ class Login extends StatelessWidget {
                               buttonText: 'login'.tr,
                               textColor:
                                   isDark ? kDarkPrimaryColor : kPrimaryColor,
-                              onTap: () => Get.offAll(() => BottomNavBar()),
+                              onTap: () =>   loginUser(email.text,password.text,context),
                             ),
                           ),
                         ),
@@ -108,8 +156,7 @@ class Login extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-              SizedBox(
+              ), SizedBox(
                 height: 30,
               ),
               Wrap(
