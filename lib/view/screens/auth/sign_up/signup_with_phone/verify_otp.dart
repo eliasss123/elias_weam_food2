@@ -22,7 +22,7 @@ class VerifyOtp extends StatelessWidget {
     const String accountSid = "AC380ae6dcf5ed75b52389ee1443e2673e";
     const String authToken = "636fb4b764aa83091d1de759cd6cbb42";
     const String verifySid = "VAd5409cc024bded63fa4afaa095cb81ec";
-    const String verifiedNumber = "+972542500657";
+    String verifiedNumber = "+972" +  this.phonenum;
     Future<String> checkVerification( String otpCode) async {
       final String url = "https://verify.twilio.com/v2/Services/$verifySid/VerificationCheck";
       final response = await post(
@@ -119,7 +119,7 @@ class VerifyOtp extends StatelessWidget {
               height: 40,
             ),
             Pinput(
-              length: 4,
+              length: 6,
               mainAxisAlignment: MainAxisAlignment.center,
               defaultPinTheme: defaultPinTheme,
               focusedPinTheme: defaultPinTheme.copyDecorationWith(
