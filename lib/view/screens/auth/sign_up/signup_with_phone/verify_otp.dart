@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:elias_weam_food2/api/requests.dart';
 import 'package:elias_weam_food2/constant/color.dart';
 import 'package:elias_weam_food2/constant/instance.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_phone/name.dart';
@@ -10,19 +11,58 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
-import 'package:get/get.dart' hide Response;
+import 'package:provider/provider.dart';
 import 'package:http/http.dart';
 
+import '../../../../../api/ClientSession.dart';
+import '../../../../../api/api.dart';
+import 'package:get/get.dart' hide Response;
+
+import '../../../main_app/home/home.dart';
 class VerifyOtp extends StatelessWidget {
 
   const VerifyOtp({Key? key, required this.phonenum}) : super(key: key);
   final  String   phonenum;
+  void clientexsist(BuildContext context) async {
+    try{
+      String j="https://10.0.2.2:7264/api/Clients/0542500657";
+      final respone= await post(
+          Uri.parse(j),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json'
+          },
+
+
+
+      );
+      if(respone.statusCode==200){
+        String k=jsonDecode(respone.body);
+        ClientSession clientSession = Provider.of<ClientSession>(context, listen: false);
+        clientSession.accessToken=k;
+        List<HomeCat> homeca= await HomeCatApi().getHomeCats();
+        List<HomeCat> restca= await RestcatApi().getHomeCats();
+        List<Restaurant> rests= await RestaurantApi().getRestaurants();
+        Get.to(
+
+              ()  =>Home(homecats:homeca, resturants: rests, resturantcats:restca,),
+
+
+        );
+      }else{
+        print("no");
+      }
+    }catch(e){
+      print(e.toString());
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
-    const String accountSid = "AC380ae6dcf5ed75b52389ee1443e2673e";
-    const String authToken = "636fb4b764aa83091d1de759cd6cbb42";
-    const String verifySid = "VAd5409cc024bded63fa4afaa095cb81ec";
-    String verifiedNumber = "+972" +  this.phonenum;
+    const String accountSid = "AC652d57c2a9fb7b2187365296ec5e6f53";
+    const String authToken = "4c3af4a4ec9fc596656fedf622df495c";
+    const String verifySid = "VA3fa269272e1446f630b11901ac072305";
+     String verifiedNumber = "+972"+this.phonenum;
     Future<bool> checkVerification( String otpCode) async {
       final String url = "https://verify.twilio.com/v2/Services/$verifySid/VerificationCheck";
       final response = await post(
@@ -63,6 +103,34 @@ class VerifyOtp extends StatelessWidget {
       final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
 
       return jsonResponse["status"];
+    }
+    Future<bool> loginphone( ) async {
+
+        String j="https://10.0.2.2:7264/api/Clients/0542500657";
+        final respone= await get(
+            Uri.parse(j),
+            headers: {
+              'Accept': 'text/plain',
+
+            },
+
+
+
+
+        );
+        if(respone.statusCode==200){
+
+          String k=respone.body;
+
+          ClientSession clientSession = Provider.of<ClientSession>(context, listen: false);
+          clientSession.accessToken=k;
+
+          return true;
+        }else{
+          return false;
+        }
+
+
     }
     sendVerification();
     return Obx(() {
@@ -149,7 +217,16 @@ class VerifyOtp extends StatelessWidget {
               onCompleted: (pin) async {
 
                 if( await checkVerification(pin)){
-                  Get.to(Name(phonenum: phonenum));
+
+                   if(await  loginphone()){
+                     List<HomeCat> homeca= await HomeCatApi().getHomeCats();
+                     List<HomeCat> restca= await RestcatApi().getHomeCats();
+                     List<Restaurant> rests= await RestaurantApi().getRestaurants();
+                     Get.to(()=>Home(homecats: homeca, resturants: rests, resturantcats: restca));
+                   }else{
+                     Get.to(Name(phonenum: phonenum));
+                   }
+
 
                 }else{
                   int i=0;

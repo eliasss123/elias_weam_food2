@@ -124,10 +124,13 @@ class MyCart extends StatelessWidget {
                               elevation: 0,
                               isScrollControlled: true,
                               builder: (_) => MenuItemBottomSheet(
-                                onAddToCartTap: () {},
+                                onAddToCartTap: () {c.notifyListeners();
+                                Navigator.pop(context);
+                                  return;},
                                 buttonText: 'save_changes'.tr,item:c.menuItems![index],
                               ),
                             );
+
                           },
                           child: Container(
                             padding: EdgeInsets.only(bottom: 20),
@@ -172,12 +175,20 @@ class MyCart extends StatelessWidget {
                                               ? kPrimaryColor
                                               : kBlackColor2,
                                         ),
+
                                         Row(
+
                                           children: [
                                             QuantityManager(
-                                              value: '1',
-                                              onLessTap: () {},
-                                              onMoreTap: () {},
+
+                                              value: c.menuItems![index].quantity,
+                                              onLessTap: () {
+                                                c.menuItems![index].quantity--;
+                                                c.notifyListeners();
+
+                                              },
+                                              onMoreTap: () {c.menuItems![index].quantity++;
+                                              c.notifyListeners();},
                                             ),
                                             SizedBox(
                                               width: 15,

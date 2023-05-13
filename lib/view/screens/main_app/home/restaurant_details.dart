@@ -90,6 +90,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
 
   @override
   Widget build(BuildContext context) {
+    ClientSession c = Provider.of<ClientSession>(context);
     return Obx(() {
       bool isDark = themeController.isDarkTheme.value;
       bool isEnglish = languageController.isEnglish.value;

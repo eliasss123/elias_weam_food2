@@ -10,7 +10,7 @@ class CartCheckOutController extends GetxController {
   RxBool isOrderConfirm = false.obs;
   RxBool isEmptyCart = true.obs;
   RxBool isPickUp = false.obs;
-
+  RxMap<String, int> quantities = <String, int>{}.obs;
   void confirmOrder(
     BuildContext context,
     bool isPickup,

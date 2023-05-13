@@ -53,7 +53,7 @@ class RestaurantApi {
 }
 
 class ClientApi {
-  static const String baseUrl = 'https://https://10.0.2.2:7264//api';
+  static const String baseUrl = 'https://10.0.2.2:7264//api';
 
   Future<List<Client>> getClients() async {
     final response = await http.get(Uri.parse('$baseUrl/clients'));
@@ -75,6 +75,20 @@ class ClientApi {
 
     if (response.statusCode == 201) {
       return Client.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to create client');
+    }
+  }
+  Future<bool> clientexsist(String phonenum) async {
+    final response = await http.get(
+      Uri.parse('https://10.0.2.2:7264/api/sign/'),
+      headers: {'accept': 'text/plain'},
+
+    );
+
+    if (response.statusCode == 200) {
+      bool k= json.decode(response.body);
+      return k;
     } else {
       throw Exception('Failed to create client');
     }

@@ -42,17 +42,31 @@ import 'package:http/http.dart';
 class Menuitem {
   int id;
   int categoryId;
+  int price;
   String itemName;
   List<ItemOptions> itemOptions;
+  int itemImageId;
+  int quantity=1;
 
-  Menuitem({required this.id, required this.categoryId, required this.itemName, required this.itemOptions});
+  Menuitem({
+    required this.id,
+    required this.categoryId,
+    required this.price,
+    required this.itemName,
+    required this.itemOptions,
+    required this.itemImageId,
+  });
 
   factory Menuitem.fromJson(Map<String, dynamic> json) {
     return Menuitem(
       id: json['id'],
       categoryId: json['categorieid'],
+      price: json['price'],
       itemName: json['item_name'],
-      itemOptions: (json['itemoptions'] as List).map((option) => ItemOptions.fromJson(option)).toList(),
+      itemOptions: (json['itemoptions'] as List)
+          .map((itemOption) => ItemOptions.fromJson(itemOption))
+          .toList(),
+      itemImageId: json['itemimageid'],
     );
   }
 
@@ -60,8 +74,10 @@ class Menuitem {
     return {
       'id': id,
       'categorieid': categoryId,
+      'price': price,
       'item_name': itemName,
-      'itemoptions': itemOptions.map((option) => option.toJson()).toList(),
+      'itemoptions': itemOptions.map((itemOption) => itemOption.toJson()).toList(),
+      'itemimageid': itemImageId,
     };
   }
 }
@@ -150,16 +166,29 @@ class Restaurant {
   int id;
   String name;
   String address;
+  int reviews;
+  int deliveryTimeMinutes;
   List<Category> categories;
 
-  Restaurant({required this.id, required this.name, required this.address, required this.categories});
+  Restaurant({
+    required this.id,
+    required this.name,
+    required this.address,
+    required this.reviews,
+    required this.deliveryTimeMinutes,
+    required this.categories,
+  });
 
   factory Restaurant.fromJson(Map<String, dynamic> json) {
     return Restaurant(
       id: json['id'],
       name: json['name'],
       address: json['adress'],
-      categories: (json['categorie'] as List).map((category) => Category.fromJson(category)).toList(),
+      reviews: json['reviews'],
+      deliveryTimeMinutes: json['deliverytimeminutes'],
+      categories: (json['categorie'] as List)
+          .map((category) => Category.fromJson(category))
+          .toList(),
     );
   }
 
@@ -168,6 +197,8 @@ class Restaurant {
       'id': id,
       'name': name,
       'adress': address,
+      'reviews': reviews,
+      'deliverytimeminutes': deliveryTimeMinutes,
       'categorie': categories.map((category) => category.toJson()).toList(),
     };
   }

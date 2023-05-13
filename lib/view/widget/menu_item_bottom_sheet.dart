@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../api/api.dart';
+import '../../utils/instances.dart';
 
 // ignore: must_be_immutable
 class MenuItemBottomSheet extends StatefulWidget {
@@ -23,6 +24,8 @@ class MenuItemBottomSheet extends StatefulWidget {
     this.buttonText,
 
   }) : super(key: key);
+
+
   final Menuitem item;
   final VoidCallback? onAddToCartTap;
   String? buttonText;
@@ -33,7 +36,30 @@ class MenuItemBottomSheet extends StatefulWidget {
 
 class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
   bool isLiked = false;
+  late int quantity;
 
+  @override
+  void initState() {
+    super.initState();
+    quantity = this.widget.item.quantity; // Initialize the quantity
+  }
+
+  void onLessTap() {
+    setState(() {
+      if (quantity > 1) {
+        quantity--;
+        this.widget.item.quantity=quantity ;
+      }
+    });
+  }
+
+  void onMoreTap() {
+    setState(() {
+      quantity++;
+      this.widget.item.quantity=quantity ;
+
+    });
+  }
   void onLikeTap() {
     setState(() {
       isLiked = !isLiked;
@@ -104,14 +130,17 @@ class _MenuItemBottomSheetState extends State<MenuItemBottomSheet> {
                 Row(
                   children: [
                     QuantityManager(
-                      onLessTap: () {},
-                      value: '1',
-                      onMoreTap: () {},
+                      value: this.quantity,
+                      onLessTap: onLessTap
+
+
+                      ,
+                      onMoreTap:onMoreTap ,
                     ),
                     MyText(
                       paddingLeft: 15,
                       paddingRight: isEnglish ? 0 : 15,
-                      text: '₪19.99',
+                      text: '₪'+(this.quantity*this.widget.item.price).toString(),
                       size: 16,
                       weight: FontWeight.w500,
                       color: kSecondaryColor,

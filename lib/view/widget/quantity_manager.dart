@@ -12,7 +12,7 @@ class QuantityManager extends StatelessWidget {
     required this.onLessTap,
     required this.onMoreTap,
   }) : super(key: key);
-  final String value;
+  final int value;
   final VoidCallback onLessTap, onMoreTap;
 
   @override

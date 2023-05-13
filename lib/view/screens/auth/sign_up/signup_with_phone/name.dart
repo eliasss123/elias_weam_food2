@@ -10,8 +10,11 @@ import 'package:elias_weam_food2/view/widget/simple_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:http/http.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../../api/ClientSession.dart';
 import '../../../../../api/api.dart';
+import '../../../../../api/requests.dart';
 import '../../../main_app/home/home.dart';
 import '../../login.dart';
 
@@ -88,9 +91,46 @@ class _NameState extends State<Name> {
       });
     }
   }
+  void clientexsist() async {
+    try{
+      String j="https://10.0.2.2:7264/api/sign/loginphone";
+      Response respone= await post(
+          Uri.parse(j),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type':'application/json'
+          },
+          body: jsonEncode({
+            'phonenumber':this.phonenum
+          })
+
+
+
+      );
+      if(respone.statusCode==200){
+        String k=jsonDecode(respone.body);
+        ClientSession clientSession = Provider.of<ClientSession>(context, listen: false);
+        clientSession.accessToken=k;
+        List<HomeCat> homeca= await HomeCatApi().getHomeCats();
+        List<HomeCat> restca= await RestcatApi().getHomeCats();
+        List<Restaurant> rests= await RestaurantApi().getRestaurants();
+        Get.to(
+
+             ()  =>Home(homecats:homeca, resturants: rests, resturantcats:restca,),
+
+
+        );
+      }else{
+        print("no");
+      }
+    }catch(e){
+      print(e.toString());
+    }
+
+  }
    void register() async {
      try{
-       String j="https://10.0.2.2:7264/api/Clients";
+       String j="https://10.0.2.2:7264/api/sign/register";
        Response respone= await post(
            Uri.parse(j),
            headers: {
@@ -106,13 +146,18 @@ class _NameState extends State<Name> {
 
 
        );
-       if(respone.statusCode==201){
-         var k=jsonDecode(respone.body);
+       if(respone.statusCode==200){
+         String k=jsonDecode(respone.body);
+         ClientSession clientSession = Provider.of<ClientSession>(context, listen: false);
+          clientSession.accessToken=k;
+         List<HomeCat> homeca= await HomeCatApi().getHomeCats();
+         List<HomeCat> restca= await RestcatApi().getHomeCats();
+         List<Restaurant> rests= await RestaurantApi().getRestaurants();
          Get.to(
                () => Congrats(
              heading: 'congratulations'.tr,
              congratsMsg: 'your_account_is_complete'.tr,
-             onContinue: () => Get.offAll(() =>Login()),
+             onContinue: () => Get.offAll(() =>Home(homecats:homeca, resturants: rests, resturantcats:restca,)),
              buttonText: 'done'.tr,
            ),
          );
