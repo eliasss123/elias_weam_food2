@@ -124,7 +124,7 @@ class VerifyOtp extends StatelessWidget {
               height: 40,
             ),
             Pinput(
-              length: 4,
+              length: 6,
               mainAxisAlignment: MainAxisAlignment.center,
               defaultPinTheme: defaultPinTheme,
               focusedPinTheme: defaultPinTheme.copyDecorationWith(

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1046958512104",
+    "project_id": "vaii-774e2",
+    "storage_bucket": "vaii-774e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046958512104:android:524b116ab1255eb40b365d",
+        "android_client_info": {
+          "package_name": "com.example.elias_weam_food2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1046958512104-86ilugndhhh6vqsok5j7pssqk32k35ev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXwBpJtrBnmBTuusm69gKjByaG5oMSqc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1046958512104-86ilugndhhh6vqsok5j7pssqk32k35ev.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1046958512104-jfr7uqo5rfed6m4gvi8gp36bsqvank3v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eliasWeamFood2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

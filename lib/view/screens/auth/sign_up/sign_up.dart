@@ -8,18 +8,64 @@ import 'package:elias_weam_food2/view/screens/auth/login.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_email/signup_with_email.dart';
 import 'package:elias_weam_food2/view/screens/auth/sign_up/signup_with_phone/verify_otp.dart';
 import 'package:elias_weam_food2/view/screens/main_app/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:elias_weam_food2/view/widget/my_button.dart';
 import 'package:elias_weam_food2/view/widget/my_text.dart';
 import 'package:elias_weam_food2/view/widget/prefix_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:http/http.dart';
-
+import 'package:elias_weam_food2/api/connect.dart';
 import '../../../../api/api.dart';
 import '../../main_app/home/home.dart';
 import '../../main_app/home/restaurant_details.dart';
 
+
+
 class Signup extends StatelessWidget {
+    final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final FacebookAuth _facebookAuth = FacebookAuth.instance;
+
+  Future<void> _handleSignInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      // final GoogleSignInAuthentication googleAuth =
+      //     await googleUser!.authentication;
+
+      // Use googleAuth.idToken and googleAuth.accessToken to authenticate with your backend
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  Future<void> _handleSignInWithFacebook() async {
+    try {
+      final LoginResult result = await _facebookAuth.login();
+
+      if (result.status == LoginStatus.success) {
+        // Use result.accessToken!.token to authenticate with your backend
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  Future<void> _handleSignInWithApple() async {
+    try {
+      // final credential = await SignInWithApple.getAppleIDCredential(
+      //   scopes: [
+      //     AppleIDAuthorizationScopes.email,
+      //     AppleIDAuthorizationScopes.fullName,
+      //   ],
+      // );
+
+      // Use credential.authorizationCode to authenticate with your backend
+    } catch (error) {
+      print(error);
+    }
+  }
   void gethome() async {
     try{
       String j="https://10.0.2.2:7264/api/homecats";
@@ -173,7 +219,7 @@ class Signup extends StatelessWidget {
                         isDark: isDark,
                         icon: Assets.imagesApple,
                         iconSize: 25,
-                        onTap: () {},
+                        onTap: _handleSignInWithApple,
                       ),
                       SizedBox(
                         width: 13,
@@ -182,7 +228,7 @@ class Signup extends StatelessWidget {
                         isDark: isDark,
                         icon: Assets.imagesGoogle,
                         iconSize: 22,
-                        onTap: () {},
+                        onTap: _handleSignInWithGoogle,
                       ),
                       SizedBox(
                         width: 13,
@@ -191,7 +237,7 @@ class Signup extends StatelessWidget {
                         isDark: isDark,
                         icon: Assets.imagesFacebook,
                         iconSize: 25,
-                        onTap: () {},
+                        onTap: _handleSignInWithFacebook,
                       ),
                     ],
                   ),
@@ -270,24 +316,28 @@ class SocialLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        height: 51,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          border: Border.all(
-            width: 1.0,
-            color: isDark
-                ? kDarkBorderColor.withOpacity(0.30)
-                : kBlackColor.withOpacity(0.10),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          height: 51,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+            border: Border.all(
+              width: 1.0,
+              color: isDark
+                  ? kDarkBorderColor.withOpacity(0.30)
+                  : kBlackColor.withOpacity(0.10),
+            ),
           ),
-        ),
-        child: Center(
-          child: Image.asset(
-            icon,
-            height: iconSize,
+          child: Center(
+            child: Image.asset(
+              icon,
+              height: iconSize,
+            ),
           ),
         ),
       ),
     );
   }
 }
+

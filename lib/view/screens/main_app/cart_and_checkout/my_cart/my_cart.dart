@@ -164,7 +164,7 @@ class MyCart extends StatelessWidget {
                                       CrossAxisAlignment.stretch,
                                       children: [
                                         MyText(
-                                          text: c.menuItems![index]?.itemName,
+                                          text: c.menuItems![index].itemName,
                                           size: 16,
                                           weight: FontWeight.w500,
                                           paddingBottom: 20,
